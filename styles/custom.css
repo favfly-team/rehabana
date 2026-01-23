@@ -1,0 +1,38 @@
+/* About Section Swap Styles */
+.cs_about_swap .row {
+  display: flex;
+}
+
+.cs_about_swap .cs_about_thumbnail_col {
+  order: 2;
+}
+
+.cs_about_swap .cs_about_content_col {
+  order: 1;
+}
+
+/* Adjust margins when swapped */
+.cs_about_swap .cs_about_thumbnail {
+  margin-right: 0;
+  margin-left: 36px;
+}
+
+@media (max-width: 1199px) {
+  .cs_about_swap .cs_about_thumbnail {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .cs_about_swap .cs_about_thumbnail {
+    margin-left: 0;
+  }
+  
+  .cs_about_swap .cs_about_thumbnail_col {
+    order: 1;
+  }
+  
+  .cs_about_swap .cs_about_content_col {
+    order: 2;
+  }
+}

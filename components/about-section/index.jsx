@@ -1,10 +1,15 @@
-const AboutSection = () => {
+const AboutSection = ({ swap = false }) => {
   return (
-    <section className="cs_about cs_style_1 position-relative" id="about">
+    <section
+      className={`cs_about cs_style_1 position-relative ${
+        swap ? "cs_about_swap" : ""
+      }`}
+      id="about"
+    >
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <div className="row align-items-center cs_gap_y_40">
-          <div className="col-lg-6">
+          <div className={`col-lg-6 ${swap ? "cs_about_thumbnail_col" : ""}`}>
             <div className="cs_about_thumbnail">
               <div className="cs_about_thumbnail_1">
                 <img
@@ -76,14 +81,16 @@ const AboutSection = () => {
             </div>
           </div>
           <div
-            className="col-lg-6 wow fadeInRight"
+            className={`col-lg-6 wow ${swap ? "fadeInLeft" : "fadeInRight"} ${
+              swap ? "cs_about_content_col" : ""
+            }`}
             data-wow-duration="0.9s"
             data-wow-delay="0.25s"
             style={{
               visibility: "visible",
               animationDuration: "0.9s",
               animationDelay: "0.25s",
-              animationName: "fadeInRight",
+              animationName: swap ? "fadeInLeft" : "fadeInRight",
             }}
           >
             <div className="cs_about_content">
