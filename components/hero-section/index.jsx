@@ -1,3 +1,5 @@
+import { FaPlay } from "react-icons/fa6";
+
 const HeroSection = () => {
   return (
     <section
@@ -48,7 +50,7 @@ const HeroSection = () => {
                 className="cs_player_btn cs_style_1 cs_type_1 cs_video_open"
               >
                 <span className="cs_player_btn_icon cs_center">
-                  <i className="fa-solid fa-play" />
+                  <FaPlay />
                 </span>
                 <span className="cs_play_btn_text cs_fs_18 cs_semibold cs_accent_color">
                   See How We Works

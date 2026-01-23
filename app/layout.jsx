@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 //  ==== import components ====
 import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 
 //  ==== define metadata ====
 export const metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body className={inter.variable}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

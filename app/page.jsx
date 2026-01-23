@@ -12,6 +12,7 @@ import TestimonialSection from "@/components/testimonial-section";
 import FAQSection from "@/components/faq-section";
 import BlogsSection from "@/components/blogs-section";
 import CTASection from "@/components/cta-section";
+import LocationSection from "@/components/contact/location-section";
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       <FAQSection />
       <CTASection />
       <BlogsSection />
+      <LocationSection />
     </div>
   );
 };
