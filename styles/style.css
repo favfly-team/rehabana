@@ -4494,8 +4494,13 @@ a.ui-button:active,
   border-radius: 50%;
   font-size: 14px;
 }
-.cs_header_social_links a:hover {
+.cs_header_social_links a:hover,
+.cs_sticky_active .cs_header_social_links a:hover {
   background-color: var(--accent-color);
+  color: #fff;
+}
+.cs_sticky_active .cs_header_social_links a {
+  background-color: var(--heading-color);
   color: #fff;
 }
 .cs_header_social_links.cs_color_1 a {

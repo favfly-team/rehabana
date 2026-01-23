@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import {
   FaFacebookF,
   FaXTwitter,
@@ -6,6 +9,22 @@ import {
 } from "react-icons/fa6";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial scroll position
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const navItems = [
     {
       label: "Home",
@@ -42,7 +61,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="cs_site_header cs_style_1 cs_sticky_header cs_heading_font cs_heading_color">
+    <header
+      className={`cs_site_header cs_style_1 cs_sticky_header cs_heading_font cs_heading_color ${
+        isScrolled ? "cs_sticky_active" : ""
+      }`}
+    >
       <div className="cs_main_header">
         <div className="container-fluid">
           <div className="cs_main_header_in">
