@@ -3,6 +3,9 @@ import AboutSection from "@/components/about-section";
 import CTAFormSection from "@/components/cta-section/form";
 import FeaturesSection from "@/components/features-section";
 import FeaturesImageSection from "@/components/features-section/image";
+import CTAForm2Section from "@/components/cta-section/form2";
+import ProcessSection from "@/components/process-section/page";
+import TestimonialVideoSection from "@/components/testimonial-section/video";
 
 const Home = () => {
   return (
@@ -13,6 +16,9 @@ const Home = () => {
       <CTAFormSection />
       <FeaturesSection />
       <FeaturesImageSection />
+      <CTAForm2Section />
+      <ProcessSection />
+      <TestimonialVideoSection />
     </div>
   );
 };

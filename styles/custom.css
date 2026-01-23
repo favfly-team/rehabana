@@ -36,3 +36,13 @@
     order: 2;
   }
 }
+
+/* Testimonial Video Button Styles */
+.cs_card.cs_style_1 .cs_card_thumbnail .cs_player_btn.cs_style_2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  margin: 0;
+}
