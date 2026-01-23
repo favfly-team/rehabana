@@ -7,6 +7,9 @@ import CTAForm2Section from "@/components/cta-section/form2";
 import ProcessSection from "@/components/process-section/page";
 import TestimonialVideoSection from "@/components/testimonial-section/video";
 import GallerySection from "@/components/gallery-section";
+import ServicesSection from "@/components/services-section";
+import TestimonialSection from "@/components/testimonial-section";
+import FAQSection from "@/components/faq-section";
 
 const Home = () => {
   return (
@@ -21,6 +24,9 @@ const Home = () => {
       <ProcessSection />
       <TestimonialVideoSection />
       <GallerySection />
+      <ServicesSection />
+      <TestimonialSection />
+      <FAQSection />
     </div>
   );
 };
