@@ -3464,13 +3464,9 @@ a.ui-button:active,
     right top,
     left top,
     color-stop(25%, transparent),
-    color-stop(55.11%, var(--accent-color))
+    color-stop(55.11%, #fff)
   );
-  background: linear-gradient(
-    -90deg,
-    transparent 25%,
-    var(--accent-color) 55.11%
-  );
+  background: linear-gradient(-90deg, transparent 25%, #fff 55.11%);
 }
 .cs_page_heading .cs_page_heading_in {
   position: relative;
