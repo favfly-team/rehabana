@@ -15,7 +15,7 @@ const FeaturesImageSection = () => {
           }}
         >
           <div className="cs_section_heading_left">
-            <p className="cs_section_subtitle cs_fs_18 cs_semibold cs_accent_color cs_heading_font">
+            <p className="cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font">
               Our Features
             </p>
             <h2 className="cs_section_title cs_fs_48 mb-3">

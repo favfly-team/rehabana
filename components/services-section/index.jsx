@@ -7,7 +7,7 @@ const ServicesSection = () => {
       <div className="container">
         <div className="cs_section_heading cs_style_1 cs_type_1">
           <div className="cs_section_heading_left">
-            <p className="cs_section_subtitle cs_fs_18 cs_semibold cs_accent_color cs_heading_font">
+            <p className="cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font">
               Expertise
             </p>
             <h2 className="cs_section_title cs_accent_color mb-0">
@@ -42,7 +42,7 @@ const ServiceItem = () => {
             className="img-fluid cs_radius_10"
           />
         </div>
-        <h3 className="cs_iconbox_title cs_fs_32 cs_semibold">
+        <h3 className="cs_iconbox_title cs_fs_32 cs_medium">
           <a href="service-details.html">Chiropractic Care</a>
         </h3>
         <p className="cs_iconbox_subtitle">
@@ -51,7 +51,7 @@ const ServiceItem = () => {
         </p>
         <a
           href="service-details.html"
-          className="cs_text_btn cs_fs_18 cs_semibold cs_heading_color"
+          className="cs_text_btn cs_fs_18 cs_medium cs_heading_color"
         >
           <span>Get Services</span>
           <div className="cs_text_btn_icon cs_center">

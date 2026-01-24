@@ -140,7 +140,7 @@ const CTAFormSection = () => {
                 <div className="col-md-12">
                   <button
                     type="submit"
-                    className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg  cs_radius_100"
+                    className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg  cs_radius_100"
                   >
                     <span className="cs_btn_text">Book An Appointment</span>
                   </button>

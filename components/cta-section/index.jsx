@@ -14,13 +14,13 @@ const CTASection = () => {
           <div className="cs_btns_group">
             <a
               href="about.html"
-              className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg  cs_radius_100"
+              className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg  cs_radius_100"
             >
               <span className="cs_btn_text">Learn More</span>
             </a>
             <a
               href="contact.html"
-              className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg  cs_radius_100"
+              className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg  cs_radius_100"
             >
               <span className="cs_btn_text">Contact Now</span>
             </a>

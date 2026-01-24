@@ -7,7 +7,11 @@ import "@/styles/custom.css";
 import { Inter } from "next/font/google";
 
 //  ==== define fonts ====
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
 
 //  ==== import components ====
 import Header from "@/components/layout/header";

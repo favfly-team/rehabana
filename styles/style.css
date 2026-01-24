@@ -2026,7 +2026,7 @@ label {
 .cs_list.cs_style_1 li {
   padding-left: 40px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   font-family: var(--heading-font);
   color: var(--heading-color);
   position: relative;
@@ -2780,10 +2780,6 @@ label {
   background-color: var(--heading-color);
   color: var(--white-color);
 }
-.cs_accordian.active.cs_type_1 .cs_accordian_body {
-  text-decoration: underline;
-}
-
 .cs_faq_shape_1 {
   left: 50%;
   top: 400px;

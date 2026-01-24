@@ -5,7 +5,7 @@ const TestimonialVideoSection = () => {
       <div className="container">
         <div className="cs_section_heading cs_style_1 cs_type_1">
           <div className="cs_section_heading_left">
-            <p className="cs_section_subtitle cs_accent_color cs_fs_18 cs_semibold cs_heading_font">
+            <p className="cs_section_subtitle cs_accent_color cs_fs_18 cs_medium cs_heading_font">
               Completed Case Studies
             </p>
             <h2 className="cs_section_title cs_fs_48 mb-0">
@@ -24,7 +24,6 @@ const TestimonialVideoSection = () => {
           <TestimonialVideoItem />
           <TestimonialVideoItem />
         </div>
-        <div className="cs_height_50 cs_height_lg_40" />
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>

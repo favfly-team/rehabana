@@ -6,7 +6,7 @@ const TestimonialSection = () => {
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <div className="cs_section_heading cs_style_1 cs_text_center wow fadeInUp">
-          <p className="cs_section_subtitle cs_fs_18 cs_semibold cs_accent_color cs_heading_font">
+          <p className="cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font">
             Testimonials
           </p>
           <h2 className="cs_section_title cs_fs_48 mb-0">

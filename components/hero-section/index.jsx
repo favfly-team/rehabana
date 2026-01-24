@@ -28,7 +28,7 @@ const HeroSection = () => {
               animationName: "fadeInRight",
             }}
           >
-            <h3 className="cs_hero_title_mini cs_fs_18 cs_accent_color cs_semibold">
+            <h3 className="cs_hero_title_mini cs_fs_18 cs_accent_color cs_medium">
               Welcome to Medixal
             </h3>
             <h1 className="cs_hero_title cs_fs_70">
@@ -41,7 +41,7 @@ const HeroSection = () => {
             <div className="cs_hero_btn_group">
               <a
                 href="appointment.html"
-                className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg  cs_radius_100"
+                className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg  cs_radius_100"
               >
                 <span className="cs_btn_text">Make An Appointment</span>
               </a>
@@ -52,7 +52,7 @@ const HeroSection = () => {
                 <span className="cs_player_btn_icon cs_center">
                   <FaPlay />
                 </span>
-                <span className="cs_play_btn_text cs_fs_18 cs_semibold cs_accent_color">
+                <span className="cs_play_btn_text cs_fs_18 cs_medium cs_accent_color">
                   See How We Works
                 </span>
               </a>

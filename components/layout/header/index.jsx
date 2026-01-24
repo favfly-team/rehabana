@@ -31,32 +31,32 @@ const Header = () => {
       href: "/",
     },
     {
-      label: "Rehab Services",
-      href: "/rehab-services",
+      label: "About",
+      href: "/about",
     },
     {
-      label: "Speciality Services",
-      href: "/speciality-services",
-    },
-    {
-      label: "Team",
-      href: "/team",
+      label: "Services",
+      href: "/services",
     },
     {
       label: "Gallery",
       href: "/gallery",
     },
     {
-      label: "Testimonials",
-      href: "/testimonials",
+      label: "Team",
+      href: "/team",
     },
     {
-      label: "Contact Us",
+      label: "Testimonial",
+      href: "/testimonial",
+    },
+    {
+      label: "Blogs",
+      href: "/blogs",
+    },
+    {
+      label: "Contact",
       href: "/contact",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
     },
   ];
 
@@ -77,7 +77,7 @@ const Header = () => {
                   style={{ height: "60px" }}
                 />
               </a>
-              <div className="cs_nav cs_fs_18 cs_semibold">
+              <div className="cs_nav cs_fs_18 cs_medium">
                 <div className="cs_nav_list_wrap">
                   <ul className="cs_nav_list">
                     {navItems.map((item) => (
