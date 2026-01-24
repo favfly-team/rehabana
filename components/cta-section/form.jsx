@@ -1,3 +1,5 @@
+import { SectionHeading } from "@/components/ui";
+
 const CTAFormSection = () => {
   return (
     <section className="cs_accent_bg">
@@ -5,12 +7,12 @@ const CTAFormSection = () => {
       <div className="container">
         <div className="row cs_gap_y_40">
           <div className="col-lg-6">
-            <div className="cs_section_heading cs_style_1">
-              <p className="cs_section_subtitle cs_white_color">Appointment</p>
-              <h2 className="cs_section_title cs_fs_48 cs_white_color mb-0">
-                Get Amazing Treatment For our Specialist Doctors
-              </h2>
-            </div>
+            <SectionHeading
+              subtitle="Appointment"
+              subtitleProps={{ className: "cs_white_color" }}
+              title="Get Amazing Treatment For our Specialist Doctors"
+              titleProps={{ className: "cs_fs_48 cs_white_color mb-0" }}
+            />
             <div className="cs_height_50 cs_height_lg_40" />
             <div className="row cs_gap_y_40">
               <div className="col-12">

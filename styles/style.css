@@ -81,7 +81,7 @@ h6 {
   color: var(--heading-color);
   padding: 0;
   margin: 0 0 20px 0;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2em;
   font-family: var(--heading-font);
 }
@@ -1252,7 +1252,7 @@ textarea {
 
 .cs_fs_24 {
   font-size: 24px;
-  line-height: 1em;
+  line-height: 1.2em;
 }
 @media (max-width: 991px) {
   .cs_fs_24 {
@@ -8165,7 +8165,7 @@ a.ui-button:active,
   transform: scale(1.06) translate(5px, 10px);
 }
 .cs_post.cs_style_1 .cs_post_meta {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 @media (max-width: 991px) {
   .cs_post.cs_style_1 .cs_post_meta {

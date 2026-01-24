@@ -1,3 +1,5 @@
+import { SectionHeading, Button } from "@/components/ui";
+
 const AboutSection = ({ swap = false }) => {
   return (
     <section
@@ -16,20 +18,19 @@ const AboutSection = ({ swap = false }) => {
                   src="https://medixal-html.vercel.app/assets/img/about_1.jpg"
                   alt="Image"
                 />
-                <a
+                <Button
                   href="https://www.youtube.com/embed/rRid6GCJtgc"
-                  className="cs_player_btn cs_style_1 cs_video_open"
-                >
-                  <span className="cs_player_btn_icon cs_center">
+                  variant="player"
+                  className="cs_video_open"
+                  playerIcon={
                     <img
                       src="https://medixal-html.vercel.app/assets/img/icons/player_icon.svg"
                       alt="Icon"
                     />
-                  </span>
-                  <span className="cs_play_btn_text cs_fs_18 cs_medium cs_accent_color">
-                    How We Works
-                  </span>
-                </a>
+                  }
+                >
+                  How We Works
+                </Button>
               </div>
               <div className="cs_about_thumbnail_2">
                 <img
@@ -94,15 +95,15 @@ const AboutSection = ({ swap = false }) => {
             }}
           >
             <div className="cs_about_content">
-              <div className="cs_section_heading cs_style_1">
-                <p className="cs_section_subtitle cs_accent_color cs_fs_18 cs_medium cs_heading_font">
-                  About us
-                </p>
-                <h2 className="cs_section_title cs_fs_48 mb-0">
-                  Advanced technology and{" "}
-                  <span className="cs_accent_color">Specialist Doctors.</span>
-                </h2>
-              </div>
+              <SectionHeading
+                subtitle="About us"
+                title={
+                  <>
+                    Advanced technology and{" "}
+                    <span className="cs_accent_color">Specialist Doctors.</span>
+                  </>
+                }
+              />
               <p className="cs_about_text">
                 Adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
@@ -182,12 +183,7 @@ const AboutSection = ({ swap = false }) => {
                   Discount on all Pathology &amp; Radiology treatment
                 </li>
               </ul>
-              <a
-                href="about.html"
-                className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg  cs_radius_100"
-              >
-                <span className="cs_btn_text">Info More About</span>
-              </a>
+              <Button href="about.html">Info More About</Button>
             </div>
           </div>
         </div>

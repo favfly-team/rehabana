@@ -4,21 +4,24 @@ import {
   FaInstagram,
   FaPinterestP,
 } from "react-icons/fa6";
+import { SectionHeading } from "@/components/ui";
 
 const TeamSection = () => {
   return (
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div className="cs_section_heading cs_style_1 cs_text_center">
-          <p className="cs_section_subtitle cs_fs_18 cs_semibold cs_accent_color cs_heading_font">
-            Doctor’s Team
-          </p>
-          <h2 className="cs_section_title cs_fs_48 mb-0">
-            Meet our Expert Counselling <br />
-            Doctors
-          </h2>
-        </div>
+        <SectionHeading
+          align="center"
+          subtitle="Doctor's Team"
+          subtitleProps={{ className: "cs_semibold" }}
+          title={
+            <>
+              Meet our Expert Counselling <br />
+              Doctors
+            </>
+          }
+        />
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_row_gap_30 cs_gap_y_30">
           <TeamItem />

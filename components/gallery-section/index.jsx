@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SectionHeading } from "@/components/ui";
 
 const GallerySection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -76,8 +77,15 @@ const GallerySection = () => {
     <section className="cs_gallery cs_style_1">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div
-          className="cs_section_heading cs_style_1 cs_text_center wow fadeInUp"
+        <SectionHeading
+          align="center"
+          subtitle="Our Gallery"
+          title={
+            <>
+              Explore Our <span className="cs_accent_color">Photo Gallery</span>
+            </>
+          }
+          className="wow fadeInUp"
           data-wow-duration="0.9s"
           data-wow-delay="0.25s"
           style={{
@@ -86,14 +94,7 @@ const GallerySection = () => {
             animationDelay: "0.25s",
             animationName: "fadeInUp",
           }}
-        >
-          <p className="cs_section_subtitle cs_accent_color cs_fs_18 cs_medium cs_heading_font">
-            Our Gallery
-          </p>
-          <h2 className="cs_section_title cs_fs_48 mb-0">
-            Explore Our <span className="cs_accent_color">Photo Gallery</span>
-          </h2>
-        </div>
+        />
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="cs_gallery_filters">
           <div className="cs_gallery_filter_list">

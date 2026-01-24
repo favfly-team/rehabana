@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
+import { SectionHeading } from "@/components/ui";
 
 const FAQSection = () => {
   const faqData = [
@@ -72,14 +73,16 @@ const FAQSection = () => {
     <section className="position-relative">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div className="cs_section_heading cs_style_1 cs_text_center wow fadeInUp">
-          <p className="cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font">
-            Faq's
-          </p>
-          <h2 className="cs_section_title cs_fs_48 mb-0">
-            Feel Free Asked Any <br /> Questions
-          </h2>
-        </div>
+        <SectionHeading
+          align="center"
+          subtitle="Faq's"
+          title={
+            <>
+              Feel Free Asked Any <br /> Questions
+            </>
+          }
+          className="wow fadeInUp"
+        />
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_row_gap_40">
           <div className="col-lg-6">

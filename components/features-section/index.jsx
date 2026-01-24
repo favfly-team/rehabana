@@ -1,16 +1,16 @@
+import { SectionHeading } from "@/components/ui";
+
 const FeaturesSection = () => {
   return (
     <section className="cs_features cs_style_1 m-0">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div className="cs_section_heading cs_style_1 cs_text_center wow fadeInUp">
-          <p className="cs_section_subtitle cs_accent_color cs_fs_18 cs_medium cs_heading_font">
-            Our Features
-          </p>
-          <h2 className="cs_section_title cs_fs_48 mb-0">
-            Our Top Notch Features
-          </h2>
-        </div>
+        <SectionHeading
+          align="center"
+          subtitle="Our Features"
+          title="Our Top Notch Features"
+          className="wow fadeInUp"
+        />
 
         <div className="cs_height_50 cs_height_lg_40"></div>
         <div className="row cs_row_gap_30 cs_gap_y_30">

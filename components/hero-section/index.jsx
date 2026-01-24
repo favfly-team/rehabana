@@ -1,4 +1,5 @@
 import { FaPlay } from "react-icons/fa6";
+import { Button } from "@/components/ui";
 
 const HeroSection = () => {
   return (
@@ -31,7 +32,7 @@ const HeroSection = () => {
             <h3 className="cs_hero_title_mini cs_fs_18 cs_accent_color cs_medium">
               Welcome to Medixal
             </h3>
-            <h1 className="cs_hero_title cs_fs_70">
+            <h1 className="cs_hero_title cs_fs_64">
               See the Whole world clearly and transparently
             </h1>
             <p className="cs_hero_subtitle cs_fs_20 cs_medium cs_heading_color">
@@ -39,23 +40,16 @@ const HeroSection = () => {
               and noteworthy changes. Heidelberg Engineering
             </p>
             <div className="cs_hero_btn_group">
-              <a
-                href="appointment.html"
-                className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg  cs_radius_100"
-              >
-                <span className="cs_btn_text">Make An Appointment</span>
-              </a>
-              <a
+              <Button href="appointment.html">Make An Appointment</Button>
+              <Button
                 href="https://www.youtube.com/embed/rRid6GCJtgc"
-                className="cs_player_btn cs_style_1 cs_type_1 cs_video_open"
+                variant="player"
+                playerType1={true}
+                playerIcon={<FaPlay />}
+                className="cs_video_open"
               >
-                <span className="cs_player_btn_icon cs_center">
-                  <FaPlay />
-                </span>
-                <span className="cs_play_btn_text cs_fs_18 cs_medium cs_accent_color">
-                  See How We Works
-                </span>
-              </a>
+                See How We Works
+              </Button>
             </div>
             <div className="cs_height_66 cs_height_lg_40" />
             <div className="cs_counter_1_wrap">

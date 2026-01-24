@@ -5,6 +5,7 @@ import {
   FaEnvelope,
   FaLocationDot,
 } from "react-icons/fa6";
+import { SectionHeading } from "@/components/ui";
 
 const ContactSection = () => {
   return (
@@ -21,15 +22,18 @@ const ContactSection = () => {
                   'url("https://medixal-html.vercel.app/assets/img/contact_form_bg_1.png")',
               }}
             >
-              <div className="cs_section_heading cs_style_1">
-                <h2 className="cs_section_title cs_fs_40 mb-0">
-                  Contact With Us
-                </h2>
-                <div className="cs_height_20 cs_height_lg_20" />
-                <div>
-                  Send us a message and we' ll respond as soon as possible
-                </div>
-              </div>
+              <SectionHeading
+                title="Contact With Us"
+                titleProps={{ className: "cs_fs_40 mb-0" }}
+                rightContent={
+                  <>
+                    <div className="cs_height_20 cs_height_lg_20" />
+                    <div>
+                      Send us a message and we' ll respond as soon as possible
+                    </div>
+                  </>
+                }
+              />
               <div className="cs_height_45 cs_height_lg_40" />
               <Form />
             </div>
@@ -38,15 +42,18 @@ const ContactSection = () => {
             <div className="row cs_gap_y_24">
               <div className="col-lg-12">
                 <div className="contact_form_wrapper cs_heading_font cs_type_1 cs_radius_5 position-relative">
-                  <div className="cs_section_heading cs_style_1">
-                    <h2 className="cs_section_title cs_fs_40 mb-0">
-                      Need Any Help?
-                    </h2>
-                    <div className="cs_height_20 cs_height_lg_20" />
-                    <div>
-                      Call us or message and we' ll respond as soon as possible
-                    </div>
-                  </div>
+                  <SectionHeading
+                    title="Need Any Help?"
+                    titleProps={{ className: "cs_fs_40 mb-0" }}
+                    rightContent={
+                      <>
+                        <div className="cs_height_20 cs_height_lg_20" />
+                        <div>
+                          Call us or message and we' ll respond as soon as possible
+                        </div>
+                      </>
+                    }
+                  />
                   <div className="cs_height_45 cs_height_lg_40" />
                   <div className="row cs_gap_y_30">
                     <div className="col-md-4">

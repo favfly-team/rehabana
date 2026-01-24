@@ -44,7 +44,7 @@ const Footer = () => {
           </div>
           <div className="cs_footer_col">
             <div className="cs_footer_widget">
-              <h2 className="cs_footer_widget_title cs_fs_32 cs_white_color cs_bold">
+              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
                 Links
               </h2>
               <ul className="cs_footer_widget_menu">
@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
           <div className="cs_footer_col">
             <div className="cs_footer_widget">
-              <h2 className="cs_footer_widget_title cs_fs_32 cs_white_color cs_bold">
+              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
                 Resources
               </h2>
               <ul className="cs_footer_widget_menu">
@@ -95,7 +95,7 @@ const Footer = () => {
           </div>
           <div className="cs_footer_col">
             <div className="cs_footer_widget">
-              <h2 className="cs_footer_widget_title cs_fs_32 cs_white_color cs_bold">
+              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
                 Office
               </h2>
               <ul className="cs_footer_widget_menu cs_address">

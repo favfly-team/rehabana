@@ -1,10 +1,20 @@
+import { SectionHeading } from "@/components/ui";
+
 const ProcessSection = () => {
   return (
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div
-          className="cs_section_heading cs_style_1 wow fadeInUp"
+        <SectionHeading
+          subtitle="Work Process"
+          subtitleProps={{ className: "cs_semibold" }}
+          title={
+            <>
+              How Work Process Our <br />
+              <span className="cs_accent_color">Rehabilitations</span>
+            </>
+          }
+          className="wow fadeInUp"
           data-wow-duration="0.9s"
           data-wow-delay="0.25s"
           style={{
@@ -13,15 +23,7 @@ const ProcessSection = () => {
             animationDelay: "0.25s",
             animationName: "fadeInUp",
           }}
-        >
-          <p className="cs_section_subtitle cs_fs_18 cs_semibold cs_accent_color cs_heading_font">
-            Work Process
-          </p>
-          <h2 className="cs_section_title cs_fs_48 mb-0">
-            How Work Process Our <br />
-            <span className="cs_accent_color">Rehabilitations</span>
-          </h2>
-        </div>
+        />
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_row_gap_30 cs_gap_y_40">
           <div className="col-xl-3 col-md-6">

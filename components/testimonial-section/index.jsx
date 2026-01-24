@@ -1,19 +1,22 @@
 import { FaStar } from "react-icons/fa6";
+import { SectionHeading } from "@/components/ui";
 
 const TestimonialSection = () => {
   return (
     <section className="cs_testimonial cs_style_1">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div className="cs_section_heading cs_style_1 cs_text_center wow fadeInUp">
-          <p className="cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font">
-            Testimonials
-          </p>
-          <h2 className="cs_section_title cs_fs_48 mb-0">
-            What Our Regular Patient Says
-            <br /> About DR. Matheus
-          </h2>
-        </div>
+        <SectionHeading
+          align="center"
+          subtitle="Testimonials"
+          title={
+            <>
+              What Our Regular Patient Says
+              <br /> About DR. Matheus
+            </>
+          }
+          className="wow fadeInUp"
+        />
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_gap_y_30 align-items-center">
           <div className="col-lg-6">
