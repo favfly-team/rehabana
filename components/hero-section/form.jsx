@@ -4,10 +4,10 @@ import { FaCheck } from "react-icons/fa6";
 
 const HeroSectionForm = () => {
   const features = [
-    "Enhanced User Experience",
-    "More Conversion Rates",
-    "Optimisation of Product Listings",
-    "Customised Marketing Strategies",
+    "Expert Medical Professionals",
+    "24/7 Emergency Care",
+    "Personalized Treatment Plans",
+    "Advanced Medical Facilities",
   ];
 
   return (
@@ -27,17 +27,16 @@ const HeroSectionForm = () => {
           <div className="col-lg-6">
             <div className="cs_hero_content">
               <h3 className="cs_hero_title_mini cs_fs_14 cs_medium cs_uppercase mb-3">
-                E-STORE MANAGEMENT MADE EASY!
+                EXPERT MEDICAL CARE
               </h3>
               <h1 className="cs_hero_title cs_fs_40 mb-4">
-                Looking For The Best Flipkart Seller Account Management
-                Services?
+                Looking For The Best Healthcare & Counselling Services?
               </h1>
               <p className="cs_hero_subtitle cs_fs_16 cs_medium mb-4">
-                Our expert eCommerce Specialists will help your business thrive
-                on different platforms. Reach your ROI targets faster and
-                experience 3x growth of business sales with our expertise. We
-                are here to transform your eCommerce success!
+                Our expert medical professionals and therapists will help you on
+                your journey to better health. Experience personalized care and
+                comprehensive treatment plans tailored to your needs. We are here
+                to support your wellness and recovery!
               </p>
               <div className="row" style={{ gap: "10px" }}>
                 {features.map((feature, index) => (
@@ -69,7 +68,7 @@ const HeroSectionForm = () => {
               }}
             >
               <h3 className="cs_appointment_heading cs_fs_20 cs_medium mb-4">
-                Talk To An E-commerce Expert
+                Book An Appointment
               </h3>
               <form className="cs_appointment_form row cs_gap_y_30">
                 <div className="col-12">
@@ -108,7 +107,7 @@ const HeroSectionForm = () => {
                       name="requirement"
                       rows={5}
                       className="cs_form_field cs_type_1"
-                      placeholder="Requirement *"
+                      placeholder="Message / Medical Concern *"
                       defaultValue={""}
                     />
                   </div>
@@ -118,7 +117,7 @@ const HeroSectionForm = () => {
                     type="submit"
                     className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_5 w-100"
                   >
-                    <span className="cs_btn_text">Get a Free Consultation</span>
+                    <span className="cs_btn_text">Book Appointment</span>
                   </button>
                 </div>
               </form>

@@ -9377,6 +9377,7 @@ a.ui-button:active,
 }
 .cs_team.cs_style_1 .cs_team_thumbnail img {
   border-radius: inherit;
+  border-radius: 8px 8px 0 0;
 }
 .cs_team.cs_style_1 .cs_team_bio {
   width: 100%;
