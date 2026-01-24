@@ -47,8 +47,8 @@ const Header = () => {
       href: "/gallery",
     },
     {
-      label: "Testimonial",
-      href: "/testimonial",
+      label: "Testimonials",
+      href: "/testimonials",
     },
     {
       label: "Blogs",
