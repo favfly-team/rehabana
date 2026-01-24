@@ -14,7 +14,7 @@ import BlogsSection from "@/components/blogs-section";
 import CTASection from "@/components/cta-section";
 import LocationSection from "@/components/contact/location-section";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div>
       <HeroSection />
@@ -37,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

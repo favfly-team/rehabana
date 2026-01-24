@@ -27,11 +27,11 @@
   .cs_about_swap .cs_about_thumbnail {
     margin-left: 0;
   }
-  
+
   .cs_about_swap .cs_about_thumbnail_col {
     order: 1;
   }
-  
+
   .cs_about_swap .cs_about_content_col {
     order: 2;
   }
@@ -92,4 +92,81 @@
 
 .cs_gallery.cs_style_1 .cs_gallery_item:hover::after {
   opacity: 1;
+}
+
+/* Gallery Filter Pills */
+.cs_gallery_filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.cs_gallery_filter_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cs_gallery_filter_btn {
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: 1px solid var(--gray-color);
+  background-color: var(--white-color);
+  color: var(--body-color);
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  outline: none;
+}
+
+.cs_gallery_filter_btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: var(--white-color);
+}
+
+.cs_gallery_filter_btn.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+.cs_gallery_filter_btn.active:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--white-color);
+  opacity: 0.9;
+}
+
+@media (max-width: 575px) {
+  .cs_gallery_filter_list {
+    gap: 8px;
+  }
+
+  .cs_gallery_filter_btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Gallery Item Animation */
+.cs_gallery.cs_style_1 .cs_gallery_item {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

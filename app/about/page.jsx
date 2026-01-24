@@ -4,7 +4,7 @@ import FeaturesImageSection from "@/components/features-section/image";
 import SecondaryHeroSection from "@/components/hero-section/secondary";
 import TestimonialSection from "@/components/testimonial-section";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <div>
       <SecondaryHeroSection />
@@ -16,4 +16,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;
