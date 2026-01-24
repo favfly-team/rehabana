@@ -13,6 +13,45 @@
           "choices": {
             "hero_section": {
               "type": "SharedSlice"
+            },
+            "about_section": {
+              "type": "SharedSlice"
+            },
+            "cta_form_section": {
+              "type": "SharedSlice"
+            },
+            "features_section": {
+              "type": "SharedSlice"
+            },
+            "features_image_section": {
+              "type": "SharedSlice"
+            },
+            "cta_form2_section": {
+              "type": "SharedSlice"
+            },
+            "process_section": {
+              "type": "SharedSlice"
+            },
+            "testimonial_section": {
+              "type": "SharedSlice"
+            },
+            "faq_section": {
+              "type": "SharedSlice"
+            },
+            "gallery_section": {
+              "type": "SharedSlice"
+            },
+            "location_section": {
+              "type": "SharedSlice"
+            },
+            "services_section": {
+              "type": "SharedSlice"
+            },
+            "cta_section": {
+              "type": "SharedSlice"
+            },
+            "blogs_section": {
+              "type": "SharedSlice"
             }
           }
         }

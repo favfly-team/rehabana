@@ -1,0 +1,71 @@
+{
+  "id": "location_section",
+  "type": "SharedSlice",
+  "name": "LocationSection",
+  "description": "LocationSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2,strong"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,hyperlink"
+          }
+        },
+        "address": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Address",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,hyperlink"
+          }
+        },
+        "phone": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Phone",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,hyperlink"
+          }
+        },
+        "email": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Email",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,hyperlink"
+          }
+        },
+        "map_embed_link": {
+          "type": "Text",
+          "config": {
+            "label": "Map Embed Link",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

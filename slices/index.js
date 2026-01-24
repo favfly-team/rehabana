@@ -3,5 +3,18 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  about_section: dynamic(() => import("./AboutSection")),
+  blogs_section: dynamic(() => import("./BlogsSection")),
+  cta_form_section: dynamic(() => import("./CTAFormSection")),
+  cta_form2_section: dynamic(() => import("./CTAForm2Section")),
+  cta_section: dynamic(() => import("./CTASection")),
+  faq_section: dynamic(() => import("./FAQSection")),
+  features_image_section: dynamic(() => import("./FeaturesImageSection")),
+  features_section: dynamic(() => import("./FeaturesSection")),
+  gallery_section: dynamic(() => import("./GallerySection")),
   hero_section: dynamic(() => import("./HeroSection")),
+  location_section: dynamic(() => import("./LocationSection")),
+  process_section: dynamic(() => import("./ProcessSection")),
+  services_section: dynamic(() => import("./ServicesSection")),
+  testimonial_section: dynamic(() => import("./TestimonialSection")),
 };
