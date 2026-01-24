@@ -2,6 +2,7 @@ const CTASection = () => {
   return (
     <section className="cs_video_section cs_style_1 cs_accent_bg position-relative">
       <div className="container">
+        <div className="cs_height_120 cs_height_lg_80" />
         <div className="cs_vider_wrapper cs_style_1">
           <h2 className="cs_video_title">
             We are Provide All Medical Service <br />
