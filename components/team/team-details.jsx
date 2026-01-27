@@ -220,39 +220,47 @@ const PublicationsSection = () => {
   );
 };
 
-// Main Team Details Component
-const TeamDetails = () => {
+// Default data when no props provided
+const DEFAULT_SOCIAL_LINKS = [
+  { type: "facebook", url: "#", label: "Follow on Facebook" },
+  { type: "youtube", url: "#", label: "Follow on Youtube" },
+  { type: "linkedin", url: "#", label: "Follow on LinkedIn" },
+];
+
+const DEFAULT_BIO_PARAGRAPHS = [
+  'Dr. Ambar Konar, a dynamic and promising Interventional Physiatrist from Kolkata, completed his MBBS and housemanship in Rehabilitation Medicine from the prestigious <a href="#" class="cs_accent_color">Calcutta National Medical College</a>. He secured the University-topper rank in MD (Physical Medicine & Rehabilitation) from <a href="#" class="cs_accent_color">SSKM Hospital (IPGME&R)</a> in 2018 and later served three years as Senior Resident in Rehabilitation Medicine at North 24 Parganas District Hospital.',
+  'Dr. Konar has presented in numerous national and international conferences, earning <strong>Best Paper Awards</strong> at both state and national levels, and has <strong>four publications</strong> in reputed medical journals.',
+  'He underwent specialized <strong>NeuroRehab training (IMPACT III)</strong> at Kokilaben Dhirubhai Ambani Hospital, Mumbai, and completed a <strong>Fellowship in Pain Management</strong> from Aesculap Academy, Germany (Delhi Pain Management Center, 2019).',
+  'His clinical interests include <strong>Neurorehabilitation, Musculoskeletal Medicine, and Interventional Pain Management</strong>. As the joint team leader of the Neuro Rehab team at <strong>Rehabana</strong>, he combines passion, empathy, and precision to deliver evidence-based, patient-centered care.',
+];
+
+/**
+ * Team details section – single member profile.
+ * @param {object} [data] - Optional data: { imageSrc, imageAlt, category, name, specialty, socialLinks, bioParagraphs, accordionItems }
+ * @param {string} [data.imageSrc] - Profile image URL
+ * @param {string} [data.imageAlt] - Profile image alt
+ * @param {string} [data.category] - Category label (e.g. REHABANA PMR MDS)
+ * @param {string} [data.name] - Full name and title
+ * @param {string} [data.specialty] - Specialty line
+ * @param {Array<{ type: string, url: string, label: string }>} [data.socialLinks]
+ * @param {string[]} [data.bioParagraphs] - HTML strings for bio
+ * @param {Array<{ title: string, content: React.ReactNode }>} [data.accordionItems]
+ */
+const TeamDetails = ({ data }) => {
   const [openSection, setOpenSection] = useState(null);
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? null : section);
   };
 
-  // Data
-  const socialLinks = [
-    {
-      type: "facebook",
-      url: "#",
-      label: "Follow on Facebook",
-    },
-    {
-      type: "youtube",
-      url: "#",
-      label: "Follow on Youtube",
-    },
-    {
-      type: "linkedin",
-      url: "#",
-      label: "Follow on LinkedIn",
-    },
-  ];
-
-  const bioParagraphs = [
-    'Dr. Ambar Konar, a dynamic and promising Interventional Physiatrist from Kolkata, completed his MBBS and housemanship in Rehabilitation Medicine from the prestigious <a href="#" class="cs_accent_color">Calcutta National Medical College</a>. He secured the University-topper rank in MD (Physical Medicine & Rehabilitation) from <a href="#" class="cs_accent_color">SSKM Hospital (IPGME&R)</a> in 2018 and later served three years as Senior Resident in Rehabilitation Medicine at North 24 Parganas District Hospital.',
-    'Dr. Konar has presented in numerous national and international conferences, earning <strong>Best Paper Awards</strong> at both state and national levels, and has <strong>four publications</strong> in reputed medical journals.',
-    'He underwent specialized <strong>NeuroRehab training (IMPACT III)</strong> at Kokilaben Dhirubhai Ambani Hospital, Mumbai, and completed a <strong>Fellowship in Pain Management</strong> from Aesculap Academy, Germany (Delhi Pain Management Center, 2019).',
-    'His clinical interests include <strong>Neurorehabilitation, Musculoskeletal Medicine, and Interventional Pain Management</strong>. As the joint team leader of the Neuro Rehab team at <strong>Rehabana</strong>, he combines passion, empathy, and precision to deliver evidence-based, patient-centered care.',
-  ];
+  const imageSrc = data?.imageSrc ?? "https://medixal-html.vercel.app/assets/img/team_details_1.jpeg";
+  const imageAlt = data?.imageAlt ?? "Dr Ambar Konar";
+  const category = data?.category ?? "REHABANA PMR MDS";
+  const name = data?.name ?? "Dr Ambar Konar, MBBS, MD – PMR in Kolkata";
+  const specialty = data?.specialty ?? "Interventional Physiatrist | Neuro & Pain Rehabilitation Specialist";
+  const socialLinks = Array.isArray(data?.socialLinks) && data.socialLinks.length > 0 ? data.socialLinks : DEFAULT_SOCIAL_LINKS;
+  const bioParagraphs = Array.isArray(data?.bioParagraphs) && data.bioParagraphs.length > 0 ? data.bioParagraphs : DEFAULT_BIO_PARAGRAPHS;
+  const accordionItems = data?.accordionItems;
 
   return (
     <section>
@@ -262,10 +270,7 @@ const TeamDetails = () => {
           <div className="row cs_gap_y_40">
             {/* Left Column - Image & Social Links */}
             <div className="col-lg-4">
-              <ProfileImage
-                src="https://medixal-html.vercel.app/assets/img/team_details_1.jpeg"
-                alt="Dr Ambar Konar"
-              />
+              <ProfileImage src={imageSrc} alt={imageAlt} />
               <div className="cs_height_30 cs_height_lg_30" />
               <SocialLinks links={socialLinks} />
             </div>
@@ -273,11 +278,7 @@ const TeamDetails = () => {
             {/* Right Column - Content */}
             <div className="col-lg-8">
               <div className="cs_team_content">
-                <TeamHeader
-                  category="REHABANA PMR MDS"
-                  name="Dr Ambar Konar, MBBS, MD – PMR in Kolkata"
-                  specialty="Interventional Physiatrist | Neuro & Pain Rehabilitation Specialist"
-                />
+                <TeamHeader category={category} name={name} specialty={specialty} />
 
                 <div className="cs_height_25 cs_height_lg_20" />
 
@@ -287,21 +288,35 @@ const TeamDetails = () => {
 
                 {/* Accordion Sections */}
                 <div className="cs_team_accordion">
-                  <AccordionItem
-                    title="Certifications & Conferences attended"
-                    isOpen={openSection === "certifications"}
-                    onToggle={() => toggleSection("certifications")}
-                  >
-                    <CertificationsSection />
-                  </AccordionItem>
-
-                  <AccordionItem
-                    title="Publications"
-                    isOpen={openSection === "publications"}
-                    onToggle={() => toggleSection("publications")}
-                  >
-                    <PublicationsSection />
-                  </AccordionItem>
+                  {accordionItems?.length > 0 ? (
+                    accordionItems.map((acc, i) => (
+                      <AccordionItem
+                        key={i}
+                        title={acc.title}
+                        isOpen={openSection === acc.id}
+                        onToggle={() => toggleSection(acc.id)}
+                      >
+                        {acc.content}
+                      </AccordionItem>
+                    ))
+                  ) : (
+                    <>
+                      <AccordionItem
+                        title="Certifications & Conferences attended"
+                        isOpen={openSection === "certifications"}
+                        onToggle={() => toggleSection("certifications")}
+                      >
+                        <CertificationsSection />
+                      </AccordionItem>
+                      <AccordionItem
+                        title="Publications"
+                        isOpen={openSection === "publications"}
+                        onToggle={() => toggleSection("publications")}
+                      >
+                        <PublicationsSection />
+                      </AccordionItem>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

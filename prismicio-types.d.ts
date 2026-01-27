@@ -2262,6 +2262,31 @@ export type ServicesSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TeamSection → Default → Primary → Items → Social Links*
+ */
+export interface TeamSectionSliceDefaultPrimaryItemsSocialLinksItem {
+  /**
+   * Type field in *TeamSection → Default → Primary → Items → Social Links*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].social_links[].type
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  type: prismic.SelectField<"facebook" | "linkedin" | "youtube">;
+
+  /**
+   * URL field in *TeamSection → Default → Primary → Items → Social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].social_links[].url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  url: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Item in *TeamSection → Default → Primary → Items*
  */
 export interface TeamSectionSliceDefaultPrimaryItemsItem {
@@ -2276,56 +2301,96 @@ export interface TeamSectionSliceDefaultPrimaryItemsItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Category field in *TeamSection → Default → Primary → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: team_section.default.primary.items[].category
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  category: prismic.KeyTextField;
-
-  /**
    * Title field in *TeamSection → Default → Primary → Items*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: Name
+   * - **Placeholder**: Name e.g. Dr. Marvin McKin
    * - **API ID Path**: team_section.default.primary.items[].title
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   title: prismic.RichTextField;
 
   /**
-   * Specialty field in *TeamSection → Default → Primary → Items*
+   * Subtitle field in *TeamSection → Default → Primary → Items*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: team_section.default.primary.items[].specialty
+   * - **Placeholder**: e.g. Therapist Expert
+   * - **API ID Path**: team_section.default.primary.items[].subtitle
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  specialty: prismic.KeyTextField;
-
-  /**
-   * Details field in *TeamSection → Default → Primary → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: team_section.default.primary.items[].details
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  details: prismic.RichTextField;
+  subtitle: prismic.KeyTextField;
 
   /**
    * Link field in *TeamSection → Default → Primary → Items*
    *
    * - **Field Type**: Link
-   * - **Placeholder**: Profile link
+   * - **Placeholder**: Profile / details link
    * - **API ID Path**: team_section.default.primary.items[].link
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  link: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Social Links field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].social_links[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  social_links: prismic.NestedGroupField<
+    Simplify<TeamSectionSliceDefaultPrimaryItemsSocialLinksItem>
   >;
+}
+
+/**
+ * Item in *TeamSection → Details → Primary → Social Links*
+ */
+export interface TeamSectionSliceDetailsPrimarySocialLinksItem {
+  /**
+   * Type field in *TeamSection → Details → Primary → Social Links*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.social_links[].type
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  type: prismic.SelectField<"facebook" | "youtube" | "linkedin">;
+
+  /**
+   * URL field in *TeamSection → Details → Primary → Social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.social_links[].url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  url: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *TeamSection → Details → Primary → Accordion Items*
+ */
+export interface TeamSectionSliceDetailsPrimaryAccordionItemsItem {
+  /**
+   * Title field in *TeamSection → Details → Primary → Accordion Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: e.g. Certifications & Conferences
+   * - **API ID Path**: team_section.details.primary.accordion_items[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Details field in *TeamSection → Details → Primary → Accordion Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.accordion_items[].details
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  details: prismic.RichTextField;
 }
 
 /**
@@ -2353,16 +2418,6 @@ export interface TeamSectionSliceDefaultPrimary {
   heading: prismic.RichTextField;
 
   /**
-   * Description field in *TeamSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: team_section.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
    * Items field in *TeamSection → Default → Primary*
    *
    * - **Field Type**: Group
@@ -2377,7 +2432,7 @@ export interface TeamSectionSliceDefaultPrimary {
  * Default variation for TeamSection Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default
+ * - **Description**: Teams grid (e.g. Team page listing)
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type TeamSectionSliceDefault = prismic.SharedSliceVariation<
@@ -2387,9 +2442,103 @@ export type TeamSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TeamSection → Details → Primary*
+ */
+export interface TeamSectionSliceDetailsPrimary {
+  /**
+   * Image field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Category field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. REHABANA PMR MDS
+   * - **API ID Path**: team_section.details.primary.category
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * Name field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Specialty field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.specialty
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  specialty: prismic.KeyTextField;
+
+  /**
+   * Bio field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.bio
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  bio: prismic.RichTextField;
+
+  /**
+   * Social Links field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.social_links[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  social_links: prismic.GroupField<
+    Simplify<TeamSectionSliceDetailsPrimarySocialLinksItem>
+  >;
+
+  /**
+   * Accordion Items field in *TeamSection → Details → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.details.primary.accordion_items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  accordion_items: prismic.GroupField<
+    Simplify<TeamSectionSliceDetailsPrimaryAccordionItemsItem>
+  >;
+}
+
+/**
+ * Details variation for TeamSection Slice
+ *
+ * - **API ID**: `details`
+ * - **Description**: Single team member detail (profile, bio, accordion)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSectionSliceDetails = prismic.SharedSliceVariation<
+  "details",
+  Simplify<TeamSectionSliceDetailsPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *TeamSection*
  */
-type TeamSectionSliceVariation = TeamSectionSliceDefault;
+type TeamSectionSliceVariation =
+  | TeamSectionSliceDefault
+  | TeamSectionSliceDetails;
 
 /**
  * TeamSection Shared Slice
@@ -2723,10 +2872,15 @@ declare module "@prismicio/client" {
       ServicesSectionSliceVariation,
       ServicesSectionSliceDefault,
       TeamSectionSlice,
+      TeamSectionSliceDefaultPrimaryItemsSocialLinksItem,
       TeamSectionSliceDefaultPrimaryItemsItem,
       TeamSectionSliceDefaultPrimary,
+      TeamSectionSliceDetailsPrimarySocialLinksItem,
+      TeamSectionSliceDetailsPrimaryAccordionItemsItem,
+      TeamSectionSliceDetailsPrimary,
       TeamSectionSliceVariation,
       TeamSectionSliceDefault,
+      TeamSectionSliceDetails,
       TestimonialSectionSlice,
       TestimonialSectionSliceDefaultPrimaryItemsItem,
       TestimonialSectionSliceDefaultPrimary,

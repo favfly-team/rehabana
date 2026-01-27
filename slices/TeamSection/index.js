@@ -2,6 +2,10 @@
  * @typedef {import("@prismicio/client").Content.TeamSectionSlice} TeamSectionSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<TeamSectionSlice>} TeamSectionProps
  * @type {import("react").FC<TeamSectionProps>}
+ *
+ * Variations:
+ * - default: Teams grid (matches @/components/team/index.jsx) — subheading, heading, items (image, title, subtitle, link, social_links)
+ * - details: Single member detail (matches @/components/team/team-details.jsx) — image, category, heading, specialty, bio, social_links, accordion_items
  */
 const TeamSection = ({ slice }) => {
   return (

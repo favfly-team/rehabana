@@ -5,7 +5,7 @@
 		"primary": {
 			"subheading": {
 				"__TYPE__": "FieldContent",
-				"value": "able",
+				"value": "little",
 				"type": "Text"
 			},
 			"heading": {
@@ -14,18 +14,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Trick"
-						}
-					}
-				]
-			},
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Minim labore eu sint dolor excepteur cupidatat qui do aute ad ut. Incididunt reprehenderit elit esse reprehenderit officia. Esse amet in laborum minim cillum sint excepteur occaecat consectetur quis dolore veniam sunt enim enim."
+							"text": "Motor"
 						}
 					}
 				]
@@ -39,34 +28,27 @@
 							[
 								"image",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
-										"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-										"width": 4016,
-										"height": 6016
+										"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+										"width": 12288,
+										"height": 16384
 									},
-									"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?rect=0%2C498%2C4016%2C5020&w=400&h=500",
+									"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?rect=0%2C512%2C12288%2C15360&w=400&h=500",
 									"width": 400,
 									"height": 500,
 									"edit": {
 										"zoom": 1,
 										"crop": {
 											"x": 0,
-											"y": 498
+											"y": 512
 										},
 										"background": "transparent"
 									},
-									"alt": "loud",
+									"alt": "bend",
+									"credits": null,
+									"__TYPE__": "ImageContent",
 									"thumbnails": {}
-								}
-							],
-							[
-								"category",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "composition",
-									"type": "Text"
 								}
 							],
 							[
@@ -77,18 +59,182 @@
 										{
 											"type": "heading3",
 											"content": {
-												"text": "Village"
+												"text": "Branch"
 											}
 										}
 									]
 								}
 							],
 							[
-								"specialty",
+								"subtitle",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "way",
+									"value": "section",
 									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"key": "c8e209ee-e2d4-49cb-a24e-15f2db42d16f",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "known"
+									}
+								}
+							],
+							[
+								"social_links",
+								{
+									"__TYPE__": "GroupContentType",
+									"value": [
+										{
+											"__TYPE__": "GroupItemContent",
+											"value": [
+												[
+													"type",
+													{
+														"__TYPE__": "FieldContent",
+														"value": "facebook",
+														"type": "Select"
+													}
+												],
+												[
+													"url",
+													{
+														"key": "0493479b-73b5-4feb-9630-75de9d294876",
+														"__TYPE__": "LinkContent",
+														"value": {
+															"__TYPE__": "ExternalLink",
+															"url": "http://twitter.com"
+														}
+													}
+												]
+											]
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "details",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
+					"width": 3456,
+					"height": 3456
+				},
+				"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?rect=346%2C0%2C2765%2C3456&w=400&h=500",
+				"width": 400,
+				"height": 500,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 346,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "both",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"category": {
+				"__TYPE__": "FieldContent",
+				"value": "herself",
+				"type": "Text"
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Outside"
+						}
+					}
+				]
+			},
+			"specialty": {
+				"__TYPE__": "FieldContent",
+				"value": "weak",
+				"type": "Text"
+			},
+			"bio": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Incididunt id incididunt pariatur velit irure. Nulla Lorem veniam consequat mollit incididunt in ipsum. Qui irure exercitation et in."
+						}
+					}
+				]
+			},
+			"social_links": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "linkedin",
+									"type": "Select"
+								}
+							],
+							[
+								"url",
+								{
+									"key": "50beb5ac-0dec-48ea-a7db-2a56884839c5",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"accordion_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Settlers"
+											}
+										}
+									]
 								}
 							],
 							[
@@ -99,25 +245,7 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Qui reprehenderit enim esse aliquip ullamco ad duis do culpa cillum exercitation aute."
-											}
-										}
-									]
-								}
-							],
-							[
-								"link",
-								{
-									"__TYPE__": "RepeatableContent",
-									"type": "Link",
-									"value": [
-										{
-											"__TYPE__": "LinkContent",
-											"key": "f0d20693-1be7-4cd7-81b4-ce713b872539",
-											"value": {
-												"__TYPE__": "ExternalLink",
-												"url": "https://prismic.io",
-												"text": "middle"
+												"text": "Aliquip pariatur ad elit duis labore quis aute duis eiusmod ipsum eu duis officia laborum. Voluptate ex pariatur sit duis sint. Reprehenderit ea aliquip elit."
 											}
 										}
 									]

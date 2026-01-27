@@ -12,6 +12,7 @@
 | **cta_section** | `default`, `form`, `form2` | Buttons CTA vs form CTA vs form with background image |
 | **features_section** | `default`, `image` | Icon list vs image cards with number/title/details |
 | **testimonial_section** | `default`, `video` | Text testimonials vs video-style layout |
+| **team_section** | `default`, `details` | Teams grid (cards) vs single member detail (profile, bio, accordion) |
 
 ### For new sections
 
