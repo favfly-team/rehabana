@@ -2208,101 +2208,6 @@ export type HeroSectionSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *LocationSection → Default → Primary*
- */
-export interface LocationSectionSliceDefaultPrimary {
-  /**
-   * Heading field in *LocationSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: location_section.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Description field in *LocationSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: location_section.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Address field in *LocationSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: location_section.default.primary.address
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  address: prismic.RichTextField;
-
-  /**
-   * Phone field in *LocationSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: location_section.default.primary.phone
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  phone: prismic.RichTextField;
-
-  /**
-   * Email field in *LocationSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: location_section.default.primary.email
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  email: prismic.RichTextField;
-
-  /**
-   * Map Embed Link field in *LocationSection → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: location_section.default.primary.map_embed_link
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  map_embed_link: prismic.KeyTextField;
-}
-
-/**
- * Default variation for LocationSection Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type LocationSectionSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<LocationSectionSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *LocationSection*
- */
-type LocationSectionSliceVariation = LocationSectionSliceDefault;
-
-/**
- * LocationSection Shared Slice
- *
- * - **API ID**: `location_section`
- * - **Description**: LocationSection
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type LocationSectionSlice = prismic.SharedSlice<
-  "location_section",
-  LocationSectionSliceVariation
->;
-
-/**
  * Item in *ProcessSection → Default → Primary → Items*
  */
 export interface ProcessSectionSliceDefaultPrimaryItemsItem {
@@ -3260,10 +3165,6 @@ declare module "@prismicio/client" {
       HeroSectionSliceDefault,
       HeroSectionSliceSecondary,
       HeroSectionSliceForm,
-      LocationSectionSlice,
-      LocationSectionSliceDefaultPrimary,
-      LocationSectionSliceVariation,
-      LocationSectionSliceDefault,
       ProcessSectionSlice,
       ProcessSectionSliceDefaultPrimaryItemsItem,
       ProcessSectionSliceDefaultPrimary,
