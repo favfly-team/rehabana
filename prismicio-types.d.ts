@@ -591,6 +591,23 @@ interface LayoutDocumentData {
   logo: prismic.ImageField<never>;
 
   /**
+   * Logo Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: e.g. / or homepage
+   * - **API ID Path**: layout.logo_link
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  logo_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
    * Description field in *Layout*
    *
    * - **Field Type**: Rich Text
@@ -602,7 +619,7 @@ interface LayoutDocumentData {
   description: prismic.RichTextField;
 
   /**
-   * Social Link field in *Layout* (Footer)
+   * Social Link field in *Layout*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
