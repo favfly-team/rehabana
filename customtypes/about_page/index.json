@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "home_page",
-  "label": "Home Page",
+  "id": "about_page",
+  "label": "About Page",
   "repeatable": false,
   "status": true,
   "json": {
@@ -17,31 +17,13 @@
             "about_section": {
               "type": "SharedSlice"
             },
-            "cta_section": {
+            "testimonial_section": {
               "type": "SharedSlice"
             },
             "features_section": {
               "type": "SharedSlice"
             },
-            "process_section": {
-              "type": "SharedSlice"
-            },
-            "testimonial_section": {
-              "type": "SharedSlice"
-            },
-            "faq_section": {
-              "type": "SharedSlice"
-            },
-            "gallery_section": {
-              "type": "SharedSlice"
-            },
-            "location_section": {
-              "type": "SharedSlice"
-            },
-            "services_section": {
-              "type": "SharedSlice"
-            },
-            "blogs_section": {
+            "cta_section": {
               "type": "SharedSlice"
             }
           }
