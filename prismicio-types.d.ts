@@ -414,6 +414,83 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+type ServicePageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | AboutSectionSlice
+  | CtaSectionSlice
+  | FeaturesSectionSlice
+  | ProcessSectionSlice
+  | TestimonialSectionSlice
+  | FaqSectionSlice
+  | GallerySectionSlice
+  | ContactSectionSlice
+  | ServicesSectionSlice
+  | BlogsSectionSlice
+  | TeamSectionSlice;
+
+/**
+ * Content for Service documents
+ */
+interface ServicePageDocumentData {
+  /**
+   * Slice Zone field in *Service*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ServicePageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: service_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: service_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Service*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Service document from Prismic
+ *
+ * - **API ID**: `service_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicePageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ServicePageDocumentData>,
+    "service_page",
+    Lang
+  >;
+
 type ServicesPageDocumentDataSlicesSlice =
   | HeroSectionSlice
   | ServicesSectionSlice;
@@ -619,6 +696,7 @@ export type AllDocumentTypes =
   | ContactPageDocument
   | GalleryPageDocument
   | HomePageDocument
+  | ServicePageDocument
   | ServicesPageDocument
   | TeamPageDocument
   | TestimonialsPageDocument;
@@ -2928,6 +3006,9 @@ declare module "@prismicio/client" {
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      ServicePageDocument,
+      ServicePageDocumentData,
+      ServicePageDocumentDataSlicesSlice,
       ServicesPageDocument,
       ServicesPageDocumentData,
       ServicesPageDocumentDataSlicesSlice,
