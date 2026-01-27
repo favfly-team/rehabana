@@ -523,6 +523,225 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Layout documents
+ */
+interface LayoutDocumentData {
+  /**
+   * Logo field in *Layout*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.logo
+   * - **Tab**: Header
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Logo Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: e.g. / or homepage
+   * - **API ID Path**: layout.logo_link
+   * - **Tab**: Header
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  logo_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Nav Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.nav_link
+   * - **Tab**: Header
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  nav_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Social Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.social_link
+   * - **Tab**: Header
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  social_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >; /**
+   * Logo field in *Layout*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.logo
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Description field in *Layout*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Short description under logo
+   * - **API ID Path**: layout.description
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Social Link field in *Layout* (Footer)
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.social_link
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  social_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Links Column Heading field in *Layout*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Links
+   * - **API ID Path**: layout.links_heading
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  links_heading: prismic.KeyTextField;
+
+  /**
+   * Links Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.links_link
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  links_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Resources Column Heading field in *Layout*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Resources
+   * - **API ID Path**: layout.resources_heading
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  resources_heading: prismic.KeyTextField;
+
+  /**
+   * Resources Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.resources_link
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  resources_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Office Column Heading field in *Layout*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Office
+   * - **API ID Path**: layout.office_heading
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  office_heading: prismic.KeyTextField;
+
+  /**
+   * Office Address field in *Layout*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Address text
+   * - **API ID Path**: layout.office_address
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  office_address: prismic.RichTextField;
+
+  /**
+   * Office Phone field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: tel: or number
+   * - **API ID Path**: layout.office_phone
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  office_phone: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Copyright Text field in *Layout*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. © 2024. All Rights Reserved.
+   * - **API ID Path**: layout.copyright
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  copyright: prismic.KeyTextField;
+
+  /**
+   * Footer Bottom Link field in *Layout*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.bottom_link
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  bottom_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
+ * Layout document from Prismic
+ *
+ * - **API ID**: `layout`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LayoutDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<LayoutDocumentData>,
+    "layout",
+    Lang
+  >;
+
 type ServicePageDocumentDataSlicesSlice =
   | HeroSectionSlice
   | AboutSectionSlice
@@ -806,6 +1025,7 @@ export type AllDocumentTypes =
   | ContactPageDocument
   | GalleryPageDocument
   | HomePageDocument
+  | LayoutDocument
   | ServicePageDocument
   | ServicesPageDocument
   | TeamPageDocument
@@ -3096,6 +3316,8 @@ declare module "@prismicio/client" {
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      LayoutDocument,
+      LayoutDocumentData,
       ServicePageDocument,
       ServicePageDocumentData,
       ServicePageDocumentDataSlicesSlice,
