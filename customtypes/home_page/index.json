@@ -35,7 +35,7 @@
             "gallery_section": {
               "type": "SharedSlice"
             },
-            "location_section": {
+            "contact_section": {
               "type": "SharedSlice"
             },
             "services_section": {

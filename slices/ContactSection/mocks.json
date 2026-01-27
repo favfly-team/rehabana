@@ -1,57 +1,169 @@
 [
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "default",
-    "primary": {
-      "subheading": { "__TYPE__": "FieldContent", "value": "Contact", "type": "Text" },
-      "heading": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [{ "type": "heading2", "content": { "text": "Contact With Us" } }]
-      },
-      "description": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [{ "type": "paragraph", "content": { "text": "Send us a message and we'll respond as soon as possible." } }]
-      },
-      "form_title": { "__TYPE__": "FieldContent", "value": "Send Message", "type": "Text" },
-      "help_heading": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [{ "type": "heading2", "content": { "text": "Need Any Help?" } }]
-      },
-      "help_description": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [{ "type": "paragraph", "content": { "text": "Call us or message and we'll respond as soon as possible." } }]
-      },
-      "map_embed_link": { "__TYPE__": "FieldContent", "value": "https://www.google.com/maps/embed?pb=...", "type": "Text" },
-      "items": {
-        "__TYPE__": "GroupContentType",
-        "value": [
-          {
-            "__TYPE__": "GroupItemContent",
-            "value": [
-              ["title", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "heading3", "content": { "text": "Phone" } }] }],
-              ["details", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "+(323) 9847 3847 383" } }] }],
-              ["link", { "__TYPE__": "LinkContent", "value": { "__TYPE__": "ExternalLink", "url": "tel:+3239847384383", "text": "" } }]
-            ]
-          },
-          {
-            "__TYPE__": "GroupItemContent",
-            "value": [
-              ["title", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "heading3", "content": { "text": "Email" } }] }],
-              ["details", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "infoyour@gmail.com" } }] }],
-              ["link", { "__TYPE__": "LinkContent", "value": { "__TYPE__": "ExternalLink", "url": "mailto:infoyour@gmail.com", "text": "" } }]
-            ]
-          },
-          {
-            "__TYPE__": "GroupItemContent",
-            "value": [
-              ["title", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "heading3", "content": { "text": "Address" } }] }],
-              ["details", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "4517 Washington Ave. 32 Manchester, Road USA" } }] }],
-              ["link", null]
-            ]
-          }
-        ]
-      }
-    },
-    "items": []
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"form_title": {
+				"__TYPE__": "FieldContent",
+				"value": "first",
+				"type": "Text"
+			},
+			"map_embed_link": {
+				"__TYPE__": "FieldContent",
+				"value": "bite",
+				"type": "Text"
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Building"
+						}
+					}
+				]
+			},
+			"phone": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "30cc232a-e82b-44bf-9457-c69a09119b45",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://google.com",
+							"text": "mile"
+						}
+					}
+				]
+			},
+			"email": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "bacce011-a41f-4f32-b328-c5c0d3d443c0",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "https://slicemachine.dev",
+							"text": "foot"
+						}
+					}
+				]
+			},
+			"address": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "73a854b6-d36d-402f-a79d-e9c6cf9da91d",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://twitter.com",
+							"text": "atomic"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "location",
+		"primary": {
+			"help_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Medicine"
+						}
+					}
+				]
+			},
+			"help_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Adipisicing ex aliquip adipisicing esse culpa est."
+						}
+					}
+				]
+			},
+			"map_embed_link": {
+				"__TYPE__": "FieldContent",
+				"value": "game",
+				"type": "Text"
+			},
+			"items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Active"
+											}
+										}
+									]
+								}
+							],
+							[
+								"details",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Incididunt deserunt ipsum non ea ipsum enim commodo nisi minim. Aute sint id magna ut esse exercitation fugiat cupidatat exercitation ut."
+											}
+										}
+									]
+								}
+							],
+							[
+								"link",
+								{
+									"key": "7ebc3036-5d95-4ed5-93a5-f8e8000880c8",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "particular"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
 ]

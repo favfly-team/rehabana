@@ -11,7 +11,6 @@ export const components = {
   features_section: dynamic(() => import("./FeaturesSection")),
   gallery_section: dynamic(() => import("./GallerySection")),
   hero_section: dynamic(() => import("./HeroSection")),
-  location_section: dynamic(() => import("./LocationSection")),
   process_section: dynamic(() => import("./ProcessSection")),
   services_section: dynamic(() => import("./ServicesSection")),
   team_section: dynamic(() => import("./TeamSection")),
