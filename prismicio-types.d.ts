@@ -2567,6 +2567,16 @@ export interface TestimonialSectionSliceDefaultPrimaryItemsItem {
   image: prismic.ImageField<never>;
 
   /**
+   * Review field in *TestimonialSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_section.default.primary.items[].review
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  review: prismic.RichTextField;
+
+  /**
    * Name field in *TestimonialSection → Default → Primary → Items*
    *
    * - **Field Type**: Text
@@ -2602,14 +2612,24 @@ export interface TestimonialSectionSliceVideoPrimaryItemsItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Title field in *TestimonialSection → video → Primary → Items*
+   * Video field in *TestimonialSection → video → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_section.video.primary.items[].video
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Name field in *TestimonialSection → video → Primary → Items*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_section.video.primary.items[].title
+   * - **API ID Path**: testimonial_section.video.primary.items[].name
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  title: prismic.RichTextField;
+  name: prismic.RichTextField;
 
   /**
    * Details field in *TestimonialSection → video → Primary → Items*
@@ -2620,6 +2640,51 @@ export interface TestimonialSectionSliceVideoPrimaryItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   details: prismic.RichTextField;
+}
+
+/**
+ * Item in *TestimonialSection → Slider → Primary → Items*
+ */
+export interface TestimonialSectionSliceSliderPrimaryItemsItem {
+  /**
+   * Image field in *TestimonialSection → Slider → Primary → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_section.slider.primary.items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Name field in *TestimonialSection → Slider → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Name e.g. Dr. Mehara Banu
+   * - **API ID Path**: testimonial_section.slider.primary.items[].name
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Info field in *TestimonialSection → Slider → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Physical therapy
+   * - **API ID Path**: testimonial_section.slider.primary.items[].info
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  info: prismic.KeyTextField;
+
+  /**
+   * Review field in *TestimonialSection → Slider → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_section.slider.primary.items[].quote
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  quote: prismic.RichTextField;
 }
 
 /**
@@ -2743,11 +2808,62 @@ export type TestimonialSectionSliceVideo = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TestimonialSection → Slider → Primary*
+ */
+export interface TestimonialSectionSliceSliderPrimary {
+  /**
+   * Subheading field in *TestimonialSection → Slider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_section.slider.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *TestimonialSection → Slider → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: e.g. What Our Patients Say
+   * - **API ID Path**: testimonial_section.slider.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Items field in *TestimonialSection → Slider → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_section.slider.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.GroupField<
+    Simplify<TestimonialSectionSliceSliderPrimaryItemsItem>
+  >;
+}
+
+/**
+ * Slider variation for TestimonialSection Slice
+ *
+ * - **API ID**: `slider`
+ * - **Description**: Testimonial slider (multiple items, avatar, quote, rating)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TestimonialSectionSliceSlider = prismic.SharedSliceVariation<
+  "slider",
+  Simplify<TestimonialSectionSliceSliderPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *TestimonialSection*
  */
 type TestimonialSectionSliceVariation =
   | TestimonialSectionSliceDefault
-  | TestimonialSectionSliceVideo;
+  | TestimonialSectionSliceVideo
+  | TestimonialSectionSliceSlider;
 
 /**
  * TestimonialSection Shared Slice
@@ -2886,9 +3002,12 @@ declare module "@prismicio/client" {
       TestimonialSectionSliceDefaultPrimary,
       TestimonialSectionSliceVideoPrimaryItemsItem,
       TestimonialSectionSliceVideoPrimary,
+      TestimonialSectionSliceSliderPrimaryItemsItem,
+      TestimonialSectionSliceSliderPrimary,
       TestimonialSectionSliceVariation,
       TestimonialSectionSliceDefault,
       TestimonialSectionSliceVideo,
+      TestimonialSectionSliceSlider,
     };
   }
 }

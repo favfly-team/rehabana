@@ -2,6 +2,11 @@
  * @typedef {import("@prismicio/client").Content.TestimonialSectionSlice} TestimonialSectionSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<TestimonialSectionSlice>} TestimonialSectionProps
  * @type {import("react").FC<TestimonialSectionProps>}
+ *
+ * Variations:
+ * - default: testimonial cards (image, review, name, info)
+ * - video: video-style testimonials (image, video, title, details)
+ * - slider: testimonial slider (matches @/components/testimonial-section/slider.jsx) — heading, items (image, title, subtitle, quote, rating)
  */
 const TestimonialSection = ({ slice }) => {
   return (
