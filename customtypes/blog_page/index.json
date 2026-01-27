@@ -11,24 +11,55 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "hero_section": { "type": "SharedSlice" },
-            "blogs_section": { "type": "SharedSlice" }
+            "hero_section": {
+              "type": "SharedSlice"
+            },
+            "blogs_section": {
+              "type": "SharedSlice"
+            }
           }
         }
       }
     },
     "SEO & Metadata": {
-      "meta_title": { "config": { "label": "Meta Title", "placeholder": "Meta Title [40-65 chars]" }, "type": "Text" },
-      "meta_description": { "config": { "label": "Meta Description", "placeholder": "Page Description [70-155 chars]" }, "type": "Text" },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "Meta Title [40-65 chars]"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "Page Description [70-155 chars]"
+        },
+        "type": "Text"
+      },
       "featured_image": {
         "type": "Image",
         "config": {
           "label": "Featured Image",
-          "constraint": { "width": 1200, "height": 600 },
+          "constraint": {
+            "width": 1200,
+            "height": 600
+          },
           "thumbnails": [
-            { "name": "large", "width": 1024, "height": 524 },
-            { "name": "medium", "width": 300, "height": 150 },
-            { "name": "thumbnail", "width": 150, "height": 150 }
+            {
+              "name": "large",
+              "width": 1024,
+              "height": 524
+            },
+            {
+              "name": "medium",
+              "width": 300,
+              "height": 150
+            },
+            {
+              "name": "thumbnail",
+              "width": 150,
+              "height": 150
+            }
           ]
         }
       }

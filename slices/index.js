@@ -4,13 +4,15 @@ import dynamic from "next/dynamic";
 
 export const components = {
   about_section: dynamic(() => import("./AboutSection")),
+  blog_post_content: dynamic(() => import("./BlogPostContent")),
   blogs_section: dynamic(() => import("./BlogsSection")),
   contact_section: dynamic(() => import("./ContactSection")),
-  cta_section: dynamic(() => import("./CTASection")),
-  faq_section: dynamic(() => import("./FAQSection")),
+  cta_section: dynamic(() => import("./CtaSection")),
+  faq_section: dynamic(() => import("./FaqSection")),
   features_section: dynamic(() => import("./FeaturesSection")),
   gallery_section: dynamic(() => import("./GallerySection")),
   hero_section: dynamic(() => import("./HeroSection")),
+  location_section: dynamic(() => import("./LocationSection")),
   process_section: dynamic(() => import("./ProcessSection")),
   services_section: dynamic(() => import("./ServicesSection")),
   team_section: dynamic(() => import("./TeamSection")),

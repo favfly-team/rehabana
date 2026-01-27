@@ -8,14 +8,20 @@ const BlogPostSidebar = () => {
 
   return (
     <div className="cs_blog_sidebar">
-      <div className="cs_blog_sidebar_card cs_white_bg cs_radius_10" style={{ padding: "40px", position: "sticky", top: "20px" }}>
+      <div
+        className="cs_blog_sidebar_card cs_white_bg cs_radius_10"
+        style={{ padding: "40px", position: "sticky", top: "20px" }}
+      >
         <h3 className="cs_sidebar_title cs_fs_24 cs_heading_font mb-4 text-center">
           Discover Your Perfect Diamond Jewelry
         </h3>
         <form onSubmit={handleSubmit} className="cs_blog_form">
           <div className="cs_gap_y_20">
             <div>
-              <label className="cs_form_label cs_fs_14 cs_medium mb-2 d-block" style={{ color: "var(--heading-color)" }}>
+              <label
+                className="cs_form_label cs_fs_14 cs_medium mb-2 d-block"
+                style={{ color: "var(--heading-color)" }}
+              >
                 Name <span style={{ color: "red" }}>*</span>
               </label>
               <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
@@ -29,7 +35,10 @@ const BlogPostSidebar = () => {
               </div>
             </div>
             <div>
-              <label className="cs_form_label cs_fs_14 cs_medium mb-2 d-block" style={{ color: "var(--heading-color)" }}>
+              <label
+                className="cs_form_label cs_fs_14 cs_medium mb-2 d-block"
+                style={{ color: "var(--heading-color)" }}
+              >
                 Email <span style={{ color: "red" }}>*</span>
               </label>
               <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
@@ -43,10 +52,16 @@ const BlogPostSidebar = () => {
               </div>
             </div>
             <div>
-              <label className="cs_form_label cs_fs_14 cs_medium mb-2 d-block" style={{ color: "var(--heading-color)" }}>
+              <label
+                className="cs_form_label cs_fs_14 cs_medium mb-2 d-block"
+                style={{ color: "var(--heading-color)" }}
+              >
                 Phone <span style={{ color: "red" }}>*</span>
               </label>
-              <div className="cs_form_field_wrapper cs_type_1 cs_radius_5 d-flex align-items-center" style={{ gap: "8px" }}>
+              <div
+                className="cs_form_field_wrapper cs_type_1 cs_radius_5 d-flex align-items-center"
+                style={{ gap: "8px" }}
+              >
                 <select
                   name="country_code"
                   className="cs_form_field cs_type_1"
@@ -69,7 +84,10 @@ const BlogPostSidebar = () => {
               </div>
             </div>
             <div>
-              <label className="cs_form_label cs_fs_14 cs_medium mb-2 d-block" style={{ color: "var(--heading-color)" }}>
+              <label
+                className="cs_form_label cs_fs_14 cs_medium mb-2 d-block"
+                style={{ color: "var(--heading-color)" }}
+              >
                 Requirement <span style={{ color: "red" }}>*</span>
               </label>
               <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
@@ -86,7 +104,10 @@ const BlogPostSidebar = () => {
               <button
                 type="submit"
                 className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_5 w-100"
-                style={{ backgroundColor: "var(--heading-color)", color: "var(--white-color)" }}
+                style={{
+                  backgroundColor: "var(--heading-color)",
+                  color: "var(--white-color)",
+                }}
               >
                 <span className="cs_btn_text">Submit</span>
               </button>
