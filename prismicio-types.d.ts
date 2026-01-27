@@ -139,6 +139,205 @@ export type AboutPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type BlogPageDocumentDataSlicesSlice = HeroSectionSlice | BlogsSectionSlice;
+
+/**
+ * Content for Blog Page documents
+ */
+interface BlogPageDocumentData {
+  /**
+   * Slice Zone field in *Blog Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<BlogPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Blog Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: blog_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Blog Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: blog_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Blog Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Blog Page document from Prismic
+ *
+ * - **API ID**: `blog_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<BlogPageDocumentData>,
+    "blog_page",
+    Lang
+  >;
+
+type ContactPageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | ContactSectionSlice;
+
+/**
+ * Content for Contact Page documents
+ */
+interface ContactPageDocumentData {
+  /**
+   * Slice Zone field in *Contact Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ContactPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Contact Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: contact_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Contact Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: contact_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Contact Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Contact Page document from Prismic
+ *
+ * - **API ID**: `contact_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactPageDocumentData>,
+    "contact_page",
+    Lang
+  >;
+
+type GalleryPageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | GallerySectionSlice;
+
+/**
+ * Content for Gallery Page documents
+ */
+interface GalleryPageDocumentData {
+  /**
+   * Slice Zone field in *Gallery Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<GalleryPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Gallery Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: gallery_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Gallery Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: gallery_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Gallery Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Gallery Page document from Prismic
+ *
+ * - **API ID**: `gallery_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GalleryPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GalleryPageDocumentData>,
+    "gallery_page",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice =
   | HeroSectionSlice
   | AboutSectionSlice
@@ -215,7 +414,214 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = AboutPageDocument | HomePageDocument;
+type ServicesPageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | ServicesSectionSlice;
+
+/**
+ * Content for Services Page documents
+ */
+interface ServicesPageDocumentData {
+  /**
+   * Slice Zone field in *Services Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ServicesPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Services Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: services_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Services Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: services_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Services Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Services Page document from Prismic
+ *
+ * - **API ID**: `services_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServicesPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ServicesPageDocumentData>,
+    "services_page",
+    Lang
+  >;
+
+type TeamPageDocumentDataSlicesSlice = HeroSectionSlice | TeamSectionSlice;
+
+/**
+ * Content for Team Page documents
+ */
+interface TeamPageDocumentData {
+  /**
+   * Slice Zone field in *Team Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<TeamPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Team Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: team_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Team Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: team_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Team Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Team Page document from Prismic
+ *
+ * - **API ID**: `team_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TeamPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<TeamPageDocumentData>,
+    "team_page",
+    Lang
+  >;
+
+type TestimonialsPageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | TestimonialSectionSlice;
+
+/**
+ * Content for Testimonials Page documents
+ */
+interface TestimonialsPageDocumentData {
+  /**
+   * Slice Zone field in *Testimonials Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<TestimonialsPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Testimonials Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: testimonials_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Testimonials Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: testimonials_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Testimonials Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Testimonials Page document from Prismic
+ *
+ * - **API ID**: `testimonials_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestimonialsPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<TestimonialsPageDocumentData>,
+    "testimonials_page",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | AboutPageDocument
+  | BlogPageDocument
+  | ContactPageDocument
+  | GalleryPageDocument
+  | HomePageDocument
+  | ServicesPageDocument
+  | TeamPageDocument
+  | TestimonialsPageDocument;
 
 /**
  * Primary content in *AboutSection → Default → Primary*
@@ -386,6 +792,168 @@ type BlogsSectionSliceVariation = BlogsSectionSliceDefault;
 export type BlogsSectionSlice = prismic.SharedSlice<
   "blogs_section",
   BlogsSectionSliceVariation
+>;
+
+/**
+ * Item in *ContactSection → Default → Primary → Items*
+ */
+export interface ContactSectionSliceDefaultPrimaryItemsItem {
+  /**
+   * Title field in *ContactSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: e.g. Phone, Email, Address
+   * - **API ID Path**: contact_section.default.primary.items[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Details field in *ContactSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.items[].details
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  details: prismic.RichTextField;
+
+  /**
+   * Link field in *ContactSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: tel: or mailto:
+   * - **API ID Path**: contact_section.default.primary.items[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *ContactSection → Default → Primary*
+ */
+export interface ContactSectionSliceDefaultPrimary {
+  /**
+   * Subheading field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Contact With Us
+   * - **API ID Path**: contact_section.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Form Title field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.form_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  form_title: prismic.KeyTextField;
+
+  /**
+   * Help Section Heading field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Need Any Help?
+   * - **API ID Path**: contact_section.default.primary.help_heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  help_heading: prismic.RichTextField;
+
+  /**
+   * Help Section Description field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.help_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  help_description: prismic.RichTextField;
+
+  /**
+   * Map Embed URL field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Google Maps embed iframe src
+   * - **API ID Path**: contact_section.default.primary.map_embed_link
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  map_embed_link: prismic.KeyTextField;
+
+  /**
+   * Background Image field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Items field in *ContactSection → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.GroupField<
+    Simplify<ContactSectionSliceDefaultPrimaryItemsItem>
+  >;
+}
+
+/**
+ * Default variation for ContactSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactSection*
+ */
+type ContactSectionSliceVariation = ContactSectionSliceDefault;
+
+/**
+ * ContactSection Shared Slice
+ *
+ * - **API ID**: `contact_section`
+ * - **Description**: ContactSection
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactSectionSlice = prismic.SharedSlice<
+  "contact_section",
+  ContactSectionSliceVariation
 >;
 
 /**
@@ -1108,6 +1676,21 @@ export interface HeroSectionSliceDefaultPrimaryCounterItem {
 }
 
 /**
+ * Item in *HeroSection → Form → Primary → Items*
+ */
+export interface HeroSectionSliceFormPrimaryItemsItem {
+  /**
+   * Title field in *HeroSection → Form → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.items[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+}
+
+/**
  * Primary content in *HeroSection → Default → Primary*
  */
 export interface HeroSectionSliceDefaultPrimary {
@@ -1252,11 +1835,90 @@ export type HeroSectionSliceSecondary = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *HeroSection → Form → Primary*
+ */
+export interface HeroSectionSliceFormPrimary {
+  /**
+   * Subheading field in *HeroSection → Form → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *HeroSection → Form → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *HeroSection → Form → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Items field in *HeroSection → Form → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.GroupField<Simplify<HeroSectionSliceFormPrimaryItemsItem>>;
+
+  /**
+   * Form Title field in *HeroSection → Form → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.form_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  form_title: prismic.KeyTextField;
+
+  /**
+   * Background Image field in *HeroSection → Form → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_section.form.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+}
+
+/**
+ * Form variation for HeroSection Slice
+ *
+ * - **API ID**: `form`
+ * - **Description**: Hero with checklist and appointment/form (e.g. Team page)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroSectionSliceForm = prismic.SharedSliceVariation<
+  "form",
+  Simplify<HeroSectionSliceFormPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *HeroSection*
  */
 type HeroSectionSliceVariation =
   | HeroSectionSliceDefault
-  | HeroSectionSliceSecondary;
+  | HeroSectionSliceSecondary
+  | HeroSectionSliceForm;
 
 /**
  * HeroSection Shared Slice
@@ -1600,6 +2262,148 @@ export type ServicesSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TeamSection → Default → Primary → Items*
+ */
+export interface TeamSectionSliceDefaultPrimaryItemsItem {
+  /**
+   * Image field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Category field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].category
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * Title field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Name
+   * - **API ID Path**: team_section.default.primary.items[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Specialty field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].specialty
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  specialty: prismic.KeyTextField;
+
+  /**
+   * Details field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[].details
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  details: prismic.RichTextField;
+
+  /**
+   * Link field in *TeamSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Profile link
+   * - **API ID Path**: team_section.default.primary.items[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
+ * Primary content in *TeamSection → Default → Primary*
+ */
+export interface TeamSectionSliceDefaultPrimary {
+  /**
+   * Subheading field in *TeamSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *TeamSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *TeamSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Items field in *TeamSection → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.GroupField<Simplify<TeamSectionSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for TeamSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TeamSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TeamSection*
+ */
+type TeamSectionSliceVariation = TeamSectionSliceDefault;
+
+/**
+ * TeamSection Shared Slice
+ *
+ * - **API ID**: `team_section`
+ * - **Description**: TeamSection
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSectionSlice = prismic.SharedSlice<
+  "team_section",
+  TeamSectionSliceVariation
+>;
+
+/**
  * Item in *TestimonialSection → Default → Primary → Items*
  */
 export interface TestimonialSectionSliceDefaultPrimaryItemsItem {
@@ -1832,9 +2636,27 @@ declare module "@prismicio/client" {
       AboutPageDocument,
       AboutPageDocumentData,
       AboutPageDocumentDataSlicesSlice,
+      BlogPageDocument,
+      BlogPageDocumentData,
+      BlogPageDocumentDataSlicesSlice,
+      ContactPageDocument,
+      ContactPageDocumentData,
+      ContactPageDocumentDataSlicesSlice,
+      GalleryPageDocument,
+      GalleryPageDocumentData,
+      GalleryPageDocumentDataSlicesSlice,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      ServicesPageDocument,
+      ServicesPageDocumentData,
+      ServicesPageDocumentDataSlicesSlice,
+      TeamPageDocument,
+      TeamPageDocumentData,
+      TeamPageDocumentDataSlicesSlice,
+      TestimonialsPageDocument,
+      TestimonialsPageDocumentData,
+      TestimonialsPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSectionSlice,
       AboutSectionSliceDefaultPrimary,
@@ -1844,6 +2666,11 @@ declare module "@prismicio/client" {
       BlogsSectionSliceDefaultPrimary,
       BlogsSectionSliceVariation,
       BlogsSectionSliceDefault,
+      ContactSectionSlice,
+      ContactSectionSliceDefaultPrimaryItemsItem,
+      ContactSectionSliceDefaultPrimary,
+      ContactSectionSliceVariation,
+      ContactSectionSliceDefault,
       CtaSectionSlice,
       CtaSectionSliceDefaultPrimary,
       CtaSectionSliceFormPrimaryItemsItem,
@@ -1875,9 +2702,12 @@ declare module "@prismicio/client" {
       HeroSectionSliceDefaultPrimaryCounterItem,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceSecondaryPrimary,
+      HeroSectionSliceFormPrimaryItemsItem,
+      HeroSectionSliceFormPrimary,
       HeroSectionSliceVariation,
       HeroSectionSliceDefault,
       HeroSectionSliceSecondary,
+      HeroSectionSliceForm,
       LocationSectionSlice,
       LocationSectionSliceDefaultPrimary,
       LocationSectionSliceVariation,
@@ -1892,6 +2722,11 @@ declare module "@prismicio/client" {
       ServicesSectionSliceDefaultPrimary,
       ServicesSectionSliceVariation,
       ServicesSectionSliceDefault,
+      TeamSectionSlice,
+      TeamSectionSliceDefaultPrimaryItemsItem,
+      TeamSectionSliceDefaultPrimary,
+      TeamSectionSliceVariation,
+      TeamSectionSliceDefault,
       TestimonialSectionSlice,
       TestimonialSectionSliceDefaultPrimaryItemsItem,
       TestimonialSectionSliceDefaultPrimary,

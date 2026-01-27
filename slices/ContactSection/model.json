@@ -1,0 +1,124 @@
+{
+  "id": "contact_section",
+  "type": "SharedSlice",
+  "name": "ContactSection",
+  "description": "ContactSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "subheading": {
+          "type": "Text",
+          "config": {
+            "label": "Subheading",
+            "placeholder": ""
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "Contact With Us",
+            "allowTargetBlank": false,
+            "single": "heading2,strong"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,hyperlink"
+          }
+        },
+        "form_title": {
+          "type": "Text",
+          "config": {
+            "label": "Form Title",
+            "placeholder": ""
+          }
+        },
+        "help_heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Help Section Heading",
+            "placeholder": "Need Any Help?",
+            "allowTargetBlank": false,
+            "single": "heading2,strong"
+          }
+        },
+        "help_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Help Section Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,hyperlink"
+          }
+        },
+        "map_embed_link": {
+          "type": "Text",
+          "config": {
+            "label": "Map Embed URL",
+            "placeholder": "Google Maps embed iframe src"
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {
+              "width": 1500,
+              "height": null
+            },
+            "thumbnails": []
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "e.g. Phone, Email, Address",
+                  "allowTargetBlank": false,
+                  "single": "heading3,strong"
+                }
+              },
+              "details": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Details",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,strong,hyperlink"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "tel: or mailto:",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

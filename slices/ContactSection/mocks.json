@@ -1,0 +1,57 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "subheading": { "__TYPE__": "FieldContent", "value": "Contact", "type": "Text" },
+      "heading": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "heading2", "content": { "text": "Contact With Us" } }]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "paragraph", "content": { "text": "Send us a message and we'll respond as soon as possible." } }]
+      },
+      "form_title": { "__TYPE__": "FieldContent", "value": "Send Message", "type": "Text" },
+      "help_heading": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "heading2", "content": { "text": "Need Any Help?" } }]
+      },
+      "help_description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [{ "type": "paragraph", "content": { "text": "Call us or message and we'll respond as soon as possible." } }]
+      },
+      "map_embed_link": { "__TYPE__": "FieldContent", "value": "https://www.google.com/maps/embed?pb=...", "type": "Text" },
+      "items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              ["title", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "heading3", "content": { "text": "Phone" } }] }],
+              ["details", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "+(323) 9847 3847 383" } }] }],
+              ["link", { "__TYPE__": "LinkContent", "value": { "__TYPE__": "ExternalLink", "url": "tel:+3239847384383", "text": "" } }]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              ["title", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "heading3", "content": { "text": "Email" } }] }],
+              ["details", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "infoyour@gmail.com" } }] }],
+              ["link", { "__TYPE__": "LinkContent", "value": { "__TYPE__": "ExternalLink", "url": "mailto:infoyour@gmail.com", "text": "" } }]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              ["title", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "heading3", "content": { "text": "Address" } }] }],
+              ["details", { "__TYPE__": "StructuredTextContent", "value": [{ "type": "paragraph", "content": { "text": "4517 Washington Ave. 32 Manchester, Road USA" } }] }],
+              ["link", null]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]

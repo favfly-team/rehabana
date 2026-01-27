@@ -8,7 +8,7 @@
 
 | Slice | Variations | Use case |
 |-------|------------|----------|
-| **hero_section** | `default`, `secondary` | Main homepage hero vs simple page heading (e.g. About, Contact) |
+| **hero_section** | `default`, `secondary`, `form` | Main hero vs page heading vs hero with checklist + form (e.g. Team) |
 | **cta_section** | `default`, `form`, `form2` | Buttons CTA vs form CTA vs form with background image |
 | **features_section** | `default`, `image` | Icon list vs image cards with number/title/details |
 | **testimonial_section** | `default`, `video` | Text testimonials vs video-style layout |
@@ -22,3 +22,16 @@
 
 - Repeatable group in slice `primary`: use the common name **`items`**.
 - Variation `id`: lowercase, e.g. `default`, `secondary`, `form`, `image`, `video`.
+
+## Page custom types
+
+Slice zones per page (use only the slices needed for that page):
+
+- **home_page** – hero, about, cta, features, process, testimonial, faq, gallery, location, services, blogs
+- **about_page** – hero, about, testimonial, features, cta
+- **services_page** – hero, services
+- **team_page** – hero (use form variation), team
+- **testimonials_page** – hero, testimonial
+- **blog_page** – hero, blogs
+- **contact_page** – hero, contact
+- **gallery_page** – hero, gallery

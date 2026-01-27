@@ -1,0 +1,107 @@
+{
+  "id": "team_section",
+  "type": "SharedSlice",
+  "name": "TeamSection",
+  "description": "TeamSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "subheading": {
+          "type": "Text",
+          "config": {
+            "label": "Subheading",
+            "placeholder": ""
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2,strong"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,hyperlink"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {
+                    "width": 400,
+                    "height": 500
+                  },
+                  "thumbnails": []
+                }
+              },
+              "category": {
+                "type": "Text",
+                "config": {
+                  "label": "Category",
+                  "placeholder": ""
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Name",
+                  "allowTargetBlank": false,
+                  "single": "heading3,strong"
+                }
+              },
+              "specialty": {
+                "type": "Text",
+                "config": {
+                  "label": "Specialty",
+                  "placeholder": ""
+                }
+              },
+              "details": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Details",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "single": "paragraph,strong"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "Profile link",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
