@@ -1,20 +1,21 @@
+import DefaultSection from "@/components/cta-section";
+import CTAFormSection from "@/components/cta-section/form";
+import CTAForm2Section from "@/components/cta-section/form2";
+
 /**
  * @typedef {import("@prismicio/client").Content.CtaSectionSlice} CTASectionSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<CTASectionSlice>} CTASectionProps
  * @type {import("react").FC<CTASectionProps>}
  */
 const CTASection = ({ slice }) => {
-  return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for cta_section (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-    </section>
-  );
+  switch (slice.variation) {
+    case "form":
+      return <CTAFormSection slice={slice} />;
+    case "form2":
+      return <CTAForm2Section slice={slice} />;
+    default:
+      return <DefaultSection slice={slice} />;
+  }
 };
 
 export default CTASection;
