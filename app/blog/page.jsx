@@ -1,13 +1,25 @@
-import SecondaryHeroSection from "@/components/hero-section/secondary";
-import BlogsSection from "@/components/blogs-section";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
+import Seo from "@/lib/seo/Seo";
 
-const BlogPage = () => {
+const BlogPage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("blog_page");
   return (
-    <div>
-      <SecondaryHeroSection />
-      <BlogsSection />
-    </div>
+    <>
+      <SliceZone slices={doc.data.slices} components={components} />
+    </>
   );
 };
+
+export async function generateMetadata() {
+  const client = createClient();
+
+  const page = await client.getSingle("blog_page");
+
+  return Seo(page);
+}
 
 export default BlogPage;

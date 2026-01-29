@@ -1,13 +1,25 @@
-import SecondaryHeroSection from "@/components/hero-section/secondary";
-import GallerySection from "@/components/gallery-section";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
+import Seo from "@/lib/seo/Seo";
 
-const GalleryPage = () => {
+const GalleryPage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("gallery_page");
   return (
-    <div>
-      <SecondaryHeroSection />
-      <GallerySection />
-    </div>
+    <>
+      <SliceZone slices={doc.data.slices} components={components} />
+    </>
   );
 };
+
+export async function generateMetadata() {
+  const client = createClient();
+
+  const page = await client.getSingle("gallery_page");
+
+  return Seo(page);
+}
 
 export default GalleryPage;

@@ -1,40 +1,25 @@
-import HeroSection from "@/components/hero-section";
-import AboutSection from "@/components/about-section";
-import CTAFormSection from "@/components/cta-section/form";
-import FeaturesSection from "@/components/features-section";
-import FeaturesImageSection from "@/components/features-section/image";
-import CTAForm2Section from "@/components/cta-section/form2";
-import ProcessSection from "@/components/process-section/page";
-import TestimonialVideoSection from "@/components/testimonial-section/video";
-import GallerySection from "@/components/gallery-section";
-import ServicesSection from "@/components/services-section";
-import TestimonialSection from "@/components/testimonial-section";
-import FAQSection from "@/components/faq-section";
-import BlogsSection from "@/components/blogs-section";
-import CTASection from "@/components/cta-section";
-import LocationSection from "@/components/contact/location-section";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
+import Seo from "@/lib/seo/Seo";
 
-const HomePage = () => {
+const HomePage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("home_page");
   return (
-    <div>
-      <HeroSection />
-      <AboutSection />
-      <AboutSection swap />
-      <CTAFormSection />
-      <FeaturesSection />
-      <FeaturesImageSection />
-      <CTAForm2Section />
-      <ProcessSection />
-      <TestimonialVideoSection />
-      <GallerySection />
-      <ServicesSection />
-      <TestimonialSection />
-      <FAQSection />
-      <CTASection />
-      <BlogsSection />
-      <LocationSection />
-    </div>
+    <>
+      <SliceZone slices={doc.data.slices} components={components} />
+    </>
   );
 };
+
+export async function generateMetadata() {
+  const client = createClient();
+
+  const page = await client.getSingle("home_page");
+
+  return Seo(page);
+}
 
 export default HomePage;

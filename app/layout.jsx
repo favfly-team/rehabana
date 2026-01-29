@@ -1,3 +1,6 @@
+// ===== import style registry  =====
+import StyledJsxRegistry from "@/lib/styledJsx/StyleRegistry";
+
 //  ==== import styles ====
 import "@/styles/bootstrap.min.css";
 import "@/styles/style.css";
@@ -28,9 +31,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Header />
-        {children}
-        <Footer />
+        <StyledJsxRegistry>
+          <Header />
+          {children}
+          <Footer />
+        </StyledJsxRegistry>
       </body>
     </html>
   );
