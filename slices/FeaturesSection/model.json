@@ -128,13 +128,6 @@
                   "thumbnails": []
                 }
               },
-              "number": {
-                "type": "Text",
-                "config": {
-                  "label": "Number",
-                  "placeholder": ""
-                }
-              },
               "title": {
                 "type": "StructuredText",
                 "config": {

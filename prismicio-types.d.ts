@@ -1879,16 +1879,6 @@ export interface FeaturesSectionSliceImagePrimaryItemsItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Number field in *FeaturesSection → Image → Primary → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: features_section.image.primary.items[].number
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  number: prismic.KeyTextField;
-
-  /**
    * Title field in *FeaturesSection → Image → Primary → Items*
    *
    * - **Field Type**: Rich Text
