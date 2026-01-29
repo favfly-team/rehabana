@@ -1,3 +1,5 @@
+"use client";
+
 const BlogPostDetails = ({ content }) => {
   return (
     <div

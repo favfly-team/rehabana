@@ -1,16 +1,38 @@
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 
-const FeaturesImageSection = () => {
+const FeaturesImageSection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, items } = primary || {};
+
   return (
     <section className="cs_service_area cs_type_1">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
           align="split"
-          subtitle="Our Features"
-          title="Our Top Notch Features"
+          subtitle={subheading}
+          title={
+            heading?.[0]?.text ? (
+              <PrismicRichText
+                field={heading}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            ) : null
+          }
           titleProps={{ className: "cs_fs_48 mb-3" }}
-          rightContent={<p>Our features are designed to help you achieve your goals.</p>}
+          rightContent={
+            description && (
+              <p>
+                <PrismicRichText field={description} />
+              </p>
+            )
+          }
           className="wow fadeInUp"
           data-wow-duration="0.9s"
           data-wow-delay="0.25s"
@@ -21,35 +43,55 @@ const FeaturesImageSection = () => {
             animationName: "fadeInUp",
           }}
         />
-        <div className="cs_height_50 cs_height_lg_40" />
-        <div className="row cs_row_gap_30 cs_gap_y_30">
-          <FeaturesImageItem />
-          <FeaturesImageItem />
-          <FeaturesImageItem />
-        </div>
+        {items && items.length > 0 && (
+          <>
+            <div className="cs_height_50 cs_height_lg_40" />
+            <div className="row cs_row_gap_30 cs_gap_y_30">
+              {items.map((item, index) => (
+                <FeaturesImageItem key={index} item={item} index={index} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
   );
 };
 
-const FeaturesImageItem = () => {
+const FeaturesImageItem = ({ item, index }) => {
+  const { image, title, details } = item || {};
+
   return (
     <div className="col-lg-4">
       <div className="cs_card cs_style_4 cs_radius_8">
-        <div className="cs_card_thumbnail">
-          <img
-            src="https://medixal-html.vercel.app/assets/img/service_4.jpeg"
-            alt="Image"
-          />
-        </div>
+        {image?.url && (
+          <div className="cs_card_thumbnail">
+            <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+          </div>
+        )}
         <div className="cs_card_header">
-          <h3 className="cs_card_title cs_fs_24 mb-0">Eye Exam</h3>
-          <div className="cs_card_index cs_fs_36">01</div>
+          {title?.[0]?.text && (
+            <h3 className="cs_card_title cs_fs_24 mb-0">
+              <PrismicRichText
+                field={title}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            </h3>
+          )}
+          <div className="cs_card_index cs_fs_36">
+            {String(index + 1).padStart(2, "0")}
+          </div>
         </div>
-        <p className="mb-0 cs_heading_color">
-          What is the Eye Exam? This is a Very Most important Every eye.
-        </p>
+        {details && (
+          <p className="mb-0 cs_heading_color">
+            <PrismicRichText field={details} />
+          </p>
+        )}
       </div>
     </div>
   );

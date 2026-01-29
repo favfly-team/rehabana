@@ -1,6 +1,11 @@
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 
-const CTAFormSection = () => {
+const CTAFormSection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, items, form_title } = primary || {};
+
   return (
     <section className="cs_accent_bg">
       <div className="cs_height_120 cs_height_lg_80" />
@@ -8,71 +13,62 @@ const CTAFormSection = () => {
         <div className="row cs_gap_y_40">
           <div className="col-lg-6">
             <SectionHeading
-              subtitle="Appointment"
+              subtitle={subheading}
               subtitleProps={{ className: "cs_white_color" }}
-              title="Get Amazing Treatment For our Specialist Doctors"
+              title={
+                heading?.[0]?.text ? (
+                  <PrismicRichText
+                    field={heading}
+                    components={{
+                      heading1: ({ children }) => <>{children}</>,
+                      heading2: ({ children }) => <>{children}</>,
+                      heading3: ({ children }) => <>{children}</>,
+                    }}
+                  />
+                ) : null
+              }
               titleProps={{ className: "cs_fs_48 cs_white_color mb-0" }}
             />
-            <div className="cs_height_50 cs_height_lg_40" />
-            <div className="row cs_gap_y_40">
-              <div className="col-12">
-                <div className="cs_iconbox cs_style_3">
-                  <div className="cs_iconbox_icon cs_center">
-                    <img
-                      src="https://medixal-html.vercel.app/assets/img/icons/security_icon.svg"
-                      alt="Icon"
-                    />
-                  </div>
-                  <div className="cs_iconbox_text">
-                    <h3 className="cs_iconbox_title cs_fs_32 cs_white_color">
-                      100% Safe and Trusted
-                    </h3>
-                    <p className="cs_iconbox_subtitle cs_white_color mb-0">
-                      Far far away, behind the word bore et dolore magna aliqua.
-                      Ut enim ad on minim veniam, quis nostrud
-                    </p>
-                  </div>
+            {items && items.length > 0 && (
+              <>
+                <div className="cs_height_50 cs_height_lg_40" />
+                <div className="row cs_gap_y_40">
+                  {items.map((item, index) => (
+                    <div key={index} className="col-12">
+                      <div className="cs_iconbox cs_style_3">
+                        {item?.icon?.url && (
+                          <div className="cs_iconbox_icon cs_center">
+                            <PrismicNextImage
+                              field={item.icon}
+                              alt={item.icon.alt ?? undefined}
+                            />
+                          </div>
+                        )}
+                        <div className="cs_iconbox_text">
+                          {item?.title?.[0]?.text && (
+                            <h3 className="cs_iconbox_title cs_fs_32 cs_white_color">
+                              <PrismicRichText
+                                field={item.title}
+                                components={{
+                                  heading1: ({ children }) => <>{children}</>,
+                                  heading2: ({ children }) => <>{children}</>,
+                                  heading3: ({ children }) => <>{children}</>,
+                                }}
+                              />
+                            </h3>
+                          )}
+                          {item?.details && (
+                            <p className="cs_iconbox_subtitle cs_white_color mb-0">
+                              <PrismicRichText field={item.details} />
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-              <div className="col-12">
-                <div className="cs_iconbox cs_style_3">
-                  <div className="cs_iconbox_icon cs_center">
-                    <img
-                      src="https://medixal-html.vercel.app/assets/img/icons/surgery_icon.svg"
-                      alt="Icon"
-                    />
-                  </div>
-                  <div className="cs_iconbox_text">
-                    <h3 className="cs_iconbox_title cs_fs_32 cs_white_color">
-                      Specialist eye Surgery
-                    </h3>
-                    <p className="cs_iconbox_subtitle cs_white_color mb-0">
-                      Far far away, behind the word bore et dolore magna aliqua.
-                      Ut enim ad on minim veniam, quis nostrud
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-12">
-                <div className="cs_iconbox cs_style_3">
-                  <div className="cs_iconbox_icon cs_center">
-                    <img
-                      src="https://medixal-html.vercel.app/assets/img/icons/support_icon.svg"
-                      alt="Icon"
-                    />
-                  </div>
-                  <div className="cs_iconbox_text">
-                    <h3 className="cs_iconbox_title cs_fs_32 cs_white_color">
-                      24/7 Take care Staff
-                    </h3>
-                    <p className="cs_iconbox_subtitle cs_white_color mb-0">
-                      Far far away, behind the word bore et dolore magna aliqua.
-                      Ut enim ad on minim veniam, quis nostrud
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
           <div
             className="col-lg-6 wow fadeInRight"
@@ -86,7 +82,7 @@ const CTAFormSection = () => {
             }}
           >
             <div className="cs_appointment_form_wrapper cs_type_1 cs_radius_10">
-              <h3 className="cs_appointment_heading">Make an Appointment</h3>
+              <h3 className="cs_appointment_heading">{form_title}</h3>
               <form className="cs_appointment_form row cs_gap_y_30">
                 <div className="col-md-6">
                   <div className="cs_form_field_wrapper cs_radius_10">

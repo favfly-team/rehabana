@@ -1,18 +1,29 @@
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 
-const ProcessSection = () => {
+const ProcessSection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, items } = primary || {};
+
   return (
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
-          subtitle="Work Process"
+          subtitle={subheading}
           subtitleProps={{ className: "cs_semibold" }}
           title={
-            <>
-              How Work Process Our <br />
-              <span className="cs_accent_color">Rehabilitations</span>
-            </>
+            heading?.[0]?.text ? (
+              <PrismicRichText
+                field={heading}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            ) : null
           }
           className="wow fadeInUp"
           data-wow-duration="0.9s"
@@ -24,100 +35,73 @@ const ProcessSection = () => {
             animationName: "fadeInUp",
           }}
         />
-        <div className="cs_height_50 cs_height_lg_40" />
-        <div className="row cs_row_gap_30 cs_gap_y_40">
-          <div className="col-xl-3 col-md-6">
-            <div className="cs_card cs_style_6">
-              <div className="cs_card_thumbnail cs_radius_50">
-                <img
-                  src="https://medixal-html.vercel.app/assets/img/card_img_5.png"
-                  alt="Image"
+        {description && (
+          <p className="text-center mt-3">
+            <PrismicRichText field={description} />
+          </p>
+        )}
+        {items && items.length > 0 && (
+          <>
+            <div className="cs_height_50 cs_height_lg_40" />
+            <div className="row cs_row_gap_30 cs_gap_y_40">
+              {items.map((item, index) => (
+                <ProcessItem
+                  key={index}
+                  item={item}
+                  index={index}
+                  isReverse={index % 2 === 1}
                 />
-              </div>
-              <div className="cs_height_20 cs_height_lg_20" />
-              <div className="cs_card_info">
-                <h3 className="cs_card_title cs_fs_24 cs_semibold">
-                  Get Paired with <br /> a Admit
-                </h3>
-                <p className="cs_card_subtitle">
-                  On the other hand, we denounce with righteous indignation
-                </p>
-                <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
-                  Step 01
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
-          <div className="col-xl-3 col-md-6">
-            <div className="cs_card cs_style_6 cs_column_reverse_md">
-              <div className="cs_card_info">
-                <h3 className="cs_card_title cs_fs_24 cs_semibold">
-                  Choose your Prepared <br /> Care Center
-                </h3>
-                <p className="cs_card_subtitle">
-                  On the other hand, we denounce with righteous indignation
-                </p>
-                <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
-                  Step 02
-                </div>
-              </div>
-              <div className="cs_height_20 cs_height_lg_20" />
-              <div className="cs_card_thumbnail cs_radius_50">
-                <img
-                  src="https://medixal-html.vercel.app/assets/img/card_img_6.png"
-                  alt="Image"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-md-6">
-            <div className="cs_card cs_style_6">
-              <div className="cs_card_thumbnail cs_radius_50">
-                <img
-                  src="https://medixal-html.vercel.app/assets/img/card_img_7.png"
-                  alt="Image"
-                />
-              </div>
-              <div className="cs_height_20 cs_height_lg_20" />
-              <div className="cs_card_info">
-                <h3 className="cs_card_title cs_fs_24 cs_semibold">
-                  We are Ready <br /> To Help , Faster
-                </h3>
-                <p className="cs_card_subtitle">
-                  On the other hand, we denounce with righteous indignation
-                </p>
-                <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
-                  Step 03
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-3 col-md-6">
-            <div className="cs_card cs_style_6 cs_column_reverse_md">
-              <div className="cs_card_info">
-                <h3 className="cs_card_title cs_fs_24 cs_semibold">
-                  What Rehabilitations <br /> Can Help With
-                </h3>
-                <p className="cs_card_subtitle">
-                  On the other hand, we denounce with righteous indignation
-                </p>
-                <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
-                  Step 04
-                </div>
-              </div>
-              <div className="cs_height_20 cs_height_lg_20" />
-              <div className="cs_card_thumbnail cs_radius_50">
-                <img
-                  src="https://medixal-html.vercel.app/assets/img/card_img_8.png"
-                  alt="Image"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
+  );
+};
+
+const ProcessItem = ({ item, index, isReverse }) => {
+  const { image, title, details } = item || {};
+  const stepNumber = String(index + 1).padStart(2, "0");
+
+  return (
+    <div className="col-xl-3 col-md-6">
+      <div
+        className={`cs_card cs_style_6 ${isReverse ? "cs_column_reverse_md" : ""}`}
+      >
+        {image?.url && (
+          <>
+            <div className="cs_card_thumbnail cs_radius_50">
+              <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+            </div>
+            <div className="cs_height_20 cs_height_lg_20" />
+          </>
+        )}
+        <div className="cs_card_info">
+          {title?.[0]?.text && (
+            <h3 className="cs_card_title cs_fs_24 cs_semibold">
+              <PrismicRichText
+                field={title}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            </h3>
+          )}
+          {details && (
+            <p className="cs_card_subtitle">
+              <PrismicRichText field={details} />
+            </p>
+          )}
+          <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
+            Step {stepNumber}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

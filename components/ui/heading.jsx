@@ -1,6 +1,6 @@
 /**
  * Common Section Heading Component
- * 
+ *
  * @param {string} align - Alignment: "left" | "center" | "split"
  * @param {string} subtitle - Subtitle text
  * @param {ReactNode} title - Title content (can be string or JSX)
@@ -35,11 +35,13 @@ const SectionHeading = ({
   // Default subtitle classes
   const defaultSubtitleClasses =
     "cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font";
-  const subtitleClasses = `${defaultSubtitleClasses} ${subtitleProps.className || ""}`.trim();
+  const subtitleClasses =
+    `${defaultSubtitleClasses} ${subtitleProps.className || ""}`.trim();
 
   // Default title classes
   const defaultTitleClasses = "cs_section_title cs_fs_48 mb-0";
-  const titleClasses = `${defaultTitleClasses} ${titleProps.className || ""}`.trim();
+  const titleClasses =
+    `${defaultTitleClasses} ${titleProps.className || ""}`.trim();
 
   // Split layout
   if (align === "split") {

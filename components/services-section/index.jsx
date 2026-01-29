@@ -1,58 +1,117 @@
-import { SectionHeading, Button } from "@/components/ui";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
+import { PrismicNextLink } from "@prismicio/next";
+import { SectionHeading } from "@/components/ui";
 
-const ServicesSection = () => {
+const ServicesSection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, items } = primary || {};
+
   return (
     <section className="cs_service_area cs_type_3">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
           align="split"
-          subtitle="Expertise"
+          subtitle={subheading}
           title={
-            <span className="cs_accent_color">
-              We offer more than Services &amp; all Solutions Medical.
-            </span>
+            heading?.[0]?.text ? (
+              <PrismicRichText
+                field={heading}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            ) : null
           }
           rightContent={
-            <p className="cs_accent_color text-end">
-              the other hand, we denounce with righteous indignation and dislike
-              men who are so beguiled and demoralized
-            </p>
+            description && (
+              <p className="cs_accent_color text-end">
+                <PrismicRichText field={description} />
+              </p>
+            )
           }
         />
-        <div className="cs_height_100 cs_height_lg_40" />
-        <div className="row cs_gap_y_30">
-          <ServiceItem />
-          <ServiceItem />
-          <ServiceItem />
-        </div>
+        {items && items.length > 0 && (
+          <>
+            <div className="cs_height_100 cs_height_lg_40" />
+            <div className="row cs_gap_y_30">
+              {items.map((item, index) => (
+                <ServiceItem key={index} item={item} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
   );
 };
 
-const ServiceItem = () => {
+const ServiceItem = ({ item }) => {
+  const { image, title, details, link } = item || {};
+
   return (
     <div className="col-lg-4">
       <div className="cs_iconbox cs_style_8 cs_white_bg cs_radius_10">
-        <div className="cs_card_thumbnail cs_radius_10 mb-4">
-          <img
-            src="https://medixal-html.vercel.app/assets/img/service_4.jpeg"
-            alt="Service Image"
-            className="img-fluid cs_radius_10"
-          />
-        </div>
-        <h3 className="cs_iconbox_title cs_fs_32 cs_medium">
-          <a href="service-details.html">Chiropractic Care</a>
-        </h3>
-        <p className="cs_iconbox_subtitle">
-          The other hand, we denounce with righteous Indignation and dislike men
-          who
-        </p>
-        <Button href="service-details.html" variant="text">
-          Get Services
-        </Button>
+        {image?.url && (
+          <div className="cs_card_thumbnail cs_radius_10 mb-4">
+            <PrismicNextImage
+              field={image}
+              alt={image.alt ?? undefined}
+              className="img-fluid cs_radius_10"
+            />
+          </div>
+        )}
+        {title?.[0]?.text && (
+          <h3 className="cs_iconbox_title cs_fs_32 cs_medium">
+            {link?.url ? (
+              <PrismicNextLink field={link}>
+                <PrismicRichText
+                  field={title}
+                  components={{
+                    heading1: ({ children }) => <>{children}</>,
+                    heading2: ({ children }) => <>{children}</>,
+                    heading3: ({ children }) => <>{children}</>,
+                  }}
+                />
+              </PrismicNextLink>
+            ) : (
+              <PrismicRichText
+                field={title}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            )}
+          </h3>
+        )}
+        {details && (
+          <p className="cs_iconbox_subtitle">
+            <PrismicRichText field={details} />
+          </p>
+        )}
+        {link?.url && (
+          <PrismicNextLink
+            field={link}
+            className="cs_text_btn cs_fs_18 cs_medium cs_heading_color"
+          >
+            <span>{link.text}</span>
+            <div className="cs_text_btn_icon cs_center">
+              <span>
+                <FaArrowRightLong />
+              </span>
+              <span>
+                <FaArrowRightLong />
+              </span>
+            </div>
+          </PrismicNextLink>
+        )}
       </div>
     </div>
   );

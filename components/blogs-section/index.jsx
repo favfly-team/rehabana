@@ -1,29 +1,9 @@
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, Button } from "@/components/ui";
 
-const BlogsSection = () => {
-  const blogData = [
-    {
-      id: 1,
-      title: "Medi Tips How to Physical Fitness your Health",
-      date: "August 04, 2024",
-      image: "https://medixal-html.vercel.app/assets/img/post_1.jpeg",
-      link: "blog-details.html",
-    },
-    {
-      id: 2,
-      title: "How to Get Best Care 7 Step for your Eyes",
-      date: "August 15, 2024",
-      image: "https://medixal-html.vercel.app/assets/img/post_2.jpeg",
-      link: "blog-details.html",
-    },
-    {
-      id: 3,
-      title: "Improve your heart health with genetic testing.",
-      date: "September 01, 2024",
-      image: "https://medixal-html.vercel.app/assets/img/post_3.jpeg",
-      link: "blog-details.html",
-    },
-  ];
+const BlogsSection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description } = primary || {};
 
   return (
     <section>
@@ -31,45 +11,35 @@ const BlogsSection = () => {
       <div className="container">
         <SectionHeading
           align="split"
-          subtitle="Blog &amp; news"
+          subtitle={subheading}
           title={
-            <>
-              Take a Look at The Latest <br /> Articles &amp; News
-            </>
+            heading?.[0]?.text ? (
+              <PrismicRichText
+                field={heading}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            ) : null
           }
           rightContent={<Button href="blog.html">See All Blogs</Button>}
           className="wow fadeInUp"
         />
+        {description && (
+          <p className="text-center mt-3">
+            <PrismicRichText field={description} />
+          </p>
+        )}
+        {/* Note: Blog items would typically come from a separate blog posts query */}
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_row_gap_30 cs_gap_y_40">
-          {blogData.map((blog) => (
-            <BlogItem key={blog.id} blog={blog} />
-          ))}
+          {/* Blog items will be populated from blog posts API */}
         </div>
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
-  );
-};
-
-const BlogItem = ({ blog }) => {
-  return (
-    <div className="col-lg-4">
-      <article className="cs_post cs_style_1">
-        <a href={blog.link} className="cs_post_thumbnail cs_radius_8">
-          <img src={blog.image} alt="Post Thumbnail" className="img-fluid" />
-        </a>
-        <div className="cs_post_info">
-          <div className="cs_post_meta">{blog.date}</div>
-          <h3 className="cs_post_title cs_fs_24">
-            <a href={blog.link}>{blog.title}</a>
-          </h3>
-          <Button href={blog.link} variant="text">
-            Learn More
-          </Button>
-        </div>
-      </article>
-    </div>
   );
 };
 

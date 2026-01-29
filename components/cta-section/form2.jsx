@@ -1,41 +1,54 @@
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, Button } from "@/components/ui";
 
-const CTAForm2Section = () => {
+const CTAForm2Section = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, background_image } = primary || {};
+
   return (
     <>
       <div>
-        <div
-          className="cs_video_section cs_style_3 cs_bg_filed"
-          style={{
-            backgroundImage:
-              'url("https://medixal-html.vercel.app/assets/img/video_bg_2.jpeg")',
-          }}
-        >
-          <Button
-            href="https://www.youtube.com/embed/rRid6GCJtgc"
-            variant="player2"
-            className="cs_video_open"
-          />
-        </div>
+        {background_image?.url && (
+          <div
+            className="cs_video_section cs_style_3 cs_bg_filed"
+            style={{
+              backgroundImage: `url("${background_image.url}")`,
+            }}
+          >
+            <Button
+              href="https://www.youtube.com/embed/rRid6GCJtgc"
+              variant="player2"
+              className="cs_video_open"
+            />
+          </div>
+        )}
         <section className="cs_appointment cs_style_1">
           <div className="container-fluid">
             <div className="cs_appointment_form_wrapper cs_type_2 cs_radius_8">
               <div className="cs_appointment_form cs_radius_8">
                 <SectionHeading
                   align="split"
-                  subtitle="Our Services"
+                  subtitle={subheading}
                   title={
-                    <>
-                      Get Complete Optical <br />
-                      Services: Save 15%{" "}
-                    </>
+                    heading?.[0]?.text ? (
+                      <PrismicRichText
+                        field={heading}
+                        components={{
+                          heading1: ({ children }) => <>{children}</>,
+                          heading2: ({ children }) => <>{children}</>,
+                          heading3: ({ children }) => <>{children}</>,
+                        }}
+                      />
+                    ) : null
                   }
                   titleProps={{ className: "cs_fs_36 mb-0" }}
                   rightContent={
-                    <p className="text-end">
-                      Eye care have seen significant advancements and noteworthy
-                      changes. Heidelberg Engineering
-                    </p>
+                    description && (
+                      <p className="text-end">
+                        <PrismicRichText field={description} />
+                      </p>
+                    )
                   }
                 />
                 <div className="cs_height_50 cs_height_lg_40" />

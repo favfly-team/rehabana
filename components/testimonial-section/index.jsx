@@ -1,47 +1,73 @@
 import { FaStar } from "react-icons/fa6";
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 
-const TestimonialSection = () => {
+const TestimonialSection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, items } = primary || {};
+
   return (
     <section className="cs_testimonial cs_style_1">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
           align="center"
-          subtitle="Testimonials"
+          subtitle={subheading}
           title={
-            <>
-              What Our Regular Patient Says
-              <br /> About DR. Matheus
-            </>
+            heading?.[0]?.text ? (
+              <PrismicRichText
+                field={heading}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            ) : null
           }
           className="wow fadeInUp"
         />
-        <div className="cs_height_50 cs_height_lg_40" />
-        <div className="row cs_gap_y_30 align-items-center">
-          <div className="col-lg-6">
-            <div className="cs_testimonial_left">
-              <div className="cs_testimonial_thumbnail cs_type_1">
-                <img
-                  src="https://medixal-html.vercel.app/assets/img/testimonial_thumbnail_1.jpeg"
-                  alt="Testimonial Image"
-                />
+        {description && (
+          <p className="text-center mt-3">
+            <PrismicRichText field={description} />
+          </p>
+        )}
+        {items && items.length > 0 && (
+          <>
+            <div className="cs_height_50 cs_height_lg_40" />
+            <div className="row cs_gap_y_30 align-items-center">
+              {items[0]?.image?.url && (
+                <div className="col-lg-6">
+                  <div className="cs_testimonial_left">
+                    <div className="cs_testimonial_thumbnail cs_type_1">
+                      <PrismicNextImage
+                        field={items[0].image}
+                        alt={items[0].image.alt ?? undefined}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div className="col-lg-6">
+                <div className="cs_testimonial_content">
+                  {items.map((item, index) => (
+                    <TestimonialItem key={index} item={item} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-6">
-            <div className="cs_testimonial_content">
-              <TestimonialItem />
-            </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
   );
 };
 
-const TestimonialItem = () => {
+const TestimonialItem = ({ item }) => {
+  const { review, name, info } = item || {};
+
   return (
     <div className="cs_testimonial cs_style_1">
       <div className="cs_quote_icon">
@@ -58,11 +84,11 @@ const TestimonialItem = () => {
           />
         </svg>
       </div>
-      <p className="cs_testimonial_subtitle cs_fs_32">
-        Pain management was effective, and I was comfortable during and after
-        the treatment. The staff provided emotional support and made sure I
-        understood every step of my care.
-      </p>
+      {review && (
+        <p className="cs_testimonial_subtitle cs_fs_32">
+          <PrismicRichText field={review} />
+        </p>
+      )}
       <div className="cs_avatar cs_style_1">
         <div className="cs_rating_container">
           <div style={{ display: "flex", gap: "4px" }}>
@@ -79,8 +105,8 @@ const TestimonialItem = () => {
           </div>
         </div>
         <div className="cs_avatar_info">
-          <h3 className="cs_avatar_title cs_fs_24">John Smith</h3>
-          <p className="cs_avatar_subtitle cs_fs_18 mb-0">Framer Expert</p>
+          {name && <h3 className="cs_avatar_title cs_fs_24">{name}</h3>}
+          {info && <p className="cs_avatar_subtitle cs_fs_18 mb-0">{info}</p>}
         </div>
       </div>
     </div>

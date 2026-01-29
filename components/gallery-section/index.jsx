@@ -1,77 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 
-const GallerySection = () => {
+const GallerySection = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, items } = primary || {};
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const galleryImages = [
-    {
-      id: 1,
-      src: "https://medixal-html.vercel.app/assets/img/casestydy_3.jpeg",
-      alt: "Gallery Image 1",
-      category: "Treatment",
-    },
-    {
-      id: 2,
-      src: "https://medixal-html.vercel.app/assets/img/about_1.jpg",
-      alt: "Gallery Image 2",
-      category: "Facility",
-    },
-    {
-      id: 3,
-      src: "https://medixal-html.vercel.app/assets/img/about_2.jpg",
-      alt: "Gallery Image 3",
-      category: "Team",
-    },
-    {
-      id: 4,
-      src: "https://medixal-html.vercel.app/assets/img/service_4.jpeg",
-      alt: "Gallery Image 4",
-      category: "Treatment",
-    },
-    {
-      id: 5,
-      src: "https://medixal-html.vercel.app/assets/img/casestydy_3.jpeg",
-      alt: "Gallery Image 5",
-      category: "Facility",
-    },
-    {
-      id: 6,
-      src: "https://medixal-html.vercel.app/assets/img/about_1.jpg",
-      alt: "Gallery Image 6",
-      category: "Team",
-    },
-    {
-      id: 7,
-      src: "https://medixal-html.vercel.app/assets/img/about_2.jpg",
-      alt: "Gallery Image 7",
-      category: "Treatment",
-    },
-    {
-      id: 8,
-      src: "https://medixal-html.vercel.app/assets/img/service_4.jpeg",
-      alt: "Gallery Image 8",
-      category: "Facility",
-    },
-    {
-      id: 9,
-      src: "https://medixal-html.vercel.app/assets/img/casestydy_3.jpeg",
-      alt: "Gallery Image 9",
-      category: "Team",
-    },
-  ];
-
-  const filterCategories = [
-    "All",
-    ...new Set(galleryImages.map((image) => image.category)),
-  ];
+  const filterCategories = items
+    ? [
+        "All",
+        ...new Set(
+          items
+            .map((item) => item?.category)
+            .filter((cat) => cat && cat !== null)
+        ),
+      ]
+    : ["All"];
 
   const filteredImages =
     activeFilter === "All"
-      ? galleryImages
-      : galleryImages.filter((image) => image.category === activeFilter);
+      ? items || []
+      : (items || []).filter((item) => item?.category === activeFilter);
 
   return (
     <section className="cs_gallery cs_style_1">
@@ -79,11 +32,18 @@ const GallerySection = () => {
       <div className="container">
         <SectionHeading
           align="center"
-          subtitle="Our Gallery"
+          subtitle={subheading}
           title={
-            <>
-              Explore Our <span className="cs_accent_color">Photo Gallery</span>
-            </>
+            heading?.[0]?.text ? (
+              <PrismicRichText
+                field={heading}
+                components={{
+                  heading1: ({ children }) => <>{children}</>,
+                  heading2: ({ children }) => <>{children}</>,
+                  heading3: ({ children }) => <>{children}</>,
+                }}
+              />
+            ) : null
           }
           className="wow fadeInUp"
           data-wow-duration="0.9s"
@@ -95,41 +55,70 @@ const GallerySection = () => {
             animationName: "fadeInUp",
           }}
         />
-        <div className="cs_height_50 cs_height_lg_40" />
-        <div className="cs_gallery_filters">
-          <div className="cs_gallery_filter_list">
-            {filterCategories.map((category) => (
-              <button
-                key={category}
-                className={`cs_gallery_filter_btn ${
-                  activeFilter === category ? "active" : ""
-                }`}
-                onClick={() => setActiveFilter(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="cs_height_50 cs_height_lg_40" />
-        <div className="row cs_row_gap_30 cs_gap_y_30">
-          {filteredImages.map((image) => (
-            <GalleryItem key={image.id} image={image} />
-          ))}
-        </div>
+        {description && (
+          <p className="text-center mt-3">
+            <PrismicRichText field={description} />
+          </p>
+        )}
+        {filterCategories.length > 1 && (
+          <>
+            <div className="cs_height_50 cs_height_lg_40" />
+            <div className="cs_gallery_filters">
+              <div className="cs_gallery_filter_list">
+                {filterCategories.map((category) => (
+                  <button
+                    key={category}
+                    className={`cs_gallery_filter_btn ${
+                      activeFilter === category ? "active" : ""
+                    }`}
+                    onClick={() => setActiveFilter(category)}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+        {filteredImages.length > 0 && (
+          <>
+            <div className="cs_height_50 cs_height_lg_40" />
+            <div className="row cs_row_gap_30 cs_gap_y_30">
+              {filteredImages.map((item, index) => (
+                <GalleryItem key={index} item={item} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
   );
 };
 
-const GalleryItem = ({ image }) => {
+const GalleryItem = ({ item }) => {
+  const { image, video } = item || {};
+
   return (
     <div className="col-lg-4 col-md-6">
       <div className="cs_gallery_item cs_radius_10 overflow-hidden">
-        <div className="cs_card_thumbnail cs_radius_10">
-          <img src={image.src} alt={image.alt} className="img-fluid" />
-        </div>
+        {image?.url && (
+          <div className="cs_card_thumbnail cs_radius_10">
+            <PrismicNextImage
+              field={image}
+              alt={image.alt ?? undefined}
+              className="img-fluid"
+            />
+            {video?.url && (
+              <a
+                href={video.url}
+                className="cs_video_open cs_player_btn cs_style_2 cs_center"
+              >
+                <span></span>
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
