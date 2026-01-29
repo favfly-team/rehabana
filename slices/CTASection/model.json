@@ -56,17 +56,6 @@
             "allowTargetBlank": true,
             "allowText": true
           }
-        },
-        "background_image": {
-          "type": "Image",
-          "config": {
-            "label": "Background Image",
-            "constraint": {
-              "width": 1500,
-              "height": null
-            },
-            "thumbnails": []
-          }
         }
       },
       "items": {}

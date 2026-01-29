@@ -17,16 +17,6 @@
           "thumbnails": []
         }
       },
-      "logo_link": {
-        "type": "Link",
-        "config": {
-          "label": "Logo Link",
-          "placeholder": "e.g. / or homepage",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true
-        }
-      },
       "nav_link": {
         "type": "Link",
         "config": {
@@ -45,33 +35,12 @@
           "placeholder": "",
           "select": null,
           "allowTargetBlank": true,
-          "allowText": true,
+          "allowText": false,
           "repeat": true
         }
       }
     },
     "Footer": {
-      "logo": {
-        "type": "Image",
-        "config": {
-          "label": "Logo",
-          "constraint": {
-            "width": 300,
-            "height": null
-          },
-          "thumbnails": []
-        }
-      },
-      "logo_link": {
-        "type": "Link",
-        "config": {
-          "label": "Logo Link",
-          "placeholder": "e.g. / or homepage",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true
-        }
-      },
       "description": {
         "type": "StructuredText",
         "config": {
@@ -81,95 +50,31 @@
           "single": "paragraph,strong,hyperlink"
         }
       },
-      "social_link": {
-        "type": "Link",
+      "items": {
+        "type": "Group",
         "config": {
-          "label": "Social Link",
-          "placeholder": "",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true,
-          "repeat": true
-        }
-      },
-      "links_heading": {
-        "type": "Text",
-        "config": {
-          "label": "Links Column Heading",
-          "placeholder": "e.g. Links"
-        }
-      },
-      "links_link": {
-        "type": "Link",
-        "config": {
-          "label": "Links Link",
-          "placeholder": "",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true,
-          "repeat": true
-        }
-      },
-      "resources_heading": {
-        "type": "Text",
-        "config": {
-          "label": "Resources Column Heading",
-          "placeholder": "e.g. Resources"
-        }
-      },
-      "resources_link": {
-        "type": "Link",
-        "config": {
-          "label": "Resources Link",
-          "placeholder": "",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true,
-          "repeat": true
-        }
-      },
-      "office_heading": {
-        "type": "Text",
-        "config": {
-          "label": "Office Column Heading",
-          "placeholder": "e.g. Office"
-        }
-      },
-      "office_address": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Office Address",
-          "placeholder": "Address text",
-          "allowTargetBlank": false,
-          "single": "paragraph,strong"
-        }
-      },
-      "office_phone": {
-        "type": "Link",
-        "config": {
-          "label": "Office Phone",
-          "placeholder": "tel: or number",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true
-        }
-      },
-      "copyright": {
-        "type": "Text",
-        "config": {
-          "label": "Copyright Text",
-          "placeholder": "e.g. © 2024. All Rights Reserved."
-        }
-      },
-      "bottom_link": {
-        "type": "Link",
-        "config": {
-          "label": "Footer Bottom Link",
-          "placeholder": "",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true,
-          "repeat": true
+          "label": "Items",
+          "repeat": true,
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "links": {
+              "type": "Link",
+              "config": {
+                "label": "Links",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            }
+          }
         }
       }
     }

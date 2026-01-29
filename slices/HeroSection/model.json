@@ -169,22 +169,13 @@
             "single": "paragraph,strong"
           }
         },
-        "items": {
-          "type": "Group",
+        "list": {
+          "type": "StructuredText",
           "config": {
-            "label": "Items",
-            "repeat": true,
-            "fields": {
-              "title": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Title",
-                  "placeholder": "",
-                  "allowTargetBlank": false,
-                  "single": "paragraph,strong"
-                }
-              }
-            }
+            "label": "List",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "list-item"
           }
         },
         "form_title": {
@@ -192,17 +183,6 @@
           "config": {
             "label": "Form Title",
             "placeholder": ""
-          }
-        },
-        "background_image": {
-          "type": "Image",
-          "config": {
-            "label": "Background Image",
-            "constraint": {
-              "width": 1500,
-              "height": null
-            },
-            "thumbnails": []
           }
         }
       },

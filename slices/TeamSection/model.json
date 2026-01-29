@@ -67,38 +67,19 @@
                   "label": "Link",
                   "placeholder": "Profile / details link",
                   "select": null,
-                  "allowTargetBlank": true,
-                  "allowText": true
+                  "allowTargetBlank": false,
+                  "allowText": false
                 }
               },
               "social_links": {
-                "type": "Group",
+                "type": "Link",
                 "config": {
                   "label": "Social Links",
-                  "repeat": true,
-                  "fields": {
-                    "type": {
-                      "type": "Select",
-                      "config": {
-                        "label": "Type",
-                        "placeholder": "",
-                        "options": [
-                          "facebook",
-                          "linkedin",
-                          "youtube"
-                        ]
-                      }
-                    },
-                    "url": {
-                      "type": "Link",
-                      "config": {
-                        "label": "URL",
-                        "placeholder": "",
-                        "select": null,
-                        "allowTargetBlank": true
-                      }
-                    }
-                  }
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": true
                 }
               }
             }
@@ -115,6 +96,15 @@
       "description": "Single team member detail (profile, bio, accordion)",
       "imageUrl": "",
       "primary": {
+        "swap": {
+          "type": "Boolean",
+          "config": {
+            "label": "Swap",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "image": {
           "type": "Image",
           "config": {
@@ -126,72 +116,53 @@
             "thumbnails": []
           }
         },
-        "category": {
+        "subheading": {
           "type": "Text",
           "config": {
-            "label": "Category",
+            "label": "Subheading",
             "placeholder": "e.g. REHABANA PMR MDS"
           }
         },
         "heading": {
           "type": "StructuredText",
           "config": {
-            "label": "Name",
+            "label": "heading",
             "placeholder": "",
             "allowTargetBlank": false,
             "single": "heading2,strong"
           }
         },
-        "specialty": {
+        "description": {
           "type": "Text",
           "config": {
-            "label": "Specialty",
+            "label": "Description",
             "placeholder": ""
           }
         },
-        "bio": {
+        "details": {
           "type": "StructuredText",
           "config": {
-            "label": "Bio",
+            "label": "Details",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,hyperlink"
           }
         },
         "social_links": {
-          "type": "Group",
+          "type": "Link",
           "config": {
             "label": "Social Links",
-            "repeat": true,
-            "fields": {
-              "type": {
-                "type": "Select",
-                "config": {
-                  "label": "Type",
-                  "placeholder": "",
-                  "options": [
-                    "facebook",
-                    "youtube",
-                    "linkedin"
-                  ]
-                }
-              },
-              "url": {
-                "type": "Link",
-                "config": {
-                  "label": "URL",
-                  "placeholder": "",
-                  "select": null,
-                  "allowTargetBlank": true
-                }
-              }
-            }
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": false,
+            "repeat": true
           }
         },
-        "accordion_items": {
+        "items": {
           "type": "Group",
           "config": {
-            "label": "Accordion Items",
+            "label": "Items",
             "repeat": true,
             "fields": {
               "title": {

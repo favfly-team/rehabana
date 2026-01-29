@@ -47,29 +47,6 @@
 					"url": "http://twitter.com",
 					"text": "whatever"
 				}
-			},
-			"background_image": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
-					"width": 4000,
-					"height": 4000
-				},
-				"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a?rect=0%2C0%2C4000%2C4000&w=1500&h=1500",
-				"width": 1500,
-				"height": 1500,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "population",
-				"credits": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
 			}
 		},
 		"items": [

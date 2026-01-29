@@ -43,6 +43,20 @@
             "label": "Items",
             "repeat": true,
             "fields": {
+              "category": {
+                "type": "Select",
+                "config": {
+                  "label": "Category",
+                  "placeholder": "",
+                  "options": [
+                    "Therapy",
+                    "Candid",
+                    "Our Doctor",
+                    "Teams",
+                    "Exercise"
+                  ]
+                }
+              },
               "image": {
                 "type": "Image",
                 "config": {
@@ -65,22 +79,10 @@
                 "config": {
                   "label": "Video",
                   "placeholder": "",
-                  "select": "media",
-                  "allowText": false
-                }
-              },
-              "category": {
-                "type": "Select",
-                "config": {
-                  "label": "Category",
-                  "placeholder": "",
-                  "options": [
-                    "Therapy",
-                    "Candid",
-                    "Our Doctor",
-                    "Teams",
-                    "Exercise"
-                  ]
+                  "select": null,
+                  "allowTargetBlank": false,
+                  "allowText": false,
+                  "repeat": false
                 }
               }
             }
