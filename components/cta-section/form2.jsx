@@ -1,6 +1,7 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, Button } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const CTAForm2Section = ({ slice }) => {
   const { primary } = slice || {};
@@ -45,9 +46,13 @@ const CTAForm2Section = ({ slice }) => {
                   titleProps={{ className: "cs_fs_36 mb-0" }}
                   rightContent={
                     description && (
-                      <p className="text-end">
-                        <PrismicRichText field={description} />
-                      </p>
+                      <PrismicRichText
+                        field={description}
+                        components={createRichTextComponents({
+                          paragraphClassName:
+                            "text-end leading-relaxed text-sm",
+                        })}
+                      />
                     )
                   }
                 />

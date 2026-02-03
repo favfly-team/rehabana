@@ -2,6 +2,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const AboutSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -112,9 +113,12 @@ const AboutSection = ({ slice }) => {
                 />
               )}
               {description && (
-                <p className="cs_about_text">
-                  <PrismicRichText field={description} />
-                </p>
+                <PrismicRichText
+                  field={description}
+                  components={createRichTextComponents({
+                    paragraphClassName: "cs_about_text leading-relaxed",
+                  })}
+                />
               )}
               {list && list.length > 0 && (
                 <ul className="cs_list cs_style_1 cs_mp0">

@@ -3,6 +3,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import { Button } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const HeroSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -58,9 +59,13 @@ const HeroSection = ({ slice }) => {
               </h1>
             )}
             {description && (
-              <p className="cs_hero_subtitle cs_fs_20 cs_medium cs_heading_color">
-                <PrismicRichText field={description} />
-              </p>
+              <PrismicRichText
+                field={description}
+                components={createRichTextComponents({
+                  paragraphClassName:
+                    "cs_hero_subtitle cs_fs_20 cs_medium cs_heading_color leading-relaxed",
+                })}
+              />
             )}
             <div className="cs_hero_btn_group">
               {button?.url && (

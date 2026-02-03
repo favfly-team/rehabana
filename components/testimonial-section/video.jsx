@@ -1,6 +1,7 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, Button } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const TestimonialVideoSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -27,9 +28,12 @@ const TestimonialVideoSection = ({ slice }) => {
           }
           rightContent={
             description && (
-              <p className="mb-0">
-                <PrismicRichText field={description} />
-              </p>
+              <PrismicRichText
+                field={description}
+                components={createRichTextComponents({
+                  paragraphClassName: "mb-0 leading-relaxed text-sm",
+                })}
+              />
             )
           }
         />
@@ -81,9 +85,13 @@ const TestimonialVideoItem = ({ item }) => {
             </h3>
           )}
           {details && (
-            <p className="cs_card_subtitle cs_fs_16 cs_heading_color mb-0">
-              <PrismicRichText field={details} />
-            </p>
+            <PrismicRichText
+              field={details}
+              components={createRichTextComponents({
+                paragraphClassName:
+                  "cs_card_subtitle cs_fs_16 cs_heading_color mb-0 leading-relaxed",
+              })}
+            />
           )}
         </div>
       </div>

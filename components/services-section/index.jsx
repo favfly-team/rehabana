@@ -3,6 +3,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const ServicesSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -29,9 +30,13 @@ const ServicesSection = ({ slice }) => {
           }
           rightContent={
             description && (
-              <p className="cs_accent_color text-end">
-                <PrismicRichText field={description} />
-              </p>
+              <PrismicRichText
+                field={description}
+                components={createRichTextComponents({
+                  paragraphClassName:
+                    "cs_accent_color text-end leading-relaxed text-sm",
+                })}
+              />
             )
           }
         />
@@ -92,9 +97,12 @@ const ServiceItem = ({ item }) => {
           </h3>
         )}
         {details && (
-          <p className="cs_iconbox_subtitle">
-            <PrismicRichText field={details} />
-          </p>
+          <PrismicRichText
+            field={details}
+            components={createRichTextComponents({
+              paragraphClassName: "cs_iconbox_subtitle leading-relaxed text-sm",
+            })}
+          />
         )}
         {link?.url && (
           <PrismicNextLink

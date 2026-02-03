@@ -1,6 +1,7 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const ProcessSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -36,9 +37,12 @@ const ProcessSection = ({ slice }) => {
           }}
         />
         {description && (
-          <p className="text-center mt-3">
-            <PrismicRichText field={description} />
-          </p>
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
+            })}
+          />
         )}
         {items && items.length > 0 && (
           <>
@@ -92,9 +96,12 @@ const ProcessItem = ({ item, index, isReverse }) => {
             </h3>
           )}
           {details && (
-            <p className="cs_card_subtitle">
-              <PrismicRichText field={details} />
-            </p>
+            <PrismicRichText
+              field={details}
+              components={createRichTextComponents({
+                paragraphClassName: "cs_card_subtitle leading-relaxed text-sm",
+              })}
+            />
           )}
           <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
             Step {stepNumber}

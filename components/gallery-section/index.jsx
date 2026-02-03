@@ -4,6 +4,7 @@ import { useState } from "react";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const GallerySection = ({ slice }) => {
   const { primary } = slice || {};
@@ -56,9 +57,12 @@ const GallerySection = ({ slice }) => {
           }}
         />
         {description && (
-          <p className="text-center mt-3">
-            <PrismicRichText field={description} />
-          </p>
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
+            })}
+          />
         )}
         {filterCategories.length > 1 && (
           <>

@@ -1,6 +1,7 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const FeaturesImageSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -28,9 +29,12 @@ const FeaturesImageSection = ({ slice }) => {
           titleProps={{ className: "cs_fs_48 mb-3" }}
           rightContent={
             description && (
-              <p>
-                <PrismicRichText field={description} />
-              </p>
+              <PrismicRichText
+                field={description}
+                components={createRichTextComponents({
+                  paragraphClassName: "leading-relaxed text-sm",
+                })}
+              />
             )
           }
           className="wow fadeInUp"
@@ -88,9 +92,13 @@ const FeaturesImageItem = ({ item, index }) => {
           </div>
         </div>
         {details && (
-          <p className="mb-0 cs_heading_color">
-            <PrismicRichText field={details} />
-          </p>
+          <PrismicRichText
+            field={details}
+            components={createRichTextComponents({
+              paragraphClassName:
+                "mb-0 cs_heading_color leading-relaxed text-sm",
+            })}
+          />
         )}
       </div>
     </div>

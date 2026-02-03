@@ -1,5 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const CTASection = ({ slice }) => {
   const { primary } = slice || {};
@@ -23,9 +24,12 @@ const CTASection = ({ slice }) => {
             </h2>
           )}
           {description && (
-            <p className="cs_video_subtitle">
-              <PrismicRichText field={description} />
-            </p>
+            <PrismicRichText
+              field={description}
+              components={createRichTextComponents({
+                paragraphClassName: "cs_video_subtitle leading-relaxed text-sm",
+              })}
+            />
           )}
           <div className="cs_btns_group">
             {primary_button?.url && (

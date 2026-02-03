@@ -2,6 +2,7 @@ import { FaStar } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const TestimonialSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -29,9 +30,12 @@ const TestimonialSection = ({ slice }) => {
           className="wow fadeInUp"
         />
         {description && (
-          <p className="text-center mt-3">
-            <PrismicRichText field={description} />
-          </p>
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
+            })}
+          />
         )}
         {items && items.length > 0 && (
           <>
@@ -85,9 +89,13 @@ const TestimonialItem = ({ item }) => {
         </svg>
       </div>
       {review && (
-        <p className="cs_testimonial_subtitle cs_fs_32">
-          <PrismicRichText field={review} />
-        </p>
+        <PrismicRichText
+          field={review}
+          components={createRichTextComponents({
+            paragraphClassName:
+              "cs_testimonial_subtitle cs_fs_32 leading-relaxed",
+          })}
+        />
       )}
       <div className="cs_avatar cs_style_1">
         <div className="cs_rating_container">

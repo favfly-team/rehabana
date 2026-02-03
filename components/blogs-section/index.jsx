@@ -1,5 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, Button } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const BlogsSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -28,9 +29,12 @@ const BlogsSection = ({ slice }) => {
           className="wow fadeInUp"
         />
         {description && (
-          <p className="text-center mt-3">
-            <PrismicRichText field={description} />
-          </p>
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
+            })}
+          />
         )}
         {/* Note: Blog items would typically come from a separate blog posts query */}
         <div className="cs_height_50 cs_height_lg_40" />

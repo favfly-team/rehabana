@@ -1,6 +1,7 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const CTAFormSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -58,9 +59,13 @@ const CTAFormSection = ({ slice }) => {
                             </h3>
                           )}
                           {item?.details && (
-                            <p className="cs_iconbox_subtitle cs_white_color mb-0">
-                              <PrismicRichText field={item.details} />
-                            </p>
+                            <PrismicRichText
+                              field={item.details}
+                              components={createRichTextComponents({
+                                paragraphClassName:
+                                  "cs_iconbox_subtitle cs_white_color mb-0 leading-relaxed text-sm",
+                              })}
+                            />
                           )}
                         </div>
                       </div>

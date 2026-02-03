@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const FAQSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -39,9 +40,12 @@ const FAQSection = ({ slice }) => {
           className="wow fadeInUp"
         />
         {description && (
-          <p className="text-center mt-3">
-            <PrismicRichText field={description} />
-          </p>
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
+            })}
+          />
         )}
         {items && items.length > 0 && (
           <>
@@ -120,7 +124,14 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
           className="cs_accordian_body cs_fs_18 cs_heading_color"
           style={{ display: isActive ? "block" : "none" }}
         >
-          <PrismicRichText field={details} />
+          <PrismicRichText
+            field={details}
+            components={createRichTextComponents({
+              paragraphClassName: "leading-relaxed text-sm mb-2 last:mb-0",
+              heading2ClassName: "font-bold text-lg mt-3 mb-1",
+              heading3ClassName: "font-bold text-base mt-2 mb-1",
+            })}
+          />
         </div>
       )}
     </div>

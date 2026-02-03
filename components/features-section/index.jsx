@@ -1,6 +1,7 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const FeaturesSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -28,9 +29,12 @@ const FeaturesSection = ({ slice }) => {
           className="wow fadeInUp"
         />
         {description && (
-          <p className="text-center mt-3">
-            <PrismicRichText field={description} />
-          </p>
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
+            })}
+          />
         )}
 
         {items && items.length > 0 && (
@@ -86,9 +90,13 @@ const FeatureItem = ({ item }) => {
             </h3>
           )}
           {details && (
-            <p className="cs_iconbox_subtitle mb-0">
-              <PrismicRichText field={details} />
-            </p>
+            <PrismicRichText
+              field={details}
+              components={createRichTextComponents({
+                paragraphClassName:
+                  "cs_iconbox_subtitle mb-0 leading-relaxed text-sm",
+              })}
+            />
           )}
         </div>
       </div>
