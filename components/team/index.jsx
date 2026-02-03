@@ -14,7 +14,6 @@ const TeamSection = () => {
         <SectionHeading
           align="center"
           subtitle="Doctor's Team"
-          subtitleProps={{ className: "cs_semibold" }}
           title={
             <>
               Meet our Expert Counselling <br />

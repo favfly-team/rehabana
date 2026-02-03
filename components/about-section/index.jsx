@@ -7,8 +7,7 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const AboutSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, list, button, image, swap_layout } =
-    primary || {};
+  const { description, list, button, image, swap_layout } = primary || {};
 
   const swap = swap_layout || false;
   return (
@@ -30,23 +29,11 @@ const AboutSection = ({ slice }) => {
           </div>
           <div className={`col-lg-6 ${swap ? "cs_about_content_col" : ""}`}>
             <div className="cs_about_content">
-              {(subheading || heading?.[0]?.text) && (
-                <SectionHeading
-                  subtitle={subheading}
-                  title={
-                    heading?.[0]?.text ? (
-                      <PrismicRichText
-                        field={heading}
-                        components={{
-                          heading1: ({ children }) => <>{children}</>,
-                          heading2: ({ children }) => <>{children}</>,
-                          heading3: ({ children }) => <>{children}</>,
-                        }}
-                      />
-                    ) : null
-                  }
-                />
-              )}
+              <SectionHeading
+                primary={primary}
+                variant="left"
+                includeDescription={false}
+              />
               {description && (
                 <PrismicRichText
                   field={description}

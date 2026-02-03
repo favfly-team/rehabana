@@ -3,15 +3,9 @@ import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
-const headingComponents = {
-  heading1: ({ children }) => <>{children}</>,
-  heading2: ({ children }) => <>{children}</>,
-  heading3: ({ children }) => <>{children}</>,
-};
-
 const CTAFormSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, items, form_title } = primary || {};
+  const { items, form_title } = primary || {};
 
   return (
     <section className="cs_accent_bg">
@@ -20,17 +14,10 @@ const CTAFormSection = ({ slice }) => {
         <div className="row cs_gap_y_40">
           <div className="col-lg-6">
             <SectionHeading
-              subtitle={subheading}
-              subtitleProps={{ className: "cs_white_color" }}
-              title={
-                heading?.[0]?.text ? (
-                  <PrismicRichText
-                    field={heading}
-                    components={headingComponents}
-                  />
-                ) : null
-              }
-              titleProps={{ className: "cs_fs_48 cs_white_color mb-0" }}
+              primary={primary}
+              variant="left"
+              subtitleClassName="cs_white_color"
+              titleClassName="cs_fs_48 cs_white_color mb-0"
             />
             <CTAFormItems items={items} />
           </div>

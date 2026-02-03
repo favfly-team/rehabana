@@ -7,38 +7,16 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const ServicesSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, items } = primary || {};
+  const { items } = primary || {};
 
   return (
     <section className="cs_service_area cs_type_3">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
-          align="split"
-          subtitle={subheading}
-          title={
-            heading?.[0]?.text ? (
-              <PrismicRichText
-                field={heading}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            ) : null
-          }
-          rightContent={
-            description && (
-              <PrismicRichText
-                field={description}
-                components={createRichTextComponents({
-                  paragraphClassName:
-                    "cs_accent_color text-end leading-relaxed text-sm",
-                })}
-              />
-            )
-          }
+          primary={primary}
+          variant="split"
+          descriptionClassName="cs_accent_color text-end leading-relaxed text-sm"
         />
         {items && items.length > 0 && (
           <>

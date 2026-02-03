@@ -8,7 +8,7 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const FAQSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, items } = primary || {};
+  const { items } = primary || {};
   const [activeId, setActiveId] = useState(0);
 
   const leftColumnFAQs = items
@@ -23,29 +23,10 @@ const FAQSection = ({ slice }) => {
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
-          align="center"
-          subtitle={subheading}
-          title={
-            heading?.[0]?.text ? (
-              <PrismicRichText
-                field={heading}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            ) : null
-          }
+          primary={primary}
+          variant="center"
+          descriptionClassName="text-center mt-3 leading-relaxed text-sm"
         />
-        {description && (
-          <PrismicRichText
-            field={description}
-            components={createRichTextComponents({
-              paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
-            })}
-          />
-        )}
         {items && items.length > 0 && (
           <>
             <div className="cs_height_50 cs_height_lg_40" />
@@ -100,7 +81,7 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
           <PrismicRichText
             field={title}
             components={createRichTextComponents({
-              heading2ClassName: "cs_accordian_title cs_fs_20 cs_semibold",
+              heading3ClassName: "cs_accordian_title cs_fs_20 cs_semibold",
             })}
           />
         )}

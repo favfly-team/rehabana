@@ -9,7 +9,7 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const TestimonialVideoSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, items } = primary || {};
+  const { items } = primary || {};
 
   const [lightboxController, setLightboxController] = useState({
     toggler: false,
@@ -38,30 +38,9 @@ const TestimonialVideoSection = ({ slice }) => {
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
-          align="split"
-          subtitle={subheading}
-          title={
-            heading?.[0]?.text ? (
-              <PrismicRichText
-                field={heading}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            ) : null
-          }
-          rightContent={
-            description && (
-              <PrismicRichText
-                field={description}
-                components={createRichTextComponents({
-                  paragraphClassName: "mb-0 leading-relaxed text-sm",
-                })}
-              />
-            )
-          }
+          primary={primary}
+          variant="split"
+          descriptionClassName="mb-0 leading-relaxed text-sm"
         />
         {items && items.length > 0 && (
           <>

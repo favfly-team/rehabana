@@ -9,7 +9,7 @@ import FsLightbox from "fslightbox-react";
 
 const GallerySection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, items } = primary || {};
+  const { items } = primary || {};
   const [activeFilter, setActiveFilter] = useState("All");
 
   const [sources, setSources] = useState([]);
@@ -61,29 +61,10 @@ const GallerySection = ({ slice }) => {
         <div className="cs_height_120 cs_height_lg_80" />
         <div className="container">
           <SectionHeading
-            align="center"
-            subtitle={subheading}
-            title={
-              heading?.[0]?.text ? (
-                <PrismicRichText
-                  field={heading}
-                  components={{
-                    heading1: ({ children }) => <>{children}</>,
-                    heading2: ({ children }) => <>{children}</>,
-                    heading3: ({ children }) => <>{children}</>,
-                  }}
-                />
-              ) : null
-            }
+            primary={primary}
+            variant="center"
+            descriptionClassName="text-center mt-3 leading-relaxed text-sm"
           />
-          {description && (
-            <PrismicRichText
-              field={description}
-              components={createRichTextComponents({
-                paragraphClassName: "text-center mt-3 leading-relaxed text-sm",
-              })}
-            />
-          )}
           {filterCategories.length > 1 && (
             <GalleryFilters
               categories={filterCategories}

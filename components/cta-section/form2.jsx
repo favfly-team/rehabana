@@ -1,11 +1,8 @@
-import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, Button } from "@/components/ui";
-import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const CTAForm2Section = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, background_image } = primary || {};
+  const { background_image } = primary || {};
 
   return (
     <>
@@ -29,32 +26,10 @@ const CTAForm2Section = ({ slice }) => {
             <div className="cs_appointment_form_wrapper cs_type_2 cs_radius_8">
               <div className="cs_appointment_form cs_radius_8">
                 <SectionHeading
-                  align="split"
-                  subtitle={subheading}
-                  title={
-                    heading?.[0]?.text ? (
-                      <PrismicRichText
-                        field={heading}
-                        components={{
-                          heading1: ({ children }) => <>{children}</>,
-                          heading2: ({ children }) => <>{children}</>,
-                          heading3: ({ children }) => <>{children}</>,
-                        }}
-                      />
-                    ) : null
-                  }
-                  titleProps={{ className: "cs_fs_36 mb-0" }}
-                  rightContent={
-                    description && (
-                      <PrismicRichText
-                        field={description}
-                        components={createRichTextComponents({
-                          paragraphClassName:
-                            "text-end leading-relaxed text-sm",
-                        })}
-                      />
-                    )
-                  }
+                  primary={primary}
+                  variant="split"
+                  titleClassName="cs_fs_36 mb-0"
+                  descriptionClassName="text-end leading-relaxed text-sm"
                 />
                 <div className="cs_height_50 cs_height_lg_40" />
                 <form className="row cs_row_gap_30 cs_gap_y_30">

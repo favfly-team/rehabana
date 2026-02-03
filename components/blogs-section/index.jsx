@@ -4,27 +4,16 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const BlogsSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description } = primary || {};
+  const { description } = primary || {};
 
   return (
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
-          align="split"
-          subtitle={subheading}
-          title={
-            heading?.[0]?.text ? (
-              <PrismicRichText
-                field={heading}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            ) : null
-          }
+          primary={primary}
+          variant="split"
+          includeDescription={false}
           rightContent={<Button href="blog.html">See All Blogs</Button>}
         />
         {description && (

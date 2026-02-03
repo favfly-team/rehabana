@@ -5,28 +5,13 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const ProcessSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, items } = primary || {};
+  const { items } = primary || {};
 
   return (
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <SectionHeading
-          subtitle={subheading}
-          subtitleProps={{ className: "cs_semibold" }}
-          title={
-            heading?.[0]?.text ? (
-              <PrismicRichText
-                field={heading}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            ) : null
-          }
-        />
+        <SectionHeading primary={primary} variant="left" />
         {items && items.length > 0 && (
           <>
             <div className="cs_height_50 cs_height_lg_40" />

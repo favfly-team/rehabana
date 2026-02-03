@@ -5,38 +5,17 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const FeaturesImageSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { subheading, heading, description, items } = primary || {};
+  const { items } = primary || {};
 
   return (
     <section className="cs_service_area cs_type_1">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading
-          align="split"
-          subtitle={subheading}
-          title={
-            heading?.[0]?.text ? (
-              <PrismicRichText
-                field={heading}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            ) : null
-          }
-          titleProps={{ className: "cs_fs_48 mb-3" }}
-          rightContent={
-            description && (
-              <PrismicRichText
-                field={description}
-                components={createRichTextComponents({
-                  paragraphClassName: "leading-relaxed text-sm",
-                })}
-              />
-            )
-          }
+          primary={primary}
+          variant="split"
+          titleClassName="cs_fs_48 mb-3"
+          descriptionClassName="leading-relaxed text-sm"
         />
         {items && items.length > 0 && (
           <>
