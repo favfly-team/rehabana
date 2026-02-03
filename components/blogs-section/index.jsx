@@ -26,7 +26,6 @@ const BlogsSection = ({ slice }) => {
             ) : null
           }
           rightContent={<Button href="blog.html">See All Blogs</Button>}
-          className="wow fadeInUp"
         />
         {description && (
           <PrismicRichText

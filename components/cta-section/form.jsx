@@ -75,17 +75,7 @@ const CTAFormSection = ({ slice }) => {
               </>
             )}
           </div>
-          <div
-            className="col-lg-6 wow fadeInRight"
-            data-wow-duration="0.9s"
-            data-wow-delay="0.25s"
-            style={{
-              visibility: "visible",
-              animationDuration: "0.9s",
-              animationDelay: "0.25s",
-              animationName: "fadeInRight",
-            }}
-          >
+          <div className="col-lg-6">
             <div className="cs_appointment_form_wrapper cs_type_1 cs_radius_10">
               <h3 className="cs_appointment_heading">{form_title}</h3>
               <form className="cs_appointment_form row cs_gap_y_30">

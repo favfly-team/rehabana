@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { FaFacebookF, FaLinkedinIn, FaYoutube, FaPlus } from "react-icons/fa6";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaYoutube,
+  FaPlus,
+  FaUser,
+} from "react-icons/fa6";
 
 // Profile Image Component
 const ProfileImage = ({ src, alt }) => {
@@ -48,19 +54,7 @@ const TeamHeader = ({ category, name, specialty }) => {
       </p>
       <h2 className="cs_team_name cs_fs_36 cs_heading_font">{name}</h2>
       <p className="cs_team_specialty">
-        <svg
-          className="cs_user_icon"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8 8C10.21 8 12 6.21 12 4C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4C4 6.21 5.79 8 8 8ZM8 10C5.33 10 0 11.34 0 14V16H16V14C16 11.34 10.67 10 8 10Z"
-            fill="currentColor"
-          />
-        </svg>
+        <FaUser className="cs_user_icon" size={16} />
         <span>{specialty}</span>
       </p>
     </div>
@@ -159,9 +153,7 @@ const CertificationsSection = () => {
           Medicine 2023, Bengaluru
         </li>
         <li>IRACON 2023, Hyderabad</li>
-        <li>
-          IAPMR Masterclass 2023, Spinal cord injury, AIIMS, Patna
-        </li>
+        <li>IAPMR Masterclass 2023, Spinal cord injury, AIIMS, Patna</li>
         <li>IAPRMCON, February 2024, Coimbatore</li>
         <li>Knee 360, February 2024, Kolkata</li>
         <li>IPNRCON, JIPMER, Puducherry, April 2024</li>
@@ -229,9 +221,9 @@ const DEFAULT_SOCIAL_LINKS = [
 
 const DEFAULT_BIO_PARAGRAPHS = [
   'Dr. Ambar Konar, a dynamic and promising Interventional Physiatrist from Kolkata, completed his MBBS and housemanship in Rehabilitation Medicine from the prestigious <a href="#" class="cs_accent_color">Calcutta National Medical College</a>. He secured the University-topper rank in MD (Physical Medicine & Rehabilitation) from <a href="#" class="cs_accent_color">SSKM Hospital (IPGME&R)</a> in 2018 and later served three years as Senior Resident in Rehabilitation Medicine at North 24 Parganas District Hospital.',
-  'Dr. Konar has presented in numerous national and international conferences, earning <strong>Best Paper Awards</strong> at both state and national levels, and has <strong>four publications</strong> in reputed medical journals.',
-  'He underwent specialized <strong>NeuroRehab training (IMPACT III)</strong> at Kokilaben Dhirubhai Ambani Hospital, Mumbai, and completed a <strong>Fellowship in Pain Management</strong> from Aesculap Academy, Germany (Delhi Pain Management Center, 2019).',
-  'His clinical interests include <strong>Neurorehabilitation, Musculoskeletal Medicine, and Interventional Pain Management</strong>. As the joint team leader of the Neuro Rehab team at <strong>Rehabana</strong>, he combines passion, empathy, and precision to deliver evidence-based, patient-centered care.',
+  "Dr. Konar has presented in numerous national and international conferences, earning <strong>Best Paper Awards</strong> at both state and national levels, and has <strong>four publications</strong> in reputed medical journals.",
+  "He underwent specialized <strong>NeuroRehab training (IMPACT III)</strong> at Kokilaben Dhirubhai Ambani Hospital, Mumbai, and completed a <strong>Fellowship in Pain Management</strong> from Aesculap Academy, Germany (Delhi Pain Management Center, 2019).",
+  "His clinical interests include <strong>Neurorehabilitation, Musculoskeletal Medicine, and Interventional Pain Management</strong>. As the joint team leader of the Neuro Rehab team at <strong>Rehabana</strong>, he combines passion, empathy, and precision to deliver evidence-based, patient-centered care.",
 ];
 
 /**
@@ -253,13 +245,23 @@ const TeamDetails = ({ data }) => {
     setOpenSection(openSection === section ? null : section);
   };
 
-  const imageSrc = data?.imageSrc ?? "https://medixal-html.vercel.app/assets/img/team_details_1.jpeg";
+  const imageSrc =
+    data?.imageSrc ??
+    "https://medixal-html.vercel.app/assets/img/team_details_1.jpeg";
   const imageAlt = data?.imageAlt ?? "Dr Ambar Konar";
   const category = data?.category ?? "REHABANA PMR MDS";
   const name = data?.name ?? "Dr Ambar Konar, MBBS, MD – PMR in Kolkata";
-  const specialty = data?.specialty ?? "Interventional Physiatrist | Neuro & Pain Rehabilitation Specialist";
-  const socialLinks = Array.isArray(data?.socialLinks) && data.socialLinks.length > 0 ? data.socialLinks : DEFAULT_SOCIAL_LINKS;
-  const bioParagraphs = Array.isArray(data?.bioParagraphs) && data.bioParagraphs.length > 0 ? data.bioParagraphs : DEFAULT_BIO_PARAGRAPHS;
+  const specialty =
+    data?.specialty ??
+    "Interventional Physiatrist | Neuro & Pain Rehabilitation Specialist";
+  const socialLinks =
+    Array.isArray(data?.socialLinks) && data.socialLinks.length > 0
+      ? data.socialLinks
+      : DEFAULT_SOCIAL_LINKS;
+  const bioParagraphs =
+    Array.isArray(data?.bioParagraphs) && data.bioParagraphs.length > 0
+      ? data.bioParagraphs
+      : DEFAULT_BIO_PARAGRAPHS;
   const accordionItems = data?.accordionItems;
 
   return (
@@ -278,7 +280,11 @@ const TeamDetails = ({ data }) => {
             {/* Right Column - Content */}
             <div className="col-lg-8">
               <div className="cs_team_content">
-                <TeamHeader category={category} name={name} specialty={specialty} />
+                <TeamHeader
+                  category={category}
+                  name={name}
+                  specialty={specialty}
+                />
 
                 <div className="cs_height_25 cs_height_lg_20" />
 

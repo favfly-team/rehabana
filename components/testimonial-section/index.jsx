@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa6";
+import { FaStar, FaQuoteRight } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
@@ -27,7 +27,6 @@ const TestimonialSection = ({ slice }) => {
               />
             ) : null
           }
-          className="wow fadeInUp"
         />
         {description && (
           <PrismicRichText
@@ -75,18 +74,7 @@ const TestimonialItem = ({ item }) => {
   return (
     <div className="cs_testimonial cs_style_1">
       <div className="cs_quote_icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="64"
-          height="64"
-          viewBox="0 0 64 64"
-          fill="none"
-        >
-          <path
-            d="M49 54.2812C57.2727 54.2812 64 47.5521 64 39.2813C64 31.73 58.3933 25.4641 51.1204 24.4314C51.7026 20.2016 53.3176 16.177 55.8409 12.687C56.3316 12.0059 56.3133 11.083 55.7896 10.4239C55.2759 9.77525 54.3831 9.52938 53.5996 9.85988C41.6941 14.8292 34 26.3796 34 39.2812C34 47.5521 40.7272 54.2812 49 54.2812ZM15 54.2812C23.2728 54.2812 30 47.5521 30 39.2812C30 31.73 24.3933 25.4641 17.1204 24.4314C17.7026 20.2016 19.3176 16.177 21.8409 12.687C22.3316 12.0059 22.3133 11.083 21.7896 10.4239C21.2759 9.77525 20.3831 9.52937 19.5996 9.85987C7.69413 14.8292 2.43924e-06 26.3796 1.31134e-06 39.2812C5.88279e-07 47.5521 6.72725 54.2812 15 54.2812Z"
-            fill="var(--accent-color)"
-          />
-        </svg>
+        <FaQuoteRight size={64} style={{ color: "var(--accent-color)" }} />
       </div>
       {review && (
         <PrismicRichText

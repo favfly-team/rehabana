@@ -37,7 +37,6 @@ const FAQSection = ({ slice }) => {
               />
             ) : null
           }
-          className="wow fadeInUp"
         />
         {description && (
           <PrismicRichText

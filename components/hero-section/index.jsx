@@ -32,17 +32,7 @@ const HeroSection = ({ slice }) => {
               <PrismicNextImage field={image} alt={image.alt ?? undefined} />
             </div>
           )}
-          <div
-            className="cs_hero_content wow fadeInRight"
-            data-wow-duration="0.9s"
-            data-wow-delay="0.25s"
-            style={{
-              visibility: "visible",
-              animationDuration: "0.9s",
-              animationDelay: "0.25s",
-              animationName: "fadeInRight",
-            }}
-          >
+          <div className="cs_hero_content">
             {subheading && (
               <h3 className="cs_hero_title_mini cs_fs_18 cs_accent_color cs_medium">
                 {subheading}

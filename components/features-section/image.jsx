@@ -37,15 +37,6 @@ const FeaturesImageSection = ({ slice }) => {
               />
             )
           }
-          className="wow fadeInUp"
-          data-wow-duration="0.9s"
-          data-wow-delay="0.25s"
-          style={{
-            visibility: "visible",
-            animationDuration: "0.9s",
-            animationDelay: "0.25s",
-            animationName: "fadeInUp",
-          }}
         />
         {items && items.length > 0 && (
           <>

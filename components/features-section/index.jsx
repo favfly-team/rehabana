@@ -26,7 +26,6 @@ const FeaturesSection = ({ slice }) => {
               />
             ) : null
           }
-          className="wow fadeInUp"
         />
         {description && (
           <PrismicRichText
