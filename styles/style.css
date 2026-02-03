@@ -1822,9 +1822,11 @@ label {
     to(currentColor)
   );
   background-image: linear-gradient(90deg, currentColor 0, currentColor 100%);
-  -webkit-transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  -webkit-transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
-  transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
   background-position: 100% calc(100% - 0px);
   background-size: 0 1px;
@@ -1896,7 +1898,8 @@ label {
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
-  transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1),
+  transition:
+    transform 0.3s cubic-bezier(0.77, 0, 0.18, 1),
     -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .cs_text_btn .cs_text_btn_icon span:first-child {
@@ -4324,9 +4327,11 @@ a.ui-button:active,
     to(currentColor)
   );
   background-image: linear-gradient(90deg, currentColor 0, currentColor 100%);
-  -webkit-transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  -webkit-transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
-  transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
   background-position: 100% calc(100% - 0px);
   background-size: 0 2px;
@@ -5134,10 +5139,17 @@ a.ui-button:active,
     content: "";
     position: absolute;
     margin-top: -9px;
-    -webkit-transition-property: margin, -webkit-transform;
-    transition-property: margin, -webkit-transform;
+    -webkit-transition-property:
+      margin,
+      -webkit-transform;
+    transition-property:
+      margin,
+      -webkit-transform;
     transition-property: margin, transform;
-    transition-property: margin, transform, -webkit-transform;
+    transition-property:
+      margin,
+      transform,
+      -webkit-transform;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     -webkit-transition-delay: 0.2s, 0s;
@@ -5147,10 +5159,17 @@ a.ui-button:active,
     content: "";
     position: absolute;
     margin-top: 9px;
-    -webkit-transition-property: margin, -webkit-transform;
-    transition-property: margin, -webkit-transform;
+    -webkit-transition-property:
+      margin,
+      -webkit-transform;
+    transition-property:
+      margin,
+      -webkit-transform;
     transition-property: margin, transform;
-    transition-property: margin, transform, -webkit-transform;
+    transition-property:
+      margin,
+      transform,
+      -webkit-transform;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
     -webkit-transition-delay: 0.2s, 0s;
@@ -5386,9 +5405,11 @@ a.ui-button:active,
     to(currentColor)
   );
   background-image: linear-gradient(90deg, currentColor 0, currentColor 100%);
-  -webkit-transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  -webkit-transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
-  transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
   background-position: 100% calc(100% - 0px);
   background-size: 0 1px;
@@ -5954,7 +5975,6 @@ a.ui-button:active,
   margin-right: 36px;
   position: relative;
   z-index: 1;
-  padding-bottom: 24%;
 }
 .cs_about.cs_style_1 .cs_about_thumbnail.cs_type_2 {
   padding-bottom: 140px;
@@ -7600,7 +7620,8 @@ a.ui-button:active,
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
-  transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1),
+  transition:
+    transform 0.3s cubic-bezier(0.77, 0, 0.18, 1),
     -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .cs_iconbox.cs_style_4 .cs_iconbox_btn_icon span:first-child {
@@ -7931,9 +7952,11 @@ a.ui-button:active,
     to(currentColor)
   );
   background-image: linear-gradient(90deg, currentColor 0, currentColor 100%);
-  -webkit-transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  -webkit-transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
-  transition: background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
+  transition:
+    background-size 0.42s cubic-bezier(0.49, 0.49, 0.08, 1),
     color 0.27s ease-out;
   background-position: 100% calc(100% - 0px);
   background-size: 0 1px;
@@ -9777,7 +9800,8 @@ a.ui-button:active,
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
   transition: -webkit-transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
   transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1),
+  transition:
+    transform 0.4s cubic-bezier(0.77, 0, 0.18, 1),
     -webkit-transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .cs_pricing_table.cs_style_1 .cs_pricing_icon span:first-child {
@@ -10127,7 +10151,8 @@ a.ui-button:active,
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
-  transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1),
+  transition:
+    transform 0.3s cubic-bezier(0.77, 0, 0.18, 1),
     -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .cs_card.cs_style_1 .cs_card_btn_icon span:first-child {

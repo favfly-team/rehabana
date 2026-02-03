@@ -1,5 +1,6 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { SectionHeading } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
@@ -61,20 +62,13 @@ const FeatureItem = ({ item }) => {
           <div className="cs_iconbox_header">
             {icon?.url && (
               <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_color">
-                <PrismicNextImage field={icon} alt={icon.alt ?? undefined} />
+                <PrismicNextImage
+                  field={icon}
+                  alt={icon.alt ?? undefined}
+                  style={{ width: "32px", height: "32px" }}
+                />
               </div>
             )}
-            <a
-              href="service-details.html"
-              className="cs_iconbox_btn_icon cs_center"
-            >
-              <span>
-                <i className="fa-solid fa-arrow-right-long" />
-              </span>
-              <span>
-                <i className="fa-solid fa-arrow-right-long" />
-              </span>
-            </a>
           </div>
           {title?.[0]?.text && (
             <h3 className="cs_iconbox_title cs_fs_32 cs_bold">

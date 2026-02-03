@@ -26,14 +26,6 @@ const AboutSection = ({ slice }) => {
               {image?.url && (
                 <PrismicNextImage field={image} alt={image.alt ?? undefined} />
               )}
-              <div className="cs_experience_box cs_center cs_accent_bg cs_radius_50">
-                <p className="cs_experience_box_number cs_fs_48 cs_bold cs_white_color">
-                  30+
-                </p>
-                <p className="cs_experience_box_title cs_fs_20 cs_medium cs_white_color">
-                  Experience
-                </p>
-              </div>
             </div>
           </div>
           <div className={`col-lg-6 ${swap ? "cs_about_content_col" : ""}`}>
@@ -84,36 +76,6 @@ const AboutSection = ({ slice }) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="cs_about_shape_1">
-        <img
-          src="https://medixal-html.vercel.app/assets/img/about_shape_1.svg"
-          alt="Shape Image"
-        />
-      </div>
-      <div className="cs_about_shape_2">
-        <img
-          src="https://medixal-html.vercel.app/assets/img/about_shape_1.svg"
-          alt="Shape Image"
-        />
-      </div>
-      <div className="cs_about_shape_3">
-        <img
-          src="https://medixal-html.vercel.app/assets/img/about_shape_1.svg"
-          alt="Shape Image"
-        />
-      </div>
-      <div className="cs_about_shape_4">
-        <img
-          src="https://medixal-html.vercel.app/assets/img/about_shape_1.svg"
-          alt="Shape Image"
-        />
-      </div>
-      <div className="cs_about_shape_5">
-        <img
-          src="https://medixal-html.vercel.app/assets/img/about_shape_4.svg"
-          alt="Shape Image"
-        />
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>

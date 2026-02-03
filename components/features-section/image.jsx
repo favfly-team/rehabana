@@ -43,7 +43,7 @@ const FeaturesImageSection = ({ slice }) => {
             <div className="cs_height_50 cs_height_lg_40" />
             <div className="row cs_row_gap_30 cs_gap_y_30">
               {items.map((item, index) => (
-                <FeaturesImageItem key={index} item={item} index={index} />
+                <FeaturesImageItem key={index} item={item} />
               ))}
             </div>
           </>
@@ -54,12 +54,12 @@ const FeaturesImageSection = ({ slice }) => {
   );
 };
 
-const FeaturesImageItem = ({ item, index }) => {
+const FeaturesImageItem = ({ item }) => {
   const { image, title, details } = item || {};
 
   return (
     <div className="col-lg-4">
-      <div className="cs_card cs_style_4 cs_radius_8">
+      <div className="cs_card cs_style_4 cs_radius_8 h-100">
         {image?.url && (
           <div className="cs_card_thumbnail">
             <PrismicNextImage field={image} alt={image.alt ?? undefined} />
@@ -78,9 +78,6 @@ const FeaturesImageItem = ({ item, index }) => {
               />
             </h3>
           )}
-          <div className="cs_card_index cs_fs_36">
-            {String(index + 1).padStart(2, "0")}
-          </div>
         </div>
         {details && (
           <PrismicRichText

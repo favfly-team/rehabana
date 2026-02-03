@@ -99,12 +99,6 @@ const HeroSection = ({ slice }) => {
             )}
           </div>
         </div>
-        <div className="cs_hero_shape_2 position-absolute">
-          <img
-            src="https://medixal-html.vercel.app/assets/img/hero_shape_1.svg"
-            alt="Shape"
-          />
-        </div>
       </div>
     </section>
   );
