@@ -71,16 +71,12 @@ const FeatureItem = ({ item }) => {
             )}
           </div>
           {title?.[0]?.text && (
-            <h3 className="cs_iconbox_title cs_fs_32 cs_bold">
-              <PrismicRichText
-                field={title}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            </h3>
+            <PrismicRichText
+              field={title}
+              components={createRichTextComponents({
+                heading3ClassName: "cs_iconbox_title cs_fs_32 cs_bold",
+              })}
+            />
           )}
           {details && (
             <PrismicRichText

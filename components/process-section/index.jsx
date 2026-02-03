@@ -69,16 +69,12 @@ const ProcessItem = ({ item, index, isReverse }) => {
   const cardInfoBlock = (
     <div className="cs_card_info">
       {title?.[0]?.text && (
-        <h3 className="cs_card_title cs_fs_24 cs_semibold">
-          <PrismicRichText
-            field={title}
-            components={{
-              heading1: ({ children }) => <>{children}</>,
-              heading2: ({ children }) => <>{children}</>,
-              heading3: ({ children }) => <>{children}</>,
-            }}
-          />
-        </h3>
+        <PrismicRichText
+          field={title}
+          components={createRichTextComponents({
+            heading3ClassName: "cs_card_title cs_fs_24 cs_semibold",
+          })}
+        />
       )}
       {details && (
         <PrismicRichText

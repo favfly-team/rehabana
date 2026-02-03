@@ -116,16 +116,12 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
         )}
         <div className="cs_card_bio">
           {name?.[0]?.text && (
-            <h3 className="cs_card_title cs_fs_24 cs_bold mb-3">
-              <PrismicRichText
-                field={name}
-                components={{
-                  heading1: ({ children }) => <>{children}</>,
-                  heading2: ({ children }) => <>{children}</>,
-                  heading3: ({ children }) => <>{children}</>,
-                }}
-              />
-            </h3>
+            <PrismicRichText
+              field={name}
+              components={createRichTextComponents({
+                heading3ClassName: "cs_card_title cs_fs_24 cs_bold mb-3",
+              })}
+            />
           )}
           {details && (
             <PrismicRichText

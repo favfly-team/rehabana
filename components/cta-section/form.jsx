@@ -60,9 +60,12 @@ const CTAFormItem = ({ item }) => {
         )}
         <div className="cs_iconbox_text">
           {title?.[0]?.text && (
-            <h3 className="cs_iconbox_title cs_fs_32 cs_white_color">
-              <PrismicRichText field={title} components={headingComponents} />
-            </h3>
+            <PrismicRichText
+              field={title}
+              components={createRichTextComponents({
+                heading3ClassName: "cs_iconbox_title cs_fs_32 cs_white_color",
+              })}
+            />
           )}
           {details && (
             <PrismicRichText
