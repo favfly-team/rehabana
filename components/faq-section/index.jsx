@@ -82,12 +82,6 @@ const FAQSection = ({ slice }) => {
           </>
         )}
       </div>
-      <div className="cs_faq_shape_1 position-absolute">
-        <img
-          src="https://medixal-html.vercel.app/assets/img/faq_shape_1.svg"
-          alt="Shape"
-        />
-      </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
   );
@@ -103,16 +97,12 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
     >
       <div className="cs_accordian_head">
         {title?.[0]?.text && (
-          <h2 className="cs_accordian_title cs_fs_20 cs_semibold">
-            <PrismicRichText
-              field={title}
-              components={{
-                heading1: ({ children }) => <>{children}</>,
-                heading2: ({ children }) => <>{children}</>,
-                heading3: ({ children }) => <>{children}</>,
-              }}
-            />
-          </h2>
+          <PrismicRichText
+            field={title}
+            components={createRichTextComponents({
+              heading2ClassName: "cs_accordian_title cs_fs_20 cs_semibold",
+            })}
+          />
         )}
         <span className="cs_accordian_toggle cs_center cs_radius_50">
           <FaPlus />
