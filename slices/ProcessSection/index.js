@@ -1,4 +1,4 @@
-import DefaultSection from "@/components/process-section/page";
+import DefaultSection from "@/components/process-section";
 
 /**
  * @typedef {import("@prismicio/client").Content.ProcessSectionSlice} ProcessSectionSlice
