@@ -1,7 +1,8 @@
+"use client";
 import { FaStar, FaQuoteRight } from "react-icons/fa6";
 import { SectionHeading } from "@/components/ui";
 
-const TestimonialSlider = () => {
+const TestimonialSlider = ({ slice }) => {
   return (
     <section className="cs_slider cs_style_1 cs_slider_gap_30 cs_ptb_12 position-relative">
       <div className="cs_height_120 cs_height_lg_80" />

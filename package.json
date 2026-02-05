@@ -13,6 +13,7 @@
     "@prismicio/client": "^7.21.3",
     "@prismicio/next": "^2.2.1",
     "@prismicio/react": "^3.3.0",
+    "@splidejs/react-splide": "^0.7.12",
     "fslightbox-react": "^2.0.2",
     "next": "14.2.35",
     "react": "^18",

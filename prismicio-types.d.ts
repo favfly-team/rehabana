@@ -1377,16 +1377,6 @@ export interface CtaSectionSliceFormPrimaryItemsItem {
  */
 export interface CtaSectionSliceDefaultPrimary {
   /**
-   * Subheading field in *CTASection → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cta_section.default.primary.subheading
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  subheading: prismic.KeyTextField;
-
-  /**
    * Heading field in *CTASection → Default → Primary*
    *
    * - **Field Type**: Rich Text

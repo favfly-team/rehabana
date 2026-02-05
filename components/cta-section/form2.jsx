@@ -1,4 +1,4 @@
-import { SectionHeading, Button } from "@/components/ui";
+import { SectionHeading } from "@/components/ui";
 
 const CTAForm2Section = ({ slice }) => {
   const { primary } = slice || {};
@@ -13,13 +13,7 @@ const CTAForm2Section = ({ slice }) => {
             style={{
               backgroundImage: `url("${background_image.url}")`,
             }}
-          >
-            <Button
-              href="https://www.youtube.com/embed/rRid6GCJtgc"
-              variant="player2"
-              className="cs_video_open"
-            />
-          </div>
+          />
         )}
         <section className="cs_appointment cs_style_1">
           <div className="container-fluid">
