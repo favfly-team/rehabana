@@ -1,14 +1,16 @@
 "use client";
 
 import { FaCheck } from "react-icons/fa6";
+import { PrismicRichText } from "@prismicio/react";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
-const HeroSectionForm = () => {
-  const features = [
-    "Expert Medical Professionals",
-    "24/7 Emergency Care",
-    "Personalized Treatment Plans",
-    "Advanced Medical Facilities",
-  ];
+const HeroSectionForm = ({ slice }) => {
+  const { primary } = slice || {};
+  const { subheading, heading, description, list, form_title } = primary || {};
+
+  const listItems = Array.isArray(list)
+    ? list.map((item) => item?.text).filter(Boolean)
+    : [];
 
   return (
     <section
@@ -26,38 +28,53 @@ const HeroSectionForm = () => {
         <div className="row cs_gap_y_40 align-items-center">
           <div className="col-lg-6">
             <div className="cs_hero_content">
-              <h3 className="cs_hero_title_mini cs_fs_14 cs_medium cs_uppercase mb-3">
-                EXPERT MEDICAL CARE
-              </h3>
-              <h1 className="cs_hero_title cs_fs_40 mb-4">
-                Looking For The Best Healthcare & Counselling Services?
-              </h1>
-              <p className="cs_hero_subtitle cs_fs_16 cs_medium mb-4">
-                Our expert medical professionals and therapists will help you on
-                your journey to better health. Experience personalized care and
-                comprehensive treatment plans tailored to your needs. We are
-                here to support your wellness and recovery!
-              </p>
-              <div className="row" style={{ gap: "10px" }}>
-                {features.map((feature, index) => (
-                  <div
-                    className="cs_iconbox cs_style_11 d-flex align-items-center"
-                    style={{ gap: "10px" }}
-                  >
+              {subheading && (
+                <h3 className="cs_hero_title_mini cs_fs_14 cs_medium cs_uppercase mb-3">
+                  {subheading}
+                </h3>
+              )}
+              {heading?.[0]?.text && (
+                <PrismicRichText
+                  field={heading}
+                  components={createRichTextComponents({
+                    heading1ClassName: "cs_hero_title cs_fs_40 mb-4",
+                  })}
+                />
+              )}
+              {description?.[0]?.text && (
+                <div className="mb-4">
+                  <PrismicRichText
+                    field={description}
+                    components={createRichTextComponents({
+                      paragraphClassName:
+                        "cs_hero_subtitle cs_fs_16 cs_medium mb-0",
+                    })}
+                  />
+                </div>
+              )}
+              {listItems.length > 0 && (
+                <div className="row" style={{ gap: "10px" }}>
+                  {listItems.map((feature, index) => (
                     <div
-                      className="cs_iconbox_icon cs_center cs_radius_50 text-white cs_accent_bg mb-0"
-                      style={{
-                        width: "32px",
-                        height: "32px",
-                        minWidth: "32px",
-                      }}
+                      key={index}
+                      className="cs_iconbox cs_style_11 d-flex align-items-center"
+                      style={{ gap: "10px" }}
                     >
-                      <FaCheck style={{ fontSize: "14px" }} />
+                      <div
+                        className="cs_iconbox_icon cs_center cs_radius_50 text-white cs_accent_bg mb-0"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          minWidth: "32px",
+                        }}
+                      >
+                        <FaCheck style={{ fontSize: "14px" }} />
+                      </div>
+                      <p className="cs_iconbox_text mb-0 cs_fs_16">{feature}</p>
                     </div>
-                    <p className="cs_iconbox_text mb-0 cs_fs_16">{feature}</p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="col-lg-6">
@@ -67,9 +84,11 @@ const HeroSectionForm = () => {
                 border: "1px solid rgba(0, 0, 0, 0.1)",
               }}
             >
-              <h3 className="cs_appointment_heading cs_fs_20 cs_medium mb-4">
-                Book An Appointment
-              </h3>
+              {form_title && (
+                <h3 className="cs_appointment_heading cs_fs_20 cs_medium mb-4">
+                  {form_title}
+                </h3>
+              )}
               <form className="cs_appointment_form row cs_gap_y_30">
                 <div className="col-12">
                   <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">

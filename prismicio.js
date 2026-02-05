@@ -15,8 +15,18 @@ export const repositoryName =
  *
  * @type {import("@prismicio/client").Route[]}
  */
-// TODO: Update the routes array to match your project's route structure.
-const routes = [{ type: "service_page", path: "/:uid" }];
+const routes = [
+  { type: "home_page", path: "/" },
+  { type: "about_page", path: "/about" },
+  { type: "blog_page", path: "/blog" },
+  { type: "blog_post", path: "/:uid" },
+  { type: "contact_page", path: "/contact" },
+  { type: "gallery_page", path: "/gallery" },
+  { type: "service_page", path: "/:uid" },
+  { type: "services_page", path: "/services" },
+  { type: "team_page", path: "/team" },
+  { type: "testimonials_page", path: "/testimonials" },
+];
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to

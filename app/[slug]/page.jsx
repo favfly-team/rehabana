@@ -5,7 +5,7 @@ import { asText, asHTML } from "@prismicio/client";
 import Seo from "@/lib/seo/Seo";
 import { notFound } from "next/navigation";
 import BlogPost from "@/components/blog-post";
-
+import Log from "@/components/log";
 const CustomPage = async ({ params }) => {
   const client = createClient();
 
@@ -28,6 +28,7 @@ const CustomPage = async ({ params }) => {
   if (service) {
     return (
       <>
+        <Log data={service.data} />
         <SliceZone slices={service.data.slices} components={components} />
       </>
     );
