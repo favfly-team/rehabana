@@ -15,7 +15,7 @@ const HeroSectionForm = () => {
       className="cs_hero cs_style_1 cs_type_5 cs_bg_filed position-relative"
       style={{
         backgroundImage:
-          'url("https://medixal-html.vercel.app/assets/img/hero_bg_3.png")',
+          'url("https://images.prismic.io/rehabana/aYRohd0YXLCxVaQI_hero_bg_3.png?auto=format,compress")',
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -35,8 +35,8 @@ const HeroSectionForm = () => {
               <p className="cs_hero_subtitle cs_fs_16 cs_medium mb-4">
                 Our expert medical professionals and therapists will help you on
                 your journey to better health. Experience personalized care and
-                comprehensive treatment plans tailored to your needs. We are here
-                to support your wellness and recovery!
+                comprehensive treatment plans tailored to your needs. We are
+                here to support your wellness and recovery!
               </p>
               <div className="row" style={{ gap: "10px" }}>
                 {features.map((feature, index) => (

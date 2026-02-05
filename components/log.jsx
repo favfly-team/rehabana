@@ -1,6 +1,6 @@
 "use client";
 const Log = ({ data }) => {
-  // console.log(data);
+  console.log(data);
   return null;
 };
 

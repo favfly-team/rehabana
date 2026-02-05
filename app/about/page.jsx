@@ -5,13 +5,8 @@ import Seo from "@/lib/seo/Seo";
 
 const AboutPage = async () => {
   const client = createClient();
-
   const doc = await client.getSingle("about_page");
-  return (
-    <>
-      <SliceZone slices={doc.data.slices} components={components} />
-    </>
-  );
+  return <SliceZone slices={doc.data.slices} components={components} />;
 };
 
 export async function generateMetadata() {

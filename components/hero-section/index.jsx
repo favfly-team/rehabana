@@ -22,7 +22,7 @@ const HeroSection = ({ slice }) => {
       className="cs_hero cs_style_1 cs_type_5 cs_bg_filed position-relative"
       style={{
         backgroundImage:
-          'url("https://medixal-html.vercel.app/assets/img/hero_bg_3.png")',
+          'url("https://images.prismic.io/rehabana/aYRohd0YXLCxVaQI_hero_bg_3.png?auto=format,compress")',
       }}
     >
       <div className="container">
