@@ -37,6 +37,29 @@
   }
 }
 
+/* Team Details Swap Styles */
+.cs_team_details_swap .row {
+  display: flex;
+}
+
+.cs_team_details_swap .cs_team_details_img_col {
+  order: 2;
+}
+
+.cs_team_details_swap .cs_team_details_content_col {
+  order: 1;
+}
+
+@media (max-width: 991px) {
+  .cs_team_details_swap .cs_team_details_img_col {
+    order: 1;
+  }
+
+  .cs_team_details_swap .cs_team_details_content_col {
+    order: 2;
+  }
+}
+
 /* Testimonial Video Button Styles */
 .cs_card.cs_style_1 .cs_card_thumbnail .cs_player_btn.cs_style_2 {
   position: absolute;

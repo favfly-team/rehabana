@@ -17,6 +17,7 @@ const TeamDetails = ({ slice }) => {
     setOpenSection((prev) => (prev === id ? null : id));
 
   const {
+    swap,
     image,
     subheading,
     heading: headingField,
@@ -37,14 +38,14 @@ const TeamDetails = ({ slice }) => {
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <div className="cs_team_details_wrapper">
+        <div className={`cs_team_details_wrapper ${swap ? "cs_team_details_swap" : ""}`}>
           <div className="row cs_gap_y_40">
-            <div className="col-lg-4">
+            <div className={`col-lg-4 ${swap ? "cs_team_details_img_col" : ""}`}>
               <ProfileImage src={image.url} alt={image.alt ?? "Team member"} />
               <div className="cs_height_30 cs_height_lg_30" />
               <SocialLinks links={socialLinks} />
             </div>
-            <div className="col-lg-8">
+            <div className={`col-lg-8 ${swap ? "cs_team_details_content_col" : ""}`}>
               <div className="cs_team_content">
                 <TeamHeader
                   category={subheading}
