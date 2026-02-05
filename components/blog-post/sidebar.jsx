@@ -7,10 +7,13 @@ const BlogPostSidebar = () => {
   };
 
   return (
-    <div className="cs_blog_sidebar">
+    <div
+      className="cs_blog_sidebar"
+      style={{ position: "sticky", top: "120px" }}
+    >
       <div
         className="cs_blog_sidebar_card cs_white_bg cs_radius_10"
-        style={{ padding: "40px", position: "sticky", top: "20px" }}
+        style={{ padding: "40px" }}
       >
         <h3 className="cs_sidebar_title cs_fs_24 cs_heading_font mb-4 text-center">
           Discover Your Perfect Diamond Jewelry

@@ -1,19 +1,14 @@
 "use client";
+
+import { SliceZone } from "@prismicio/react";
+import { components } from "@/slices";
 import BlogPostHero from "./hero";
-import BlogPostDetails from "./details";
 import BlogPostSidebar from "./sidebar";
 import BlogPostSocial from "./social";
 
-const BlogPost = ({
-  date,
-  title,
-  heroImage,
-  content,
-  shareUrl,
-  shareTitle,
-  shareDescription,
-  shareImage,
-}) => {
+const BlogPost = ({ data }) => {
+  const { slices } = data;
+
   return (
     <div className="cs_blog_post_page cs_gray_bg">
       <div className="cs_height_120 cs_height_lg_80" />
@@ -21,20 +16,15 @@ const BlogPost = ({
         <div className="row cs_gap_y_30">
           <div className="col-lg-8">
             {/* Hero Card - Separate */}
-            <BlogPostHero date={date} title={title} image={heroImage} />
+            <BlogPostHero data={data} />
 
-            {/* Blog Details Card - Separate */}
-            <BlogPostDetails content={content} />
-
-            {/* Add more sections here in the future */}
+            {/* Slice Zone: blog_post_content and any future sections (FAQ, CTA, etc.) */}
+            {slices?.length > 0 && (
+              <SliceZone slices={slices} components={components} />
+            )}
 
             {/* Social Share Card - Separate */}
-            <BlogPostSocial
-              url={shareUrl}
-              title={shareTitle || title}
-              description={shareDescription}
-              image={shareImage || heroImage}
-            />
+            <BlogPostSocial data={data} />
           </div>
           <div className="col-lg-4">
             <BlogPostSidebar />

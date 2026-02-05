@@ -70,7 +70,7 @@ const Header = () => {
         <div className="container-fluid">
           <div className="cs_main_header_in">
             <div className="cs_main_header_left">
-              <a className="cs_site_branding" href="index.html">
+              <a className="cs_site_branding" href="/">
                 <img
                   src="https://www.rehabana.com/wp-content/uploads/2025/12/Rehabana-logo.png"
                   alt="Logo"

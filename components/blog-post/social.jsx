@@ -1,5 +1,6 @@
 "use client";
 
+import { asText } from "@prismicio/client";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -13,12 +14,24 @@ import {
   PinterestIcon,
 } from "react-share";
 
-const BlogPostSocial = ({ url, title, description, image }) => {
-  const shareUrl =
-    url || (typeof window !== "undefined" ? window.location.href : "");
-  const shareTitle = title || "";
-  const shareDescription = description || "";
-  const shareImage = image || "";
+/**
+ * @param {{ data: { url?: string, title?: import("@prismicio/client").RichTextField, description?: import("@prismicio/client").RichTextField, image?: { url?: string } }, url?: string }} props
+ * Accepts Prismic blog data (title/description as rich text, image object) and optional url override.
+ */
+const BlogPostSocial = ({ data }) => {
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareTitle =
+    data?.title && Array.isArray(data.title)
+      ? asText(data.title)
+      : (typeof data?.title === "string" ? data.title : "") || "";
+  const shareDescription =
+    data?.description && Array.isArray(data.description)
+      ? asText(data.description)
+      : (typeof data?.description === "string" ? data.description : "") || "";
+  const shareImage =
+    data?.image?.url ??
+    (typeof data?.image === "string" ? data.image : "") ??
+    "";
 
   const iconSize = 32;
   const iconStyle = {
