@@ -8196,11 +8196,11 @@ a.ui-button:active,
   }
 }
 .cs_post.cs_style_1 .cs_post_title {
-  margin-bottom: 30px;
+  margin-bottom: 14px;
 }
 @media (max-width: 991px) {
   .cs_post.cs_style_1 .cs_post_title {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 }
 .cs_post.cs_style_1 .cs_text_btn {
