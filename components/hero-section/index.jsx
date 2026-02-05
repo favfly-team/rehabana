@@ -1,8 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import { FaPlay } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
-import { Button } from "@/components/ui";
+import FsLightbox from "fslightbox-react";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const HeroSection = ({ slice }) => {
@@ -16,6 +19,9 @@ const HeroSection = ({ slice }) => {
     counter,
     image,
   } = primary || {};
+
+  const [videoLightboxToggler, setVideoLightboxToggler] = useState(false);
+  const openVideoLightbox = () => setVideoLightboxToggler((t) => !t);
 
   return (
     <section
@@ -67,15 +73,28 @@ const HeroSection = ({ slice }) => {
                 </PrismicNextLink>
               )}
               {video_button?.url && (
-                <Button
-                  href={video_button.url}
-                  variant="player"
-                  playerType1={true}
-                  playerIcon={<FaPlay />}
-                  className="cs_video_open"
-                >
-                  {video_button.text}
-                </Button>
+                <>
+                  <button
+                    style={{ backgroundColor: "transparent", border: "none" }}
+                    type="button"
+                    onClick={openVideoLightbox}
+                    className="cs_player_btn cs_style_1 cs_type_1 cs_video_open"
+                    aria-label={video_button.text || "Play video"}
+                  >
+                    <span className="cs_player_btn_icon cs_center">
+                      <FaPlay />
+                    </span>
+                    {video_button.text && (
+                      <span className="cs_play_btn_text cs_fs_18 cs_medium cs_accent_color">
+                        {video_button.text}
+                      </span>
+                    )}
+                  </button>
+                  <FsLightbox
+                    toggler={videoLightboxToggler}
+                    sources={[video_button.url]}
+                  />
+                </>
               )}
             </div>
             {counter && counter.length > 0 && (
