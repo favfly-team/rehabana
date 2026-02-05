@@ -11848,3 +11848,13 @@ a.ui-button:active,
   -webkit-box-shadow: none;
   box-shadow: none;
 } /*# sourceMappingURL=style.css.map */
+
+/*--------------------------------------------------------------
+    24. Splide
+  ----------------------------------------------------------------*/
+.splide__pagination {
+  bottom: -1.5em !important;
+}
+.splide__pagination__page.is-active {
+  background-color: var(--accent-color) !important;
+}

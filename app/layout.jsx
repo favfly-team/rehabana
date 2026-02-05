@@ -5,6 +5,7 @@ import StyledJsxRegistry from "@/lib/styledJsx/StyleRegistry";
 import "@/styles/bootstrap.min.css";
 import "@/styles/style.css";
 import "@/styles/custom.css";
+import "@splidejs/react-splide/css";
 
 //  ==== import fonts ====
 import { Inter } from "next/font/google";

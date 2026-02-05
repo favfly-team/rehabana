@@ -143,7 +143,17 @@ const GalleryItem = ({ item, openLightbox, index }) => {
               className="img-fluid"
             />
             {video?.url && (
-              <Button href="#" variant="player2" className="cs_video_open" />
+              <Button
+                href="#"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+                variant="player2"
+                className="cs_video_open"
+              />
             )}
           </div>
         )}

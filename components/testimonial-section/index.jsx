@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/dist/css/splide-core.min.css";
 import { FaStar } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
