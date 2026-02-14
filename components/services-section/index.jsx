@@ -35,54 +35,42 @@ const ServicesSection = ({ slice }) => {
 };
 
 const ServiceItem = ({ item }) => {
-  const { image, title, details, link } = item || {};
+  const { data, url } = item?.service || {};
+  const { meta_title, meta_description, featured_image } = data || {};
 
   return (
     <div className="col-lg-4">
-      <div className="cs_iconbox cs_style_8 cs_white_bg cs_radius_10">
-        {image?.url && (
+      <div className="cs_iconbox cs_style_8 cs_white_bg cs_radius_10 h-100">
+        {featured_image?.url && (
           <div className="cs_card_thumbnail cs_radius_10 mb-4">
             <PrismicNextImage
-              field={image}
-              alt={image.alt ?? undefined}
+              field={featured_image}
               className="img-fluid cs_radius_10"
             />
           </div>
         )}
-        {title?.[0]?.text && (
-          <PrismicNextLink field={link}>
-            <PrismicRichText
-              field={title}
-              components={createRichTextComponents({
-                heading3ClassName: "cs_iconbox_title cs_fs_32 cs_medium",
-              })}
-            />
-          </PrismicNextLink>
-        )}
-        {details && (
-          <PrismicRichText
-            field={details}
-            components={createRichTextComponents({
-              paragraphClassName: "cs_iconbox_subtitle leading-relaxed text-sm",
-            })}
-          />
-        )}
-        {link?.url && (
-          <PrismicNextLink
-            field={link}
-            className="cs_text_btn cs_fs_18 cs_medium cs_heading_color"
-          >
-            <span>{link.text}</span>
-            <div className="cs_text_btn_icon cs_center">
-              <span>
-                <FaArrowRightLong />
-              </span>
-              <span>
-                <FaArrowRightLong />
-              </span>
-            </div>
-          </PrismicNextLink>
-        )}
+        <PrismicNextLink href={url}>
+          <h3 className="cs_iconbox_title cs_fs_24 cs_medium">{meta_title}</h3>
+        </PrismicNextLink>
+
+        <p className="cs_iconbox_subtitle leading-relaxed text-sm">
+          {meta_description}
+        </p>
+
+        <PrismicNextLink
+          href={url}
+          className="cs_text_btn cs_fs_16 cs_heading_color"
+        >
+          <span>Learn More</span>
+          <div className="cs_text_btn_icon cs_center">
+            <span>
+              <FaArrowRightLong />
+            </span>
+            <span>
+              <FaArrowRightLong />
+            </span>
+          </div>
+        </PrismicNextLink>
       </div>
     </div>
   );

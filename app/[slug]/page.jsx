@@ -4,7 +4,8 @@ import { SliceZoneWithContext } from "@/lib/SliceZoneWithContext";
 import Seo from "@/lib/seo/Seo";
 import { notFound } from "next/navigation";
 import BlogPost from "@/components/blog-post";
-import Log from "@/components/log";
+import BlogsSection from "@/components/blogs-section";
+
 const CustomPage = async ({ params }) => {
   const client = createClient();
 
@@ -23,25 +24,40 @@ const CustomPage = async ({ params }) => {
     notFound();
   }
 
+  // Same blogs section as home page: config + recent posts
+  const blogsSection = await client.getSingle("blogs");
+  const blogs = await client.getByType("blog_post", {
+    orderings: {
+      field: "my.blog_post.published_date",
+      direction: "desc",
+    },
+    pageSize: 3,
+  });
+
   // Handle service page
   if (service) {
     return (
-      <SliceZoneWithContext
-        slices={service.data.slices}
-        components={components}
-      />
+      <>
+        <SliceZoneWithContext
+          slices={service.data.slices}
+          components={components}
+        />
+        <BlogsSection
+          slice={{ primary: blogsSection.data }}
+          blogs={blogs.results}
+        />
+      </>
     );
   }
 
-  // Handle blog post: fetch global gallery so SliceZone context is available for gallery slice
   if (blog) {
-    const globalGallery = await client
-      .getSingle("gallery")
-      .catch(() => null);
     return (
       <>
-        <Log data={blog.data} />
-        <BlogPost data={blog.data} globalGallery={globalGallery} />
+        <BlogPost data={blog.data} />
+        <BlogsSection
+          slice={{ primary: blogsSection.data }}
+          blogs={blogs.results}
+        />
       </>
     );
   }

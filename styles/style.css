@@ -7852,7 +7852,7 @@ a.ui-button:active,
 }
 
 .cs_iconbox.cs_style_8 {
-  padding: 40px;
+  padding: 20px;
   height: auto;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -7973,11 +7973,11 @@ a.ui-button:active,
   }
 }
 .cs_iconbox.cs_style_8 .cs_iconbox_subtitle {
-  margin-bottom: 45px;
+  margin-bottom: 20px;
 }
 @media (max-width: 991px) {
   .cs_iconbox.cs_style_8 .cs_iconbox_subtitle {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 .cs_iconbox.cs_style_8:hover {
