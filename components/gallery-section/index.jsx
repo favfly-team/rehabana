@@ -1,7 +1,7 @@
 "use client";
 
 import { PrismicNextImage } from "@prismicio/next";
-import { Button, SectionHeading } from "@/components/ui";
+import { Button, SectionHeading, ViewAllButton } from "@/components/ui";
 import { useEffect, useState } from "react";
 import FsLightbox from "fslightbox-react";
 
@@ -85,6 +85,7 @@ const GallerySection = ({ slice }) => {
                 )
             )}
           </div>
+          <ViewAllButton href="/gallery" />
         </div>
         <div className="cs_height_120 cs_height_lg_80" />
       </section>

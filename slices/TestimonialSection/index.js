@@ -3,7 +3,6 @@ import TestimonialVideoSection from "@/components/testimonial-section/video";
 import TestimonialSlider from "@/components/testimonial-section/slider";
 
 const TestimonialSection = ({ slice, context }) => {
-  console;
   switch (slice.variation) {
     case "global":
       switch (slice?.primary?.variation) {

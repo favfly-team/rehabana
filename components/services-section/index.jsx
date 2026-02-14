@@ -1,9 +1,7 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
-import { SectionHeading } from "@/components/ui";
-import { createRichTextComponents } from "@/lib/richTextComponents";
+import { SectionHeading, ViewAllButton } from "@/components/ui";
 
 const ServicesSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -26,6 +24,7 @@ const ServicesSection = ({ slice }) => {
                 <ServiceItem key={index} item={item} />
               ))}
             </div>
+            <ViewAllButton href="/services" />
           </>
         )}
       </div>

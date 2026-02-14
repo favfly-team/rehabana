@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import FsLightbox from "fslightbox-react";
-import { SectionHeading, Button } from "@/components/ui";
+import { SectionHeading, Button, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const TestimonialVideoSection = ({ slice }) => {
@@ -62,6 +62,7 @@ const TestimonialVideoSection = ({ slice }) => {
                 slide={lightboxController.slide}
               />
             )}
+            <ViewAllButton href="/testimonials" />
           </>
         )}
       </div>

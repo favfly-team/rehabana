@@ -1,6 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
-import { SectionHeading } from "@/components/ui";
+import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { PrismicNextImage } from "@prismicio/next";
 import { format } from "date-fns";
 
@@ -19,6 +19,7 @@ const BlogsSection = ({ slice, blogs = [] }) => {
             <BlogItem key={doc.id} doc={doc} />
           ))}
         </div>
+        <ViewAllButton href="/blog" />
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>

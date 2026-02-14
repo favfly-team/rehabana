@@ -48,13 +48,7 @@
                 "config": {
                   "label": "Category",
                   "placeholder": "",
-                  "options": [
-                    "Therapy",
-                    "Candid",
-                    "Our Doctor",
-                    "Teams",
-                    "Exercise"
-                  ]
+                  "options": ["Kalighat", "Saltlake"]
                 }
               },
               "image": {
@@ -104,10 +98,7 @@
           "config": {
             "label": "Component type",
             "placeholder": "Choose how to display",
-            "options": [
-              "default",
-              "-"
-            ],
+            "options": ["default", "-"],
             "default_value": "default"
           }
         }

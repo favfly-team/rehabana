@@ -5,7 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { FaStar } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
-import { SectionHeading } from "@/components/ui";
+import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const TestimonialSection = ({ slice }) => {
@@ -93,6 +93,7 @@ const TestimonialSection = ({ slice }) => {
             </div>
           </div>
         </div>
+        <ViewAllButton href="/testimonials" />
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
