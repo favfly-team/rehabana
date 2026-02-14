@@ -1,7 +1,7 @@
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
 import Seo from "@/lib/seo/Seo";
+import { SliceZoneWithContext } from "@/lib/SliceZoneWithContext";
 
 const TestimonialsPage = async () => {
   const client = createClient();
@@ -9,7 +9,7 @@ const TestimonialsPage = async () => {
   const doc = await client.getSingle("testimonials_page");
   return (
     <>
-      <SliceZone slices={doc.data.slices} components={components} />
+      <SliceZoneWithContext slices={doc.data.slices} components={components} />
     </>
   );
 };
