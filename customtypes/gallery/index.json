@@ -1,0 +1,90 @@
+{
+  "format": "custom",
+  "id": "gallery",
+  "label": "Gallery",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "default": {
+        "type": "Group",
+        "config": {
+          "label": "Default",
+          "repeat": false,
+          "fields": {
+            "subheading": {
+              "type": "Text",
+              "config": {
+                "label": "Subheading",
+                "placeholder": ""
+              }
+            },
+            "heading": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Heading",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "single": "heading2,strong"
+              }
+            },
+            "description": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph,strong,hyperlink"
+              }
+            },
+            "items": {
+              "type": "Group",
+              "config": {
+                "label": "Items",
+                "repeat": true,
+                "fields": {
+                  "category": {
+                    "type": "Select",
+                    "config": {
+                      "label": "Category",
+                      "placeholder": "",
+                      "options": ["Kalighat", "Saltlake"]
+                    }
+                  },
+                  "image": {
+                    "type": "Image",
+                    "config": {
+                      "label": "Image",
+                      "constraint": {
+                        "width": 600,
+                        "height": null
+                      },
+                      "thumbnails": [
+                        {
+                          "name": "large",
+                          "width": 1500,
+                          "height": null
+                        }
+                      ]
+                    }
+                  },
+                  "video": {
+                    "type": "Link",
+                    "config": {
+                      "label": "Video",
+                      "placeholder": "",
+                      "select": null,
+                      "allowTargetBlank": false,
+                      "allowText": false,
+                      "repeat": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

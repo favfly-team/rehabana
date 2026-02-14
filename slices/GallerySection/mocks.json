@@ -114,5 +114,22 @@
 				"value": []
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "with_selector",
+		"primary": {
+			"variation": {
+				"__TYPE__": "FieldContent",
+				"value": "default",
+				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

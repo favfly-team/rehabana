@@ -43,43 +43,22 @@
             "label": "Items",
             "repeat": true,
             "fields": {
-              "image": {
-                "type": "Image",
-                "config": {
-                  "label": "Image",
-                  "constraint": {
-                    "width": 500,
-                    "height": 375
-                  },
-                  "thumbnails": []
-                }
-              },
-              "title": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Title",
-                  "placeholder": "",
-                  "allowTargetBlank": false,
-                  "single": "heading3,strong"
-                }
-              },
-              "details": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Details",
-                  "placeholder": "",
-                  "allowTargetBlank": false,
-                  "single": "paragraph,strong"
-                }
-              },
-              "link": {
+              "service": {
                 "type": "Link",
                 "config": {
-                  "label": "Link",
-                  "placeholder": "",
-                  "select": null,
-                  "allowTargetBlank": true,
-                  "allowText": true
+                  "label": "Service",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    {
+                      "id": "service_page",
+                      "fields": [
+                        "meta_title",
+                        "meta_description",
+                        "featured_image"
+                      ]
+                    }
+                  ]
                 }
               }
             }

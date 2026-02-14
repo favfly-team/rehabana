@@ -1,0 +1,245 @@
+{
+  "format": "custom",
+  "id": "testimonials",
+  "label": "Testimonials",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Default": {
+      "default": {
+        "type": "Group",
+        "config": {
+          "label": "Default",
+          "repeat": false,
+          "fields": {
+            "subheading": {
+              "type": "Text",
+              "config": {
+                "label": "Subheading",
+                "placeholder": ""
+              }
+            },
+            "heading": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Heading",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "single": "heading2,strong"
+              }
+            },
+            "description": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph,strong,hyperlink"
+              }
+            },
+            "items": {
+              "type": "Group",
+              "config": {
+                "label": "Items",
+                "repeat": true,
+                "fields": {
+                  "image": {
+                    "type": "Image",
+                    "config": {
+                      "label": "Image",
+                      "constraint": {
+                        "width": 500,
+                        "height": 540
+                      },
+                      "thumbnails": []
+                    }
+                  },
+                  "review": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Review",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "paragraph,strong"
+                    }
+                  },
+                  "name": {
+                    "type": "Text",
+                    "config": {
+                      "label": "Name",
+                      "placeholder": ""
+                    }
+                  },
+                  "info": {
+                    "type": "Text",
+                    "config": {
+                      "label": "Info",
+                      "placeholder": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Video": {
+      "video": {
+        "type": "Group",
+        "config": {
+          "label": "Video",
+          "repeat": false,
+          "fields": {
+            "subheading": {
+              "type": "Text",
+              "config": {
+                "label": "Subheading",
+                "placeholder": ""
+              }
+            },
+            "heading": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Heading",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "single": "heading2,strong"
+              }
+            },
+            "description": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Description",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph,strong,hyperlink"
+              }
+            },
+            "items": {
+              "type": "Group",
+              "config": {
+                "label": "Items",
+                "repeat": true,
+                "fields": {
+                  "image": {
+                    "type": "Image",
+                    "config": {
+                      "label": "Image",
+                      "constraint": {
+                        "width": 500,
+                        "height": 375
+                      },
+                      "thumbnails": []
+                    }
+                  },
+                  "video": {
+                    "type": "Link",
+                    "config": {
+                      "label": "Video",
+                      "placeholder": "",
+                      "select": null,
+                      "allowTargetBlank": false,
+                      "allowText": false,
+                      "repeat": false
+                    }
+                  },
+                  "name": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Name",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "heading3,strong"
+                    }
+                  },
+                  "details": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Details",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "paragraph,strong"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Slider": {
+      "slider": {
+        "type": "Group",
+        "config": {
+          "label": "Slider",
+          "repeat": false,
+          "fields": {
+            "subheading": {
+              "type": "Text",
+              "config": {
+                "label": "Subheading",
+                "placeholder": ""
+              }
+            },
+            "heading": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Heading",
+                "placeholder": "e.g. What Our Patients Say",
+                "allowTargetBlank": false,
+                "single": "heading2,strong"
+              }
+            },
+            "items": {
+              "type": "Group",
+              "config": {
+                "label": "Items",
+                "repeat": true,
+                "fields": {
+                  "image": {
+                    "type": "Image",
+                    "config": {
+                      "label": "Image",
+                      "constraint": {
+                        "width": 200,
+                        "height": 200
+                      },
+                      "thumbnails": []
+                    }
+                  },
+                  "name": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Name",
+                      "placeholder": "Name e.g. Dr. Mehara Banu",
+                      "allowTargetBlank": false,
+                      "single": "heading3,strong"
+                    }
+                  },
+                  "info": {
+                    "type": "Text",
+                    "config": {
+                      "label": "Info",
+                      "placeholder": "e.g. Physical therapy"
+                    }
+                  },
+                  "quote": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Review",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "paragraph,strong"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

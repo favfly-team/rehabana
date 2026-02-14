@@ -90,6 +90,29 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "global",
+      "name": "Global",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Choose component type (grid, masonry, or slider)",
+      "imageUrl": "",
+      "primary": {
+        "variation": {
+          "type": "Select",
+          "config": {
+            "label": "Component type",
+            "placeholder": "Choose how to display",
+            "options": [
+              "default",
+              "-"
+            ],
+            "default_value": "default"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

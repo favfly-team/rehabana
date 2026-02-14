@@ -313,6 +313,20 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+interface BlogsDocumentData {}
+
+/**
+ * Blogs document from Prismic
+ *
+ * - **API ID**: `blogs`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<BlogsDocumentData>, "blogs", Lang>;
+
 type ContactPageDocumentDataSlicesSlice =
   | HeroSectionSlice
   | ContactSectionSlice;
@@ -377,6 +391,120 @@ export type ContactPageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<ContactPageDocumentData>,
     "contact_page",
+    Lang
+  >;
+
+/**
+ * Item in *Gallery → Default → Items*
+ */
+export interface GalleryDocumentDataDefaultItemsItem {
+  /**
+   * Category field in *Gallery → Default → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].items[].category
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  category: prismic.SelectField<"Kalighat" | "Saltlake">;
+
+  /**
+   * Image field in *Gallery → Default → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<"large">;
+
+  /**
+   * Video field in *Gallery → Default → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].items[].video
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *Gallery → Default*
+ */
+export interface GalleryDocumentDataDefaultItem {
+  /**
+   * Subheading field in *Gallery → Default*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Gallery → Default*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *Gallery → Default*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Items field in *Gallery → Default*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[].items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.NestedGroupField<
+    Simplify<GalleryDocumentDataDefaultItemsItem>
+  >;
+}
+
+/**
+ * Content for Gallery documents
+ */
+interface GalleryDocumentData {
+  /**
+   * Default field in *Gallery*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  default: prismic.GroupField<Simplify<GalleryDocumentDataDefaultItem>>;
+}
+
+/**
+ * Gallery document from Prismic
+ *
+ * - **API ID**: `gallery`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GalleryDocumentData>,
+    "gallery",
     Lang
   >;
 
@@ -837,6 +965,324 @@ export type TeamPageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Testimonials → Default → Items*
+ */
+export interface TestimonialsDocumentDataDefaultItemsItem {
+  /**
+   * Image field in *Testimonials → Default → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Review field in *Testimonials → Default → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].items[].review
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  review: prismic.RichTextField;
+
+  /**
+   * Name field in *Testimonials → Default → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].items[].name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Info field in *Testimonials → Default → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].items[].info
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  info: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Testimonials → Default*
+ */
+export interface TestimonialsDocumentDataDefaultItem {
+  /**
+   * Subheading field in *Testimonials → Default*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Testimonials → Default*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *Testimonials → Default*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Items field in *Testimonials → Default*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.NestedGroupField<
+    Simplify<TestimonialsDocumentDataDefaultItemsItem>
+  >;
+}
+
+/**
+ * Item in *Testimonials → Video → Items*
+ */
+export interface TestimonialsDocumentDataVideoItemsItem {
+  /**
+   * Image field in *Testimonials → Video → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Video field in *Testimonials → Video → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].items[].video
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Name field in *Testimonials → Video → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].items[].name
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Details field in *Testimonials → Video → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].items[].details
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  details: prismic.RichTextField;
+}
+
+/**
+ * Item in *Testimonials → Video*
+ */
+export interface TestimonialsDocumentDataVideoItem {
+  /**
+   * Subheading field in *Testimonials → Video*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Testimonials → Video*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *Testimonials → Video*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Items field in *Testimonials → Video*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.NestedGroupField<
+    Simplify<TestimonialsDocumentDataVideoItemsItem>
+  >;
+}
+
+/**
+ * Item in *Testimonials → Slider → Items*
+ */
+export interface TestimonialsDocumentDataSliderItemsItem {
+  /**
+   * Image field in *Testimonials → Slider → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slider[].items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Name field in *Testimonials → Slider → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Name e.g. Dr. Mehara Banu
+   * - **API ID Path**: testimonials.slider[].items[].name
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Info field in *Testimonials → Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Physical therapy
+   * - **API ID Path**: testimonials.slider[].items[].info
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  info: prismic.KeyTextField;
+
+  /**
+   * Review field in *Testimonials → Slider → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slider[].items[].quote
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  quote: prismic.RichTextField;
+}
+
+/**
+ * Item in *Testimonials → Slider*
+ */
+export interface TestimonialsDocumentDataSliderItem {
+  /**
+   * Subheading field in *Testimonials → Slider*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slider[].subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Testimonials → Slider*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: e.g. What Our Patients Say
+   * - **API ID Path**: testimonials.slider[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Items field in *Testimonials → Slider*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slider[].items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  items: prismic.NestedGroupField<
+    Simplify<TestimonialsDocumentDataSliderItemsItem>
+  >;
+}
+
+/**
+ * Content for Testimonials documents
+ */
+interface TestimonialsDocumentData {
+  /**
+   * Default field in *Testimonials*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[]
+   * - **Tab**: Default
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  default: prismic.GroupField<
+    Simplify<TestimonialsDocumentDataDefaultItem>
+  >; /**
+   * Video field in *Testimonials*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[]
+   * - **Tab**: Video
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  video: prismic.GroupField<Simplify<TestimonialsDocumentDataVideoItem>>; /**
+   * Slider field in *Testimonials*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slider[]
+   * - **Tab**: Slider
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  slider: prismic.GroupField<Simplify<TestimonialsDocumentDataSliderItem>>;
+}
+
+/**
+ * Testimonials document from Prismic
+ *
+ * - **API ID**: `testimonials`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestimonialsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<TestimonialsDocumentData>,
+    "testimonials",
+    Lang
+  >;
+
 type TestimonialsPageDocumentDataSlicesSlice =
   | HeroSectionSlice
   | TestimonialSectionSlice;
@@ -908,13 +1354,16 @@ export type AllDocumentTypes =
   | AboutPageDocument
   | BlogPageDocument
   | BlogPostDocument
+  | BlogsDocument
   | ContactPageDocument
+  | GalleryDocument
   | GalleryPageDocument
   | HomePageDocument
   | LayoutDocument
   | ServicePageDocument
   | ServicesPageDocument
   | TeamPageDocument
+  | TestimonialsDocument
   | TestimonialsPageDocument;
 
 /**
@@ -1376,6 +1825,16 @@ export interface CtaSectionSliceFormPrimaryItemsItem {
  * Primary content in *CTASection → Default → Primary*
  */
 export interface CtaSectionSliceDefaultPrimary {
+  /**
+   * Subheading field in *CTASection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
   /**
    * Heading field in *CTASection → Default → Primary*
    *
@@ -1985,9 +2444,40 @@ export type GallerySectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *GallerySection → Global → Primary*
+ */
+export interface GallerySectionSliceGlobalPrimary {
+  /**
+   * Component type field in *GallerySection → Global → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Choose how to display
+   * - **Default Value**: default
+   * - **API ID Path**: gallery_section.global.primary.variation
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  variation: prismic.SelectField<"default" | "-", "filled">;
+}
+
+/**
+ * Global variation for GallerySection Slice
+ *
+ * - **API ID**: `global`
+ * - **Description**: Choose component type (grid, masonry, or slider)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GallerySectionSliceGlobal = prismic.SharedSliceVariation<
+  "global",
+  Simplify<GallerySectionSliceGlobalPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *GallerySection*
  */
-type GallerySectionSliceVariation = GallerySectionSliceDefault;
+type GallerySectionSliceVariation =
+  | GallerySectionSliceDefault
+  | GallerySectionSliceGlobal;
 
 /**
  * GallerySection Shared Slice
@@ -2375,44 +2865,21 @@ export type ProcessSectionSlice = prismic.SharedSlice<
  */
 export interface ServicesSectionSliceDefaultPrimaryItemsItem {
   /**
-   * Image field in *ServicesSection → Default → Primary → Items*
+   * Service field in *ServicesSection → Default → Primary → Items*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: services_section.default.primary.items[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
+   * - **API ID Path**: services_section.default.primary.items[].service
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Title field in *ServicesSection → Default → Primary → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: services_section.default.primary.items[].title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * Details field in *ServicesSection → Default → Primary → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: services_section.default.primary.items[].details
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  details: prismic.RichTextField;
-
-  /**
-   * Link field in *ServicesSection → Default → Primary → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: services_section.default.primary.items[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+  service: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "service_page";
+        fields: ["meta_title", "meta_description", "featured_image"];
+      },
+    ]
+  >;
 }
 
 /**
@@ -3048,12 +3515,41 @@ export type TestimonialSectionSliceSlider = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TestimonialSection → Global → Primary*
+ */
+export interface TestimonialSectionSliceGlobalPrimary {
+  /**
+   * Component type field in *TestimonialSection → Global → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: Choose how to display
+   * - **API ID Path**: testimonial_section.global.primary.variation
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  variation: prismic.SelectField<"default" | "video" | "slider">;
+}
+
+/**
+ * Global variation for TestimonialSection Slice
+ *
+ * - **API ID**: `global`
+ * - **Description**: Choose component type (default, video, or slider)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TestimonialSectionSliceGlobal = prismic.SharedSliceVariation<
+  "global",
+  Simplify<TestimonialSectionSliceGlobalPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *TestimonialSection*
  */
 type TestimonialSectionSliceVariation =
   | TestimonialSectionSliceDefault
   | TestimonialSectionSliceVideo
-  | TestimonialSectionSliceSlider;
+  | TestimonialSectionSliceSlider
+  | TestimonialSectionSliceGlobal;
 
 /**
  * TestimonialSection Shared Slice
@@ -3097,9 +3593,15 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      BlogsDocument,
+      BlogsDocumentData,
       ContactPageDocument,
       ContactPageDocumentData,
       ContactPageDocumentDataSlicesSlice,
+      GalleryDocument,
+      GalleryDocumentData,
+      GalleryDocumentDataDefaultItemsItem,
+      GalleryDocumentDataDefaultItem,
       GalleryPageDocument,
       GalleryPageDocumentData,
       GalleryPageDocumentDataSlicesSlice,
@@ -3118,6 +3620,14 @@ declare module "@prismicio/client" {
       TeamPageDocument,
       TeamPageDocumentData,
       TeamPageDocumentDataSlicesSlice,
+      TestimonialsDocument,
+      TestimonialsDocumentData,
+      TestimonialsDocumentDataDefaultItemsItem,
+      TestimonialsDocumentDataDefaultItem,
+      TestimonialsDocumentDataVideoItemsItem,
+      TestimonialsDocumentDataVideoItem,
+      TestimonialsDocumentDataSliderItemsItem,
+      TestimonialsDocumentDataSliderItem,
       TestimonialsPageDocument,
       TestimonialsPageDocumentData,
       TestimonialsPageDocumentDataSlicesSlice,
@@ -3166,8 +3676,10 @@ declare module "@prismicio/client" {
       GallerySectionSlice,
       GallerySectionSliceDefaultPrimaryItemsItem,
       GallerySectionSliceDefaultPrimary,
+      GallerySectionSliceGlobalPrimary,
       GallerySectionSliceVariation,
       GallerySectionSliceDefault,
+      GallerySectionSliceGlobal,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimaryCounterItem,
       HeroSectionSliceDefaultPrimary,
@@ -3202,10 +3714,12 @@ declare module "@prismicio/client" {
       TestimonialSectionSliceVideoPrimary,
       TestimonialSectionSliceSliderPrimaryItemsItem,
       TestimonialSectionSliceSliderPrimary,
+      TestimonialSectionSliceGlobalPrimary,
       TestimonialSectionSliceVariation,
       TestimonialSectionSliceDefault,
       TestimonialSectionSliceVideo,
       TestimonialSectionSliceSlider,
+      TestimonialSectionSliceGlobal,
     };
   }
 }

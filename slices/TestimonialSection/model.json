@@ -239,6 +239,29 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "global",
+      "name": "Global",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Choose component type (default, video, or slider)",
+      "imageUrl": "",
+      "primary": {
+        "variation": {
+          "type": "Select",
+          "config": {
+            "label": "Component type",
+            "placeholder": "Choose how to display",
+            "options": [
+              "default",
+              "video",
+              "slider"
+            ]
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
