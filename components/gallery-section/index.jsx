@@ -1,9 +1,7 @@
 "use client";
 
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
 import { Button, SectionHeading } from "@/components/ui";
-import { createRichTextComponents } from "@/lib/richTextComponents";
 import { useEffect, useState } from "react";
 import FsLightbox from "fslightbox-react";
 

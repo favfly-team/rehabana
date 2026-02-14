@@ -1,6 +1,6 @@
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
+import { SliceZoneWithContext } from "@/lib/SliceZoneWithContext";
 import Seo from "@/lib/seo/Seo";
 import { notFound } from "next/navigation";
 import BlogPost from "@/components/blog-post";
@@ -26,18 +26,22 @@ const CustomPage = async ({ params }) => {
   // Handle service page
   if (service) {
     return (
-      <>
-        <SliceZone slices={service.data.slices} components={components} />
-      </>
+      <SliceZoneWithContext
+        slices={service.data.slices}
+        components={components}
+      />
     );
   }
 
-  // Handle blog post
+  // Handle blog post: fetch global gallery so SliceZone context is available for gallery slice
   if (blog) {
+    const globalGallery = await client
+      .getSingle("gallery")
+      .catch(() => null);
     return (
       <>
         <Log data={blog.data} />
-        <BlogPost data={blog.data} />
+        <BlogPost data={blog.data} globalGallery={globalGallery} />
       </>
     );
   }

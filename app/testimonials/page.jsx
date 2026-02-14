@@ -2,14 +2,13 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 import Seo from "@/lib/seo/Seo";
-import Log from "@/components/log";
+
 const TestimonialsPage = async () => {
   const client = createClient();
 
   const doc = await client.getSingle("testimonials_page");
   return (
     <>
-      <Log data={doc.data} />
       <SliceZone slices={doc.data.slices} components={components} />
     </>
   );

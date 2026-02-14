@@ -1,6 +1,6 @@
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
+import { SliceZoneWithContext } from "@/lib/SliceZoneWithContext";
 import Seo from "@/lib/seo/Seo";
 
 const HomePage = async () => {
@@ -8,7 +8,9 @@ const HomePage = async () => {
 
   const doc = await client.getSingle("home_page");
 
-  return <SliceZone slices={doc.data.slices} components={components} />;
+  return (
+    <SliceZoneWithContext slices={doc.data.slices} components={components} />
+  );
 };
 
 export async function generateMetadata() {

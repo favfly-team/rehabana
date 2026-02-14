@@ -1,12 +1,15 @@
 import DefaultSection from "@/components/gallery-section";
 
-/**
- * @typedef {import("@prismicio/client").Content.GallerySectionSlice} GallerySectionSlice
- * @typedef {import("@prismicio/react").SliceComponentProps<GallerySectionSlice>} GallerySectionProps
- * @type {import("react").FC<GallerySectionProps>}
- */
-const GallerySection = ({ slice }) => {
+const GallerySection = ({ slice, context }) => {
   switch (slice.variation) {
+    case "global": {
+      console.log(context.globalGallery?.data?.default);
+      return (
+        <DefaultSection
+          slice={{ primary: context.globalGallery?.data?.default?.[0] }}
+        />
+      );
+    }
     default:
       return <DefaultSection slice={slice} />;
   }
