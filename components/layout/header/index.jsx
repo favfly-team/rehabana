@@ -73,6 +73,7 @@ const Header = ({ data }) => {
                     backgroundColor: "#fff",
                     padding: "8px",
                     borderRadius: "4px",
+                    cursor: "pointer",
                   }}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
@@ -105,6 +106,8 @@ const Header = ({ data }) => {
 
 const NavItem = ({ item, onClick }) => {
   const { link_item, sub_link_item } = item;
+  // ==== INITIALIZE STATE ====
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <li
@@ -115,15 +118,26 @@ const NavItem = ({ item, onClick }) => {
       </PrismicNextLink>
       {sub_link_item.length > 0 && (
         <>
-          <ul>
+          <ul style={{ display: isDropdownOpen ? "block" : "none" }}>
             {sub_link_item.map((item, index) => (
               <li key={index}>
-                <PrismicNextLink field={item}>{item.text}</PrismicNextLink>
+                <PrismicNextLink
+                  field={item}
+                  onClick={() => {
+                    setIsDropdownOpen(false);
+                    onClick();
+                  }}
+                >
+                  {item.text}
+                </PrismicNextLink>
               </li>
             ))}
           </ul>
 
-          <span className="cs_munu_dropdown_toggle">
+          <span
+            className="cs_munu_dropdown_toggle"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
             <span />
           </span>
         </>
