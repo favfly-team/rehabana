@@ -7,7 +7,7 @@ import {
   FaFacebookF,
   FaXTwitter,
   FaInstagram,
-  FaPinterestP,
+  FaYoutube,
 } from "react-icons/fa6";
 
 const Header = ({ data }) => {
@@ -30,6 +30,22 @@ const Header = ({ data }) => {
   }, []);
 
   const { logo, link_items, social_link } = data;
+
+  const socialIcons = {
+    facebook: <FaFacebookF />,
+    x: <FaXTwitter />,
+    instagram: <FaInstagram />,
+    youtube: <FaYoutube />,
+  };
+
+  const socialLinksWithIcons = social_link?.map((item) => {
+    const domain = new URL(item.url).hostname?.split(".");
+    const icon = socialIcons[domain[domain.length - 2].toLowerCase()];
+    return {
+      icon: icon,
+      url: item.url,
+    };
+  });
 
   return (
     <header
@@ -81,20 +97,20 @@ const Header = ({ data }) => {
                 </span>
               </div>
             </div>
+
+            {/* // ==== Social Links ==== */}
             <div className="cs_main_header_right">
               <div className="cs_header_social_links">
-                <a href="#" className="cs_center" aria-label="Facebook">
-                  <FaFacebookF />
-                </a>
-                <a href="#" className="cs_center" aria-label="X (Twitter)">
-                  <FaXTwitter />
-                </a>
-                <a href="#" className="cs_center" aria-label="Instagram">
-                  <FaInstagram />
-                </a>
-                <a href="#" className="cs_center" aria-label="Pinterest">
-                  <FaPinterestP />
-                </a>
+                {socialLinksWithIcons.map((item, index) => (
+                  <a
+                    href={item?.url}
+                    target="_blank"
+                    className="cs_center"
+                    key={index}
+                  >
+                    {item?.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>

@@ -748,6 +748,31 @@ export interface LayoutDocumentDataItemsItem {
 }
 
 /**
+ * Item in *Layout → Contact Info*
+ */
+export interface LayoutDocumentDataContactInfoItem {
+  /**
+   * Title field in *Layout → Contact Info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.contact_info[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Contact Details field in *Layout → Contact Info*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.contact_info[].contact_details
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  contact_details: prismic.RichTextField;
+}
+
+/**
  * Content for Layout documents
  */
 interface LayoutDocumentData {
@@ -805,6 +830,17 @@ interface LayoutDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   items: prismic.GroupField<Simplify<LayoutDocumentDataItemsItem>>;
+
+  /**
+   * Contact Info field in *Layout*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.contact_info[]
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  contact_info: prismic.GroupField<Simplify<LayoutDocumentDataContactInfoItem>>;
 }
 
 /**
@@ -3667,6 +3703,7 @@ declare module "@prismicio/client" {
       LayoutDocumentData,
       LayoutDocumentDataLinkItemsItem,
       LayoutDocumentDataItemsItem,
+      LayoutDocumentDataContactInfoItem,
       ServicePageDocument,
       ServicePageDocumentData,
       ServicePageDocumentDataSlicesSlice,

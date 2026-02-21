@@ -96,6 +96,31 @@
             }
           }
         }
+      },
+      "contact_info": {
+        "type": "Group",
+        "config": {
+          "label": "Contact Info",
+          "repeat": false,
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "contact_details": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Contact Details",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,strong,em,hyperlink"
+              }
+            }
+          }
+        }
       }
     }
   }

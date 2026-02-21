@@ -1,110 +1,94 @@
+"use client";
 import {
   FaFacebookF,
   FaXTwitter,
   FaInstagram,
-  FaPinterestP,
+  FaYoutube,
 } from "react-icons/fa6";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { asText } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
+import BrandMark from "../BrandMark";
+import Link from "next/link";
 
-const Footer = () => {
+const Footer = ({ data }) => {
+  // ==== INITIALIZE STATE ====
+  const { logo, social_link, description, items, contact_info } = data;
+
+  // ==== SOCIAL ICONS ====
+  const socialIcons = {
+    facebook: <FaFacebookF />,
+    x: <FaXTwitter />,
+    instagram: <FaInstagram />,
+    youtube: <FaYoutube />,
+  };
+
+  const socialLinksWithIcons = social_link?.map((item) => {
+    const domain = new URL(item.url).hostname?.split(".");
+    const icon = socialIcons[domain[domain.length - 2].toLowerCase()];
+    return {
+      icon: icon,
+      url: item.url,
+    };
+  });
+
   return (
     <footer className="cs_footer cs_style_1 cs_accent_bg">
-      <div className="container cs_white_color">
+      <div className="container cs_white_color relative">
         <div className="cs_footer_row">
           <div className="cs_footer_col">
             <div className="cs_footer_widget">
               <div className="cs_footer_text_widget">
-                <img
-                  src="https://www.rehabana.com/wp-content/uploads/2025/07/Logo_Footer.png"
-                  alt="Logo"
+                <PrismicNextImage
+                  field={logo}
                   style={{
                     height: "100px",
                     width: "auto",
+                    filter: "brightness(100)",
                   }}
                 />
-                <p>
-                  Far far away, behind the word bore et dolore magna aliqua. Ut
-                  enim ad on minim veniam, quis nostrud
-                </p>
+
+                <p>{asText(description)}</p>
               </div>
+
+              {/* // ==== Social Links ==== */}
               <div className="cs_social_btns cs_style_1">
-                <a href="#" className="cs_center" aria-label="Facebook">
-                  <FaFacebookF />
-                </a>
-                <a href="#" className="cs_center" aria-label="X (Twitter)">
-                  <FaXTwitter />
-                </a>
-                <a href="#" className="cs_center" aria-label="Instagram">
-                  <FaInstagram />
-                </a>
-                <a href="#" className="cs_center" aria-label="Pinterest">
-                  <FaPinterestP />
-                </a>
+                {socialLinksWithIcons.map((item, index) => (
+                  <a
+                    href={item?.url}
+                    target="_blank"
+                    className="cs_center"
+                    key={index}
+                  >
+                    {item?.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
+
+          {items?.map((item, index) => (
+            <FooterLinkList key={index} data={item} />
+          ))}
           <div className="cs_footer_col">
             <div className="cs_footer_widget">
               <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
-                Links
+                {contact_info?.[0]?.title}
               </h2>
-              <ul className="cs_footer_widget_menu">
-                <li>
-                  <a href="index.html">Home</a>
-                </li>
-                <li>
-                  <a href="about.html">About</a>
-                </li>
-                <li>
-                  <a href="contact.html">Contact</a>
-                </li>
-                <li>
-                  <a href="#">Refund</a>
-                </li>
-                <li>
-                  <a href="#">Help Center</a>
-                </li>
-                <li>
-                  <a href="#">Privacy Policy</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="cs_footer_col">
-            <div className="cs_footer_widget">
-              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
-                Resources
-              </h2>
-              <ul className="cs_footer_widget_menu">
-                <li>
-                  <a href="#">Demos</a>
-                </li>
-                <li>
-                  <a href="#">Instructions</a>
-                </li>
-                <li>
-                  <a href="#">Personal Meeting</a>
-                </li>
-                <li>
-                  <a href="doctors.html">Doctor List</a>
-                </li>
-                <li>
-                  <a href="#">Refund Policy</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="cs_footer_col">
-            <div className="cs_footer_widget">
-              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
-                Office
-              </h2>
-              <ul className="cs_footer_widget_menu cs_address">
-                <li>America- 66 Brooklyn golden street 600 New York. USA</li>
-                <li className="cs_fs_32 cs_bold cs_phone_number">
-                  <div className="cs_height_20 cs_height_lg_20" />
-                  <a href="tel:+444547800112">+1 (212) 621-5896</a>
-                </li>
-              </ul>
+
+              <PrismicRichText
+                field={contact_info?.[0]?.contact_details}
+                components={{
+                  paragraph: ({ children }) => (
+                    <p className="cs_footer_widget_menu">{children}</p>
+                  ),
+                  hyperlink: ({ children, node }) => (
+                    <a href={node.data.url} target="_blank">
+                      {children}
+                    </a>
+                  ),
+                }}
+              />
             </div>
           </div>
         </div>
@@ -113,17 +97,43 @@ const Footer = () => {
         <div className="container">
           <div className="cs_footer_bottom_in">
             <p className="cs_copyright mb-0">
-              medixal© 2024. All Rights Reserved.
+              Rehabana © {new Date().getFullYear()} All Rights Reserved.
             </p>
             <ul className="cs_footer_widget_menu">
               <li>
-                <a href="#">Privacy &amp; Cookie Policy</a>
+                <Link href="/privacy-policy">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link href="/terms-and-conditions">Terms and Conditions</Link>
               </li>
             </ul>
           </div>
         </div>
       </div>
+
+      <BrandMark />
     </footer>
+  );
+};
+
+const FooterLinkList = ({ data }) => {
+  const { title, links } = data;
+
+  return (
+    <div className="cs_footer_col">
+      <div className="cs_footer_widget">
+        <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
+          {title}
+        </h2>
+        <ul className="cs_footer_widget_menu">
+          {links?.map((link, index) => (
+            <li key={index}>
+              <PrismicNextLink field={link}>{link?.text}</PrismicNextLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 
