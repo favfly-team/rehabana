@@ -13,14 +13,22 @@ const CustomPage = async ({ params }) => {
     .getByUID("service_page", params.slug)
     .catch(() => null);
 
+  const customPage = await client
+    .getByUID("custom_page", params.slug)
+    .catch(() => null);
+
   const blogPost = await client
     .getByUID("blog_post", params.slug)
     .catch(() => null);
 
   // Wait for the promises to resolve
-  const [service, blog] = await Promise.all([servicePage, blogPost]);
+  const [service, custom, blog] = await Promise.all([
+    servicePage,
+    customPage,
+    blogPost,
+  ]);
 
-  if (service === null && blog === null) {
+  if (service === null && custom === null && blog === null) {
     notFound();
   }
 
@@ -50,6 +58,15 @@ const CustomPage = async ({ params }) => {
     );
   }
 
+  if (custom) {
+    return (
+      <SliceZoneWithContext
+        slices={custom.data.slices}
+        components={components}
+      />
+    );
+  }
+
   if (blog) {
     return (
       <>
@@ -68,10 +85,15 @@ export async function generateStaticParams() {
 
   const servicePages = await client.getAllByType("service_page");
   const blogPosts = await client.getAllByType("blog_post");
+  const customPages = await client.getAllByType("custom_page");
 
-  const [services, blogs] = await Promise.all([servicePages, blogPosts]);
+  const [services, blogs, custom] = await Promise.all([
+    servicePages,
+    blogPosts,
+    customPages,
+  ]);
 
-  const docs = [...services, ...blogs];
+  const docs = [...services, ...blogs, ...custom];
 
   return docs.map((item) => ({
     slug: item.uid,
@@ -89,14 +111,22 @@ export async function generateMetadata({ params }) {
     .getByUID("blog_post", params.slug)
     .catch(() => null);
 
-  // Wait for the promises to resolve
-  const [service, blog] = await Promise.all([servicePage, blogPost]);
+  const customPage = await client
+    .getByUID("custom_page", params.slug)
+    .catch(() => null);
 
-  if (service === null && blog === null) {
+  // Wait for the promises to resolve
+  const [service, blog, custom] = await Promise.all([
+    servicePage,
+    blogPost,
+    customPage,
+  ]);
+
+  if (service === null && blog === null && custom === null) {
     notFound();
   }
 
-  const page = service || blog;
+  const page = service || blog || custom;
 
   return Seo(page);
 }

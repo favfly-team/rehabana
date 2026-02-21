@@ -430,6 +430,84 @@ export type ContactPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type CustomPageDocumentDataSlicesSlice =
+  | BlogPostContentSlice
+  | HeroSectionSlice
+  | AboutSectionSlice
+  | CtaSectionSlice
+  | FeaturesSectionSlice
+  | ProcessSectionSlice
+  | TestimonialSectionSlice
+  | FaqSectionSlice
+  | GallerySectionSlice
+  | ContactSectionSlice
+  | ServicesSectionSlice
+  | BlogsSectionSlice
+  | TeamSectionSlice;
+
+/**
+ * Content for Custom Page documents
+ */
+interface CustomPageDocumentData {
+  /**
+   * Slice Zone field in *Custom Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: custom_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<CustomPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Custom Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: custom_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Custom Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: custom_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Custom Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: custom_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Custom Page document from Prismic
+ *
+ * - **API ID**: `custom_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CustomPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CustomPageDocumentData>,
+    "custom_page",
+    Lang
+  >;
+
 /**
  * Item in *Gallery → Default → Items*
  */
@@ -1459,6 +1537,7 @@ export type AllDocumentTypes =
   | BlogPostDocument
   | BlogsDocument
   | ContactPageDocument
+  | CustomPageDocument
   | GalleryDocument
   | GalleryPageDocument
   | HomePageDocument
@@ -3689,6 +3768,9 @@ declare module "@prismicio/client" {
       ContactPageDocument,
       ContactPageDocumentData,
       ContactPageDocumentDataSlicesSlice,
+      CustomPageDocument,
+      CustomPageDocumentData,
+      CustomPageDocumentDataSlicesSlice,
       GalleryDocument,
       GalleryDocumentData,
       GalleryDocumentDataDefaultItemsItem,
