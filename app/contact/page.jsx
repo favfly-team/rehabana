@@ -7,11 +7,8 @@ const ContactPage = async () => {
   const client = createClient();
 
   const doc = await client.getSingle("contact_page");
-  return (
-    <>
-      <SliceZone slices={doc.data.slices} components={components} />
-    </>
-  );
+
+  return <SliceZone slices={doc.data.slices} components={components} />;
 };
 
 export async function generateMetadata() {

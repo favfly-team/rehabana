@@ -7455,11 +7455,11 @@ a.ui-button:active,
 .cs_iconbox.cs_style_1:hover.cs_accent_border .cs_iconbox_icon {
   background-color: var(--accent-color);
 }
-.cs_iconbox.cs_style_1:hover.cs_accent_border .cs_iconbox_icon img,
+/* .cs_iconbox.cs_style_1:hover.cs_accent_border .cs_iconbox_icon img,
 .cs_iconbox.cs_style_1:hover.cs_accent_border .cs_iconbox_icon svg {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
-}
+} */
 .cs_iconbox.cs_style_1:hover.cs_accent_border .cs_iconbox_icon svg,
 .cs_iconbox.cs_style_1:hover.cs_accent_border .cs_iconbox_icon i {
   color: #fff;
@@ -7501,12 +7501,12 @@ a.ui-button:active,
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-.cs_iconbox.cs_style_2 .cs_iconbox_icon img {
+/* .cs_iconbox.cs_style_2 .cs_iconbox_icon img {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-}
+} */
 .cs_iconbox.cs_style_2 .cs_iconbox_text {
   position: relative;
   z-index: 1;
@@ -7674,11 +7674,11 @@ a.ui-button:active,
   color: #fff;
   border-color: var(--heading-color);
 }
-.cs_iconbox.cs_style_4:hover .cs_iconbox_icon img,
+/* .cs_iconbox.cs_style_4:hover .cs_iconbox_icon img,
 .cs_iconbox.cs_style_4:hover .cs_iconbox_icon svg {
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
-}
+} */
 .cs_iconbox.cs_style_4:hover .cs_iconbox_btn_icon span {
   color: var(--white-color);
 }

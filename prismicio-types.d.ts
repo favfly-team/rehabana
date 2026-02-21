@@ -313,7 +313,43 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-interface BlogsDocumentData {}
+/**
+ * Content for Blogs documents
+ */
+interface BlogsDocumentData {
+  /**
+   * Subheading field in *Blogs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogs.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Blogs*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogs.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *Blogs*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogs.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
 
 /**
  * Blogs document from Prismic
@@ -2358,9 +2394,7 @@ export interface GallerySectionSliceDefaultPrimaryItemsItem {
    * - **API ID Path**: gallery_section.default.primary.items[].category
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  category: prismic.SelectField<
-    "Therapy" | "Candid" | "Our Doctor" | "Teams" | "Exercise"
-  >;
+  category: prismic.SelectField<"Kalighat" | "Saltlake">;
 
   /**
    * Image field in *GallerySection → Default → Primary → Items*
@@ -2992,16 +3026,6 @@ export interface TeamSectionSliceDefaultPrimaryItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   subtitle: prismic.KeyTextField;
-
-  /**
-   * Link field in *TeamSection → Default → Primary → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Profile / details link
-   * - **API ID Path**: team_section.default.primary.items[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * Social Links field in *TeamSection → Default → Primary → Items*

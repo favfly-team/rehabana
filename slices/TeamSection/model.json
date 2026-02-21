@@ -61,16 +61,6 @@
                   "placeholder": "e.g. Therapist Expert"
                 }
               },
-              "link": {
-                "type": "Link",
-                "config": {
-                  "label": "Link",
-                  "placeholder": "Profile / details link",
-                  "select": null,
-                  "allowTargetBlank": false,
-                  "allowText": false
-                }
-              },
               "social_links": {
                 "type": "Link",
                 "config": {

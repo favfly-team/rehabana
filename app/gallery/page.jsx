@@ -7,6 +7,7 @@ const GalleryPage = async () => {
   const client = createClient();
 
   const doc = await client.getSingle("gallery_page");
+
   return (
     <SliceZoneWithContext slices={doc.data.slices} components={components} />
   );
