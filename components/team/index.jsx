@@ -1,11 +1,11 @@
 import { FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa6";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { SectionHeading } from "@/components/ui";
+import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { asText } from "@prismicio/client";
 
 const TeamSection = ({ slice }) => {
   const { primary } = slice || {};
-  const { items = [] } = primary || {};
+  const { items = [], button_link } = primary || {};
 
   return (
     <section className="cs_team_area">
@@ -22,6 +22,7 @@ const TeamSection = ({ slice }) => {
             <TeamItem key={index} item={item} />
           ))}
         </div>
+        {button_link?.url && <ViewAllButton href={button_link} prismic />}
         <div className="cs_height_50 cs_height_lg_40" />
       </div>
     </section>

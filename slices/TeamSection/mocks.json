@@ -93,6 +93,14 @@
 						]
 					}
 				]
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"key": "154f51a8-e03f-4799-bc87-b191871759a5",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
 			}
 		},
 		"items": [

@@ -3244,6 +3244,22 @@ export interface TeamSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   items: prismic.GroupField<Simplify<TeamSectionSliceDefaultPrimaryItemsItem>>;
+
+  /**
+   * Button Link field in *TeamSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**
