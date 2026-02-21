@@ -688,6 +688,39 @@ export type HomePageDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Layout → Link Items*
+ */
+export interface LayoutDocumentDataLinkItemsItem {
+  /**
+   * Link Item field in *Layout → Link Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.link_items[].link_item
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link_item: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Sub Link Item field in *Layout → Link Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.link_items[].sub_link_item
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  sub_link_item: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
  * Item in *Layout → Items*
  */
 export interface LayoutDocumentDataItemsItem {
@@ -730,17 +763,15 @@ interface LayoutDocumentData {
   logo: prismic.ImageField<never>;
 
   /**
-   * Nav Link field in *Layout*
+   * Link Items field in *Layout*
    *
-   * - **Field Type**: Link
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: layout.nav_link
+   * - **API ID Path**: layout.link_items[]
    * - **Tab**: Header
-   * - **Documentation**: https://prismic.io/docs/fields/link
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  nav_link: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
+  link_items: prismic.GroupField<Simplify<LayoutDocumentDataLinkItemsItem>>;
 
   /**
    * Social Link field in *Layout*
@@ -3634,6 +3665,7 @@ declare module "@prismicio/client" {
       HomePageDocumentDataSlicesSlice,
       LayoutDocument,
       LayoutDocumentData,
+      LayoutDocumentDataLinkItemsItem,
       LayoutDocumentDataItemsItem,
       ServicePageDocument,
       ServicePageDocumentData,

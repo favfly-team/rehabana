@@ -1,5 +1,7 @@
 "use client";
 
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
   FaFacebookF,
@@ -8,8 +10,10 @@ import {
   FaPinterestP,
 } from "react-icons/fa6";
 
-const Header = () => {
+const Header = ({ data }) => {
+  // ==== INITIALIZE STATE ====
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,67 +29,53 @@ const Header = () => {
     };
   }, []);
 
-  const navItems = [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Services",
-      href: "/services",
-    },
-    {
-      label: "Gallery",
-      href: "/gallery",
-    },
-    {
-      label: "Testimonials",
-      href: "/testimonials",
-    },
-    {
-      label: "Blogs",
-      href: "/blog",
-    },
-    {
-      label: "Contact",
-      href: "/contact",
-    },
-  ];
+  const { logo, link_items, social_link } = data;
 
   return (
     <header
-      className={`cs_site_header cs_style_1 cs_sticky_header cs_heading_font cs_heading_color ${
-        isScrolled ? "cs_sticky_active" : ""
-      }`}
+      className={`cs_site_header cs_style_1 cs_sticky_header cs_heading_font cs_heading_color
+         ${isScrolled ? "cs_sticky_active" : ""}
+      `}
     >
       <div className="cs_main_header">
         <div className="container-fluid">
           <div className="cs_main_header_in">
             <div className="cs_main_header_left">
-              <a className="cs_site_branding" href="/">
-                <img
-                  src="https://www.rehabana.com/wp-content/uploads/2025/12/Rehabana-logo.png"
-                  alt="Logo"
-                  style={{ height: "60px" }}
+              {/* // ==== Logo ==== */}
+              <Link className="cs_site_branding" href="/" aria-label="Home">
+                <PrismicNextImage
+                  field={logo}
+                  style={{ width: "auto", height: "60px" }}
                 />
-              </a>
+              </Link>
               <div className="cs_nav cs_fs_18 cs_medium">
-                <div className="cs_nav_list_wrap">
+                <div
+                  className={`cs_nav_list_wrap ${isMenuOpen ? "cs_active" : ""}`}
+                >
+                  {/* // ==== Navigation Items ==== */}
                   <ul className="cs_nav_list">
-                    {navItems.map((item) => (
-                      <NavItem key={item.href} item={item} />
+                    {link_items.map((item, index) => (
+                      <NavItem
+                        key={index}
+                        item={item}
+                        onClick={() => setIsMenuOpen(false)}
+                      />
                     ))}
                   </ul>
                 </div>
-                <span className="cs_menu_toggle">
+
+                {/* // ==== Mobile Menu Button ==== */}
+                <span
+                  className="cs_menu_toggle"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundColor: "#fff",
+                    padding: "8px",
+                    borderRadius: "4px",
+                  }}
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
                   <span />
                 </span>
               </div>
@@ -113,10 +103,31 @@ const Header = () => {
   );
 };
 
-const NavItem = ({ item }) => {
+const NavItem = ({ item, onClick }) => {
+  const { link_item, sub_link_item } = item;
+
   return (
-    <li>
-      <a href={item.href}>{item.label}</a>
+    <li
+      className={`${sub_link_item.length > 0 ? "menu-item-has-children" : ""}`}
+    >
+      <PrismicNextLink field={link_item} onClick={onClick}>
+        {link_item.text}
+      </PrismicNextLink>
+      {sub_link_item.length > 0 && (
+        <>
+          <ul>
+            {sub_link_item.map((item, index) => (
+              <li key={index}>
+                <PrismicNextLink field={item}>{item.text}</PrismicNextLink>
+              </li>
+            ))}
+          </ul>
+
+          <span className="cs_munu_dropdown_toggle">
+            <span />
+          </span>
+        </>
+      )}
     </li>
   );
 };

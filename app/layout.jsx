@@ -21,6 +21,9 @@ const inter = Inter({
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 
+import { createClient } from "@/prismicio";
+import NextTopLoader from "nextjs-toploader";
+
 //  ==== define metadata ====
 export const metadata = {
   title: "Rehabana",
@@ -28,16 +31,22 @@ export const metadata = {
 };
 
 //  ==== define layout ====
-export default function RootLayout({ children }) {
+const RootLayout = async ({ children }) => {
+  const client = createClient();
+  const doc = await client.getSingle("layout");
+
   return (
     <html lang="en">
       <body className={inter.variable}>
         <StyledJsxRegistry>
-          <Header />
+          <NextTopLoader color="#AE5190" />
+          <Header data={doc.data} />
           {children}
-          <Footer />
+          <Footer data={doc.data} />
         </StyledJsxRegistry>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

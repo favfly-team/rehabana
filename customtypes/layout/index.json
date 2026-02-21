@@ -17,15 +17,35 @@
           "thumbnails": []
         }
       },
-      "nav_link": {
-        "type": "Link",
+      "link_items": {
+        "type": "Group",
         "config": {
-          "label": "Nav Link",
-          "placeholder": "",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true,
-          "repeat": true
+          "label": "Link Items",
+          "repeat": true,
+          "fields": {
+            "link_item": {
+              "type": "Link",
+              "config": {
+                "label": "Link Item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "sub_link_item": {
+              "type": "Link",
+              "config": {
+                "label": "Sub Link Item",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            }
+          }
         }
       },
       "social_link": {
