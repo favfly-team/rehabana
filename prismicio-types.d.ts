@@ -1842,24 +1842,24 @@ export interface ContactSectionSliceDefaultPrimary {
   /**
    * Address field in *ContactSection → Default → Primary*
    *
-   * - **Field Type**: Link
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: contact_section.default.primary.address
-   * - **Documentation**: https://prismic.io/docs/fields/link
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  address: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
+  address: prismic.RichTextField;
 
   /**
-   * Map Embed URL field in *ContactSection → Default → Primary*
+   * Map Link field in *ContactSection → Default → Primary*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Google Maps embed iframe src
-   * - **API ID Path**: contact_section.default.primary.map_embed_link
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_section.default.primary.map_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  map_embed_link: prismic.KeyTextField;
+  map_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
 }
 
 /**

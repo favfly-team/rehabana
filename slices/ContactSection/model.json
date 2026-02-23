@@ -51,21 +51,23 @@
           }
         },
         "address": {
-          "type": "Link",
+          "type": "StructuredText",
           "config": {
             "label": "Address",
             "placeholder": "",
-            "select": null,
             "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": true
+            "multi": "paragraph,strong,hyperlink,em"
           }
         },
-        "map_embed_link": {
-          "type": "Text",
+        "map_link": {
+          "type": "Link",
           "config": {
-            "label": "Map Embed URL",
-            "placeholder": "Google Maps embed iframe src"
+            "label": "Map Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": false,
+            "repeat": true
           }
         }
       },

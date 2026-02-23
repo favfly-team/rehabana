@@ -1,59 +1,27 @@
 "use client";
 
-import {
-  FaPhone,
-  FaEnvelope,
-  FaLocationDot,
-} from "react-icons/fa6";
-import { SectionHeading } from "@/components/ui";
+import { FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import { asText } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
 
-const ContactSection = () => {
+const ContactSection = ({ slice }) => {
+  const { form_title, heading, phone, email, address, map_link } =
+    slice?.primary || {};
+
+  console.log(slice);
+
   return (
     <section>
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <div className="row cs_gap_y_40">
-          <div className="col-lg-6">
-            <div
-              className="contact_form_wrapper cs_heading_font cs_bg_filed cs_hide_before_after"
-              data-src="assets/img/contact_form_bg_1.png"
-              style={{
-                backgroundImage:
-                  'url("https://medixal-html.vercel.app/assets/img/contact_form_bg_1.png")',
-              }}
-            >
-              <SectionHeading
-                title="Contact With Us"
-                titleProps={{ className: "cs_fs_40 mb-0" }}
-                rightContent={
-                  <>
-                    <div className="cs_height_20 cs_height_lg_20" />
-                    <div>
-                      Send us a message and we' ll respond as soon as possible
-                    </div>
-                  </>
-                }
-              />
-              <div className="cs_height_45 cs_height_lg_40" />
-              <Form />
-            </div>
-          </div>
-          <div className="col-lg-6">
+          <div className="col-lg-8">
             <div className="row cs_gap_y_24">
               <div className="col-lg-12">
                 <div className="contact_form_wrapper cs_heading_font cs_type_1 cs_radius_5 position-relative">
-                  <SectionHeading
-                    title="Need Any Help?"
-                    titleProps={{ className: "cs_fs_40 mb-0" }}
-                    rightContent={
-                      <>
-                        <div className="cs_height_20 cs_height_lg_20" />
-                        <div>
-                          Call us or message and we' ll respond as soon as possible
-                        </div>
-                      </>
-                    }
-                  />
+                  <div class="cs_section_heading cs_style_1">
+                    <h2 class="cs_fs_40 mb-0">{asText(heading)}</h2>
+                  </div>
                   <div className="cs_height_45 cs_height_lg_40" />
                   <div className="row cs_gap_y_30">
                     <div className="col-md-4">
@@ -61,18 +29,17 @@ const ContactSection = () => {
                         <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_bg cs_white_color">
                           <FaPhone />
                         </div>
-                        <a
-                          href="tel:+(323)98473847383"
-                          className="cs_iconbox_text"
-                        >
-                          +(323) 9847 3847 383
-                        </a>
-                        <a
-                          href="tel:+(434)54665467443"
-                          className="cs_iconbox_text"
-                        >
-                          +(434) 5466 5467 443
-                        </a>
+
+                        {phone.map((item, index) => (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            className="cs_iconbox_text"
+                            key={index}
+                          >
+                            {item.text}
+                          </a>
+                        ))}
                       </div>
                     </div>
                     <div className="col-md-4">
@@ -80,18 +47,17 @@ const ContactSection = () => {
                         <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_bg cs_white_color">
                           <FaEnvelope />
                         </div>
-                        <a
-                          href="mailto:infoyour@gmail.com"
-                          className="cs_iconbox_text"
-                        >
-                          infoyour@gmail.com
-                        </a>
-                        <a
-                          href="mailto:domaininfo@gmail.com"
-                          className="cs_iconbox_text"
-                        >
-                          domaininfo@gmail.com
-                        </a>
+
+                        {email.map((item, index) => (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            className="cs_iconbox_text"
+                            key={index}
+                          >
+                            {item.text}
+                          </a>
+                        ))}
                       </div>
                     </div>
                     <div className="col-md-4">
@@ -99,9 +65,16 @@ const ContactSection = () => {
                         <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_bg cs_white_color">
                           <FaLocationDot />
                         </div>
-                        <p className="cs_iconbox_text mb-0">
-                          4517 Washington Ave. 32 Manchester, Road USA
-                        </p>
+                        <PrismicRichText
+                          field={address}
+                          components={{
+                            paragraph: ({ children }) => (
+                              <p className="cs_iconbox_text last:mb-0">
+                                {children}
+                              </p>
+                            ),
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -112,6 +85,22 @@ const ContactSection = () => {
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9927.397014423128!2d-0.11606041997657368!3d51.53432469680956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b6eadb3896d%3A0x5aa8ffed63aea5ac!2sIslington%2C%20London%2C%20UK!5e0!3m2!1sen!2sbd!4v1726660581556!5m2!1sen!2sbd" />
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div
+              className="contact_form_wrapper cs_heading_font cs_bg_filed cs_hide_before_after"
+              data-src="assets/img/contact_form_bg_1.png"
+              style={{
+                backgroundImage:
+                  'url("https://images.prismic.io/rehabana/aZmlKMFoBIGEgneC_contact_form_bg_1.png?auto=format,compress")',
+              }}
+            >
+              <div class="cs_section_heading cs_style_1">
+                <h2 class="cs_fs_40 mb-0">{form_title}</h2>
+              </div>
+              <div className="cs_height_45 cs_height_lg_40" />
+              <Form />
             </div>
           </div>
         </div>
