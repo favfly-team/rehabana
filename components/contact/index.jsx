@@ -102,11 +102,7 @@ const ContactSection = ({ slice }) => {
                 <div className="row g-4">
                   {map_link.map((item, index) => (
                     <div
-                      className={
-                        map_link.length === 1
-                          ? "col-12"
-                          : "col-lg-6"
-                      }
+                      className={map_link.length === 1 ? "col-12" : "col-lg-6"}
                       key={index}
                     >
                       <div className="cs_contact_map_card cs_radius_5 overflow-hidden">
@@ -136,9 +132,7 @@ const ContactSection = ({ slice }) => {
                   'url("https://images.prismic.io/rehabana/aZmlKMFoBIGEgneC_contact_form_bg_1.png?auto=format,compress")',
               }}
             >
-              <h2 className="cs_fs_40 cs_fw_semibold mb-0">
-                {form_title}
-              </h2>
+              <h2 className="cs_fs_40 cs_fw_semibold mb-0">{form_title}</h2>
               <div className="cs_height_45 cs_height_lg_40" />
               <Form />
             </div>
@@ -217,7 +211,7 @@ const Form = () => {
       <div className="col-lg-12">
         <button
           type="submit"
-          className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg cs_radius_5 w-100"
+          className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_5 w-100"
         >
           <span className="cs_btn_text">Send Message</span>
           <span className="cs_btn_text">

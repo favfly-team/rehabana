@@ -113,7 +113,7 @@ const TestimonialItem = ({ item }) => {
           field={review}
           components={createRichTextComponents({
             paragraphClassName:
-              "cs_testimonial_subtitle cs_fs_32 leading-relaxed",
+              "cs_testimonial_subtitle cs_fs_20 leading-relaxed",
           })}
         />
       )}

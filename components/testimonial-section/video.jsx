@@ -99,7 +99,7 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
             <PrismicRichText
               field={name}
               components={createRichTextComponents({
-                heading3ClassName: "cs_card_title cs_fs_24 cs_bold mb-3",
+                heading3ClassName: "cs_card_title cs_fs_24 cs_medium mb-0",
               })}
             />
           )}
@@ -108,7 +108,7 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
               field={details}
               components={createRichTextComponents({
                 paragraphClassName:
-                  "cs_card_subtitle cs_fs_16 cs_heading_color mb-0 leading-relaxed",
+                  "cs_card_subtitle cs_fs_16 cs_heading_color mb-0 leading-relaxed mt-3",
               })}
             />
           )}

@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import { asText } from "@prismicio/client";
 
 const FAQSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -77,33 +78,21 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
       onClick={onToggle}
     >
       <div className="cs_accordian_head">
-        {title?.[0]?.text && (
-          <PrismicRichText
-            field={title}
-            components={createRichTextComponents({
-              heading3ClassName: "cs_accordian_title cs_fs_20 cs_semibold",
-            })}
-          />
-        )}
+        <h3 className="cs_accordian_title cs_fs_20 cs_medium">
+          {asText(title)}
+        </h3>
         <span className="cs_accordian_toggle cs_center cs_radius_50">
           <FaPlus />
         </span>
       </div>
-      {details && (
-        <div
-          className="cs_accordian_body cs_fs_18 cs_heading_color"
-          style={{ display: isActive ? "block" : "none" }}
-        >
-          <PrismicRichText
-            field={details}
-            components={createRichTextComponents({
-              paragraphClassName: "leading-relaxed text-sm mb-2 last:mb-0",
-              heading2ClassName: "font-bold text-lg mt-3 mb-1",
-              heading3ClassName: "font-bold text-base mt-2 mb-1",
-            })}
-          />
-        </div>
-      )}
+      <div
+        className="cs_accordian_body cs_heading_color"
+        style={{ display: isActive ? "block" : "none" }}
+      >
+        <p className="leading-relaxed mb-0" style={{ opacity: 0.6 }}>
+          {asText(details)}
+        </p>
+      </div>
     </div>
   );
 };

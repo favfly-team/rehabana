@@ -81,7 +81,7 @@ h6 {
   color: var(--heading-color);
   padding: 0;
   margin: 0 0 20px 0;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2em;
   font-family: var(--font-roboto);
 }
@@ -183,7 +183,7 @@ table {
   margin-bottom: 25px;
 }
 table th {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--body-color);
 }
 table td,
@@ -196,7 +196,7 @@ dl {
   margin-bottom: 25px;
 }
 dl dt {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 b,
@@ -1460,7 +1460,7 @@ textarea {
 }
 
 .cs_semibold {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .cs_bold {
@@ -2158,7 +2158,7 @@ label {
 .cs_section_heading.cs_style_1
   .cs_section_heading_left
   + .cs_section_heading_right {
-  max-width: 420px;
+  max-width: 520px;
 }
 @media (max-width: 991px) {
   .cs_section_heading.cs_style_1 br {
@@ -2685,7 +2685,7 @@ label {
   margin-top: 24px;
   font-size: 16px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent-color);
   line-height: 1em;
 }
@@ -3303,7 +3303,7 @@ a.ui-button:active,
 
 .ui-widget-header {
   color: var(--heading-color);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .ui-datepicker th {
@@ -5657,7 +5657,7 @@ a.ui-button:active,
   gap: 15px;
 }
 .cs_sidebar_widget .cs_categories a:last-child {
-  font-weight: 600;
+  font-weight: 500;
 }
 .cs_sidebar_widget .cs_categories a {
   -webkit-transition: all 0.3s ease-in-out;
@@ -8409,7 +8409,7 @@ a.ui-button:active,
 }
 .cs_comment_body h3 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.78em;
   margin-bottom: 6px;
 }
@@ -8824,7 +8824,7 @@ a.ui-button:active,
 }
 .cs_testimonial.cs_style_2 .cs_client_commentbox .cs_client_title {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5em;
   position: relative;
   z-index: 1;
@@ -9258,7 +9258,7 @@ a.ui-button:active,
   flex-direction: column;
   gap: 8px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent-color);
   line-height: 1.78em;
   margin-bottom: 60px;
@@ -10971,7 +10971,7 @@ a.ui-button:active,
 }
 .cs_contact_card_title {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--heading-color);
@@ -11002,7 +11002,7 @@ a.ui-button:active,
 }
 .cs_contact_maps_heading {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--heading-color);
   margin: 0;
 }
@@ -11076,7 +11076,7 @@ a.ui-button:active,
 .cs_shop_sidebar_widget_title {
   font-size: 21px;
   margin-bottom: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .cs_shop_sidebar_tag_list {
@@ -11303,7 +11303,7 @@ a.ui-button:active,
 
 .cs_quantity_input {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent-color);
 }
 
@@ -11355,7 +11355,7 @@ a.ui-button:active,
   gap: 12px;
 }
 .cs_single_product_info b {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--heading-color);
 }
 
@@ -11372,7 +11372,7 @@ a.ui-button:active,
 .cs_single_product_details h2 {
   font-size: 36px;
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 2.11em;
 }
 .cs_single_product_details .cs_single_product_price {
@@ -11423,7 +11423,7 @@ a.ui-button:active,
   display: inline-block;
   position: relative;
   padding-bottom: 5px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .cs_product_tab li a::before {
   content: "";
@@ -11551,7 +11551,7 @@ a.ui-button:active,
   }
 }
 .cs_cart_table_media h3 {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   margin: 0;
   text-align: left;
@@ -11711,7 +11711,7 @@ a.ui-button:active,
 .cs_shop_card h2 {
   font-size: 20px;
   margin-bottom: 21px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .cs_shop_card td {
   padding: 20px 10px;
@@ -11746,7 +11746,7 @@ a.ui-button:active,
 .cs_checkout_title {
   font-size: 28px;
   margin-bottom: 0px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .cs_shop_input {
@@ -11800,7 +11800,7 @@ a.ui-button:active,
 }
 .cs_order-summery h3 {
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   color: var(--white-color);
 }
@@ -11846,7 +11846,7 @@ a.ui-button:active,
 .cs_header_cart_label {
   position: absolute;
   background-color: var(--accent-color);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 12px;
   line-height: 17px;
   padding: 0 2px;
