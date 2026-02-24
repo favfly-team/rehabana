@@ -8,13 +8,13 @@ import "@/styles/custom.css";
 import "@splidejs/react-splide/css";
 
 //  ==== import fonts ====
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 
 //  ==== define fonts ====
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-roboto",
+  weight: ["400", "500", "700"],
 });
 
 //  ==== import components ====
@@ -37,7 +37,7 @@ const RootLayout = async ({ children }) => {
 
   return (
     <html lang="en">
-      <body className={inter.variable}>
+      <body className={roboto.variable}>
         <StyledJsxRegistry>
           <NextTopLoader color="#AE5190" />
           <Header data={doc.data} />

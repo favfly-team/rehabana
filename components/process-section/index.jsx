@@ -2,6 +2,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import { asText } from "@prismicio/client";
 
 const ProcessSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -54,20 +55,18 @@ const ProcessItem = ({ item, index, isReverse }) => {
   const cardInfoBlock = (
     <div className="cs_card_info">
       {title?.[0]?.text && (
-        <PrismicRichText
-          field={title}
-          components={createRichTextComponents({
-            heading3ClassName: "cs_card_title cs_fs_24 cs_semibold",
-          })}
-        />
+        <h3 className="cs_card_title cs_fs_20 mb-2">{asText(title)}</h3>
       )}
       {details && (
-        <PrismicRichText
-          field={details}
-          components={createRichTextComponents({
-            paragraphClassName: "cs_card_subtitle leading-relaxed text-sm",
-          })}
-        />
+        <p
+          className="cs_card_subtitle text-sm"
+          style={{
+            lineHeight: 1.5,
+            opacity: 0.6,
+          }}
+        >
+          {asText(details)}
+        </p>
       )}
       <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
         Step {stepNumber}

@@ -59,7 +59,7 @@ const SectionHeading = ({
 
   const defaultSubtitleClasses =
     "cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font";
-  const defaultTitleClasses = "cs_section_title cs_fs_48 mb-0";
+  const defaultTitleClasses = "cs_section_title cs_fs_40 mb-0";
   const defaultDescriptionClasses =
     align === "split"
       ? "mb-0 leading-relaxed text-sm"

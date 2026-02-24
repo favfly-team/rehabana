@@ -36,8 +36,8 @@
   --gray-color: #ebeced;
   --gray2-color: #e6f1f7;
   --border-color: rgb(0 0 27 / 30%);
-  --heading-font: "Jost", sans-serif;
-  --body-font: "Roboto", sans-serif;
+  --font-roboto: "Inter", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 }
 
 .cs_theme_2 {
@@ -54,8 +54,8 @@
 
 .cs_theme_5 {
   --accent-color: #966046;
-  --heading-font: "Marcellus", serif;
-  --body-font: "Marcellus", serif;
+  --font-roboto: "Marcellus", serif;
+  --font-roboto: "Marcellus", serif;
 }
 
 /*--------------------------------------------------------------
@@ -64,7 +64,7 @@
 body,
 html {
   color: var(--body-color);
-  font-family: var(--body-font);
+  font-family: var(--font-roboto);
   font-size: 16px;
   line-height: 1.5em;
   font-weight: 400;
@@ -83,15 +83,15 @@ h6 {
   margin: 0 0 20px 0;
   font-weight: 600;
   line-height: 1.2em;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
 }
 
 .cs_heading_font {
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
 }
 
 .cs_secondary_font {
-  font-family: var(--body-font);
+  font-family: var(--font-roboto);
 }
 
 h1 {
@@ -1757,7 +1757,7 @@ label {
   -ms-flex: none;
   flex: none;
   padding: 15px 40px;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   text-align: center;
   line-height: 1.55em;
   color: var(--white-color);
@@ -2030,7 +2030,7 @@ label {
   padding-left: 40px;
   font-size: 18px;
   font-weight: 500;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   color: var(--heading-color);
   position: relative;
 }
@@ -2170,7 +2170,7 @@ label {
   color: var(--white-color);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: var(--accent-color);
-  font-family: var(--body-font);
+  font-family: var(--font-roboto);
   opacity: 0.5;
 }
 
@@ -2662,7 +2662,7 @@ label {
   font-weight: 700;
   font-style: italic;
   color: var(--accent-color);
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   position: relative;
   margin: 48px 0 50px;
   gap: 0;
@@ -6082,7 +6082,7 @@ a.ui-button:active,
   font-size: 16px;
   line-height: 1.5em;
   margin-bottom: 16px;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   opacity: 0.9;
 }
 .cs_about.cs_style_1 .cs_commentbox .cs_client_subtitle {
@@ -6318,7 +6318,7 @@ a.ui-button:active,
 .cs_about.cs_style_1 .cs_player_btn.cs_style_1 .cs_play_btn_text {
   font-size: 20px;
   font-weight: 500;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   text-wrap: nowrap;
 }
 .cs_about.cs_style_1 .cs_player_btn.cs_style_2 {
@@ -7082,7 +7082,7 @@ a.ui-button:active,
   gap: 10px;
 }
 .cs_hero.cs_style_1 .cs_player_btn.cs_style_1 {
-  color: var(--heading-font);
+  color: var(--font-roboto);
 }
 .cs_hero.cs_style_1 .cs_hero_thumbnail {
   position: absolute;
@@ -8761,7 +8761,7 @@ a.ui-button:active,
 }
 .cs_testimonial.cs_style_1 .cs_testimonial_subtitle {
   font-style: italic;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   color: var(--heading-color);
   line-height: 1.37em;
   margin-bottom: 28px;
@@ -10270,7 +10270,7 @@ a.ui-button:active,
   line-height: 1.42em;
 }
 .cs_card.cs_style_4 .cs_card_index {
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   font-weight: 200;
 }
 .cs_card.cs_style_4 .cs_card_thumbnail {
@@ -10946,7 +10946,9 @@ a.ui-button:active,
   background: var(--white-color);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 .cs_contact_card:hover {
   box-shadow: 2px 8px 32px rgba(0, 0, 27, 0.08);
@@ -11410,7 +11412,7 @@ a.ui-button:active,
   flex-wrap: wrap;
   color: var(--heading-color);
   gap: 10px 52px;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
 }
 @media (max-width: 575px) {
   .cs_product_tab {
@@ -11580,7 +11582,7 @@ a.ui-button:active,
   font-size: 16px;
   line-height: 1.6em;
   padding: 20px 30px;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
 }
 @media (max-width: 991px) {
   .cs_cart_table th {
@@ -11594,7 +11596,7 @@ a.ui-button:active,
   text-align: center;
   font-weight: 500;
   color: var(--heading-color);
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
 }
 @media (max-width: 991px) {
   .cs_cart_table td {
@@ -11700,7 +11702,7 @@ a.ui-button:active,
   border: 1px solid var(--gray-color);
   border-radius: 4px;
   padding: 25px 20px 25px;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
 }
 .cs_shop_card table {
   border-bottom: 1px solid var(--gray-color);
@@ -11754,7 +11756,7 @@ a.ui-button:active,
   border: 1px solid var(--gray-color);
   border-radius: 4px;
   padding: 9px 15px;
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   outline: none;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -11766,7 +11768,7 @@ a.ui-button:active,
 }
 
 .cs_shop_label {
-  font-family: var(--heading-font);
+  font-family: var(--font-roboto);
   display: block;
   margin-bottom: 12px;
 }

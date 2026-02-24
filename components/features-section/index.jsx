@@ -55,7 +55,7 @@ const FeatureItem = ({ item }) => {
             <PrismicRichText
               field={title}
               components={createRichTextComponents({
-                heading3ClassName: "cs_iconbox_title cs_fs_32 cs_bold",
+                heading3ClassName: "cs_iconbox_title cs_fs_28 cs_bold",
               })}
             />
           )}

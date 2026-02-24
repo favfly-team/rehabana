@@ -17,7 +17,7 @@ const CTAFormSection = ({ slice }) => {
               primary={primary}
               variant="left"
               subtitleClassName="cs_white_color"
-              titleClassName="cs_fs_48 cs_white_color mb-0"
+              titleClassName="cs_fs_40 cs_white_color mb-0"
             />
             <CTAFormItems items={items} />
           </div>
@@ -50,7 +50,7 @@ const CTAFormItem = ({ item }) => {
             <PrismicRichText
               field={title}
               components={createRichTextComponents({
-                heading3ClassName: "cs_iconbox_title cs_fs_32 cs_white_color",
+                heading3ClassName: "cs_iconbox_title cs_fs_24 cs_white_color",
               })}
             />
           )}
