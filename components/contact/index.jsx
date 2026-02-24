@@ -8,97 +8,137 @@ const ContactSection = ({ slice }) => {
   const { form_title, heading, phone, email, address, map_link } =
     slice?.primary || {};
 
-  console.log(slice);
-
   return (
-    <section>
+    <section className="cs_contact_section">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <div className="row cs_gap_y_40">
+          {/* Left column: contact info + maps */}
           <div className="col-lg-8">
-            <div className="row cs_gap_y_24">
-              <div className="col-lg-12">
-                <div className="contact_form_wrapper cs_heading_font cs_type_1 cs_radius_5 position-relative">
-                  <div class="cs_section_heading cs_style_1">
-                    <h2 class="cs_fs_40 mb-0">{asText(heading)}</h2>
+            {/* Heading block */}
+            <div className="cs_contact_hero mb-5">
+              <h2 className="cs_fs_40 cs_fw_semibold mb-3">
+                {asText(heading)}
+              </h2>
+              <p className="cs_contact_subtitle mb-0">
+                Reach out by phone, email, or visit us at one of our centers.
+              </p>
+            </div>
+
+            {/* Contact cards - horizontal layout */}
+            <div className="row cs_gap_y_24 mb-5">
+              <div className="col-md-4">
+                <div className="cs_contact_card h-100">
+                  <div className="cs_contact_card_icon cs_accent_bg">
+                    <FaPhone className="cs_contact_card_icon_svg" />
                   </div>
-                  <div className="cs_height_45 cs_height_lg_40" />
-                  <div className="row cs_gap_y_30">
-                    <div className="col-md-4">
-                      <div className="cs_iconbox cs_style_11">
-                        <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_bg cs_white_color">
-                          <FaPhone />
-                        </div>
-
-                        {phone.map((item, index) => (
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            className="cs_iconbox_text"
-                            key={index}
-                          >
-                            {item.text}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="cs_iconbox cs_style_11">
-                        <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_bg cs_white_color">
-                          <FaEnvelope />
-                        </div>
-
-                        {email.map((item, index) => (
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            className="cs_iconbox_text"
-                            key={index}
-                          >
-                            {item.text}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="cs_iconbox cs_style_11">
-                        <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_bg cs_white_color">
-                          <FaLocationDot />
-                        </div>
-                        <PrismicRichText
-                          field={address}
-                          components={{
-                            paragraph: ({ children }) => (
-                              <p className="cs_iconbox_text last:mb-0">
-                                {children}
-                              </p>
-                            ),
-                          }}
-                        />
-                      </div>
+                  <div className="cs_contact_card_body">
+                    <h3 className="cs_contact_card_title">Phone</h3>
+                    <div className="cs_contact_card_links">
+                      {phone?.map((item, index) => (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cs_contact_card_link"
+                          key={index}
+                        >
+                          {item.text}
+                        </a>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-12">
-                <div className="cs_location_map cs_radius_5">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9927.397014423128!2d-0.11606041997657368!3d51.53432469680956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b6eadb3896d%3A0x5aa8ffed63aea5ac!2sIslington%2C%20London%2C%20UK!5e0!3m2!1sen!2sbd!4v1726660581556!5m2!1sen!2sbd" />
+              <div className="col-md-4">
+                <div className="cs_contact_card h-100">
+                  <div className="cs_contact_card_icon cs_accent_bg">
+                    <FaEnvelope className="cs_contact_card_icon_svg" />
+                  </div>
+                  <div className="cs_contact_card_body">
+                    <h3 className="cs_contact_card_title">Email</h3>
+                    <div className="cs_contact_card_links">
+                      {email?.map((item, index) => (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cs_contact_card_link"
+                          key={index}
+                        >
+                          {item.text}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="cs_contact_card h-100">
+                  <div className="cs_contact_card_icon cs_accent_bg">
+                    <FaLocationDot className="cs_contact_card_icon_svg" />
+                  </div>
+                  <div className="cs_contact_card_body">
+                    <h3 className="cs_contact_card_title">Addresses</h3>
+                    <div className="cs_contact_card_content">
+                      <PrismicRichText
+                        field={address}
+                        components={{
+                          paragraph: ({ children }) => (
+                            <p className="mb-2 last:mb-0">{children}</p>
+                          ),
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Maps section */}
+            {map_link?.length > 0 && (
+              <div className="cs_contact_maps">
+                <h3 className="cs_contact_maps_heading mb-4">Our locations</h3>
+                <div className="row g-4">
+                  {map_link.map((item, index) => (
+                    <div
+                      className={
+                        map_link.length === 1
+                          ? "col-12"
+                          : "col-lg-6"
+                      }
+                      key={index}
+                    >
+                      <div className="cs_contact_map_card cs_radius_5 overflow-hidden">
+                        <iframe
+                          src={item.url}
+                          title={`Location ${index + 1}`}
+                          className="cs_contact_map_iframe"
+                          allowFullScreen
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* Right column: contact form */}
           <div className="col-lg-4">
             <div
-              className="contact_form_wrapper cs_heading_font cs_bg_filed cs_hide_before_after"
+              className="contact_form_wrapper cs_heading_font cs_bg_filed cs_hide_before_after h-100"
               data-src="assets/img/contact_form_bg_1.png"
               style={{
                 backgroundImage:
                   'url("https://images.prismic.io/rehabana/aZmlKMFoBIGEgneC_contact_form_bg_1.png?auto=format,compress")',
               }}
             >
-              <div class="cs_section_heading cs_style_1">
-                <h2 class="cs_fs_40 mb-0">{form_title}</h2>
-              </div>
+              <h2 className="cs_fs_40 cs_fw_semibold mb-0">
+                {form_title}
+              </h2>
               <div className="cs_height_45 cs_height_lg_40" />
               <Form />
             </div>
@@ -177,7 +217,7 @@ const Form = () => {
       <div className="col-lg-12">
         <button
           type="submit"
-          className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg  cs_radius_5 w-100"
+          className="cs_btn cs_style_1 cs_fs_18 cs_semibold cs_accent_bg cs_radius_5 w-100"
         >
           <span className="cs_btn_text">Send Message</span>
           <span className="cs_btn_text">

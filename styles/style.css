@@ -10932,6 +10932,94 @@ a.ui-button:active,
   height: 100%;
 }
 
+/* Contact section redesign */
+.cs_contact_section .cs_contact_hero .cs_contact_subtitle {
+  color: var(--body-color);
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 32em;
+}
+.cs_contact_card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.cs_contact_card:hover {
+  box-shadow: 2px 8px 32px rgba(0, 0, 27, 0.08);
+  border-color: rgba(174, 81, 144, 0.25);
+}
+.cs_contact_card_icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+.cs_contact_card_icon_svg {
+  width: 22px;
+  height: 22px;
+  color: var(--white-color);
+}
+.cs_contact_card_title {
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--heading-color);
+  margin: 0 0 8px 0;
+}
+.cs_contact_card_links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cs_contact_card_link {
+  color: var(--body-color);
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+.cs_contact_card_link:hover {
+  color: var(--accent-color);
+}
+.cs_contact_card_content {
+  color: var(--body-color);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.cs_contact_card_content p {
+  margin-bottom: 8px;
+}
+.cs_contact_maps_heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin: 0;
+}
+.cs_contact_map_card {
+  background: var(--gray-color);
+  box-shadow: 0 2px 12px rgba(0, 0, 27, 0.06);
+}
+.cs_contact_map_iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  display: block;
+}
+@media (max-width: 991px) {
+  .cs_contact_map_iframe {
+    height: 280px;
+  }
+}
+
 /*--------------------------------------------------------------
     23. Ecommerce
   ----------------------------------------------------------------*/
