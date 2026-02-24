@@ -54,6 +54,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "cta_section": {
+              "type": "SharedSlice"
+            },
             "blog_post_content": {
               "type": "SharedSlice"
             }

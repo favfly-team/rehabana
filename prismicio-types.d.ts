@@ -204,7 +204,7 @@ export type BlogPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type BlogPostDocumentDataSlicesSlice = BlogPostContentSlice;
+type BlogPostDocumentDataSlicesSlice = CtaSectionSlice | BlogPostContentSlice;
 
 /**
  * Content for Blog Post documents
@@ -2200,12 +2200,61 @@ export type CtaSectionSliceForm2 = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *CTASection → Blog → Primary*
+ */
+export interface CtaSectionSliceBlogPrimary {
+  /**
+   * Heading field in *CTASection → Blog → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.blog.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *CTASection → Blog → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.blog.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Button field in *CTASection → Blog → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.blog.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Blog variation for CTASection Slice
+ *
+ * - **API ID**: `blog`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CtaSectionSliceBlog = prismic.SharedSliceVariation<
+  "blog",
+  Simplify<CtaSectionSliceBlogPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *CTASection*
  */
 type CtaSectionSliceVariation =
   | CtaSectionSliceDefault
   | CtaSectionSliceForm
-  | CtaSectionSliceForm2;
+  | CtaSectionSliceForm2
+  | CtaSectionSliceBlog;
 
 /**
  * CTASection Shared Slice
@@ -3847,10 +3896,12 @@ declare module "@prismicio/client" {
       CtaSectionSliceFormPrimaryItemsItem,
       CtaSectionSliceFormPrimary,
       CtaSectionSliceForm2Primary,
+      CtaSectionSliceBlogPrimary,
       CtaSectionSliceVariation,
       CtaSectionSliceDefault,
       CtaSectionSliceForm,
       CtaSectionSliceForm2,
+      CtaSectionSliceBlog,
       FaqSectionSlice,
       FaqSectionSliceDefaultPrimaryItemsItem,
       FaqSectionSliceDefaultPrimary,

@@ -1,6 +1,7 @@
 import DefaultSection from "@/components/cta-section";
 import CTAFormSection from "@/components/cta-section/form";
 import CTAForm2Section from "@/components/cta-section/form2";
+import BlogCTASection from "@/components/cta-section/blog";
 
 /**
  * @typedef {import("@prismicio/client").Content.CtaSectionSlice} CTASectionSlice
@@ -13,6 +14,8 @@ const CTASection = ({ slice }) => {
       return <CTAFormSection slice={slice} />;
     case "form2":
       return <CTAForm2Section slice={slice} />;
+    case "blog":
+      return <BlogCTASection slice={slice} />;
     default:
       return <DefaultSection slice={slice} />;
   }

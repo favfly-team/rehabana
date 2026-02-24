@@ -8486,8 +8486,6 @@ a.ui-button:active,
 .cs_cta.cs_style_1 {
   padding: 60px 0 65px;
   background-color: var(--white-color);
-  -webkit-box-shadow: 2px 2px 50px 0px rgba(0, 0, 27, 0.1);
-  box-shadow: 2px 2px 50px 0px rgba(0, 0, 27, 0.1);
   position: relative;
   z-index: 10;
   margin-top: -140px;
