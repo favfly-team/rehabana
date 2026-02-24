@@ -1876,85 +1876,9 @@ export type ContactSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ContactSection → Location → Primary*
- */
-export interface ContactSectionSliceLocationPrimary {
-  /**
-   * Heading field in *ContactSection → Location → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Need Any Help?
-   * - **API ID Path**: contact_section.location.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Phone field in *ContactSection → Location → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_section.location.primary.phone
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  phone: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
-
-  /**
-   * Email field in *ContactSection → Location → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_section.location.primary.email
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  email: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
-
-  /**
-   * Address field in *ContactSection → Location → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_section.location.primary.address
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  address: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
-
-  /**
-   * Map Embed URL field in *ContactSection → Location → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Google Maps embed iframe src
-   * - **API ID Path**: contact_section.location.primary.map_embed_link
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  map_embed_link: prismic.KeyTextField;
-}
-
-/**
- * Location variation for ContactSection Slice
- *
- * - **API ID**: `location`
- * - **Description**: Help block + contact items + map (no form)
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ContactSectionSliceLocation = prismic.SharedSliceVariation<
-  "location",
-  Simplify<ContactSectionSliceLocationPrimary>,
-  never
->;
-
-/**
  * Slice variation for *ContactSection*
  */
-type ContactSectionSliceVariation =
-  | ContactSectionSliceDefault
-  | ContactSectionSliceLocation;
+type ContactSectionSliceVariation = ContactSectionSliceDefault;
 
 /**
  * ContactSection Shared Slice
@@ -3887,10 +3811,8 @@ declare module "@prismicio/client" {
       BlogsSectionSliceDefault,
       ContactSectionSlice,
       ContactSectionSliceDefaultPrimary,
-      ContactSectionSliceLocationPrimary,
       ContactSectionSliceVariation,
       ContactSectionSliceDefault,
-      ContactSectionSliceLocation,
       CtaSectionSlice,
       CtaSectionSliceDefaultPrimary,
       CtaSectionSliceFormPrimaryItemsItem,

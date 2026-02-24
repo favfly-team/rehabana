@@ -65,101 +65,12 @@
 				"type": "Link",
 				"value": [
 					{
-						"__TYPE__": "LinkContent",
 						"key": "608d7929-cd5b-47c9-b137-e09bfc5f1b4f",
+						"__TYPE__": "LinkContent",
 						"value": {
 							"__TYPE__": "ExternalLink",
 							"url": "https://slicemachine.dev"
 						}
-					}
-				]
-			}
-		},
-		"items": [
-			{
-				"__TYPE__": "GroupItemContent",
-				"value": []
-			}
-		]
-	},
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "location",
-		"primary": {
-			"help_heading": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Medicine"
-						}
-					}
-				]
-			},
-			"help_description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Adipisicing ex aliquip adipisicing esse culpa est."
-						}
-					}
-				]
-			},
-			"map_embed_link": {
-				"__TYPE__": "FieldContent",
-				"value": "game",
-				"type": "Text"
-			},
-			"items": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"title",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "heading3",
-											"content": {
-												"text": "Active"
-											}
-										}
-									]
-								}
-							],
-							[
-								"details",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Incididunt deserunt ipsum non ea ipsum enim commodo nisi minim. Aute sint id magna ut esse exercitation fugiat cupidatat exercitation ut."
-											}
-										}
-									]
-								}
-							],
-							[
-								"link",
-								{
-									"key": "7ebc3036-5d95-4ed5-93a5-f8e8000880c8",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://prismic.io",
-										"text": "particular"
-									}
-								}
-							]
-						]
 					}
 				]
 			}

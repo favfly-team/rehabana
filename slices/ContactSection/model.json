@@ -72,66 +72,6 @@
         }
       },
       "items": {}
-    },
-    {
-      "id": "location",
-      "name": "Location",
-      "docURL": "...",
-      "version": "initial",
-      "description": "Help block + contact items + map (no form)",
-      "imageUrl": "",
-      "primary": {
-        "heading": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Heading",
-            "placeholder": "Need Any Help?",
-            "allowTargetBlank": false,
-            "single": "heading2,strong"
-          }
-        },
-        "phone": {
-          "type": "Link",
-          "config": {
-            "label": "Phone",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": true
-          }
-        },
-        "email": {
-          "type": "Link",
-          "config": {
-            "label": "Email",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": true
-          }
-        },
-        "address": {
-          "type": "Link",
-          "config": {
-            "label": "Address",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": true
-          }
-        },
-        "map_embed_link": {
-          "type": "Text",
-          "config": {
-            "label": "Map Embed URL",
-            "placeholder": "Google Maps embed iframe src"
-          }
-        }
-      },
-      "items": {}
     }
   ]
 }
