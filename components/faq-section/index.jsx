@@ -89,9 +89,12 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
         className="cs_accordian_body cs_heading_color"
         style={{ display: isActive ? "block" : "none" }}
       >
-        <p className="leading-relaxed mb-0" style={{ opacity: 0.6 }}>
-          {asText(details)}
-        </p>
+        <PrismicRichText
+          field={details}
+          components={createRichTextComponents({
+            paragraphClassName: "leading-relaxed mb-0",
+          })}
+        />
       </div>
     </div>
   );

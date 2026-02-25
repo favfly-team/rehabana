@@ -24,8 +24,8 @@ export function createRichTextComponents({
   listClassName = "list-disc pl-6 my-2",
   oListClassName = "list-decimal pl-6 my-2",
   listItemClassName = "my-1",
-  hyperlinkClassName = "font-bold underline",
-  strongClassName = "font-bold",
+  hyperlinkClassName = "paragraph-link",
+  strongClassName = "font-medium",
   emClassName = "italic",
 } = {}) {
   return {

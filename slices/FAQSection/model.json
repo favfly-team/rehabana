@@ -57,8 +57,8 @@
                 "config": {
                   "label": "Details",
                   "placeholder": "Answer",
-                  "allowTargetBlank": false,
-                  "single": "paragraph,strong"
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,list-item,em,hyperlink"
                 }
               }
             }

@@ -557,17 +557,20 @@
 .cs_blog_content ol li:last-child {
   margin-bottom: 0;
 }
-.cs_blog_content a {
+.cs_blog_content a,
+.paragraph-link {
   color: var(--bs-link-color, #0d6efd);
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.cs_blog_content a:hover {
+.cs_blog_content a:hover,
+.paragraph-link:hover {
   color: var(--bs-link-hover-color, #0a58ca);
   text-decoration: underline;
 }
-.cs_blog_content strong {
-  font-weight: 700;
+.cs_blog_content strong,
+.font-medium {
+  font-weight: 500;
   color: var(--heading-color);
 }
 .cs_blog_content em {

@@ -2,9 +2,11 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { asText } from "@prismicio/client";
 import { format } from "date-fns";
 import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
+import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const BlogPostHero = ({ data }) => {
-  const { published_date, title, image } = data;
+  const { published_date, title, description, image } = data;
   return (
     <div
       className="cs_blog_hero_card cs_white_bg cs_radius_10 mb-4"
@@ -21,10 +23,20 @@ const BlogPostHero = ({ data }) => {
           </span>
         </div>
       )}
-      {title && (
-        <h2 className="cs_blog_title cs_fs_32 mb-4">{asText(title)}</h2>
-      )}
 
+      <div className="mb-4">
+        <h2 className="cs_blog_title cs_fs_32 mb-2">{asText(title)}</h2>
+
+        {description && (
+          <PrismicRichText
+            field={description}
+            components={createRichTextComponents({
+              paragraphClassName:
+                "cs_blog_description cs_fs_16 leading-relaxed",
+            })}
+          />
+        )}
+      </div>
       <div className="cs_blog_hero_image">
         <PrismicNextImage
           field={image}
