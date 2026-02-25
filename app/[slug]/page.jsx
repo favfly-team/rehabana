@@ -21,6 +21,14 @@ const CustomPage = async ({ params }) => {
     .getByUID("blog_post", params.slug)
     .catch(() => null);
 
+  const { results: blogs } = await client.getByType("blog_post", {
+    orderings: {
+      field: "my.blog_post.published_date",
+      direction: "desc",
+    },
+    pageSize: 3,
+  });
+
   // Wait for the promises to resolve
   const [service, custom, blog] = await Promise.all([
     servicePage,
@@ -34,13 +42,6 @@ const CustomPage = async ({ params }) => {
 
   // Same blogs section as home page: config + recent posts
   const blogsSection = await client.getSingle("blogs");
-  const blogs = await client.getByType("blog_post", {
-    orderings: {
-      field: "my.blog_post.published_date",
-      direction: "desc",
-    },
-    pageSize: 3,
-  });
 
   // Handle service page
   if (service) {
@@ -49,11 +50,9 @@ const CustomPage = async ({ params }) => {
         <SliceZoneWithContext
           slices={service.data.slices}
           components={components}
+          context={{ blogs, blogSlice: blogsSection.data }}
         />
-        <BlogsSection
-          slice={{ primary: blogsSection.data }}
-          blogs={blogs.results}
-        />
+        <BlogsSection slice={{ primary: blogsSection.data }} blogs={blogs} />
       </>
     );
   }
@@ -63,6 +62,7 @@ const CustomPage = async ({ params }) => {
       <SliceZoneWithContext
         slices={custom.data.slices}
         components={components}
+        context={{ blogs, blogSlice: blogsSection.data }}
       />
     );
   }
@@ -73,7 +73,7 @@ const CustomPage = async ({ params }) => {
         <BlogPost data={blog.data} />
         <BlogsSection
           slice={{ primary: blogsSection.data }}
-          blogs={blogs.results}
+          context={{ blogs }}
         />
       </>
     );

@@ -8,7 +8,22 @@ const BlogPage = async () => {
 
   const doc = await client.getSingle("blog_page");
 
-  return <SliceZone slices={doc.data.slices} components={components} />;
+  const results = await client.getAllByType("blog_post", {
+    orderings: {
+      field: "my.blog_post.published_date",
+      direction: "desc",
+    },
+  });
+
+  return (
+    <SliceZone
+      slices={doc.data.slices}
+      components={components}
+      context={{
+        blogs: results,
+      }}
+    />
+  );
 };
 
 export async function generateMetadata() {

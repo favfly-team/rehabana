@@ -5,7 +5,7 @@ import { SliceZone } from "@prismicio/react";
  * Server component that fetches global singletons (Gallery, Testimonials) and
  * renders SliceZone with context so slices can use the same data across all pages.
  */
-export async function SliceZoneWithContext({ slices, components }) {
+export async function SliceZoneWithContext({ slices, components, context }) {
   const client = createClient();
   const [globalGallery, globalTestimonials] = await Promise.all([
     client.getSingle("gallery").catch(() => null),
@@ -16,7 +16,7 @@ export async function SliceZoneWithContext({ slices, components }) {
     <SliceZone
       slices={slices}
       components={components}
-      context={{ globalGallery, globalTestimonials }}
+      context={{ globalGallery, globalTestimonials, ...context }}
     />
   );
 }

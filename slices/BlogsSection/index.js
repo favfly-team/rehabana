@@ -1,4 +1,3 @@
-import { createClient } from "@/prismicio";
 import DefaultSection from "@/components/blogs-section";
 
 /**
@@ -6,19 +5,15 @@ import DefaultSection from "@/components/blogs-section";
  * @typedef {import("@prismicio/react").SliceComponentProps<BlogsSectionSlice>} BlogsSectionProps
  * @type {import("react").FC<BlogsSectionProps>}
  */
-const BlogsSection = async ({ slice }) => {
-  const client = createClient();
-  const { results: blogs } = await client.getByType("blog_post", {
-    orderings: {
-      field: "my.blog_post.published_date",
-      direction: "desc",
-    },
-    pageSize: 3,
-  });
-
+const BlogsSection = async ({ slice, context }) => {
   switch (slice.variation) {
     default:
-      return <DefaultSection slice={slice} blogs={blogs} />;
+      return (
+        <DefaultSection
+          slice={{ primary: context?.blogSlice }}
+          blogs={context?.blogs}
+        />
+      );
   }
 };
 

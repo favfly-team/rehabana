@@ -178,22 +178,6 @@
   }
 }
 
-/* Gallery Item Animation */
-.cs_gallery.cs_style_1 .cs_gallery_item {
-  animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Team Details Custom Styles */
 .cs_team_details_wrapper {
   font-family: var(--font-roboto);

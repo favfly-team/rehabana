@@ -690,6 +690,7 @@ export type GalleryPageDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | TeamSectionSlice
   | HeroSectionSlice
   | AboutSectionSlice
   | CtaSectionSlice
@@ -1727,41 +1728,6 @@ export type BlogPostContentSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *BlogsSection → Default → Primary*
- */
-export interface BlogsSectionSliceDefaultPrimary {
-  /**
-   * Subheading field in *BlogsSection → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogs_section.default.primary.subheading
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  subheading: prismic.KeyTextField;
-
-  /**
-   * Heading field in *BlogsSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogs_section.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Description field in *BlogsSection → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogs_section.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-}
-
-/**
  * Default variation for BlogsSection Slice
  *
  * - **API ID**: `default`
@@ -1770,7 +1736,7 @@ export interface BlogsSectionSliceDefaultPrimary {
  */
 export type BlogsSectionSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<BlogsSectionSliceDefaultPrimary>,
+  Record<string, never>,
   never
 >;
 
@@ -3806,7 +3772,6 @@ declare module "@prismicio/client" {
       BlogPostContentSliceVariation,
       BlogPostContentSliceDefault,
       BlogsSectionSlice,
-      BlogsSectionSliceDefaultPrimary,
       BlogsSectionSliceVariation,
       BlogsSectionSliceDefault,
       ContactSectionSlice,

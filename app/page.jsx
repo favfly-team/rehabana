@@ -19,7 +19,14 @@ const HomePage = async () => {
 
   return (
     <>
-      <SliceZoneWithContext slices={doc.data.slices} components={components} />
+      <SliceZoneWithContext
+        slices={doc.data.slices}
+        components={components}
+        context={{
+          blogSlice: blogsSection.data,
+          blogs: blogs.results,
+        }}
+      />
       <BlogsSection
         slice={{ primary: blogsSection.data }}
         blogs={blogs.results}
