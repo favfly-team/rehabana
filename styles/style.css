@@ -1842,8 +1842,8 @@ label {
 }
 
 .cs_player_btn.cs_style_2 {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: var(--accent-color);
   color: var(--white-color);
@@ -8964,7 +8964,6 @@ a.ui-button:active,
   margin-bottom: 6px;
 }
 .cs_testimonial.cs_style_3 .cs_testimonial_subtitle {
-  font-style: italic;
   line-height: 1.41em;
   margin-bottom: 30px;
 }

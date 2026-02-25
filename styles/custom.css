@@ -583,3 +583,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.splide__arrow {
+  background-color: #ae519059 !important;
+}

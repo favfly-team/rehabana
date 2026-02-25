@@ -6,6 +6,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import { asText } from "@prismicio/client";
 
 const TestimonialSlider = ({ slice }) => {
   const { primary } = slice || {};
@@ -59,7 +60,7 @@ const TestimonialItem = ({ item }) => {
   const { image, name, info, quote } = item || {};
 
   return (
-    <div className="cs_testimonial cs_style_3 cs_white_bg !p-5">
+    <div className="cs_testimonial cs_style_3 cs_white_bg !p-5 h-100">
       <div
         className="cs_quote_icon position-absolute opacity-80"
         style={{ top: "0.75rem", right: "0.75rem" }}
@@ -71,28 +72,13 @@ const TestimonialItem = ({ item }) => {
           className="cs_avatar_icon cs_radius_50 overflow-hidden"
           style={{ width: 52, height: 52, minWidth: 52, minHeight: 52 }}
         >
-          {image?.url ? (
-            <PrismicNextImage
-              field={image}
-              alt={image.alt ?? undefined}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          ) : (
-            <img
-              src="https://medixal-html.vercel.app/assets/img/avatar_2.png"
-              alt=""
-            />
-          )}
+          <PrismicNextImage
+            field={image}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         </div>
         <div className="cs_avatar_info">
-          {name?.[0]?.text && (
-            <PrismicRichText
-              field={name}
-              components={createRichTextComponents({
-                heading3ClassName: "cs_avatar_title cs_fs_18 mb-0",
-              })}
-            />
-          )}
+          <h3 className="cs_avatar_title cs_fs_18 mb-0">{asText(name)}</h3>
           {info && (
             <p className="cs_avatar_subtitle cs_fs_16 cs_accent_color mb-0">
               {info}
@@ -100,22 +86,22 @@ const TestimonialItem = ({ item }) => {
           )}
         </div>
       </div>
-      {quote?.[0]?.text && (
+      <div className="testimonial-content-truncate mb-2">
         <PrismicRichText
           field={quote}
           components={createRichTextComponents({
             paragraphClassName:
-              "cs_testimonial_subtitle cs_fs_16 cs_medium cs_accent_color cs_heading_font leading-snug mb-3",
+              "cs_testimonial_subtitle cs_fs_16 cs_accent_color leading-snug mb-2",
           })}
         />
-      )}
+      </div>
       <div className="cs_rating_container">
         <div style={{ display: "flex", gap: "2px" }}>
           {[1, 2, 3, 4, 5].map((star) => (
             <FaStar
               key={star}
               style={{
-                color: star <= 4 ? "var(--accent-color)" : "var(--gray-color)",
+                color: "var(--accent-color)",
                 fontSize: "14px",
               }}
             />
