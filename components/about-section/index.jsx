@@ -45,8 +45,8 @@ const AboutSection = ({ slice }) => {
               {list && list.length > 0 && (
                 <ul className="cs_list cs_style_1 cs_mp0">
                   {list.map((item, index) => (
-                    <li key={index}>
-                      <BsCheck2Circle className="cs_accent_color" size={26} />
+                    <li key={index} className="">
+                      <BsCheck2Circle className="cs_accent_color" size={20} />
                       {item?.text}
                     </li>
                   ))}

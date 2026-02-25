@@ -2024,21 +2024,18 @@ label {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 .cs_list.cs_style_1 li {
-  padding-left: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: var(--font-roboto);
-  color: var(--heading-color);
+  padding-left: 30px;
+  font-size: 16px;
   position: relative;
 }
 .cs_list.cs_style_1 li img,
 .cs_list.cs_style_1 li svg {
   position: absolute;
   left: 0;
-  top: -1px;
+  top: 1px;
 }
 
 .cs_list.cs_style_2 {

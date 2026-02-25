@@ -2,6 +2,7 @@
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
   FaFacebookF,
@@ -125,11 +126,19 @@ const NavItem = ({ item, onClick }) => {
   // ==== INITIALIZE STATE ====
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const pathname = usePathname();
+
+  const isActive = pathname === link_item.url;
+
   return (
     <li
       className={`${sub_link_item.length > 0 ? "menu-item-has-children" : ""}`}
     >
-      <PrismicNextLink field={link_item} onClick={onClick}>
+      <PrismicNextLink
+        field={link_item}
+        onClick={onClick}
+        className={isActive ? "active" : ""}
+      >
         {link_item.text}
       </PrismicNextLink>
       {sub_link_item.length > 0 && (

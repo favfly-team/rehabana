@@ -587,3 +587,7 @@
 .splide__arrow {
   background-color: #ae519059 !important;
 }
+
+.cs_nav_list .active {
+  color: var(--accent-color) !important;
+}

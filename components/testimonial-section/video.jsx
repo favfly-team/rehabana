@@ -96,7 +96,7 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
             <PrismicRichText
               field={name}
               components={createRichTextComponents({
-                heading3ClassName: "cs_card_title cs_fs_24 cs_medium mb-0",
+                heading3ClassName: "cs_card_title cs_fs_20 cs_medium mb-0",
               })}
             />
           )}

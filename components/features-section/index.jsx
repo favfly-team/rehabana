@@ -37,8 +37,8 @@ const FeatureItem = ({ item }) => {
     <div className="col-lg-4">
       <div className="cs_iconbox cs_style_4 position-relative cs_radius_10 overflow-hidden">
         <div className="cs_iconbox_content">
-          <div className="cs_iconbox_header">
-            {icon?.url && (
+          {icon?.url && (
+            <div className="cs_iconbox_header">
               <div className="cs_iconbox_icon cs_center cs_radius_50 cs_accent_color">
                 <PrismicNextImage
                   field={icon}
@@ -46,8 +46,8 @@ const FeatureItem = ({ item }) => {
                   style={{ width: "32px", height: "32px" }}
                 />
               </div>
-            )}
-          </div>
+            </div>
+          )}
           <h3 className="cs_iconbox_title cs_fs_20 cs_medium mb-2">
             {asText(title)}
           </h3>

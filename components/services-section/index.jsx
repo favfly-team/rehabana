@@ -45,12 +45,12 @@ const ServiceItem = ({ item }) => {
           </div>
         )}
         <PrismicNextLink href={url}>
-          <h3 className="cs_iconbox_title cs_fs_24 cs_medium">{meta_title}</h3>
+          <h3 className="cs_iconbox_title cs_fs_20 cs_medium mb-2">
+            {meta_title}
+          </h3>
         </PrismicNextLink>
 
-        <p className="cs_iconbox_subtitle leading-relaxed text-sm">
-          {meta_description}
-        </p>
+        <p className="cs_iconbox_subtitle">{meta_description}</p>
 
         <PrismicNextLink
           href={url}
