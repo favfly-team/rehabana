@@ -10246,12 +10246,12 @@ a.ui-button:active,
 }
 
 .cs_card.cs_style_4 {
-  padding: 50px 40px 40px;
+  padding: 24px;
   border: 1px solid var(--border-color);
 }
 @media (max-width: 1400px) {
   .cs_card.cs_style_4 {
-    padding: 25px 24px 30px;
+    padding: 20px;
   }
 }
 .cs_card.cs_style_4 .cs_card_header {
@@ -10264,10 +10264,10 @@ a.ui-button:active,
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 .cs_card.cs_style_4 .cs_card_title {
-  line-height: 1.42em;
+  line-height: 1.3em;
 }
 .cs_card.cs_style_4 .cs_card_index {
   font-family: var(--font-roboto);
@@ -10276,7 +10276,7 @@ a.ui-button:active,
 .cs_card.cs_style_4 .cs_card_thumbnail {
   border-radius: inherit;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
 }
 .cs_card.cs_style_4 .cs_card_subtitle {
   margin-bottom: 20px;
@@ -10772,14 +10772,14 @@ a.ui-button:active,
   }
 }
 .cs_appointment_form_wrapper.cs_type_2 .cs_appointment_form {
-  padding: 80px 60px;
+  padding: 50px 40px;
   background-color: var(--white-color);
   -webkit-box-shadow: 2px 2px 50px 0px rgba(0, 0, 27, 0.1);
   box-shadow: 2px 2px 50px 0px rgba(0, 0, 27, 0.1);
 }
 @media (max-width: 767px) {
   .cs_appointment_form_wrapper.cs_type_2 .cs_appointment_form {
-    padding: 50px 20px;
+    padding: 30px;
   }
 }
 .cs_appointment_form_wrapper.cs_type_2 .cs_appointment_form .cs_btn.cs_style_1 {

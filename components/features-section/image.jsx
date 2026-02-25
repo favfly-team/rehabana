@@ -2,6 +2,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import { asText } from "@prismicio/client";
 
 const FeaturesImageSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -40,24 +41,9 @@ const FeaturesImageItem = ({ item }) => {
           </div>
         )}
         <div className="cs_card_header">
-          {title?.[0]?.text && (
-            <PrismicRichText
-              field={title}
-              components={createRichTextComponents({
-                heading3ClassName: "cs_card_title cs_fs_24 mb-0",
-              })}
-            />
-          )}
+          <h3 className="cs_card_title cs_fs_20 mb-0">{asText(title)}</h3>
         </div>
-        {details && (
-          <PrismicRichText
-            field={details}
-            components={createRichTextComponents({
-              paragraphClassName:
-                "mb-0 cs_heading_color leading-relaxed text-sm",
-            })}
-          />
-        )}
+        {details && <p className="cs_card_subtitle mb-0">{asText(details)}</p>}
       </div>
     </div>
   );

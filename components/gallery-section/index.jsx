@@ -127,7 +127,7 @@ const GalleryItem = ({ item, openLightbox, index }) => {
     <div className="col-lg-4 col-md-6">
       <div
         className="cs_gallery_item cs_radius_10 overflow-hidden"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "zoom-in" }}
         onClick={() => openLightbox(index + 1)}
       >
         {image?.url && (
