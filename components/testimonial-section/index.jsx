@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { FaStar } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
@@ -104,12 +104,18 @@ const TestimonialSection = ({ slice }) => {
 const TestimonialItem = ({ item }) => {
   const { review, name, info } = item || {};
 
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div className="cs_testimonial cs_style_1">
       <div className="cs_quote_icon">
         <QuoteSVG />
       </div>
-      <div className="testimonial-content-truncate mb-4">
+      <div
+        className={`${isShow ? "" : "testimonial-content-truncate mb-4"}`}
+        onClick={() => setIsShow(!isShow)}
+        style={{ cursor: "pointer" }}
+      >
         {review && (
           <PrismicRichText
             field={review}

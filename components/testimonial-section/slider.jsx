@@ -7,6 +7,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 import { asText } from "@prismicio/client";
+import { useState } from "react";
 
 const TestimonialSlider = ({ slice }) => {
   const { primary } = slice || {};
@@ -58,6 +59,7 @@ const TestimonialSlider = ({ slice }) => {
 
 const TestimonialItem = ({ item }) => {
   const { image, name, info, quote } = item || {};
+  const [isShow, setIsShow] = useState(false);
 
   return (
     <div className="cs_testimonial cs_style_3 cs_white_bg !p-5 h-100">
@@ -86,7 +88,11 @@ const TestimonialItem = ({ item }) => {
           )}
         </div>
       </div>
-      <div className="testimonial-content-truncate mb-2">
+      <div
+        className={`${isShow ? "" : "testimonial-content-truncate mb-2"}`}
+        onClick={() => setIsShow(!isShow)}
+        style={{ cursor: "pointer" }}
+      >
         <PrismicRichText
           field={quote}
           components={createRichTextComponents({
