@@ -37,11 +37,7 @@ const TestimonialVideoSection = ({ slice }) => {
     <section className="cs_slider cs_style_1 cs_slider_gap_30">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <SectionHeading
-          primary={primary}
-          variant="split"
-          descriptionClassName="mb-0 leading-relaxed text-sm"
-        />
+        <SectionHeading primary={primary} variant="left" />
         {items && items.length > 0 && (
           <>
             <div className="cs_height_50 cs_height_lg_40" />

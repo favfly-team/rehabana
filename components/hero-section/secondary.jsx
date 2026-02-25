@@ -11,7 +11,12 @@ const SecondaryHeroSection = ({ slice }) => {
       style={{ backgroundImage: `url("${background_image?.url}")` }}
     >
       <div className="container">
-        <div className="cs_page_heading_in">
+        <div
+          className="cs_page_heading_in"
+          style={{
+            maxWidth: "650px",
+          }}
+        >
           {heading?.[0]?.text && (
             <PrismicRichText
               field={heading}

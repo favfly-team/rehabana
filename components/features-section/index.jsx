@@ -12,11 +12,7 @@ const FeaturesSection = ({ slice }) => {
     <section className="cs_features cs_style_1 m-0">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <SectionHeading
-          primary={primary}
-          variant="center"
-          descriptionClassName="text-center mt-3 leading-relaxed text-sm"
-        />
+        <SectionHeading primary={primary} variant="center" />
 
         {items && items.length > 0 && (
           <>

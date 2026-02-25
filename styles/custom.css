@@ -552,10 +552,12 @@
   color: var(--bs-link-hover-color, #0a58ca);
   text-decoration: underline;
 }
-.cs_blog_content strong,
-.font-medium {
+.cs_blog_content strong {
   font-weight: 500;
   color: var(--heading-color);
+}
+.font-medium {
+  font-weight: 500;
 }
 .cs_blog_content em {
   font-style: italic;

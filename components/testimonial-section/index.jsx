@@ -28,11 +28,7 @@ const TestimonialSection = ({ slice }) => {
     <section className="cs_testimonial cs_style_1">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <SectionHeading
-          primary={primary}
-          variant="center"
-          descriptionClassName="text-center mt-3 leading-relaxed text-sm"
-        />
+        <SectionHeading primary={primary} variant="center" />
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_gap_y_30 align-items-center">
           {hasImages && (

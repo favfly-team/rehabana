@@ -4,49 +4,43 @@ Common reusable components for the site.
 
 ## SectionHeading
 
-A flexible heading component for section titles with support for different alignments.
+Section heading with subheading, heading, and description. Two alignments: **left** (default) or **center**.
 
 ### Props
 
-- `align` (string): Alignment type - `"left"` | `"center"` | `"split"` (default: `"left"`)
-- `subtitle` (string): Subtitle text
-- `title` (ReactNode): Title content (can be string or JSX with `<br />` tags)
-- `rightContent` (ReactNode): Right side content for split layout (only used when `align="split"`)
-- `className` (string): Additional CSS classes
-- `subtitleProps` (object): Additional props for subtitle `<p>` element
-- `titleProps` (object): Additional props for title `<h2>` element
+- `align` or `variant` (string): `"left"` | `"center"` (default: `"left"`)
+- `primary` (object): Prismic slice primary with `subheading`, `heading`, `description`
+- `subtitle` (string): Subtitle text (legacy)
+- `title` (ReactNode): Title content (legacy)
+- `description` (ReactNode): Description content (legacy)
+- `className`, `subtitleClassName`, `titleClassName`, `descriptionClassName`: Optional class overrides
+- `includeDescription` (boolean): Whether to show description (default: `true`)
 
 ### Examples
 
 ```jsx
 import { SectionHeading } from "@/components/ui";
 
-// Left aligned (default)
+// Left aligned (default) – subheading, heading, description
 <SectionHeading
-  subtitle="About us"
-  title="Advanced technology and Specialist Doctors."
+  primary={primary}
+  variant="left"
 />
 
 // Center aligned
 <SectionHeading
-  align="center"
-  subtitle="Our Features"
-  title="Our Top Notch Features"
+  primary={primary}
+  variant="center"
 />
 
-// Split layout (with right content)
+// Legacy: left with plain props
 <SectionHeading
-  align="split"
-  subtitle="Expertise"
-  title="We offer more than Services & all Solutions Medical."
-  rightContent={
-    <p className="text-end">
-      the other hand, we denounce with righteous indignation
-    </p>
-  }
+  subtitle="About us"
+  title="Advanced technology and Specialist Doctors."
+  description="Optional description text."
 />
 
-// With custom classes
+// Legacy: center with custom classes
 <SectionHeading
   align="center"
   subtitle="Work Process"

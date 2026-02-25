@@ -19,12 +19,7 @@ const CTAForm2Section = ({ slice }) => {
           <div className="container-fluid">
             <div className="cs_appointment_form_wrapper cs_type_2 cs_radius_8">
               <div className="cs_appointment_form cs_radius_8">
-                <SectionHeading
-                  primary={primary}
-                  variant="split"
-                  titleClassName="cs_fs_36 mb-0"
-                  descriptionClassName="text-end leading-relaxed text-sm"
-                />
+                <SectionHeading primary={primary} variant="left" />
                 <div className="cs_height_50 cs_height_lg_40" />
                 <form className="row cs_row_gap_30 cs_gap_y_30">
                   <div className="col-lg-4 col-sm-6">

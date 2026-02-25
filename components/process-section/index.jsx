@@ -36,7 +36,7 @@ const ProcessSection = ({ slice }) => {
 
 const ProcessItem = ({ item, index, isReverse }) => {
   const { image, title, details } = item || {};
-  const stepNumber = String(index + 1).padStart(2, "0");
+  const stepNumber = String(index + 1).padStart(2);
 
   const spacer = <div className="cs_height_20 cs_height_lg_20" />;
 
@@ -68,8 +68,26 @@ const ProcessItem = ({ item, index, isReverse }) => {
           {asText(details)}
         </p>
       )}
-      <div className="cs_card_index cs_fs_20 cs_semibold cs_heading_color">
-        Step {stepNumber}
+      <div
+        className="cs_card_index cs_fs_14 cs_medium cs_heading_color"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <span
+          style={{
+            backgroundColor: "#f0f0f0",
+            padding: "8px 14px",
+            borderRadius: "50px",
+            lineHeight: 1,
+            opacity: 0.9,
+          }}
+        >
+          Step {stepNumber}
+        </span>
       </div>
     </div>
   );
