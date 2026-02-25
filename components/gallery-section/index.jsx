@@ -5,18 +5,21 @@ import { Button, SectionHeading, ViewAllButton } from "@/components/ui";
 import { useEffect, useState } from "react";
 import FsLightbox from "fslightbox-react";
 
-const GallerySection = ({ slice }) => {
+const GallerySection = ({ slice, galleryLimit }) => {
   const { primary } = slice || {};
-  const { items } = primary || {};
+  const { items: galleryItems } = primary || {};
   const [activeFilter, setActiveFilter] = useState("All");
+  const [items, setItems] = useState([]);
 
   const [sources, setSources] = useState([]);
 
-  const filterCategories = items
+  const limit = 9;
+
+  const filterCategories = galleryItems
     ? [
         "All",
         ...new Set(
-          items
+          galleryItems
             .map((item) => item?.category)
             .filter((cat) => cat && cat !== null)
         ),
@@ -37,21 +40,32 @@ const GallerySection = ({ slice }) => {
     });
   };
 
+  useEffect(() => {
+    const items =
+      activeFilter === "All"
+        ? galleryItems
+        : galleryItems.filter((item) => item?.category === activeFilter);
+    setItems(items);
+  }, [activeFilter, galleryItems]);
+
   // ===== GET STRUCTURED SOURCES =====
   useEffect(() => {
-    let tempSources = [];
-    items?.map((item) => {
-      item?.video?.link_type == "Web"
-        ? tempSources.push(item?.video?.url)
-        : tempSources.push(item?.image?.large?.url);
-    });
+    if (items?.length > 0) {
+      let tempSources = [];
+      items?.map((item) => {
+        item?.video?.link_type == "Web"
+          ? tempSources.push(item?.video?.url)
+          : tempSources.push(item?.image?.large?.url);
+      });
 
-    setSources(tempSources);
+      setSources(tempSources);
+    }
+
     return () => {
       setSources([]);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slice, activeFilter]);
+  }, [items]);
 
   return (
     <>
@@ -59,7 +73,7 @@ const GallerySection = ({ slice }) => {
         <div className="cs_height_120 cs_height_lg_80" />
         <div className="container">
           <SectionHeading primary={primary} variant="center" />
-          {filterCategories.length > 1 && (
+          {filterCategories?.length > 1 && (
             <GalleryFilters
               categories={filterCategories}
               activeFilter={activeFilter}
@@ -69,31 +83,28 @@ const GallerySection = ({ slice }) => {
 
           <div className="cs_height_50 cs_height_lg_40" />
           <div className="row cs_row_gap_30 cs_gap_y_30">
-            {items?.map(
-              (item, index) =>
-                (item?.category === activeFilter || activeFilter === "All") && (
-                  <GalleryItem
-                    key={index}
-                    item={item}
-                    index={index}
-                    openLightbox={openLightboxOnSlide}
-                  />
-                )
-            )}
+            {items
+              ?.slice(0, galleryLimit === "all" ? galleryItems?.length : limit)
+              ?.map((item, index) => (
+                <GalleryItem
+                  key={index}
+                  item={item}
+                  index={index}
+                  openLightbox={openLightboxOnSlide}
+                />
+              ))}
           </div>
           <ViewAllButton href="/gallery" />
         </div>
         <div className="cs_height_120 cs_height_lg_80" />
       </section>
 
-      {sources?.length > 0 && (
-        <FsLightbox
-          toggler={lightboxController?.toggler}
-          sources={sources}
-          slide={lightboxController?.slide}
-          key={activeFilter}
-        />
-      )}
+      <FsLightbox
+        toggler={lightboxController?.toggler}
+        sources={sources}
+        slide={lightboxController?.slide}
+        key={sources?.length}
+      />
     </>
   );
 };

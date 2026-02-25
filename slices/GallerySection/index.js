@@ -6,6 +6,7 @@ const GallerySection = ({ slice, context }) => {
       return (
         <DefaultSection
           slice={{ primary: context.globalGallery?.data?.default?.[0] }}
+          galleryLimit={context?.galleryLimit}
         />
       );
     }

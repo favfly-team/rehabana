@@ -576,3 +576,10 @@
   background-color: rgba(0, 0, 0, 0.02);
   font-style: italic;
 }
+
+.testimonial-content-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

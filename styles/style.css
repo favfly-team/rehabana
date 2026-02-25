@@ -7641,7 +7641,7 @@ a.ui-button:active,
   transition: all 0.2s ease-in-out;
 }
 .cs_iconbox.cs_style_4 .cs_iconbox_subtitle {
-  line-height: 1.88em;
+  line-height: 1.6em;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
@@ -8729,7 +8729,7 @@ a.ui-button:active,
   border-radius: 10px;
   position: relative;
   z-index: 1;
-  padding: 0 0 40px 40px;
+  padding: 40px 0 40px 40px;
 }
 @media (max-width: 991px) {
   .cs_testimonial_left .cs_testimonial_thumbnail {

@@ -32,7 +32,7 @@ const TestimonialSection = ({ slice }) => {
         <div className="cs_height_50 cs_height_lg_40" />
         <div className="row cs_gap_y_30 align-items-center">
           {hasImages && (
-            <div className="col-lg-6">
+            <div className="col-lg-5 offset-lg-1">
               <Splide
                 ref={imageSliderRef}
                 options={{
@@ -55,7 +55,11 @@ const TestimonialSection = ({ slice }) => {
                           <PrismicNextImage
                             field={item.image}
                             alt={item.image.alt ?? undefined}
-                            style={{ width: "100%", height: "100%" }}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              boxShadow: "2px 2px 50px 0px rgba(0, 0, 27, 0.1)",
+                            }}
                           />
                         ) : (
                           <div className="cs_testimonial_placeholder" />
@@ -78,6 +82,7 @@ const TestimonialSection = ({ slice }) => {
                   arrows: false,
                   pagination: false,
                   rewind: true,
+                  gap: "2rem",
                 }}
               >
                 {items.map((item, index) => (
@@ -104,15 +109,17 @@ const TestimonialItem = ({ item }) => {
       <div className="cs_quote_icon">
         <QuoteSVG />
       </div>
-      {review && (
-        <PrismicRichText
-          field={review}
-          components={createRichTextComponents({
-            paragraphClassName:
-              "cs_testimonial_subtitle cs_fs_20 leading-relaxed",
-          })}
-        />
-      )}
+      <div className="testimonial-content-truncate mb-4">
+        {review && (
+          <PrismicRichText
+            field={review}
+            components={createRichTextComponents({
+              paragraphClassName:
+                "cs_testimonial_subtitle cs_fs_20 leading-relaxed",
+            })}
+          />
+        )}
+      </div>
       <div className="cs_avatar cs_style_1">
         <div className="cs_rating_container">
           <div style={{ display: "flex", gap: "4px" }}>

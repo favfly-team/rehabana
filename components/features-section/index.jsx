@@ -3,6 +3,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SectionHeading } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import { asText } from "@prismicio/client";
 
 const FeaturesSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -47,14 +48,9 @@ const FeatureItem = ({ item }) => {
               </div>
             )}
           </div>
-          {title?.[0]?.text && (
-            <PrismicRichText
-              field={title}
-              components={createRichTextComponents({
-                heading3ClassName: "cs_iconbox_title cs_fs_28 cs_bold",
-              })}
-            />
-          )}
+          <h3 className="cs_iconbox_title cs_fs_20 cs_medium mb-2">
+            {asText(title)}
+          </h3>
           {details && (
             <PrismicRichText
               field={details}
