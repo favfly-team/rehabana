@@ -9,7 +9,13 @@ const TestimonialsPage = async () => {
   const doc = await client.getSingle("testimonials_page");
 
   return (
-    <SliceZoneWithContext slices={doc.data.slices} components={components} />
+    <SliceZoneWithContext
+      slices={doc.data.slices}
+      components={components}
+      context={{
+        testimonialLimit: "all",
+      }}
+    />
   );
 };
 

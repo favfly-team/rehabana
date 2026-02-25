@@ -11,10 +11,10 @@ const ServicesSection = ({ slice }) => {
     <section className="cs_service_area cs_type_3">
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
-        <SectionHeading primary={primary} variant="left" />
+        <SectionHeading primary={primary} variant="center" />
         {items && items.length > 0 && (
           <>
-            <div className="cs_height_100 cs_height_lg_40" />
+            <div className="cs_height_50 cs_height_lg_40"></div>
             <div className="row cs_gap_y_30">
               {items.map((item, index) => (
                 <ServiceItem key={index} item={item} />

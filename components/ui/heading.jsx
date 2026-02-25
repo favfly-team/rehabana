@@ -41,7 +41,7 @@ const SectionHeading = ({
   const resolvedDescriptionClasses =
     descriptionClassName ?? defaultDescriptionClasses;
 
-  const { subheading, heading, description } = primary;
+  const { subheading, heading, description } = primary || {};
   const hasHeading = heading?.[0]?.text;
   const hasSubheading = subheading != null && subheading !== "";
   if (!hasSubheading && !hasHeading) return null;

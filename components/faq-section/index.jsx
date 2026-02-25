@@ -82,8 +82,10 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
         </span>
       </div>
       <div
-        className="cs_accordian_body cs_heading_color"
-        style={{ display: isActive ? "block" : "none" }}
+        className="cs_accordian_body"
+        style={{
+          display: isActive ? "block" : "none",
+        }}
       >
         <PrismicRichText
           field={details}

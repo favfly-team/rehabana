@@ -15,6 +15,7 @@ const TestimonialSection = ({ slice, context }) => {
                     slice?.primary?.variation
                   ]?.[0],
               }}
+              testimonialLimit={context?.testimonialLimit}
             />
           );
         case "slider":

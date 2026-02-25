@@ -7,9 +7,11 @@ import FsLightbox from "fslightbox-react";
 import { SectionHeading, Button, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
-const TestimonialVideoSection = ({ slice }) => {
+const TestimonialVideoSection = ({ slice, testimonialLimit }) => {
   const { primary } = slice || {};
   const { items } = primary || {};
+
+  const limit = testimonialLimit === "all" ? items?.length : 9;
 
   const [lightboxController, setLightboxController] = useState({
     toggler: false,
@@ -38,29 +40,28 @@ const TestimonialVideoSection = ({ slice }) => {
       <div className="cs_height_120 cs_height_lg_80" />
       <div className="container">
         <SectionHeading primary={primary} variant="left" />
-        {items && items.length > 0 && (
-          <>
-            <div className="cs_height_50 cs_height_lg_40" />
-            <div className="row cs_row_gap_30 cs_gap_y_30">
-              {items.map((item, index) => (
-                <TestimonialVideoItem
-                  key={index}
-                  item={item}
-                  slide={getSlideForIndex(index)}
-                  onPlayClick={openLightbox}
-                />
-              ))}
-            </div>
-            {videoSources.length > 0 && (
-              <FsLightbox
-                toggler={lightboxController.toggler}
-                sources={videoSources}
-                slide={lightboxController.slide}
+
+        <>
+          <div className="cs_height_50 cs_height_lg_40" />
+          <div className="row cs_row_gap_30 cs_gap_y_30">
+            {items.slice(0, limit)?.map((item, index) => (
+              <TestimonialVideoItem
+                key={index}
+                item={item}
+                slide={getSlideForIndex(index)}
+                onPlayClick={openLightbox}
               />
-            )}
-            <ViewAllButton href="/testimonials" />
-          </>
-        )}
+            ))}
+          </div>
+
+          <FsLightbox
+            toggler={lightboxController.toggler}
+            sources={videoSources}
+            slide={lightboxController.slide}
+            key={videoSources.length}
+          />
+          <ViewAllButton href="/testimonials" />
+        </>
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>

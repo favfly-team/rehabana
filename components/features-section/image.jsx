@@ -1,7 +1,5 @@
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading } from "@/components/ui";
-import { createRichTextComponents } from "@/lib/richTextComponents";
 import { asText } from "@prismicio/client";
 
 const FeaturesImageSection = ({ slice }) => {
