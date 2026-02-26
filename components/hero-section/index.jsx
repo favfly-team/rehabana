@@ -95,9 +95,18 @@ const HeroSection = ({ slice }) => {
             {counter && counter.length > 0 && (
               <>
                 <div className="cs_height_66 cs_height_lg_40" />
-                <div className="cs_counter_1_wrap">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "50px",
+                  }}
+                >
                   {counter.map((item, index) => (
-                    <div key={index} className="cs_counter cs_style_1">
+                    <div
+                      key={index}
+                      className="cs_counter cs_style_1 text-center"
+                    >
                       {item?.number && (
                         <h2 className="cs_counter_number cs_fs_48 cs_accent_color mb-0">
                           {item.number}
