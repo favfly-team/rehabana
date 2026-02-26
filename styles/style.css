@@ -4521,7 +4521,7 @@ a.ui-button:active,
   justify-content: space-between;
 }
 .cs_site_header.cs_style_1 .cs_main_header_in {
-  height: 100px;
+  height: 80px;
 }
 .cs_site_header.cs_style_1 .cs_top_header_in {
   height: 60px;
@@ -5175,7 +5175,7 @@ a.ui-button:active,
   .cs_site_header.cs_style_1 .cs_menu_toggle {
     top: 50%;
     right: 14px;
-    margin-top: -13px;
+    margin-top: -20px;
     z-index: 11;
   }
   .cs_site_header.cs_style_1.cs_heading_color .cs_menu_toggle {
@@ -5208,7 +5208,7 @@ a.ui-button:active,
     position: relative;
   }
   .cs_site_header.cs_style_1 .cs_main_header_in {
-    height: 80px;
+    height: 60px;
   }
   .cs_site_header .current-menu-item > a:before {
     display: none;

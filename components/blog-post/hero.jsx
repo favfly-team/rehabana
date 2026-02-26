@@ -8,10 +8,7 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 const BlogPostHero = ({ data }) => {
   const { published_date, title, description, image } = data;
   return (
-    <div
-      className="cs_blog_hero_card cs_white_bg cs_radius_10 mb-4"
-      style={{ padding: "40px" }}
-    >
+    <div className="cs_blog_hero_card cs_white_bg cs_radius_10 mb-4">
       {published_date && (
         <div
           className="cs_blog_date mb-3 d-flex align-items-center"
@@ -25,14 +22,13 @@ const BlogPostHero = ({ data }) => {
       )}
 
       <div className="mb-4">
-        <h2 className="cs_blog_title cs_fs_32 mb-2">{asText(title)}</h2>
+        <h1 className="cs_blog_title mb-2">{asText(title)}</h1>
 
         {description && (
           <PrismicRichText
             field={description}
             components={createRichTextComponents({
-              paragraphClassName:
-                "cs_blog_description cs_fs_16 leading-relaxed",
+              paragraphClassName: "cs_blog_description leading-relaxed",
             })}
           />
         )}

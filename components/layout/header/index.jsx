@@ -62,7 +62,7 @@ const Header = ({ data }) => {
               <Link className="cs_site_branding" href="/" aria-label="Home">
                 <PrismicNextImage
                   field={logo}
-                  style={{ width: "auto", height: "60px" }}
+                  style={{ width: "auto", height: "50px" }}
                 />
               </Link>
               <div className="cs_nav cs_fs_18 cs_medium">

@@ -5,10 +5,7 @@ const BlogPostDetails = ({ slice }) => {
   const items = slice.primary?.items ?? [];
 
   return (
-    <div
-      className="cs_blog_details cs_white_bg cs_radius_10 mb-4"
-      style={{ padding: "40px" }}
-    >
+    <div className="cs_blog_details cs_white_bg cs_radius_10 mb-4">
       <div className="cs_blog_content">
         {items.map((item, index) => (
           <div key={index}>
