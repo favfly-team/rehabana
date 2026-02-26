@@ -71,10 +71,7 @@ const CustomPage = async ({ params }) => {
     return (
       <>
         <BlogPost data={blog.data} />
-        <BlogsSection
-          slice={{ primary: blogsSection.data }}
-          context={{ blogs }}
-        />
+        <BlogsSection slice={{ primary: blogsSection.data }} blogs={blogs} />
       </>
     );
   }
