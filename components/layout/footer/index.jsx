@@ -42,7 +42,7 @@ const Footer = ({ data }) => {
                 <PrismicNextImage
                   field={logo}
                   style={{
-                    height: "100px",
+                    height: "80px",
                     width: "auto",
                     filter: "brightness(100)",
                   }}

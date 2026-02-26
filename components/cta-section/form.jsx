@@ -16,8 +16,8 @@ const CTAFormSection = ({ slice }) => {
             <SectionHeading
               primary={primary}
               variant="left"
-              subtitleClassName="cs_white_color"
-              titleClassName="cs_fs_40 cs_white_color mb-0"
+              subtitleClassName="cs_fs_18 cs_white_color"
+              titleClassName="cs_fs_32 cs_white_color mb-0"
             />
             <CTAFormItems items={items} />
           </div>

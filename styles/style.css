@@ -1236,7 +1236,7 @@ textarea {
 }
 @media (max-width: 991px) {
   .cs_fs_18 {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -1256,7 +1256,7 @@ textarea {
 }
 @media (max-width: 991px) {
   .cs_fs_24 {
-    font-size: 22px;
+    font-size: 18px;
   }
 }
 
@@ -1301,7 +1301,7 @@ textarea {
 }
 @media (max-width: 991px) {
   .cs_fs_32 {
-    font-size: 26px;
+    font-size: 22px;
   }
 }
 
@@ -1331,7 +1331,7 @@ textarea {
 }
 @media (max-width: 991px) {
   .cs_fs_40 {
-    font-size: 32px;
+    font-size: 28px;
   }
 }
 
@@ -1361,7 +1361,7 @@ textarea {
 }
 @media (max-width: 991px) {
   .cs_fs_64 {
-    font-size: 50px;
+    font-size: 36px;
   }
 }
 
@@ -6811,7 +6811,7 @@ a.ui-button:active,
     max-width: 470px;
   }
   .cs_hero.cs_style_1 .cs_hero_content .cs_fs_20 {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 .cs_hero.cs_style_1 .cs_hero_text_line_1 {

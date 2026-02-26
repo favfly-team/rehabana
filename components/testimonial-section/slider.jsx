@@ -34,7 +34,7 @@ const TestimonialSlider = ({ slice }) => {
             perPage: 2,
             perMove: 1,
             arrows: true,
-            pagination: true,
+            pagination: false,
             rewind: true,
             gap: "1rem",
             breakpoints: {

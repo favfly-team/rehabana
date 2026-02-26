@@ -625,4 +625,40 @@
   .cs_blog_details {
     padding: 20px;
   }
+
+  .cs_hero.cs_style_1 .cs_hero_title {
+    margin-bottom: 22px;
+  }
+  .cs_hero_content {
+    margin-bottom: 20px;
+  }
+  .cs_appointment_form_wrapper.cs_type_1 .cs_appointment_heading {
+    font-size: 24px;
+  }
+  .cs_iconbox.cs_style_3 .cs_iconbox_icon {
+    width: 60px;
+    height: 60px;
+  }
+  .cs_iconbox.cs_style_3 {
+    gap: 20px;
+  }
+  .cs_accordian_head h3 {
+    font-size: 16px;
+  }
+  .cs_accordian_body p {
+    font-size: 14px;
+  }
+  .cs_video_section.cs_style_1 .cs_vider_wrapper.cs_style_1 .cs_video_title {
+    font-size: 22px;
+  }
+  .cs_video_section.cs_style_1 .cs_vider_wrapper.cs_style_1 {
+    padding: 35px 20px;
+  }
+  .cs_page_heading::before {
+    background: linear-gradient(
+      -90deg,
+      transparent -80%,
+      #fff 80.11%
+    ) !important;
+  }
 }

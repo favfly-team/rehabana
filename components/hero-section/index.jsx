@@ -33,11 +33,6 @@ const HeroSection = ({ slice }) => {
     >
       <div className="container">
         <div className="cs_hero_content_wrapper">
-          {image?.url && (
-            <div className="cs_hero_thumbnail">
-              <PrismicNextImage field={image} alt={image.alt ?? undefined} />
-            </div>
-          )}
           <div className="cs_hero_content">
             {subheading && (
               <h3 className="cs_hero_title_mini cs_fs_18 cs_accent_color cs_medium">
@@ -59,7 +54,7 @@ const HeroSection = ({ slice }) => {
                 field={description}
                 components={createRichTextComponents({
                   paragraphClassName:
-                    "cs_hero_subtitle cs_fs_20 cs_medium cs_heading_color leading-relaxed",
+                    "cs_hero_subtitle cs_fs_20 cs_heading_color leading-relaxed",
                 })}
               />
             )}
@@ -117,6 +112,11 @@ const HeroSection = ({ slice }) => {
               </>
             )}
           </div>
+          {image?.url && (
+            <div className="cs_hero_thumbnail">
+              <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -24,7 +24,7 @@ const HeroSectionForm = ({ slice }) => {
       }}
     >
       <div className="container position-relative" style={{ zIndex: 1 }}>
-        <div className="cs_height_120 cs_height_lg_80" />
+        <div className="cs_height_120 cs_height_lg_20" />
         <div className="row cs_gap_y_40 align-items-center">
           <div className="col-lg-6">
             <div className="cs_hero_content">
