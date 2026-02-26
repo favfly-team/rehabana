@@ -2,6 +2,7 @@
 
 import { FaCheck } from "react-icons/fa6";
 import { PrismicRichText } from "@prismicio/react";
+import OpnFormIframe from "@/components/form/OpnFormIframe";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const HeroSectionForm = ({ slice }) => {
@@ -89,57 +90,9 @@ const HeroSectionForm = ({ slice }) => {
                   {form_title}
                 </h3>
               )}
-              <form className="cs_appointment_form row cs_gap_y_30">
-                <div className="col-12">
-                  <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-                    <input
-                      type="text"
-                      name="name"
-                      className="cs_form_field cs_type_1"
-                      placeholder="Name *"
-                    />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-                    <input
-                      type="email"
-                      name="email"
-                      className="cs_form_field cs_type_1"
-                      placeholder="Email *"
-                    />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-                    <input
-                      type="text"
-                      name="phone"
-                      className="cs_form_field cs_type_1"
-                      placeholder="Phone Number *"
-                    />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-                    <textarea
-                      name="requirement"
-                      rows={5}
-                      className="cs_form_field cs_type_1"
-                      placeholder="Message / Medical Concern *"
-                      defaultValue={""}
-                    />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <button
-                    type="submit"
-                    className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_5 w-100"
-                  >
-                    <span className="cs_btn_text">Book Appointment</span>
-                  </button>
-                </div>
-              </form>
+              <div style={{ margin: "-20px" }}>
+                <OpnFormIframe height="400px" />
+              </div>
             </div>
           </div>
         </div>

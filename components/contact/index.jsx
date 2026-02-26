@@ -1,6 +1,7 @@
 "use client";
 
 import { FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import OpnFormIframe from "@/components/form/OpnFormIframe";
 import { asText } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 
@@ -126,100 +127,22 @@ const ContactSection = ({ slice }) => {
           <div className="col-lg-4">
             <div
               className="contact_form_wrapper cs_heading_font cs_bg_filed cs_hide_before_after h-100"
-              data-src="assets/img/contact_form_bg_1.png"
               style={{
                 backgroundImage:
                   'url("https://images.prismic.io/rehabana/aZmlKMFoBIGEgneC_contact_form_bg_1.png?auto=format,compress")',
+                padding: "30px",
               }}
             >
-              <h2 className="cs_fs_40 cs_fw_semibold mb-0">{form_title}</h2>
+              <h2 className="cs_fs_32 cs_fw_semibold mb-0">{form_title}</h2>
               <div className="cs_height_45 cs_height_lg_40" />
-              <Form />
+
+              <OpnFormIframe height="400px" borderRadius="10px" />
             </div>
           </div>
         </div>
       </div>
       <div className="cs_height_120 cs_height_lg_80" />
     </section>
-  );
-};
-
-const Form = () => {
-  return (
-    <form className="row cs_row_gap_30 cs_gap_y_30">
-      <div className="col-sm-6">
-        <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-          <input
-            type="text"
-            name="fname"
-            className="cs_form_field cs_type_1"
-            placeholder="First Name*"
-          />
-        </div>
-      </div>
-      <div className="col-sm-6">
-        <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-          <input
-            type="text"
-            name="lname"
-            className="cs_form_field cs_type_1"
-            placeholder="LastName*"
-          />
-        </div>
-      </div>
-      <div className="col-sm-6">
-        <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-          <input
-            type="email"
-            name="email"
-            className="cs_form_field cs_type_1"
-            placeholder="Email Address*"
-          />
-        </div>
-      </div>
-      <div className="col-sm-6">
-        <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-          <input
-            type="text"
-            name="phone"
-            className="cs_form_field cs_type_1"
-            placeholder="Phone Number*"
-          />
-        </div>
-      </div>
-      <div className="col-lg-12">
-        <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-          <input
-            type="text"
-            name="subject"
-            className="cs_form_field cs_type_1"
-            placeholder="Subject*"
-          />
-        </div>
-      </div>
-      <div className="col-lg-12">
-        <div className="cs_form_field_wrapper cs_type_1 cs_radius_5">
-          <textarea
-            name="message"
-            rows={5}
-            placeholder="Your Message here"
-            className="cs_form_field cs_type_1"
-            defaultValue={""}
-          />
-        </div>
-      </div>
-      <div className="col-lg-12">
-        <button
-          type="submit"
-          className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_5 w-100"
-        >
-          <span className="cs_btn_text">Send Message</span>
-          <span className="cs_btn_text">
-            <i className="fa-solid fa-arrow-right" />
-          </span>
-        </button>
-      </div>
-    </form>
   );
 };
 

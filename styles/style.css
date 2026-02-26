@@ -10865,22 +10865,6 @@ a.ui-button:active,
   bottom: 0;
 }
 
-.contact_form_wrapper {
-  padding: 55px 50px 60px;
-}
-@media (max-width: 991px) {
-  .contact_form_wrapper {
-    padding: 50px 30px;
-  }
-}
-.contact_form_wrapper.cs_type_1 {
-  padding: 55px 30px 60px;
-}
-@media (max-width: 991px) {
-  .contact_form_wrapper.cs_type_1 {
-    padding: 50px 30px;
-  }
-}
 .contact_form_wrapper::after {
   content: "";
   width: 100%;
