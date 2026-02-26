@@ -1,0 +1,47 @@
+import { createClient } from "@/prismicio";
+
+const websiteUrl = `https://${process.env.PRISMIC_ID}.${process.env.TLD}`;
+
+const generateSiteMap = async () => {
+  // Static app routes (from app/ directory: page.jsx, about/, blog/, contact/, gallery/, services/, team/, testimonials/)
+  const links = [
+    { uid: "" },
+    { uid: "about" },
+    { uid: "blog" },
+    { uid: "contact" },
+    { uid: "gallery" },
+    { uid: "services" },
+    { uid: "team" },
+    { uid: "testimonials" },
+  ];
+
+  const client = createClient();
+
+  // Fetch all content types (custom_page + service_page served by [slug], blog_post by [slug])
+  const [blog_post, custom_page, service_page] = await Promise.all([
+    client.getAllByType("blog_post"),
+    client.getAllByType("custom_page"),
+    client.getAllByType("service_page"),
+  ]);
+
+  // Static app pages + custom_page and service_page routes (all served at /[slug])
+  const staticPages = [...links, ...custom_page, ...service_page, ...blog_post];
+
+  const staticSlugs = staticPages.map((item) => ({
+    url: `${websiteUrl}/${item?.uid || ""}`,
+    lastModified: new Date(item?.last_publication_date || undefined),
+    changeFrequency: "monthly",
+    priority: item?.uid === "" ? 1.0 : 0.8,
+  }));
+
+  const sitemap = [...staticSlugs];
+
+  return sitemap;
+};
+
+const sitemap = async () => {
+  const res = await generateSiteMap();
+  return res;
+};
+
+export default sitemap;

@@ -21,6 +21,7 @@ const routes = [
   { type: "blog_page", path: "/blog" },
   { type: "blog_post", path: "/:uid" },
   { type: "contact_page", path: "/contact" },
+  { type: "custom_page", path: "/:uid" },
   { type: "gallery_page", path: "/gallery" },
   { type: "service_page", path: "/:uid" },
   { type: "services_page", path: "/services" },
