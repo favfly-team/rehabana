@@ -144,6 +144,12 @@ export default function ContactModalPopup() {
                   alt="Rehabana"
                   width={500}
                   height={500}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
                   className="cs_contact_popup-img"
                 />
               </div>
@@ -155,7 +161,7 @@ export default function ContactModalPopup() {
                 </h2>
                 <OpnFormIframe
                   className="cs_contact_popup-iframe"
-                  height="420px"
+                  height="380px"
                   borderRadius="0"
                 />
               </div>
@@ -191,7 +197,8 @@ export default function ContactModalPopup() {
           position: absolute;
           inset: 0;
           overflow: auto;
-          padding: 15px;
+          -webkit-overflow-scrolling: touch;
+          padding: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -200,6 +207,12 @@ export default function ContactModalPopup() {
           transition:
             transform 0.3s ease,
             opacity 0.3s ease;
+        }
+        @media (max-width: 991px) {
+          .cs_contact_popup-content {
+            align-items: flex-start;
+            padding: 10px;
+          }
         }
         .cs_contact_popup.active .cs_contact_popup-content {
           transform: translateY(0);
@@ -214,6 +227,12 @@ export default function ContactModalPopup() {
           overflow: hidden;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
         }
+        @media (max-width: 991px) {
+          .cs_contact_popup-container {
+            border-radius: 10px;
+            margin: auto 0;
+          }
+        }
         .cs_contact_popup-close {
           position: absolute;
           top: 12px;
@@ -227,8 +246,28 @@ export default function ContactModalPopup() {
           cursor: pointer;
           transition: background 0.2s;
         }
+        @media (max-width: 991px) {
+          .cs_contact_popup-close {
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          }
+          .cs_contact_popup-close::before,
+          .cs_contact_popup-close::after {
+            width: 14px;
+            background: #333;
+          }
+        }
         .cs_contact_popup-close:hover {
           background: rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 991px) {
+          .cs_contact_popup-close:hover {
+            background: #fff;
+          }
         }
         .cs_contact_popup-close::before,
         .cs_contact_popup-close::after {
@@ -250,12 +289,26 @@ export default function ContactModalPopup() {
         .cs_contact_popup-image_col {
           min-height: 220px;
         }
+        @media (max-width: 991px) {
+          .cs_contact_popup-image_col {
+            min-height: 0;
+            max-height: 220px;
+            flex-shrink: 0;
+          }
+        }
         .cs_contact_popup-image_wrapper {
           position: relative;
           width: 100%;
           height: 100%;
           min-height: 220px;
           overflow: hidden;
+        }
+        @media (max-width: 991px) {
+          .cs_contact_popup-image_wrapper {
+            min-height: 180px;
+            max-height: 220px;
+            aspect-ratio: 16 / 10;
+          }
         }
         @media (min-width: 992px) {
           .cs_contact_popup-image_wrapper {
@@ -277,6 +330,13 @@ export default function ContactModalPopup() {
           width: 100%;
           display: flex;
           flex-direction: column;
+          min-width: 0;
+        }
+        @media (max-width: 991px) {
+          .cs_contact_popup-form_inner {
+            padding: 20px 16px 28px;
+            padding-bottom: max(28px, env(safe-area-inset-bottom));
+          }
         }
         .cs_contact_popup-title {
           font-size: 1.5rem;
@@ -285,13 +345,19 @@ export default function ContactModalPopup() {
           color: #1a1a1a;
           text-align: center;
         }
+        @media (max-width: 991px) {
+          .cs_contact_popup-title {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+          }
+        }
         .cs_contact_popup-iframe {
           flex: 1;
           min-height: 380px;
         }
         @media (max-width: 991px) {
           .cs_contact_popup-iframe {
-            min-height: 320px;
+            min-height: 340px;
           }
         }
       `}</style>
