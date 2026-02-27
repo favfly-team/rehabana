@@ -14,7 +14,7 @@ const CTASection = ({ slice }) => {
         <div className="cs_vider_wrapper cs_style_1">
           <div style={{ maxWidth: "650px", margin: "0 auto" }}>
             {subheading && (
-              <p className="cs_section_subtitle cs_fs_18 cs_medium cs_accent_color cs_heading_font">
+              <p className="cs_section_subtitle cs_fs_18 cs_accent_color cs_heading_font">
                 {subheading}
               </p>
             )}

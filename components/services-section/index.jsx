@@ -56,7 +56,7 @@ const ServiceItem = ({ item }) => {
           href={url}
           className="cs_text_btn cs_fs_16 cs_heading_color"
         >
-          <span>Learn More</span>
+          <span>Read More</span>
           <div className="cs_text_btn_icon cs_center">
             <span>
               <FaArrowRightLong />

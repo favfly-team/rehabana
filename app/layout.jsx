@@ -20,6 +20,7 @@ const roboto = Roboto({
 //  ==== import components ====
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import ContactModalPopup from "@/components/form/ContactModalPopup";
 
 import { createClient } from "@/prismicio";
 import NextTopLoader from "nextjs-toploader";
@@ -43,6 +44,7 @@ const RootLayout = async ({ children }) => {
           <Header data={doc.data} />
           {children}
           <Footer data={doc.data} />
+          <ContactModalPopup />
         </StyledJsxRegistry>
       </body>
     </html>
