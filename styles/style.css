@@ -32,7 +32,7 @@
   --white-color: #fff;
   --heading-color: #00001b;
   --body-color: rgba(0, 0, 27, 0.6);
-  --accent-color: #ae5190;
+  --accent-color: #b25593;
   --gray-color: #ebeced;
   --gray2-color: #e6f1f7;
   --border-color: rgb(0 0 27 / 30%);
@@ -3579,7 +3579,7 @@ a.ui-button:active,
 }
 
 .cs_color_option_bg_1 {
-  background-color: #ae5190;
+  background-color: #b25593;
 }
 
 .cs_color_option_bg_2 {

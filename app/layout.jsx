@@ -40,7 +40,7 @@ const RootLayout = async ({ children }) => {
     <html lang="en">
       <body className={poppins.variable}>
         <StyledJsxRegistry>
-          <NextTopLoader color="#AE5190" />
+          <NextTopLoader color="#7f1f60" />
           <Header data={doc.data} />
           {children}
           <Footer data={doc.data} />
