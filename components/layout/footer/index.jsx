@@ -72,7 +72,7 @@ const Footer = ({ data }) => {
           ))}
           <div className="cs_footer_col">
             <div className="cs_footer_widget">
-              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_medium">
+              <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
                 {contact_info?.[0]?.title}
               </h2>
 
@@ -122,7 +122,7 @@ const FooterLinkList = ({ data }) => {
   return (
     <div className="cs_footer_col">
       <div className="cs_footer_widget">
-        <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_medium">
+        <h2 className="cs_footer_widget_title cs_fs_24 cs_white_color cs_semibold">
           {title}
         </h2>
         <ul className="cs_footer_widget_menu">

@@ -8,13 +8,13 @@ import "@/styles/custom.css";
 import "@splidejs/react-splide/css";
 
 //  ==== import fonts ====
-import { Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 //  ==== define fonts ====
-const roboto = Roboto({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-roboto",
-  weight: ["400", "500", "700"],
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
 });
 
 //  ==== import components ====
@@ -38,7 +38,7 @@ const RootLayout = async ({ children }) => {
 
   return (
     <html lang="en">
-      <body className={roboto.variable}>
+      <body className={poppins.variable}>
         <StyledJsxRegistry>
           <NextTopLoader color="#AE5190" />
           <Header data={doc.data} />

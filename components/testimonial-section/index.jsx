@@ -142,8 +142,8 @@ const TestimonialItem = ({ item }) => {
           </div>
         </div>
         <div className="cs_avatar_info">
-          {name && <h3 className="cs_avatar_title cs_fs_24">{name}</h3>}
-          {info && <p className="cs_avatar_subtitle cs_fs_18 mb-0">{info}</p>}
+          {name && <h3 className="cs_avatar_title cs_fs_20">{name}</h3>}
+          {info && <p className="cs_avatar_subtitle cs_fs_14 mb-0">{info}</p>}
         </div>
       </div>
     </div>

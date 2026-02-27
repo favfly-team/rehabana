@@ -38,6 +38,10 @@ const BlogItem = ({ doc }) => {
             field={featured_image}
             alt={meta_title}
             className="img-fluid"
+            style={{
+              aspectRatio: "16/9",
+              objectFit: "cover",
+            }}
           />
         </PrismicNextLink>
         <div className="cs_post_info">
@@ -45,7 +49,7 @@ const BlogItem = ({ doc }) => {
             {format(new Date(published_date), "MMM d, yyyy")}
           </div>
           <PrismicNextLink href={url}>
-            <h3 className="cs_post_title cs_fs_20">{meta_title}</h3>
+            <h3 className="cs_post_title cs_fs_20 cs_semibold">{meta_title}</h3>
           </PrismicNextLink>
 
           <p className="cs_post_excerpt mb-2">{meta_description}</p>

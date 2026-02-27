@@ -7,6 +7,7 @@ const BlogPage = async () => {
   const client = createClient();
 
   const doc = await client.getSingle("blog_page");
+  const blogsSection = await client.getSingle("blogs");
 
   const results = await client.getAllByType("blog_post", {
     orderings: {
@@ -21,6 +22,7 @@ const BlogPage = async () => {
       components={components}
       context={{
         blogs: results,
+        blogSlice: blogsSection.data,
       }}
     />
   );

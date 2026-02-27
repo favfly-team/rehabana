@@ -38,7 +38,8 @@ const HeroSectionForm = ({ slice }) => {
                 <PrismicRichText
                   field={heading}
                   components={createRichTextComponents({
-                    heading1ClassName: "cs_hero_title cs_fs_40 mb-4",
+                    heading1ClassName:
+                      "cs_hero_title cs_semibold cs_fs_40 mb-4",
                   })}
                 />
               )}

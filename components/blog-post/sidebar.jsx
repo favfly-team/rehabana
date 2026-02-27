@@ -12,7 +12,7 @@ const BlogPostSidebar = () => {
         className="cs_blog_sidebar_card cs_white_bg cs_radius_10"
         style={{ padding: "30px 20px" }}
       >
-        <h3 className="cs_sidebar_title cs_fs_24 cs_heading_font mb-4 text-center">
+        <h3 className="cs_sidebar_title cs_fs_24 cs_semibold cs_heading_font mb-4 text-center">
           Book an Appointment
         </h3>
         <div style={{ margin: "-20px" }}>

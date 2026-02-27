@@ -19,7 +19,7 @@ const ViewAllButton = ({ href, label = "View All", prismic = false }) => {
       <div className="text-center mt-5">
         <PrismicNextLink
           field={href}
-          className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_100"
+          className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
         >
           <span className="cs_btn_text">{label}</span>
         </PrismicNextLink>
@@ -31,7 +31,7 @@ const ViewAllButton = ({ href, label = "View All", prismic = false }) => {
     <div className="text-center mt-5">
       <Link
         href={href}
-        className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_100"
+        className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
       >
         <span className="cs_btn_text">{label}</span>
       </Link>

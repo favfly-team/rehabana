@@ -39,7 +39,9 @@ const FeaturesImageItem = ({ item }) => {
           </div>
         )}
         <div className="cs_card_header">
-          <h3 className="cs_card_title cs_fs_20 mb-0">{asText(title)}</h3>
+          <h3 className="cs_card_title cs_fs_20 cs_semibold mb-0">
+            {asText(title)}
+          </h3>
         </div>
         {details && <p className="cs_card_subtitle mb-0">{asText(details)}</p>}
       </div>

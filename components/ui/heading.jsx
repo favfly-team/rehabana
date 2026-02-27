@@ -31,7 +31,7 @@ const SectionHeading = ({
 
   const defaultSubtitleClasses =
     "cs_section_subtitle cs_fs_18 cs_accent_color cs_heading_font";
-  const defaultTitleClasses = "cs_section_title cs_fs_32 mb-0";
+  const defaultTitleClasses = "cs_section_title cs_semibold cs_fs_32 mb-0";
   const defaultDescriptionClasses = isCenter
     ? "text-center mt-3 leading-relaxed text-sm mb-0"
     : "mt-3 leading-relaxed text-sm mb-0";

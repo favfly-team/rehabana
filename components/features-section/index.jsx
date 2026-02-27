@@ -48,7 +48,7 @@ const FeatureItem = ({ item }) => {
               </div>
             </div>
           )}
-          <h3 className="cs_iconbox_title cs_fs_20 cs_medium mb-2">
+          <h3 className="cs_iconbox_title cs_fs_20 cs_semibold mb-2">
             {asText(title)}
           </h3>
           {details && (

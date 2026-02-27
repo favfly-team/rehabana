@@ -74,7 +74,7 @@ const FAQItem = ({ faq, isActive, onToggle }) => {
       onClick={onToggle}
     >
       <div className="cs_accordian_head">
-        <h3 className="cs_accordian_title cs_fs_20 cs_medium">
+        <h3 className="cs_accordian_title cs_fs_20 cs_semibold">
           {asText(title)}
         </h3>
         <span className="cs_accordian_toggle cs_center cs_radius_50">

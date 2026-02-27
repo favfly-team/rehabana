@@ -21,7 +21,7 @@ const SecondaryHeroSection = ({ slice }) => {
             <PrismicRichText
               field={heading}
               components={createRichTextComponents({
-                heading1ClassName: "cs_page_heading_title cs_fs_40",
+                heading1ClassName: "cs_page_heading_title cs_semibold cs_fs_40",
               })}
             />
           )}

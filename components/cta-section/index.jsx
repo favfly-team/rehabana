@@ -12,7 +12,7 @@ const CTASection = ({ slice }) => {
       <div className="container">
         <div className="cs_height_120 cs_height_lg_80" />
         <div className="cs_vider_wrapper cs_style_1">
-          <div style={{ maxWidth: "650px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "750px", margin: "0 auto" }}>
             {subheading && (
               <p className="cs_section_subtitle cs_fs_18 cs_accent_color cs_heading_font">
                 {subheading}
@@ -39,7 +39,7 @@ const CTASection = ({ slice }) => {
               {primary_button?.url && (
                 <PrismicNextLink
                   field={primary_button}
-                  className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_100"
+                  className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
                 >
                   <span className="cs_btn_text">{primary_button.text}</span>
                 </PrismicNextLink>
@@ -47,7 +47,7 @@ const CTASection = ({ slice }) => {
               {secondary_button?.url && (
                 <PrismicNextLink
                   field={secondary_button}
-                  className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_100"
+                  className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
                 >
                   <span className="cs_btn_text">{secondary_button.text}</span>
                 </PrismicNextLink>

@@ -40,7 +40,10 @@ const HeroSection = ({ slice }) => {
               </h3>
             )}
             {heading?.[0]?.text && (
-              <h1 className="cs_hero_title cs_fs_64">
+              <h1
+                className="cs_hero_title cs_semibold cs_fs_48"
+                style={{ lineHeight: "1.2" }}
+              >
                 <PrismicRichText
                   field={heading}
                   components={{
@@ -62,7 +65,7 @@ const HeroSection = ({ slice }) => {
               {button?.url && (
                 <PrismicNextLink
                   field={button}
-                  className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_100"
+                  className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
                 >
                   <span className="cs_btn_text">{button.text}</span>
                 </PrismicNextLink>

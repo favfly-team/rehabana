@@ -22,7 +22,7 @@ const BlogPostHero = ({ data }) => {
       )}
 
       <div className="mb-4">
-        <h1 className="cs_blog_title mb-2">{asText(title)}</h1>
+        <h1 className="cs_blog_title cs_semibold mb-2">{asText(title)}</h1>
 
         {description && (
           <PrismicRichText

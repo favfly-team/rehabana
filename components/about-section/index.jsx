@@ -55,7 +55,7 @@ const AboutSection = ({ slice }) => {
               {button?.url && (
                 <PrismicNextLink
                   field={button}
-                  className="cs_btn cs_style_1 cs_fs_18 cs_medium cs_accent_bg cs_radius_100"
+                  className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
                 >
                   <span className="cs_btn_text">{button.text}</span>
                 </PrismicNextLink>
