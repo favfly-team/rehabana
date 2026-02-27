@@ -27,9 +27,15 @@ const generateSiteMap = async () => {
   // Static app pages + custom_page and service_page routes (all served at /[slug])
   const staticPages = [...links, ...custom_page, ...service_page, ...blog_post];
 
+  const toValidDate = (value) => {
+    if (!value) return new Date();
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? new Date() : d;
+  };
+
   const staticSlugs = staticPages.map((item) => ({
     url: `${websiteUrl}/${item?.uid || ""}`,
-    lastModified: new Date(item?.last_publication_date || undefined),
+    lastModified: toValidDate(item?.last_publication_date),
     changeFrequency: "monthly",
     priority: item?.uid === "" ? 1.0 : 0.8,
   }));
