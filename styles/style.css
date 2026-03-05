@@ -4838,6 +4838,8 @@ a.ui-button:active,
     left: 0;
     top: calc(100% + 15px);
     pointer-events: none;
+    overflow: auto;
+    max-height: 400px;
   }
   .cs_nav .cs_nav_list > li:hover > ul {
     top: 100%;
@@ -4894,6 +4896,8 @@ a.ui-button:active,
     display: block;
     line-height: inherit;
     padding: 8px 20px;
+    font-size: 16px;
+    line-height: 1.3;
   }
   .cs_nav .cs_nav_list ul ul {
     top: 15px;
