@@ -76,6 +76,15 @@
                       "label": "Info",
                       "placeholder": ""
                     }
+                  },
+                  "diseases_list": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Diseases List",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "list-item"
+                    }
                   }
                 }
               }
@@ -161,6 +170,15 @@
                       "allowTargetBlank": false,
                       "single": "paragraph,strong"
                     }
+                  },
+                  "diseases_list": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Diseases List",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "list-item"
+                    }
                   }
                 }
               }
@@ -232,6 +250,15 @@
                       "placeholder": "",
                       "allowTargetBlank": false,
                       "single": "paragraph,strong"
+                    }
+                  },
+                  "diseases_list": {
+                    "type": "StructuredText",
+                    "config": {
+                      "label": "Diseases List",
+                      "placeholder": "",
+                      "allowTargetBlank": false,
+                      "single": "list-item"
                     }
                   }
                 }

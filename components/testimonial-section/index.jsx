@@ -7,6 +7,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import DiseasePills from "./disease-pills";
 
 const TestimonialSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -102,7 +103,7 @@ const TestimonialSection = ({ slice }) => {
 };
 
 const TestimonialItem = ({ item }) => {
-  const { review, name, info } = item || {};
+  const { review, name, info, diseases_list } = item || {};
 
   const [isShow, setIsShow] = useState(false);
 
@@ -111,6 +112,7 @@ const TestimonialItem = ({ item }) => {
       <div className="cs_quote_icon">
         <QuoteSVG />
       </div>
+      <DiseasePills items={diseases_list} wrapperClassName="mb-3" />
       <div
         className={`${isShow ? "" : "testimonial-content-truncate mb-4"}`}
         onClick={() => setIsShow(!isShow)}
@@ -126,6 +128,7 @@ const TestimonialItem = ({ item }) => {
           />
         )}
       </div>
+
       <div className="cs_avatar cs_style_1">
         <div className="cs_rating_container">
           <div style={{ display: "flex", gap: "4px" }}>

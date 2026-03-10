@@ -6,6 +6,7 @@ import { PrismicRichText } from "@prismicio/react";
 import FsLightbox from "fslightbox-react";
 import { SectionHeading, Button, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import DiseasePills from "./disease-pills";
 
 const TestimonialVideoSection = ({ slice, testimonialLimit }) => {
   const { primary } = slice || {};
@@ -20,7 +21,7 @@ const TestimonialVideoSection = ({ slice, testimonialLimit }) => {
 
   const videoSources = useMemo(
     () => items?.map((item) => item?.video?.url).filter(Boolean) ?? [],
-    [items]
+    [items],
   );
 
   const openLightbox = (slide) => {
@@ -69,7 +70,7 @@ const TestimonialVideoSection = ({ slice, testimonialLimit }) => {
 };
 
 const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
-  const { image, video, name, details } = item || {};
+  const { image, video, name, details, diseases_list } = item || {};
 
   const handlePlayClick = (e) => {
     e.preventDefault();
@@ -78,7 +79,7 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
 
   return (
     <div className="col-lg-4">
-      <div className="cs_card cs_style_1 cs_radius_10">
+      <div className="cs_card cs_style_1 cs_radius_10 h-100">
         {image?.url && (
           <div
             className="cs_card_thumbnail cs_radius_10"
@@ -100,6 +101,7 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
               })}
             />
           )}
+          <DiseasePills items={diseases_list} wrapperClassName="mt-2" />
           {details && (
             <PrismicRichText
               field={details}

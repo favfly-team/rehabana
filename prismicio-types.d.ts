@@ -1190,6 +1190,16 @@ export interface TestimonialsDocumentDataDefaultItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   info: prismic.KeyTextField;
+
+  /**
+   * Diseases List field in *Testimonials → Default → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.default[].items[].diseases_list
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  diseases_list: prismic.RichTextField;
 }
 
 /**
@@ -1282,6 +1292,16 @@ export interface TestimonialsDocumentDataVideoItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   details: prismic.RichTextField;
+
+  /**
+   * Diseases List field in *Testimonials → Video → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.video[].items[].diseases_list
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  diseases_list: prismic.RichTextField;
 }
 
 /**
@@ -1374,6 +1394,16 @@ export interface TestimonialsDocumentDataSliderItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   quote: prismic.RichTextField;
+
+  /**
+   * Diseases List field in *Testimonials → Slider → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slider[].items[].diseases_list
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  diseases_list: prismic.RichTextField;
 }
 
 /**

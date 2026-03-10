@@ -6,6 +6,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+import DiseasePills from "./disease-pills";
 import { asText } from "@prismicio/client";
 import { useState } from "react";
 
@@ -58,7 +59,7 @@ const TestimonialSlider = ({ slice }) => {
 };
 
 const TestimonialItem = ({ item }) => {
-  const { image, name, info, quote } = item || {};
+  const { image, name, info, quote, diseases_list } = item || {};
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -82,7 +83,7 @@ const TestimonialItem = ({ item }) => {
         <div className="cs_avatar_info">
           <h3 className="cs_avatar_title cs_fs_18 mb-0">{asText(name)}</h3>
           {info && (
-            <p className="cs_avatar_subtitle cs_fs_16 cs_accent_color mb-0">
+            <p className="cs_avatar_subtitle cs_fs_14 cs_accent_color mb-0">
               {info}
             </p>
           )}
@@ -97,10 +98,11 @@ const TestimonialItem = ({ item }) => {
           field={quote}
           components={createRichTextComponents({
             paragraphClassName:
-              "cs_testimonial_subtitle cs_fs_16 cs_accent_color leading-snug mb-2",
+              "cs_testimonial_subtitle cs_fs_14 cs_accent_color leading-snug mb-2",
           })}
         />
       </div>
+      <DiseasePills items={diseases_list} wrapperClassName="mb-3 " />
       <div className="cs_rating_container">
         <div style={{ display: "flex", gap: "2px" }}>
           {[1, 2, 3, 4, 5].map((star) => (
