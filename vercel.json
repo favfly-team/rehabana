@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/rehabservice/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
+  ]
+}

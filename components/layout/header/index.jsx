@@ -9,6 +9,7 @@ import {
   FaXTwitter,
   FaInstagram,
   FaYoutube,
+  FaLinkedinIn,
 } from "react-icons/fa6";
 
 const Header = ({ data }) => {
@@ -37,6 +38,7 @@ const Header = ({ data }) => {
     x: <FaXTwitter />,
     instagram: <FaInstagram />,
     youtube: <FaYoutube />,
+    linkedin: <FaLinkedinIn />,
   };
 
   const socialLinksWithIcons = social_link?.map((item) => {

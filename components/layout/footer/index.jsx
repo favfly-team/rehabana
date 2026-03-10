@@ -4,6 +4,7 @@ import {
   FaXTwitter,
   FaInstagram,
   FaYoutube,
+  FaLinkedinIn,
 } from "react-icons/fa6";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { asText } from "@prismicio/client";
@@ -21,6 +22,7 @@ const Footer = ({ data }) => {
     x: <FaXTwitter />,
     instagram: <FaInstagram />,
     youtube: <FaYoutube />,
+    linkedin: <FaLinkedinIn />,
   };
 
   const socialLinksWithIcons = social_link?.map((item) => {
