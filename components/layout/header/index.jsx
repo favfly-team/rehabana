@@ -50,6 +50,16 @@ const Header = ({ data }) => {
     };
   });
 
+  const getSocialLabel = (url) => {
+    const u = (url ?? "").toLowerCase();
+    if (u.includes("facebook")) return "Facebook";
+    if (u.includes("twitter") || u.includes("x.com")) return "X";
+    if (u.includes("instagram")) return "Instagram";
+    if (u.includes("youtube") || u.includes("youtu.be")) return "YouTube";
+    if (u.includes("linkedin")) return "LinkedIn";
+    return "Social link";
+  };
+
   return (
     <header
       className={`cs_site_header cs_style_1 cs_sticky_header cs_heading_font cs_heading_color
@@ -104,14 +114,17 @@ const Header = ({ data }) => {
             {/* // ==== Social Links ==== */}
             <div className="cs_main_header_right">
               <div className="cs_header_social_links">
-                {socialLinksWithIcons.map((item, index) => (
+                {socialLinksWithIcons?.map((item, index) => (
                   <a
                     href={item?.url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="cs_center"
                     key={index}
+                    aria-label={getSocialLabel(item?.url)}
                   >
                     {item?.icon}
+                    <span className="sr-only">{getSocialLabel(item?.url)}</span>
                   </a>
                 ))}
               </div>

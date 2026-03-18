@@ -34,6 +34,16 @@ const Footer = ({ data }) => {
     };
   });
 
+  const getSocialLabel = (url) => {
+    const u = (url ?? "").toLowerCase();
+    if (u.includes("facebook")) return "Facebook";
+    if (u.includes("twitter") || u.includes("x.com")) return "X";
+    if (u.includes("instagram")) return "Instagram";
+    if (u.includes("youtube") || u.includes("youtu.be")) return "YouTube";
+    if (u.includes("linkedin")) return "LinkedIn";
+    return "Social link";
+  };
+
   return (
     <footer className="cs_footer cs_style_1 cs_accent_bg">
       <div className="container cs_white_color relative">
@@ -55,14 +65,17 @@ const Footer = ({ data }) => {
 
               {/* // ==== Social Links ==== */}
               <div className="cs_social_btns cs_style_1">
-                {socialLinksWithIcons.map((item, index) => (
+                {socialLinksWithIcons?.map((item, index) => (
                   <a
                     href={item?.url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="cs_center"
                     key={index}
+                    aria-label={getSocialLabel(item?.url)}
                   >
                     {item?.icon}
+                    <span className="sr-only">{getSocialLabel(item?.url)}</span>
                   </a>
                 ))}
               </div>
@@ -85,7 +98,11 @@ const Footer = ({ data }) => {
                     <p className="cs_footer_widget_menu">{children}</p>
                   ),
                   hyperlink: ({ children, node }) => (
-                    <a href={node.data.url} target="_blank">
+                    <a
+                      href={node.data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {children}
                     </a>
                   ),

@@ -76,6 +76,7 @@ const TeamItem = ({ item }) => {
                     aria-label={label}
                   >
                     <Icon />
+                    <span className="sr-only">{label}</span>
                   </PrismicNextLink>
                 );
               })}
