@@ -5,6 +5,15 @@ import Seo from "@/lib/seo/Seo";
 import { notFound } from "next/navigation";
 import BlogPost from "@/components/blog-post";
 import BlogsSection from "@/components/blogs-section";
+import SchemaMarkup from "@/components/schema-markup";
+import { asText } from "@prismicio/client";
+import {
+  generateBreadcrumbSchema,
+  generateArticleSchema,
+  generateMedicalServiceSchema,
+  generateWebPageSchema,
+  services,
+} from "@/lib/schema-data";
 
 const CustomPage = async ({ params }) => {
   const client = createClient();
@@ -45,8 +54,30 @@ const CustomPage = async ({ params }) => {
 
   // Handle service page
   if (service) {
+    const serviceUrl = `https://rehabana.com/${params.slug}`;
+    const serviceData = services.find((s) => s.url === serviceUrl);
+
+    const serviceBreadcrumb = generateBreadcrumbSchema([
+      { name: "Home", url: "https://rehabana.com" },
+      { name: "Services", url: "https://rehabana.com/services" },
+      ...(serviceData ? [{ name: serviceData.name, url: serviceUrl }] : []),
+    ]);
+
+    const serviceSchemas = serviceData
+      ? [
+          serviceBreadcrumb,
+          generateWebPageSchema({
+            name: `${serviceData.name} in Kolkata | Rehabana`,
+            description: serviceData.description,
+            url: serviceUrl,
+          }),
+          generateMedicalServiceSchema(serviceData),
+        ]
+      : [serviceBreadcrumb];
+
     return (
       <>
+        <SchemaMarkup data={serviceSchemas} />
         <SliceZoneWithContext
           slices={service.data.slices}
           components={components}
@@ -68,8 +99,27 @@ const CustomPage = async ({ params }) => {
   }
 
   if (blog) {
+    const postUrl = `https://rehabana.com/${params.slug}`;
+    const blogTitle = asText(blog.data.title);
+
+    const articleBreadcrumb = generateBreadcrumbSchema([
+      { name: "Home", url: "https://rehabana.com" },
+      { name: "Blog", url: "https://rehabana.com/blog" },
+      { name: blogTitle, url: postUrl },
+    ]);
+
+    const articleSchema = generateArticleSchema({
+      title: blogTitle,
+      description: blog.data.meta_description || asText(blog.data.description),
+      url: postUrl,
+      image: blog.data.featured_image?.url || blog.data.image?.url || "",
+      datePublished: blog.data.published_date,
+      dateModified: blog.data.last_publication_date,
+    });
+
     return (
       <>
+        <SchemaMarkup data={[articleBreadcrumb, articleSchema]} />
         <BlogPost data={blog.data} />
         <BlogsSection slice={{ primary: blogsSection.data }} blogs={blogs} />
       </>

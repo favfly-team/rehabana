@@ -3,6 +3,12 @@ import { components } from "@/slices";
 import { SliceZoneWithContext } from "@/lib/SliceZoneWithContext";
 import Seo from "@/lib/seo/Seo";
 import BlogsSection from "@/components/blogs-section";
+import SchemaMarkup from "@/components/schema-markup";
+import {
+  homepageFaqSchema,
+  generateBreadcrumbSchema,
+  generateWebPageSchema,
+} from "@/lib/schema-data";
 
 const HomePage = async () => {
   const client = createClient();
@@ -17,8 +23,20 @@ const HomePage = async () => {
     pageSize: 3,
   });
 
+  const homeBreadcrumb = generateBreadcrumbSchema([
+    { name: "Home", url: "https://rehabana.com" },
+  ]);
+
+  const homeWebPage = generateWebPageSchema({
+    name: "Best Neuro Rehabilitation Centre in Kolkata | Rehabana",
+    description:
+      "Rehabana is a PMR MD doctor-led Neuro Rehabilitation Center in Kolkata for stroke, spinal cord injury, Parkinson's and more.",
+    url: "https://rehabana.com",
+  });
+
   return (
     <>
+      <SchemaMarkup data={[homeBreadcrumb, homeWebPage, homepageFaqSchema]} />
       <SliceZoneWithContext
         slices={doc.data.slices}
         components={components}

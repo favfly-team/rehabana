@@ -2,6 +2,8 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 import Seo from "@/lib/seo/Seo";
+import SchemaMarkup from "@/components/schema-markup";
+import { generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/schema-data";
 
 const BlogPage = async () => {
   const client = createClient();
@@ -16,15 +18,30 @@ const BlogPage = async () => {
     },
   });
 
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: "Home", url: "https://rehabana.com" },
+    { name: "Blog", url: "https://rehabana.com/blog" },
+  ]);
+
+  const webPage = generateWebPageSchema({
+    name: "Neuro Rehab Blogs & Recovery Insights | Rehabana",
+    description:
+      "Expert neuro rehabilitation tips from doctors at Rehabana, Kolkata — guidance on stroke recovery, spinal cord injury rehab, Parkinson's care.",
+    url: "https://rehabana.com/blog",
+  });
+
   return (
-    <SliceZone
-      slices={doc.data.slices}
-      components={components}
-      context={{
-        blogs: results,
-        blogSlice: blogsSection.data,
-      }}
-    />
+    <>
+      <SchemaMarkup data={[breadcrumb, webPage]} />
+      <SliceZone
+        slices={doc.data.slices}
+        components={components}
+        context={{
+          blogs: results,
+          blogSlice: blogsSection.data,
+        }}
+      />
+    </>
   );
 };
 

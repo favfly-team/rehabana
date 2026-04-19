@@ -24,6 +24,13 @@ import ContactModalPopup from "@/components/form/ContactModalPopup";
 
 import { createClient } from "@/prismicio";
 import NextTopLoader from "nextjs-toploader";
+import SchemaMarkup from "@/components/schema-markup";
+import {
+  organizationSchema,
+  websiteSchema,
+  saltlakeLocationSchema,
+  kalighatLocationSchema,
+} from "@/lib/schema-data";
 
 //  ==== define metadata ====
 export const metadata = {
@@ -40,6 +47,14 @@ const RootLayout = async ({ children }) => {
     <html lang="en">
       <body className={poppins.variable}>
         <StyledJsxRegistry>
+          <SchemaMarkup
+            data={[
+              organizationSchema,
+              websiteSchema,
+              saltlakeLocationSchema,
+              kalighatLocationSchema,
+            ]}
+          />
           <NextTopLoader color="#7f1f60" />
           <Header data={doc.data} />
           {children}
