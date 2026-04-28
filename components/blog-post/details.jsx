@@ -51,6 +51,25 @@ const blogRichTextComponents = {
   ),
   strong: ({ children }) => <strong>{children}</strong>,
   em: ({ children }) => <em>{children}</em>,
+  embed: ({ node }) => {
+    const isIframe = node.type === "iframe";
+    if (isIframe) {
+      return (
+        <iframe
+          src={node.data?.embedUrl}
+          loading="lazy"
+          allowFullScreen
+          style={{
+            width: "100%",
+            aspectRatio: "16 / 9",
+            border: "none",
+            borderRadius: "8px",
+          }}
+        />
+      );
+    }
+    return null;
+  },
 };
 
 export default BlogPostDetails;

@@ -24,7 +24,7 @@
                   "label": "Details",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item"
+                  "multi": "paragraph,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,embed"
                 }
               },
               "image": {
