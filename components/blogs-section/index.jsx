@@ -50,26 +50,28 @@ const BlogItem = ({ doc }) => {
           />
         </PrismicNextLink>
         <div className="cs_post_info">
-          <div className="cs_post_meta">
-            {format(new Date(published_date), "MMM d, yyyy")}
+          <div className="cs_post_meta_row">
+            <div className="cs_post_meta">
+              {format(new Date(published_date), "MMM d, yyyy")}
+            </div>
+
+            <div className="cs_post_author cs_post_author--compact">
+              <FaUser className="cs_post_author_icon" />
+              {authorUid ? (
+                <Link
+                  href={`/authors/${authorUid}`}
+                  className="cs_post_author_link"
+                >
+                  {authorName}
+                </Link>
+              ) : (
+                <span className="cs_post_author_text">{authorName}</span>
+              )}
+            </div>
           </div>
           <PrismicNextLink href={url}>
             <h3 className="cs_post_title cs_fs_20 cs_semibold">{meta_title}</h3>
           </PrismicNextLink>
-
-          <div
-            className="cs_post_meta mb-2 d-flex align-items-center"
-            style={{ marginTop: "-4px", gap: "8px" }}
-          >
-            <FaUser className="cs_accent_color" />
-            {authorUid ? (
-              <Link href={`/authors/${authorUid}`} className="cs_accent_color">
-                {authorName}
-              </Link>
-            ) : (
-              <span className="cs_accent_color">{authorName}</span>
-            )}
-          </div>
 
           <p className="cs_post_excerpt mb-2">{meta_description}</p>
 

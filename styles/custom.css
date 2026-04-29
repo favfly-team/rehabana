@@ -1096,3 +1096,62 @@
   height: 100%;
   border: none;
 }
+
+/* Blog card author pill */
+.cs_post.cs_style_1 .cs_post_author {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 27, 0.04);
+  border: 1px solid rgba(0, 0, 27, 0.08);
+  line-height: 1;
+}
+
+.cs_post.cs_style_1 .cs_post_author_icon {
+  color: var(--accent-color);
+  font-size: 14px;
+}
+
+.cs_post.cs_style_1 .cs_post_author_link {
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.cs_post.cs_style_1 .cs_post_author_link:hover {
+  text-decoration: underline;
+}
+
+.cs_post.cs_style_1 .cs_post_author_text {
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.cs_post.cs_style_1 .cs_post_meta_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cs_post.cs_style_1 .cs_post_author--compact {
+  margin-bottom: 0 !important;
+  padding: 5px 10px;
+}
+
+.cs_post.cs_style_1 .cs_post_author--compact .cs_post_author_link,
+.cs_post.cs_style_1 .cs_post_author--compact .cs_post_author_text {
+  font-size: 14px;
+}
+
+@media (max-width: 575px) {
+  .cs_post.cs_style_1 .cs_post_meta_row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 8px;
+  }
+}
