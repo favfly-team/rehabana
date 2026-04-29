@@ -20,6 +20,18 @@
           "placeholder": ""
         }
       },
+      "author": {
+        "type": "Link",
+        "config": {
+          "label": "Author",
+          "placeholder": "",
+          "select": "document",
+          "customtypes": ["author"],
+          "allowTargetBlank": false,
+          "allowText": false,
+          "repeat": false
+        }
+      },
       "title": {
         "type": "StructuredText",
         "config": {

@@ -1,0 +1,127 @@
+import { createClient } from "@/prismicio";
+import { notFound } from "next/navigation";
+import { format } from "date-fns";
+import Link from "next/link";
+import * as prismic from "@prismicio/client";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
+import { createRichTextComponents } from "@/lib/richTextComponents";
+
+const AUTHOR_FETCH_LINKS = ["author.name", "author.image", "author.designation"];
+
+const AuthorPage = async ({ params }) => {
+  const client = createClient();
+  const uid = params?.uid || "";
+
+  const author = await client.getByUID("author", uid).catch(() => null);
+  if (!author) notFound();
+
+  const blogs = await client
+    .getAllByType("blog_post", {
+      filters: [
+        prismic.filter.at("my.blog_post.author", author.id),
+      ],
+      orderings: {
+        field: "my.blog_post.published_date",
+        direction: "desc",
+      },
+      fetchLinks: AUTHOR_FETCH_LINKS,
+    })
+    .catch(() => []);
+
+  const { name, image, designation, bio } = author.data || {};
+
+  return (
+    <div className="cs_gray_bg">
+      <div className="cs_height_120 cs_height_lg_80" />
+      <div className="container">
+        <div className="cs_white_bg cs_radius_10 p-4 p-md-5 mb-4">
+          <div className="row align-items-center cs_gap_y_20">
+            <div className="col-md-3">
+              <PrismicNextImage
+                field={image}
+                alt={name || author.uid}
+                className="img-fluid cs_radius_8"
+                style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }}
+              />
+            </div>
+            <div className="col-md-9">
+              <h1 className="cs_fs_32 cs_semibold mb-2 cs_accent_color">
+                {name}
+              </h1>
+              {designation && (
+                <div className="cs_post_meta mb-3 cs_accent_color">
+                  {designation}
+                </div>
+              )}
+              {bio ? (
+                <PrismicRichText
+                  field={bio}
+                  components={createRichTextComponents({
+                    paragraphClassName: "mb-2",
+                  })}
+                />
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div className="cs_white_bg cs_radius_10 p-4 p-md-5">
+          <h2 className="cs_fs_24 cs_semibold mb-4">Blogs by {name}</h2>
+
+          {blogs.length === 0 ? (
+            <p className="mb-0">No blogs published yet.</p>
+          ) : (
+            <div className="row cs_row_gap_30 cs_gap_y_40">
+              {blogs.map((doc) => (
+                <div key={doc.id} className="col-lg-4">
+                  <article className="cs_post cs_style_1">
+                    <PrismicNextLink
+                      href={doc.url}
+                      className="cs_post_thumbnail cs_radius_8"
+                    >
+                      <PrismicNextImage
+                        field={doc.data.featured_image}
+                        alt={doc.data.meta_title}
+                        className="img-fluid"
+                        style={{ aspectRatio: "16/9", objectFit: "cover" }}
+                      />
+                    </PrismicNextLink>
+                    <div className="cs_post_info">
+                      <div className="cs_post_meta">
+                        {doc.data?.published_date
+                          ? format(
+                              new Date(doc.data.published_date),
+                              "MMM d, yyyy"
+                            )
+                          : ""}
+                      </div>
+                      <PrismicNextLink href={doc.url}>
+                        <h3 className="cs_post_title cs_fs_20 cs_semibold">
+                          {doc.data.meta_title}
+                        </h3>
+                      </PrismicNextLink>
+
+                      <p className="cs_post_excerpt mb-0">
+                        {doc.data.meta_description}
+                      </p>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="cs_height_20" />
+        <Link href="/blog" className="cs_text_btn cs_fs_16 cs_heading_color">
+          Back to Blog
+        </Link>
+      </div>
+      <div className="cs_height_120 cs_height_lg_80" />
+    </div>
+  );
+};
+
+export default AuthorPage;
+

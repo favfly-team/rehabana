@@ -1,8 +1,10 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
 import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { PrismicNextImage } from "@prismicio/next";
 import { format } from "date-fns";
+import Link from "next/link";
 
 const BlogsSection = ({ slice, blogs = [] }) => {
   const { primary } = slice || {};
@@ -30,6 +32,9 @@ const BlogItem = ({ doc }) => {
   const { url, data } = doc;
   const { published_date, meta_title, meta_description, featured_image } = data;
 
+  const authorUid = data?.author?.uid || "";
+  const authorName = data?.author?.data?.name || "Rehabana Team";
+
   return (
     <div className="col-lg-4">
       <article className="cs_post cs_style_1">
@@ -51,6 +56,20 @@ const BlogItem = ({ doc }) => {
           <PrismicNextLink href={url}>
             <h3 className="cs_post_title cs_fs_20 cs_semibold">{meta_title}</h3>
           </PrismicNextLink>
+
+          <div
+            className="cs_post_meta mb-2 d-flex align-items-center"
+            style={{ marginTop: "-4px", gap: "8px" }}
+          >
+            <FaUser className="cs_accent_color" />
+            {authorUid ? (
+              <Link href={`/authors/${authorUid}`} className="cs_accent_color">
+                {authorName}
+              </Link>
+            ) : (
+              <span className="cs_accent_color">{authorName}</span>
+            )}
+          </div>
 
           <p className="cs_post_excerpt mb-2">{meta_description}</p>
 

@@ -21,6 +21,7 @@ const HomePage = async () => {
       direction: "desc",
     },
     pageSize: 3,
+    fetchLinks: ["author.name", "author.image", "author.designation"],
   });
 
   const homeBreadcrumb = generateBreadcrumbSchema([

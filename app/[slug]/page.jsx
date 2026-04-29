@@ -27,7 +27,9 @@ const CustomPage = async ({ params }) => {
     .catch(() => null);
 
   const blogPost = await client
-    .getByUID("blog_post", params.slug)
+    .getByUID("blog_post", params.slug, {
+      fetchLinks: ["author.name", "author.image", "author.designation"],
+    })
     .catch(() => null);
 
   const { results: blogs } = await client.getByType("blog_post", {
@@ -36,6 +38,7 @@ const CustomPage = async ({ params }) => {
       direction: "desc",
     },
     pageSize: 3,
+    fetchLinks: ["author.name", "author.image", "author.designation"],
   });
 
   // Wait for the promises to resolve

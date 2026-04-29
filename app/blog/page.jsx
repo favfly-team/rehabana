@@ -16,6 +16,7 @@ const BlogPage = async () => {
       field: "my.blog_post.published_date",
       direction: "desc",
     },
+    fetchLinks: ["author.name", "author.image", "author.designation"],
   });
 
   const breadcrumb = generateBreadcrumbSchema([
