@@ -6,12 +6,17 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 import Link from "next/link";
+import { getBlogAuthors } from "@/lib/blog-authors";
 
 const BlogPostHero = ({ data }) => {
   const { published_date, title, description, image } = data;
 
-  const authorUid = data?.author?.uid || "";
-  const authorName = data?.author?.data?.name || "Rehabana Team";
+  const authors = getBlogAuthors(data);
+  const hasRealAuthors = !(
+    authors.length === 1 &&
+    authors[0]?.name === "Rehabana Team" &&
+    !authors[0]?.uid
+  );
   return (
     <div className="cs_blog_hero_card cs_white_bg cs_radius_10 mb-4">
       {published_date && (
@@ -34,13 +39,23 @@ const BlogPostHero = ({ data }) => {
           style={{ gap: "8px" }}
         >
           <FaUser className="cs_accent_color" />
-          {authorUid ? (
-            <Link href={`/authors/${authorUid}`} className="cs_accent_color">
-              {authorName}
-            </Link>
-          ) : (
-            <span className="cs_accent_color">{authorName}</span>
-          )}
+          <span className={hasRealAuthors ? "font-medium" : ""}>
+            {authors.map((author, index) => (
+              <span
+                key={`${author.uid || author.name}-${index}`}
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {author.uid ? (
+                  <Link href={`/authors/${author.uid}`} className="cs_accent_color">
+                    {author.name}
+                  </Link>
+                ) : (
+                  <span className="cs_accent_color">{author.name}</span>
+                )}
+                {index < authors.length - 1 ? ", " : ""}
+              </span>
+            ))}
+          </span>
         </div>
 
         {description && (

@@ -20,6 +20,27 @@
           "placeholder": ""
         }
       },
+      "authors": {
+        "type": "Group",
+        "config": {
+          "label": "Authors",
+          "repeat": true,
+          "fields": {
+            "author": {
+              "type": "Link",
+              "config": {
+                "label": "Author",
+                "placeholder": "",
+                "select": "document",
+                "customtypes": ["author"],
+                "allowTargetBlank": false,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
       "author": {
         "type": "Link",
         "config": {

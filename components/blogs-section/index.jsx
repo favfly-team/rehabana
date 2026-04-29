@@ -5,6 +5,7 @@ import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { PrismicNextImage } from "@prismicio/next";
 import { format } from "date-fns";
 import Link from "next/link";
+import { getBlogAuthors } from "@/lib/blog-authors";
 
 const BlogsSection = ({ slice, blogs = [] }) => {
   const { primary } = slice || {};
@@ -32,8 +33,8 @@ const BlogItem = ({ doc }) => {
   const { url, data } = doc;
   const { published_date, meta_title, meta_description, featured_image } = data;
 
-  const authorUid = data?.author?.uid || "";
-  const authorName = data?.author?.data?.name || "Rehabana Team";
+  const authors = getBlogAuthors(data);
+  const hasRealAuthors = !(authors.length === 1 && authors[0]?.name === "Rehabana Team" && !authors[0]?.uid);
 
   return (
     <div className="col-lg-4">
@@ -54,19 +55,35 @@ const BlogItem = ({ doc }) => {
             <div className="cs_post_meta">
               {format(new Date(published_date), "MMM d, yyyy")}
             </div>
+            <span className="cs_post_meta_divider" aria-hidden="true">
+              ·
+            </span>
 
-            <div className="cs_post_author cs_post_author--compact">
+            <div
+              className={`cs_post_author cs_post_author--compact ${
+                hasRealAuthors ? "cs_post_author--emphasis" : ""
+              }`}
+            >
               <FaUser className="cs_post_author_icon" />
-              {authorUid ? (
-                <Link
-                  href={`/authors/${authorUid}`}
-                  className="cs_post_author_link"
-                >
-                  {authorName}
-                </Link>
-              ) : (
-                <span className="cs_post_author_text">{authorName}</span>
-              )}
+              <span className="cs_post_author_items">
+                {authors.map((author, index) => (
+                  <span
+                    key={`${author.uid || author.name}-${index}`}
+                    className="cs_post_author_item"
+                  >
+                    {author.uid ? (
+                      <Link
+                        href={`/authors/${author.uid}`}
+                        className="cs_post_author_link"
+                      >
+                        {author.name}
+                      </Link>
+                    ) : (
+                      <span className="cs_post_author_text">{author.name}</span>
+                    )}
+                  </span>
+                ))}
+              </span>
             </div>
           </div>
           <PrismicNextLink href={url}>

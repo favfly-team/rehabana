@@ -9,6 +9,16 @@ import { createRichTextComponents } from "@/lib/richTextComponents";
 
 const AUTHOR_FETCH_LINKS = ["author.name", "author.image", "author.designation"];
 
+const uniqueById = (docs = []) => {
+  const seen = new Set();
+  return docs.filter((doc) => {
+    if (!doc?.id) return false;
+    if (seen.has(doc.id)) return false;
+    seen.add(doc.id);
+    return true;
+  });
+};
+
 const AuthorPage = async ({ params }) => {
   const client = createClient();
   const uid = params?.uid || "";
@@ -16,11 +26,9 @@ const AuthorPage = async ({ params }) => {
   const author = await client.getByUID("author", uid).catch(() => null);
   if (!author) notFound();
 
-  const blogs = await client
+  const legacyBlogsPromise = client
     .getAllByType("blog_post", {
-      filters: [
-        prismic.filter.at("my.blog_post.author", author.id),
-      ],
+      filters: [prismic.filter.at("my.blog_post.author", author.id)],
       orderings: {
         field: "my.blog_post.published_date",
         direction: "desc",
@@ -28,6 +36,32 @@ const AuthorPage = async ({ params }) => {
       fetchLinks: AUTHOR_FETCH_LINKS,
     })
     .catch(() => []);
+
+  const groupBlogsPromise = client
+    .getAllByType("blog_post", {
+      filters: [prismic.filter.any("my.blog_post.authors.author", [author.id])],
+      orderings: {
+        field: "my.blog_post.published_date",
+        direction: "desc",
+      },
+      fetchLinks: AUTHOR_FETCH_LINKS,
+    })
+    .catch(() => []);
+
+  const [legacyBlogs, groupBlogs] = await Promise.all([
+    legacyBlogsPromise,
+    groupBlogsPromise,
+  ]);
+
+  const blogs = uniqueById([...legacyBlogs, ...groupBlogs]).sort((a, b) => {
+    const aDate = a?.data?.published_date
+      ? new Date(a.data.published_date).getTime()
+      : 0;
+    const bDate = b?.data?.published_date
+      ? new Date(b.data.published_date).getTime()
+      : 0;
+    return bDate - aDate;
+  });
 
   const { name, image, designation, bio } = author.data || {};
 
@@ -124,4 +158,3 @@ const AuthorPage = async ({ params }) => {
 };
 
 export default AuthorPage;
-

@@ -1107,6 +1107,8 @@
   background: rgba(0, 0, 27, 0.04);
   border: 1px solid rgba(0, 0, 27, 0.08);
   line-height: 1;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .cs_post.cs_style_1 .cs_post_author_icon {
@@ -1133,9 +1135,34 @@
 .cs_post.cs_style_1 .cs_post_meta_row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.cs_post.cs_style_1 .cs_post_meta_divider {
+  color: rgba(0, 0, 27, 0.45);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cs_post.cs_style_1 .cs_post_author_items {
+  display: inline;
+}
+
+.cs_post.cs_style_1 .cs_post_author_item {
+  white-space: nowrap;
+}
+
+.cs_post.cs_style_1 .cs_post_author_item:not(:last-child)::after {
+  content: ", ";
+}
+
+.cs_post.cs_style_1 .cs_post_author--emphasis {
+  border-color: rgba(127, 31, 97, 0.28);
+  background: rgba(127, 31, 97, 0.08);
 }
 
 .cs_post.cs_style_1 .cs_post_author--compact {
