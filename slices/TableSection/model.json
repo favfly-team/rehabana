@@ -1,0 +1,33 @@
+{
+  "id": "table_section",
+  "type": "SharedSlice",
+  "name": "TableSection",
+  "description": "Dynamic table (editable in Prismic)",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": "Optional table caption (e.g., Pricing comparison)"
+          }
+        },
+        "table": {
+          "type": "Table",
+          "config": {
+            "label": "Table"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
+

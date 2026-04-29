@@ -92,6 +92,9 @@
             },
             "blog_post_content": {
               "type": "SharedSlice"
+            },
+            "table_section": {
+              "type": "SharedSlice"
             }
           }
         }

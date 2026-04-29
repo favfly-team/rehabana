@@ -14,6 +14,7 @@ export const components = {
   hero_section: dynamic(() => import("./HeroSection")),
   process_section: dynamic(() => import("./ProcessSection")),
   services_section: dynamic(() => import("./ServicesSection")),
+  table_section: dynamic(() => import("./TableSection")),
   team_section: dynamic(() => import("./TeamSection")),
   testimonial_section: dynamic(() => import("./TestimonialSection")),
 };

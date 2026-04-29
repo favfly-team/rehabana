@@ -1182,3 +1182,99 @@
     row-gap: 8px;
   }
 }
+
+/* Prismic table field (Blog) */
+.cs_table_caption {
+  margin: 0 0 14px 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.cs_table_wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(0, 0, 27, 0.08);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.cs_table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.cs_table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: rgba(0, 0, 27, 0.035);
+}
+
+.cs_table th,
+.cs_table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 27, 0.08);
+  border-right: 1px solid rgba(0, 0, 27, 0.08);
+  vertical-align: top;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.cs_table th:last-child,
+.cs_table td:last-child {
+  border-right: none;
+}
+
+.cs_table tbody tr:last-child td,
+.cs_table tbody tr:last-child th {
+  border-bottom: none;
+}
+
+.cs_table th {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.cs_table_p {
+  margin: 0;
+}
+
+.cs_table_ul,
+.cs_table_ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cs_table_li {
+  margin: 0;
+}
+
+.cs_table_strong {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.cs_table_link {
+  color: var(--bs-link-color, #0d6efd);
+  text-decoration: none;
+}
+
+.cs_table_link:hover {
+  color: var(--bs-link-hover-color, #0a58ca);
+  text-decoration: underline;
+}
+
+@media (max-width: 575px) {
+  .cs_table {
+    min-width: 440px;
+  }
+
+  .cs_table th,
+  .cs_table td {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+}
