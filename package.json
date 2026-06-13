@@ -24,7 +24,7 @@
     "react-share": "^5.2.2"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.95",
-    "slice-machine-ui": "^2.21.1"
+    "@slicemachine/adapter-next": "^0.3.96",
+    "slice-machine-ui": "^2.21.3"
   }
 }

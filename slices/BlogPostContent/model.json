@@ -36,6 +36,17 @@
                   },
                   "thumbnails": []
                 }
+              },
+              "pdf": {
+                "type": "Link",
+                "config": {
+                  "label": "PDF",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": true
+                }
               }
             }
           }

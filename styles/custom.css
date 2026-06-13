@@ -1278,3 +1278,140 @@
     font-size: 14px;
   }
 }
+
+/* Blog PDF download cards */
+.cs_pdf_cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.cs_pdf_card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 22px;
+  border: 1px solid rgba(0, 0, 27, 0.08);
+  border-radius: 10px;
+  background: var(--white-color);
+  text-decoration: none;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.cs_blog_content a.cs_pdf_card,
+.cs_blog_content a.cs_pdf_card:hover {
+  text-decoration: none;
+}
+
+.cs_pdf_card:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(174, 81, 144, 0.04);
+}
+
+.cs_pdf_card_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(174, 81, 144, 0.12) 0%,
+    rgba(127, 31, 97, 0.08) 100%
+  );
+  color: var(--accent-color);
+}
+
+.cs_pdf_card_body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.cs_pdf_card_title {
+  font-family: var(--font-poppins);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--heading-color);
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs_pdf_card_meta {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--body-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cs_pdf_card_action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #7f1f61 100%);
+  color: var(--white-color);
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.cs_pdf_card_action svg {
+  transition: transform 0.25s ease;
+}
+
+.cs_pdf_card:hover .cs_pdf_card_action {
+  box-shadow: 0 10px 24px rgba(127, 31, 97, 0.28);
+  filter: brightness(1.05);
+}
+
+.cs_pdf_card:hover .cs_pdf_card_action svg {
+  transform: translateY(2px);
+}
+
+@media (max-width: 575px) {
+  .cs_pdf_card {
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  .cs_pdf_card_icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .cs_pdf_card_icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cs_pdf_card_title {
+    font-size: 16px;
+  }
+
+  .cs_pdf_card_action {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .cs_pdf_card_action_label {
+    display: none;
+  }
+}

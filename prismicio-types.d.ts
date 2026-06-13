@@ -139,6 +139,101 @@ export type AboutPageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Author documents
+ */
+interface AuthorDocumentData {
+  /**
+   * Name field in *Author*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Image field in *Author*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Designation field in *Author*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author.designation
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  designation: prismic.KeyTextField;
+
+  /**
+   * Bio field in *Author*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author.bio
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  bio: prismic.RichTextField;
+
+  /**
+   * LinkedIn field in *Author*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author.linkedin
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  linkedin: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Twitter field in *Author*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author.twitter
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  twitter: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Author document from Prismic
+ *
+ * - **API ID**: `author`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AuthorDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<AuthorDocumentData>, "author", Lang>;
+
 type BlogPageDocumentDataSlicesSlice = HeroSectionSlice | BlogsSectionSlice;
 
 /**
@@ -204,7 +299,25 @@ export type BlogPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type BlogPostDocumentDataSlicesSlice = CtaSectionSlice | BlogPostContentSlice;
+/**
+ * Item in *Blog Post → Authors*
+ */
+export interface BlogPostDocumentDataAuthorsItem {
+  /**
+   * Author field in *Blog Post → Authors*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.authors[].author
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  author: prismic.ContentRelationshipField<"author">;
+}
+
+type BlogPostDocumentDataSlicesSlice =
+  | CtaSectionSlice
+  | BlogPostContentSlice
+  | TableSectionSlice;
 
 /**
  * Content for Blog Post documents
@@ -220,6 +333,28 @@ interface BlogPostDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/date
    */
   published_date: prismic.DateField;
+
+  /**
+   * Authors field in *Blog Post*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.authors[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  authors: prismic.GroupField<Simplify<BlogPostDocumentDataAuthorsItem>>;
+
+  /**
+   * Author field in *Blog Post*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.author
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  author: prismic.ContentRelationshipField<"author">;
 
   /**
    * Title field in *Blog Post*
@@ -1564,6 +1699,7 @@ export type TestimonialsPageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AboutPageDocument
+  | AuthorDocument
   | BlogPageDocument
   | BlogPostDocument
   | BlogsDocument
@@ -1708,6 +1844,18 @@ export interface BlogPostContentSliceDefaultPrimaryItemsItem {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * PDF field in *BlogPostContent → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.default.primary.items[].pdf
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  pdf: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
 }
 
 /**
@@ -3109,6 +3257,61 @@ export type ServicesSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TableSection → Default → Primary*
+ */
+export interface TableSectionSliceDefaultPrimary {
+  /**
+   * Caption field in *TableSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Optional table caption (e.g., Pricing comparison)
+   * - **API ID Path**: table_section.default.primary.caption
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  caption: prismic.KeyTextField;
+
+  /**
+   * Table field in *TableSection → Default → Primary*
+   *
+   * - **Field Type**: Table
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table_section.default.primary.table
+   * - **Documentation**: https://prismic.io/docs/fields/table
+   */
+  table: prismic.TableField;
+}
+
+/**
+ * Default variation for TableSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TableSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TableSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TableSection*
+ */
+type TableSectionSliceVariation = TableSectionSliceDefault;
+
+/**
+ * TableSection Shared Slice
+ *
+ * - **API ID**: `table_section`
+ * - **Description**: Dynamic table (editable in Prismic)
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TableSectionSlice = prismic.SharedSlice<
+  "table_section",
+  TableSectionSliceVariation
+>;
+
+/**
  * Item in *TeamSection → Default → Primary → Items*
  */
 export interface TeamSectionSliceDefaultPrimaryItemsItem {
@@ -3742,11 +3945,14 @@ declare module "@prismicio/client" {
       AboutPageDocument,
       AboutPageDocumentData,
       AboutPageDocumentDataSlicesSlice,
+      AuthorDocument,
+      AuthorDocumentData,
       BlogPageDocument,
       BlogPageDocumentData,
       BlogPageDocumentDataSlicesSlice,
       BlogPostDocument,
       BlogPostDocumentData,
+      BlogPostDocumentDataAuthorsItem,
       BlogPostDocumentDataSlicesSlice,
       BlogsDocument,
       BlogsDocumentData,
@@ -3858,6 +4064,10 @@ declare module "@prismicio/client" {
       ServicesSectionSliceDefaultPrimary,
       ServicesSectionSliceVariation,
       ServicesSectionSliceDefault,
+      TableSectionSlice,
+      TableSectionSliceDefaultPrimary,
+      TableSectionSliceVariation,
+      TableSectionSliceDefault,
       TeamSectionSlice,
       TeamSectionSliceDefaultPrimaryItemsItem,
       TeamSectionSliceDefaultPrimary,
