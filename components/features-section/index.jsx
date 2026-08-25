@@ -43,6 +43,7 @@ const FeatureItem = ({ item }) => {
                 <PrismicNextImage
                   field={icon}
                   alt={icon.alt ?? undefined}
+                  sizes="32px"
                   style={{ width: "32px", height: "32px" }}
                 />
               </div>

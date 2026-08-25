@@ -18,16 +18,24 @@ const Header = ({ data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+    let frame = null;
+
+    // Read scroll position inside rAF so it never forces a synchronous reflow.
+    const update = () => {
+      frame = null;
+      setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial scroll position
+    const handleScroll = () => {
+      if (frame === null) frame = window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    update(); // Check initial scroll position
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frame !== null) window.cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -74,6 +82,8 @@ const Header = ({ data }) => {
               <Link className="cs_site_branding" href="/" aria-label="Home">
                 <PrismicNextImage
                   field={logo}
+                  priority
+                  sizes="120px"
                   style={{ width: "auto", height: "50px" }}
                 />
               </Link>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PrismicRichText } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -41,7 +42,7 @@ const TeamDetails = ({ slice }) => {
         <div className={`cs_team_details_wrapper ${swap ? "cs_team_details_swap" : ""}`}>
           <div className="row cs_gap_y_40">
             <div className={`col-lg-4 ${swap ? "cs_team_details_img_col" : ""}`}>
-              <ProfileImage src={image.url} alt={image.alt ?? "Team member"} />
+              <ProfileImage field={image} alt={image.alt ?? "Team member"} />
               <div className="cs_height_30 cs_height_lg_30" />
               <SocialLinks links={socialLinks} />
             </div>
@@ -91,9 +92,13 @@ function normalizeSocialLink(link) {
   return { type: "link", url, label: "Link" };
 }
 
-const ProfileImage = ({ src, alt }) => (
+const ProfileImage = ({ field, alt }) => (
   <div className="cs_team_profile_img">
-    <img src={src} alt={alt} />
+    <PrismicNextImage
+      field={field}
+      alt={alt}
+      sizes="(max-width: 991px) 350px, 33vw"
+    />
   </div>
 );
 

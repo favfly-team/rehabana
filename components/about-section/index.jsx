@@ -23,7 +23,11 @@ const AboutSection = ({ slice }) => {
           <div className={`col-lg-6 ${swap ? "cs_about_thumbnail_col" : ""}`}>
             <div className="cs_about_thumbnail">
               {image?.url && (
-                <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+                <PrismicNextImage
+                  field={image}
+                  alt={image.alt ?? undefined}
+                  sizes="(max-width: 991px) 100vw, 50vw"
+                />
               )}
             </div>
           </div>

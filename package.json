@@ -26,5 +26,13 @@
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.96",
     "slice-machine-ui": "^2.21.3"
-  }
+  },
+  "browserslist": [
+    "chrome >= 87",
+    "edge >= 88",
+    "firefox >= 78",
+    "safari >= 14",
+    "ios_saf >= 14",
+    "not dead"
+  ]
 }

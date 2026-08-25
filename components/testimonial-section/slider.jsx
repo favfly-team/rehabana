@@ -77,6 +77,7 @@ const TestimonialItem = ({ item }) => {
         >
           <PrismicNextImage
             field={image}
+            sizes="52px"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>

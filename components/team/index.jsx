@@ -42,6 +42,7 @@ const TeamItem = ({ item }) => {
             <PrismicNextImage
               field={image}
               alt={image.alt ?? titleText ?? "Team member"}
+              sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, (max-width: 1199px) 33vw, 25vw"
             />
           ) : (
             <div

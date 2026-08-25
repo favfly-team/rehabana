@@ -45,6 +45,7 @@ const ProcessItem = ({ item, index, isReverse }) => {
       <PrismicNextImage
         field={image}
         alt={image.alt ?? undefined}
+        sizes="225px"
         style={{
           width: "225px",
         }}

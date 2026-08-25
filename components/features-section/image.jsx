@@ -35,7 +35,11 @@ const FeaturesImageItem = ({ item }) => {
       <div className="cs_card cs_style_4 cs_radius_8 h-100">
         {image?.url && (
           <div className="cs_card_thumbnail">
-            <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+            <PrismicNextImage
+              field={image}
+              alt={image.alt ?? undefined}
+              sizes="(max-width: 991px) 100vw, 33vw"
+            />
           </div>
         )}
         <div className="cs_card_header">

@@ -72,6 +72,8 @@ const BlogPostHero = ({ data }) => {
           field={image}
           alt={asText(title)}
           className="img-fluid cs_radius_8"
+          priority
+          sizes="(max-width: 991px) 100vw, 66vw"
         />
       </div>
     </div>

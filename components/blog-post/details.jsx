@@ -20,6 +20,7 @@ const BlogPostDetails = ({ slice }) => {
                 <PrismicNextImage
                   field={item.image}
                   className="cs_blog_content_img"
+                  sizes="(max-width: 991px) 100vw, 66vw"
                 />
               )}
 

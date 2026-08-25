@@ -41,6 +41,7 @@ const ServiceItem = ({ item }) => {
             <PrismicNextImage
               field={featured_image}
               className="img-fluid cs_radius_10"
+              sizes="(max-width: 991px) 100vw, 33vw"
             />
           </div>
         )}

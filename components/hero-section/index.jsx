@@ -5,8 +5,11 @@ import { FaPlay } from "react-icons/fa6";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
-import FsLightbox from "fslightbox-react";
+import dynamic from "next/dynamic";
 import { createRichTextComponents } from "@/lib/richTextComponents";
+
+// Loaded off the first-paint bundle — only needed once the video is opened.
+const FsLightbox = dynamic(() => import("fslightbox-react"), { ssr: false });
 
 const HeroSection = ({ slice }) => {
   const { primary } = slice || {};
@@ -126,7 +129,12 @@ const HeroSection = ({ slice }) => {
           </div>
           {image?.url && (
             <div className="cs_hero_thumbnail">
-              <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+              <PrismicNextImage
+                field={image}
+                alt={image.alt ?? undefined}
+                priority
+                sizes="(max-width: 991px) 100vw, 48vw"
+              />
             </div>
           )}
         </div>

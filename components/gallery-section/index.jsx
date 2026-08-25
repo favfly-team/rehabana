@@ -3,7 +3,10 @@
 import { PrismicNextImage } from "@prismicio/next";
 import { Button, SectionHeading, ViewAllButton } from "@/components/ui";
 import { useEffect, useState } from "react";
-import FsLightbox from "fslightbox-react";
+import dynamic from "next/dynamic";
+
+// Loaded off the first-paint bundle — only needed once an image is opened.
+const FsLightbox = dynamic(() => import("fslightbox-react"), { ssr: false });
 
 const GallerySection = ({ slice, galleryLimit }) => {
   const { primary } = slice || {};
@@ -147,6 +150,7 @@ const GalleryItem = ({ item, openLightbox, index }) => {
               field={image}
               alt={image.alt ?? undefined}
               className="img-fluid"
+              sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw"
             />
             {video?.url && (
               <Button

@@ -3,10 +3,13 @@
 import { useState, useMemo } from "react";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
-import FsLightbox from "fslightbox-react";
+import dynamic from "next/dynamic";
 import { SectionHeading, Button, ViewAllButton } from "@/components/ui";
 import { createRichTextComponents } from "@/lib/richTextComponents";
 import DiseasePills from "./disease-pills";
+
+// Loaded off the first-paint bundle — only needed once a video is opened.
+const FsLightbox = dynamic(() => import("fslightbox-react"), { ssr: false });
 
 const TestimonialVideoSection = ({ slice, testimonialLimit }) => {
   const { primary } = slice || {};
@@ -86,7 +89,11 @@ const TestimonialVideoItem = ({ item, slide, onPlayClick }) => {
             style={{ cursor: "pointer" }}
             onClick={handlePlayClick}
           >
-            <PrismicNextImage field={image} alt={image.alt ?? undefined} />
+            <PrismicNextImage
+              field={image}
+              alt={image.alt ?? undefined}
+              sizes="(max-width: 991px) 100vw, 33vw"
+            />
             {video?.url && slide > 0 && (
               <Button href="#" variant="player2" className="cs_video_open" />
             )}

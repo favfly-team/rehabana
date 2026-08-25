@@ -56,6 +56,7 @@ const TestimonialSection = ({ slice }) => {
                           <PrismicNextImage
                             field={item.image}
                             alt={item.image.alt ?? undefined}
+                            sizes="(max-width: 991px) 100vw, 42vw"
                             style={{
                               width: "100%",
                               height: "100%",

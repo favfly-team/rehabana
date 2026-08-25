@@ -53,6 +53,7 @@ const Footer = ({ data }) => {
               <div className="cs_footer_text_widget">
                 <PrismicNextImage
                   field={logo}
+                  sizes="180px"
                   style={{
                     height: "80px",
                     width: "auto",

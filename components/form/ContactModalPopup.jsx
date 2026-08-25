@@ -144,6 +144,7 @@ export default function ContactModalPopup() {
                   alt="Rehabana"
                   width={500}
                   height={500}
+                  sizes="(max-width: 991px) 100vw, 450px"
                   style={{
                     width: "100%",
                     height: "100%",

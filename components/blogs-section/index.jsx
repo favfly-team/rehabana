@@ -44,6 +44,7 @@ const BlogItem = ({ doc }) => {
             field={featured_image}
             alt={meta_title}
             className="img-fluid"
+            sizes="(max-width: 991px) 100vw, 33vw"
             style={{
               aspectRatio: "16/9",
               objectFit: "cover",
