@@ -201,6 +201,39 @@ clickup_filter_tasks(folder_ids=["<folder id>"], include_closed=true)
 
 Or search by a known task name. Once you have the list ID, record it so the lookup is not repeated.
 
+`clickup_search` with the client's name returns nothing — tasks are named after the
+work, not the client, and the workspace-wide index does not cover shared spaces.
+Search for a task name instead, or read the list straight off a known task ID.
+
+### Known lists
+
+Check here before searching. All of these sit in folder `901610911417`
+(Fullstack_Web - Epitome), space `90167902921` (Shared with me).
+
+| Repo | ClickUp list | List ID |
+| --- | --- | --- |
+| `d:\Favfly_myteam\rehabana` | RC - Fullstack_Web - FavFly | `901617644376` |
+
+Add a row whenever a new project's list is resolved.
+
+### Custom field IDs for that folder
+
+The fields are shared across the folder's lists, so these IDs hold for every list
+in the table above. Pass the **option UUID** for dropdowns.
+
+| Field | Field ID | Common option |
+| --- | --- | --- |
+| Task Type | `1afeb897-9552-4796-9d03-79e1b09e5803` | Request `334d8a03-af64-4cac-9370-f389f2d29fba` |
+| MONTH | `892c92da-c7fc-4fcf-9b05-3980c6921026` | Sep - 26 `e2f655c5-c03c-40f6-b4b5-c45b4862e8d1` |
+| Cycle | `c29331d9-f0de-413b-ab69-20a870961824` | short text, `YYYY-MM` |
+| Request Type | `9d4e2d51-55b7-4921-a37b-5b92080c3a8e` | Feature `0930b693-09bb-4880-8f3c-b1d535bea213` |
+| Request Stage | `916ce5c4-50cc-47fe-b2b2-5fd014a518b3` | Shipped `9e54be33-d5d7-4845-87d0-b7bc480b81ec` |
+| Target Route | `59358573-cef1-48eb-96a2-494925c62d6a` | short text |
+| Acceptance Test | `1b128041-5263-4cc4-959f-fb708d1e1d53` | text |
+
+MONTH options run backwards from Dec-26; re-read them from a live task when the
+month needed is not listed above.
+
 ---
 
 ## Rules
