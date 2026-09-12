@@ -1780,6 +1780,53 @@
   color: var(--white-color);
 }
 
+/* ==== Social & academic profiles ==== */
+.cs_doctor_socials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--doctor-border);
+}
+
+.cs_doctor_socials_label {
+  color: var(--body-color);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cs_doctor_socials_list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs_doctor_socials .cs_doctor_icon_btn {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+}
+
+@media (max-width: 575px) {
+  .cs_doctor_socials {
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+
+  .cs_doctor_socials .cs_doctor_icon_btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
 /* ==== Stats band ==== */
 .cs_doctor_stats {
   padding: 0 0 4px;

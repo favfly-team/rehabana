@@ -291,9 +291,23 @@ export const doctors = [
       },
     ],
 
-    // ==== LINKS ====
+    // ==== SOCIAL & ACADEMIC PROFILES ====
+    // "#" is a visible placeholder so the icon row renders in the demo. Each
+    // becomes a Link field in Prismic — the real URLs go in there. An entry
+    // left empty ("") renders no icon at all, so unused networks just vanish.
+    //
+    // Two real profiles were found and look right (LinkedIn headline reads
+    // "Rehabana Neurorehabilitation Clinic, Kolkata"), but they are NOT set
+    // here — linking a named person's personal accounts needs his say-so:
+    //   LinkedIn  https://www.linkedin.com/in/dr-kaustav-basu-thakur-65515418/
+    //   X         https://twitter.com/DrKaustavBasuT1
     social: {
-      linkedin: "",
+      linkedin: "#",
+      facebook: "#",
+      x: "#",
+      instagram: "#",
+      researchgate: "#",
+      scholar: "#",
     },
 
     // ==== SEO ====

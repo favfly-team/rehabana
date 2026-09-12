@@ -14,6 +14,14 @@ import {
   FaPersonWalking,
   FaNotesMedical,
   FaRobot,
+  FaFacebookF,
+  FaXTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaResearchgate,
+  FaGoogleScholar,
+  FaOrcid,
+  FaGlobe,
 } from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
 import CredentialList from "./credential-list";
@@ -170,7 +178,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
         designation={designation}
         headline={headline}
         image={image}
-        linkedin={social?.linkedin}
+        social={social}
       />
 
       {stats.length > 0 && <StatsBand stats={stats} />}
@@ -214,7 +222,7 @@ const DoctorHero = ({
   designation,
   headline,
   image,
-  linkedin,
+  social,
 }) => (
   <header className="cs_doctor_hero">
     <div className="container">
@@ -255,24 +263,61 @@ const DoctorHero = ({
             <a href="tel:+919836748665" className="cs_doctor_ghost_btn">
               <FaPhone aria-hidden="true" /> +91 98367 48665
             </a>
-
-            {linkedin && (
-              <a
-                href={linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cs_doctor_icon_btn"
-                aria-label={`${name} on LinkedIn`}
-              >
-                <FaLinkedinIn aria-hidden="true" />
-              </a>
-            )}
           </div>
+
+          <SocialLinks social={social} name={name} />
         </div>
       </div>
     </div>
   </header>
 );
+
+/**
+ * Social and academic profiles, under the hero CTAs.
+ *
+ * Only networks with a URL render, so the row shows exactly what the doctor
+ * actually has — no greyed-out icons for accounts that do not exist. Academic
+ * profiles sit alongside the social ones because for a physician with
+ * publications they are the more credible link.
+ */
+const SOCIAL_NETWORKS = [
+  { key: "linkedin", label: "LinkedIn", Icon: FaLinkedinIn },
+  { key: "facebook", label: "Facebook", Icon: FaFacebookF },
+  { key: "x", label: "X", Icon: FaXTwitter },
+  { key: "instagram", label: "Instagram", Icon: FaInstagram },
+  { key: "youtube", label: "YouTube", Icon: FaYoutube },
+  { key: "researchgate", label: "ResearchGate", Icon: FaResearchgate },
+  { key: "scholar", label: "Google Scholar", Icon: FaGoogleScholar },
+  { key: "orcid", label: "ORCID", Icon: FaOrcid },
+  { key: "website", label: "Website", Icon: FaGlobe },
+];
+
+const SocialLinks = ({ social = {}, name }) => {
+  const links = SOCIAL_NETWORKS.filter((network) => social?.[network.key]);
+  if (links.length === 0) return null;
+
+  return (
+    <div className="cs_doctor_socials">
+      <span className="cs_doctor_socials_label">Follow</span>
+      <ul className="cs_doctor_socials_list">
+        {links.map(({ key, label, Icon }) => (
+          <li key={key}>
+            <a
+              href={social[key]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cs_doctor_icon_btn"
+              aria-label={`${name} on ${label}`}
+              title={label}
+            >
+              <Icon aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 /* ==== STATS BAND ==== */
 
