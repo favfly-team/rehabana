@@ -79,17 +79,14 @@ const CredentialActions = ({ item, onPreview }) => {
       {item.credentialUrl && (
         <a
           href={item.credentialUrl}
-          // Only send visitors off-site in a new tab; internal links navigate
-          // in place, and skip the outbound arrow.
-          {...(isExternal(item.credentialUrl)
-            ? { target: "_blank", rel: "noopener noreferrer" }
-            : {})}
+          // Always a new tab — internal ones too, so a visitor reading the
+          // profile never loses their place in it.
+          target="_blank"
+          rel="noopener noreferrer"
           className="cs_doctor_credential_btn"
         >
           {item.linkLabel ?? "Show credential"}
-          {isExternal(item.credentialUrl) && (
-            <FaArrowUpRightFromSquare aria-hidden="true" />
-          )}
+          <FaArrowUpRightFromSquare aria-hidden="true" />
         </a>
       )}
 
@@ -119,7 +116,5 @@ const CredentialActions = ({ item, onPreview }) => {
 };
 
 const isPdf = (url = "") => url.split("?")[0].toLowerCase().endsWith(".pdf");
-
-const isExternal = (url = "") => /^https?:\/\//i.test(url);
 
 export default CredentialList;

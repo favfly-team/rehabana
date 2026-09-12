@@ -1790,7 +1790,8 @@
   gap: 1px;
   border-radius: 14px;
   overflow: hidden;
-  background: var(--doctor-border);
+  /* Shows through the 1px gaps as the divider between cells. */
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .cs_doctor_stat {
@@ -1798,7 +1799,7 @@
   flex-direction: column;
   gap: 6px;
   padding: 26px 28px;
-  background: var(--heading-color);
+  background: var(--accent-color);
 }
 
 .cs_doctor_stat_value {
@@ -1809,9 +1810,13 @@
   line-height: 1;
 }
 
+/* White on the brand magenta is 4.5:1 — right at the AA threshold, so the
+   label keeps full opacity and separates from the figure by size and weight
+   instead of by being faded out. */
 .cs_doctor_stat_label {
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--white-color);
   font-size: 13.5px;
+  font-weight: 400;
   line-height: 1.5;
 }
 
