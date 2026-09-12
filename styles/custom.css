@@ -1591,8 +1591,9 @@
   width: 26px;
 }
 
-/* "View More" is a real button, so reset the UA chrome the anchor never had. */
-.cs_team_more_btn {
+/* Buttons wearing .cs_btn styling need the UA chrome an anchor never had. */
+.cs_team_more_btn,
+.cs_btn_reset {
   border: 0;
   cursor: pointer;
   appearance: none;
@@ -2012,27 +2013,44 @@ a.cs_doctor_tile:hover img {
   font-size: 15px;
 }
 
+/* A real secondary action, not a caption: same pill shape and width as the
+   primary button, and tall enough to be a comfortable tap target on a phone. */
 .cs_doctor_glance_phone {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  min-height: 50px;
   margin-top: 10px;
+  padding: 13px 20px;
+  border: 1px solid rgba(178, 85, 147, 0.35);
+  border-radius: 100px;
+  background: var(--white-color);
   color: var(--heading-color);
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
+/* Border and background carry the hover state; the number itself stays at the
+   heading colour, because magenta on the tint is only 4.2:1 — under AA for
+   16px semibold. */
 .cs_doctor_glance_phone:hover {
-  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: rgba(178, 85, 147, 0.06);
 }
 
 .cs_doctor_glance_phone svg {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
   color: var(--accent-color);
+  transition: color 0.2s ease;
 }
 
 /* ==== Body sections ==== */

@@ -4,6 +4,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { FaLinkedinIn, FaPhone, FaCalendarCheck } from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
 import CredentialList from "./credential-list";
+import BookConsultationButton from "./book-button";
 
 /**
  * Doctor profile page body.
@@ -268,14 +269,11 @@ const DoctorHero = ({
           {headline && <p className="cs_doctor_headline">{headline}</p>}
 
           <div className="cs_doctor_hero_actions">
-            <Link
-              href="/contact"
-              className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
-            >
+            <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100">
               <span className="cs_btn_text">
                 <FaCalendarCheck aria-hidden="true" /> Book a Consultation
               </span>
-            </Link>
+            </BookConsultationButton>
 
             <a href="tel:+919836748665" className="cs_doctor_ghost_btn">
               <FaPhone aria-hidden="true" /> +91 98367 48665
@@ -368,16 +366,17 @@ const BookingCard = ({ facts = [], name }) => (
       </dl>
     )}
 
-    <Link
-      href="/contact"
-      className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100 cs_doctor_glance_btn"
-    >
+    <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100 cs_doctor_glance_btn">
       <span className="cs_btn_text">
         <FaCalendarCheck aria-hidden="true" /> Book a Consultation
       </span>
-    </Link>
+    </BookConsultationButton>
 
-    <a href="tel:+919836748665" className="cs_doctor_glance_phone">
+    <a
+      href="tel:+919836748665"
+      className="cs_doctor_glance_phone"
+      aria-label="Call Rehabana on +91 98367 48665"
+    >
       <FaPhone aria-hidden="true" /> +91 98367 48665
     </a>
   </div>
@@ -438,12 +437,9 @@ const ConsultCta = ({ name }) => (
           </p>
         </div>
         <div className="cs_doctor_cta_actions">
-          <Link
-            href="/contact"
-            className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100"
-          >
+          <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100">
             <span className="cs_btn_text">Book a Consultation</span>
-          </Link>
+          </BookConsultationButton>
           <Link href="/team" className="cs_doctor_ghost_btn">
             Back to Team
           </Link>

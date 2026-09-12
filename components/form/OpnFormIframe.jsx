@@ -33,7 +33,7 @@ const OpnFormIframe = ({
         const params = new URLSearchParams({ [PAGE_URL_PARAM]: pageUrl });
         setSrc(`${OPNFORM_BASE}?${params.toString()}`);
       },
-      { rootMargin: "100px", threshold: 0 }
+      { rootMargin: "100px", threshold: 0 },
     );
     observer.observe(el);
     return () => observer.disconnect();
