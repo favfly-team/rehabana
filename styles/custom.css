@@ -1614,6 +1614,10 @@
 .cs_doctor_page {
   --doctor-border: rgba(17, 24, 39, 0.09);
   --doctor-tint: rgba(178, 85, 147, 0.07);
+  /* One grid for the whole page: the hero photo and the booking rail share a
+     column width, so the text column never shifts sideways as you scroll. */
+  --doctor-col: 320px;
+  --doctor-gap: 56px;
   background: var(--white-color);
 }
 
@@ -1634,8 +1638,8 @@
 
 .cs_doctor_hero_grid {
   display: grid;
-  grid-template-columns: minmax(240px, 340px) 1fr;
-  gap: 48px;
+  grid-template-columns: var(--doctor-col) minmax(0, 1fr);
+  gap: var(--doctor-gap);
   align-items: start;
 }
 
@@ -1666,7 +1670,6 @@
 
 .cs_doctor_hero_content {
   min-width: 0;
-  padding-top: 6px;
 }
 
 .cs_doctor_eyebrow {
@@ -1930,8 +1933,8 @@ a.cs_doctor_tile:hover img {
 /* ==== Body layout: sticky facts rail + readable content column ==== */
 .cs_doctor_layout {
   display: grid;
-  grid-template-columns: 288px minmax(0, 1fr);
-  gap: 64px;
+  grid-template-columns: var(--doctor-col) minmax(0, 1fr);
+  gap: var(--doctor-gap);
   padding: 56px 0 8px;
 }
 
@@ -1942,8 +1945,6 @@ a.cs_doctor_tile:hover img {
 
 .cs_doctor_main {
   min-width: 0;
-  /* Cap the measure so long paragraphs stay scannable. */
-  max-width: 720px;
 }
 
 /* At a glance */
@@ -2084,11 +2085,20 @@ a.cs_doctor_tile:hover img {
   line-height: 1.7;
 }
 
+/* Blocks that build the grid (tiles, cards, timeline) fill the whole column so
+   their edges line up with the stats band; only running text is capped, so the
+   measure stays readable. */
 .cs_doctor_paragraph {
+  max-width: 68ch;
   margin: 0 0 16px;
   color: var(--body-color);
   font-size: 16px;
   line-height: 1.85;
+}
+
+.cs_doctor_lead,
+.cs_doctor_timeline_desc {
+  max-width: 68ch;
 }
 
 .cs_doctor_paragraph:last-child {
@@ -2294,18 +2304,14 @@ a.cs_doctor_tile:hover img {
 
 /* ==== Responsive ==== */
 @media (max-width: 1199px) {
-  .cs_doctor_hero_grid {
-    grid-template-columns: minmax(220px, 300px) 1fr;
-    gap: 36px;
+  /* Narrow both grids at once — they stay in step by construction. */
+  .cs_doctor_page {
+    --doctor-col: 260px;
+    --doctor-gap: 40px;
   }
 
   .cs_doctor_name {
     font-size: 34px;
-  }
-
-  .cs_doctor_layout {
-    grid-template-columns: 250px minmax(0, 1fr);
-    gap: 44px;
   }
 
   .cs_doctor_stat_value {
@@ -2336,10 +2342,6 @@ a.cs_doctor_tile:hover img {
 
   .cs_doctor_rail_inner {
     position: static;
-  }
-
-  .cs_doctor_main {
-    max-width: none;
   }
 
   .cs_doctor_tiles {
