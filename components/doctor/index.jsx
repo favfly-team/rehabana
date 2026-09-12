@@ -1,12 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
-import {
-  FaLinkedinIn,
-  FaPhone,
-  FaCalendarCheck,
-  FaAngleRight,
-} from "react-icons/fa6";
+import { FaLinkedinIn, FaPhone, FaCalendarCheck } from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
 
 /**

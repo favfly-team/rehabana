@@ -1631,36 +1631,6 @@
     var(--white-color);
 }
 
-.cs_doctor_breadcrumb {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
-  color: var(--body-color);
-  font-size: 13px;
-}
-
-.cs_doctor_breadcrumb a {
-  color: var(--body-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.cs_doctor_breadcrumb a:hover {
-  color: var(--accent-color);
-}
-
-.cs_doctor_breadcrumb svg {
-  width: 10px;
-  height: 10px;
-  opacity: 0.5;
-}
-
-.cs_doctor_breadcrumb span {
-  color: var(--heading-color);
-  font-weight: 500;
-}
 
 .cs_doctor_hero_grid {
   display: grid;
