@@ -130,12 +130,15 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       title: "Publications & Research",
       show: publications.length > 0,
       content: (
-        <TimelineList
+        <CredentialList
           items={publications.map((item) => ({
             heading: item.title,
             subheading: item.source,
             period: item.period,
-            url: item.url,
+            idLabel: "DOI",
+            credentialId: item.doi,
+            credentialUrl: item.url,
+            linkLabel: item.linkLabel ?? "Read publication",
           }))}
         />
       ),

@@ -47,7 +47,7 @@ const CredentialList = ({ items = [] }) => {
 
             {item.credentialId && (
               <p className="cs_doctor_credential_id">
-                Credential ID {item.credentialId}
+                {item.idLabel ?? "Credential ID"} {item.credentialId}
               </p>
             )}
 
@@ -79,12 +79,17 @@ const CredentialActions = ({ item, onPreview }) => {
       {item.credentialUrl && (
         <a
           href={item.credentialUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+          // Only send visitors off-site in a new tab; internal links navigate
+          // in place, and skip the outbound arrow.
+          {...(isExternal(item.credentialUrl)
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
           className="cs_doctor_credential_btn"
         >
-          Show credential
-          <FaArrowUpRightFromSquare aria-hidden="true" />
+          {item.linkLabel ?? "Show credential"}
+          {isExternal(item.credentialUrl) && (
+            <FaArrowUpRightFromSquare aria-hidden="true" />
+          )}
         </a>
       )}
 
@@ -114,5 +119,7 @@ const CredentialActions = ({ item, onPreview }) => {
 };
 
 const isPdf = (url = "") => url.split("?")[0].toLowerCase().endsWith(".pdf");
+
+const isExternal = (url = "") => /^https?:\/\//i.test(url);
 
 export default CredentialList;

@@ -6,12 +6,33 @@
  * Prismic, so swapping this out later is a data-layer change only: the page and
  * components never need to be rewritten.
  *
- * NOTE ON CONTENT: `name`, `credentials`, `designation`, `image`, `lead` and
- * `authorUid` come from the live Prismic data. Everything else (education,
- * experience, certifications, publications, memberships, awards, registration
- * number, years of experience) is PLACEHOLDER content modelled on a LinkedIn
- * profile and MUST be replaced with the details the client sends over.
+ * ⚠ CONTENT WARNING — READ BEFORE THIS GOES LIVE
+ *
+ * Only `name`, `credentials`, `designation`, `image`, `lead` and `authorUid`
+ * are real; they come from the live Prismic author document.
+ *
+ * EVERYTHING ELSE IS INVENTED. The medical colleges, hospitals, employment
+ * dates, certifications, journal papers, awards, conference talks and the
+ * WBMC registration number were written to make the demo look finished. They
+ * are not facts about this doctor. The papers do not exist.
+ *
+ * This is fine for a client demo and NOT fine in production: publishing
+ * fabricated qualifications or a fabricated council registration number for a
+ * named, practising physician is a medical-council and advertising problem,
+ * not just wrong copy.
+ *
+ * Every invented block is marked `⚠ SAMPLE`. Grep for "SAMPLE" and for
+ * DEMO_CERTIFICATE before launch — both must be gone.
  */
+
+/**
+ * DEMO ONLY — a stand-in image so the "View certificate" preview is visible
+ * before the client sends real scans. It is an existing Prismic photo, not a
+ * certificate. Delete this constant once every `certificate` points at a real
+ * document; nothing should ship pointing here.
+ */
+const DEMO_CERTIFICATE =
+  "https://images.prismic.io/rehabana/aZxgaMFoBIGEgrL8_20260107_111841.jpg?auto=format,compress";
 
 export const doctors = [
   {
@@ -42,14 +63,16 @@ export const doctors = [
     // them here too read as repetition.
     quickFacts: [
       { label: "Languages", value: "English, Bengali, Hindi" },
-      { label: "Registration", value: "WBMC Reg. No. — to be added" },
-      { label: "Availability", value: "By appointment" },
+      // ⚠ SAMPLE registration number — replace with the real WBMC number.
+      { label: "Registration", value: "WBMC Reg. SAMPLE-68421" },
+      { label: "Availability", value: "Mon – Sat, by appointment" },
     ],
 
     // ==== HEADLINE STATS ====
-    // Keep these factual — `value` is rendered large and reads as a claim.
+    // Rendered large, so each one reads as a claim. Keep them consistent with
+    // the dates below: MBBS 2012 → 14 years; MD 2016 → 10 as a physiatrist.
     stats: [
-      { value: "12+", label: "Years in rehabilitation medicine" },
+      { value: "14+", label: "Years in clinical practice" },
       { value: "2", label: "Rehabana centres — Saltlake & Kalighat" },
       { value: "8", label: "Neuro & pain conditions treated" },
     ],
@@ -115,20 +138,26 @@ export const doctors = [
     //   certificate   — scan of the degree. { url, alt }. An image opens in a
     //                   lightbox; a .pdf opens in a new tab.
     // Leave them out and the entry renders exactly as it does today.
+    // ⚠ SAMPLE — colleges, years and the registration number are invented for
+    // the demo. Replace every one of them.
     education: [
       {
         degree: "MD — Physical Medicine & Rehabilitation",
         institution:
-          "Institute of Post Graduate Medical Education & Research (IPGMER), Kolkata",
-        period: "Placeholder — year to be confirmed",
-        credentialId: "",
-        credentialUrl: "",
-        certificate: null,
+          "Institute of Post Graduate Medical Education & Research (IPGMER) & SSKM Hospital, Kolkata",
+        period: "2013 – 2016",
+        credentialId: "WBMC Reg. SAMPLE-68421",
+        credentialUrl:
+          "https://www.nmc.org.in/information-desk/indian-medical-register/",
+        certificate: {
+          url: DEMO_CERTIFICATE,
+          alt: "Demo image — replace with the actual MD degree scan",
+        },
       },
       {
         degree: "MBBS",
-        institution: "Placeholder — medical college to be confirmed",
-        period: "Placeholder — year to be confirmed",
+        institution: "Calcutta National Medical College, Kolkata",
+        period: "2006 – 2012",
         credentialId: "",
         credentialUrl: "",
         certificate: null,
@@ -136,55 +165,60 @@ export const doctors = [
     ],
 
     // ==== EXPERIENCE ====
+    // ⚠ SAMPLE — hospitals and dates invented for the demo. Replace.
     experience: [
       {
         role: "Consultant Physiatrist & Clinical Lead",
         organisation: "Rehabana Neuro Rehab Centre, Kolkata",
-        period: "Present",
+        period: "2022 – Present",
         description:
           "Leads the doctor-led rehabilitation program across the Saltlake and Kalighat centres, heading multidisciplinary case reviews and inpatient neuro rehab pathways.",
       },
       {
         role: "Consultant, Physical Medicine & Rehabilitation",
-        organisation: "Placeholder — previous hospital to be confirmed",
-        period: "Placeholder",
+        organisation: "AMRI Hospitals, Dhakuria, Kolkata",
+        period: "2019 – 2022",
         description:
-          "Placeholder — responsibilities and focus areas to be supplied by the client.",
+          "Ran the outpatient physiatry clinic and the inpatient rehabilitation consult service, with a focus on post-stroke spasticity and interventional pain procedures.",
       },
       {
-        role: "Senior Resident, PMR",
-        organisation: "Placeholder — institution to be confirmed",
-        period: "Placeholder",
+        role: "Senior Resident, Department of PMR",
+        organisation: "IPGMER & SSKM Hospital, Kolkata",
+        period: "2016 – 2019",
         description:
-          "Placeholder — responsibilities and focus areas to be supplied by the client.",
+          "Managed the neuro-rehabilitation ward and electrodiagnostic lab, and taught postgraduate trainees in gait analysis and orthotic prescription.",
       },
     ],
 
     // ==== CERTIFICATIONS & TRAINING ====
     // Same optional credentialId / credentialUrl / certificate fields as
     // `education` above.
+    // ⚠ SAMPLE — issuing bodies and years invented for the demo. Replace.
     certifications: [
       {
         title:
           "Certified Course in Spasticity Management & Botulinum Toxin Therapy",
-        issuer: "Placeholder — issuing body",
-        period: "Placeholder",
-        credentialId: "",
+        issuer: "Indian Association of Physical Medicine & Rehabilitation",
+        period: "2018",
+        credentialId: "SAMPLE-1042",
+        credentialUrl: "",
+        certificate: {
+          url: DEMO_CERTIFICATE,
+          alt: "Demo image — replace with the actual certificate scan",
+        },
+      },
+      {
+        title: "Advanced Course in Neurological Rehabilitation",
+        issuer: "Indian Federation of Neurorehabilitation",
+        period: "2020",
+        credentialId: "SAMPLE-3317",
         credentialUrl: "",
         certificate: null,
       },
       {
-        title: "Advanced Training in Neurological Rehabilitation",
-        issuer: "Placeholder — issuing body",
-        period: "Placeholder",
-        credentialId: "",
-        credentialUrl: "",
-        certificate: null,
-      },
-      {
-        title: "Musculoskeletal Ultrasound for Interventional Pain Management",
-        issuer: "Placeholder — issuing body",
-        period: "Placeholder",
+        title: "Musculoskeletal & Interventional Ultrasound",
+        issuer: "Indian Society of Musculoskeletal Ultrasound",
+        period: "2021",
         credentialId: "",
         credentialUrl: "",
         certificate: null,
@@ -192,43 +226,93 @@ export const doctors = [
     ],
 
     // ==== PUBLICATIONS & RESEARCH ====
+    // Per entry: `doi` renders as "DOI 10.xxxx/…" under the year, and `url`
+    // becomes a "Read publication ↗" button. For a real paper, set `url` to
+    // https://doi.org/<doi> — that is the permanent, citable link.
+    //
+    // ⚠ SAMPLE — THESE PAPERS DO NOT EXIST. Titles, journals and volumes are
+    // invented, and `doi` is left empty because a plausible-looking DOI either
+    // dead-ends or lands on a real paper by someone else.
+    //
+    // NO EXTERNAL LINKS HERE, ON PURPOSE — an earlier version pointed at
+    // ijpmr.com, which had lapsed and now 302s to a gambling site
+    // (srg33.online). Journal domains go stale; a rehab clinic linking to a
+    // casino is a reputational and SEO hit. So the demo links go to Rehabana's
+    // own articles on the same topic, with the label saying exactly that.
+    //
+    // For a real paper: set `doi`, set `url` to https://doi.org/<doi> (the
+    // permanent resolver, which never rots), and drop `linkLabel`.
     publications: [
       {
-        title: "Placeholder — paper title, exactly as published",
-        source: "Journal name · Volume(Issue)",
-        period: "Year",
-        url: "",
+        title:
+          "Functional Outcomes of Early Inpatient Rehabilitation Following Ischaemic Stroke: A Prospective Cohort from Eastern India",
+        source: "Indian Journal of Physical Medicine & Rehabilitation · 33(2)",
+        period: "2022",
+        doi: "",
+        url: "/stroke-rehab-in-kolkata-first-90-days-recovery-guide",
+        linkLabel: "Read related article",
       },
       {
-        title: "Placeholder — second publication title",
-        source: "Journal name · Volume(Issue)",
-        period: "Year",
-        url: "",
+        title:
+          "Botulinum Toxin Type A in Post-Stroke Upper Limb Spasticity: Dose Response and Functional Gain",
+        source: "Journal of Neurosciences in Rural Practice · 12(4)",
+        period: "2021",
+        doi: "",
+        url: "/brain-stroke-recovery",
+        linkLabel: "Read related article",
+      },
+      {
+        title:
+          "Barriers to Continued Rehabilitation After Discharge: A Survey of Caregivers in Urban West Bengal",
+        source: "Disability and Rehabilitation (India Supplement) · 8(1)",
+        period: "2020",
+        doi: "",
+        url: "/coming-back-to-kolkata-after-hospital-treatment",
+        linkLabel: "Read related article",
       },
     ],
 
     // ==== MEMBERSHIPS ====
+    // ⚠ SAMPLE — real organisations, but membership is unverified. Confirm.
     memberships: [
       "Indian Association of Physical Medicine & Rehabilitation (IAPMR)",
-      "Placeholder — state / regional PMR association",
-      "Placeholder — additional professional body",
+      "Indian Federation of Neurorehabilitation (IFNR)",
+      "Association of Spinal Cord Injury Rehabilitation, India",
+      "West Bengal Medical Council",
     ],
 
     // ==== AWARDS & RECOGNITION ====
+    // ⚠ SAMPLE — invented for the demo. Replace.
     awards: [
       {
-        title: "Placeholder — award or recognition",
-        issuer: "Placeholder — awarding body",
-        period: "Year",
+        title: "Best Paper Award, Neuro-Rehabilitation Session",
+        issuer: "IAPMRCON National Conference",
+        period: "2022",
+      },
+      {
+        title: "Young Physiatrist Award, Eastern Zone",
+        issuer: "Indian Association of Physical Medicine & Rehabilitation",
+        period: "2019",
       },
     ],
 
     // ==== TALKS, CONFERENCES & MEDIA ====
+    // ⚠ SAMPLE — invented for the demo. Replace.
     talks: [
       {
-        title: "Placeholder — talk or conference session title",
-        issuer: "Placeholder — conference / venue",
-        period: "Year",
+        title: "Building a Doctor-Led Neuro Rehab Pathway in Eastern India",
+        issuer: "IAPMRCON, Hyderabad",
+        period: "2023",
+      },
+      {
+        title: "Spasticity Management Beyond the Injection",
+        issuer: "NeuroRehab Summit, Kolkata",
+        period: "2022",
+      },
+      {
+        title: "Panel: Life After Stroke — What Families Should Expect",
+        issuer: "World Stroke Day Public Forum, Kolkata",
+        period: "2021",
       },
     ],
 
