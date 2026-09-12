@@ -1,38 +1,29 @@
 /**
  * Static doctor profiles.
  *
- * TEMPORARY DATA SOURCE — this file is the stand-in for a future Prismic
- * `doctor` custom type. Every field here maps 1:1 to a field we will create in
- * Prismic, so swapping this out later is a data-layer change only: the page and
- * components never need to be rewritten.
+ * TEMPORARY DATA SOURCE — the stand-in for a future Prismic `doctor` custom
+ * type. Every field maps 1:1 to a field we will create there, so swapping this
+ * out later is a data-layer change only.
  *
- * ⚠ CONTENT WARNING — READ BEFORE THIS GOES LIVE
+ * PROVENANCE — everything below is real, taken from content the client has
+ * already published in Prismic:
+ *   - the `author` document `dr-kaustav-basu-thakur` (name, credentials, photo)
+ *   - the `service_page` document `pmr-rehab-physician`, whose team_section
+ *     "details" slice carries his full bio, memberships, publications and
+ *     workshop history
+ * Wording is lightly tidied (typos, journal abbreviations) but no fact has been
+ * added, inferred or embellished.
  *
- * Only `name`, `credentials`, `designation`, `image`, `lead` and `authorUid`
- * are real; they come from the live Prismic author document.
- *
- * EVERYTHING ELSE IS INVENTED. The medical colleges, hospitals, employment
- * dates, certifications, journal papers, awards, conference talks and the
- * WBMC registration number were written to make the demo look finished. They
- * are not facts about this doctor. The papers do not exist.
- *
- * This is fine for a client demo and NOT fine in production: publishing
- * fabricated qualifications or a fabricated council registration number for a
- * named, practising physician is a medical-council and advertising problem,
- * not just wrong copy.
- *
- * Every invented block is marked `⚠ SAMPLE`. Grep for "SAMPLE" and for
- * DEMO_CERTIFICATE before launch — both must be gone.
+ * STILL MISSING — every one of these renders the literal text "To be added" or
+ * is left empty until the client supplies it. Nothing is invented to fill them:
+ *   - medical council registration number
+ *   - languages spoken
+ *   - consulting days / hours
+ *   - year the MD was completed, and years for the two posts in `experience`
+ *   - awards (none are mentioned anywhere in the existing content)
+ *   - degree / certificate scans, and DOIs or links for the publications
+ *   - LinkedIn profile URL
  */
-
-/**
- * DEMO ONLY — a stand-in image so the "View certificate" preview is visible
- * before the client sends real scans. It is an existing Prismic photo, not a
- * certificate. Delete this constant once every `certificate` points at a real
- * document; nothing should ship pointing here.
- */
-const DEMO_CERTIFICATE =
-  "https://images.prismic.io/rehabana/aZxgaMFoBIGEgrL8_20260107_111841.jpg?auto=format,compress";
 
 export const doctors = [
   {
@@ -44,7 +35,7 @@ export const doctors = [
     eyebrow: "Consultant Physiatrist",
     designation: "Physical Medicine & Rehabilitation (PMR) Specialist, Kolkata",
     headline:
-      "Rehabilitation physician focused on neuro recovery, spasticity management and long-term functional independence.",
+      "Special interests in stroke rehabilitation, spinal cord injury rehabilitation, rheumatological rehab and musculoskeletal medicine.",
 
     image: {
       url: "https://images.prismic.io/rehabana/aZvDh8FoBIGEgoiU_DSC_2293.JPG?auto=format,compress&rect=1000,0,4000,4000&w=800&h=1000",
@@ -53,34 +44,28 @@ export const doctors = [
       height: 1000,
     },
 
-    // Reserved for future use — the grid card deliberately shows name + role only
-    cardSummary:
-      "Leads Rehabana's doctor-led rehab programs for stroke, spinal cord injury and neuro-pain patients.",
-
     // ==== BOOKING CARD ====
-    // Only facts that appear nowhere else on the page. Experience, speciality
-    // and locations deliberately live in `stats` and the hero instead — having
-    // them here too read as repetition.
+    // Awaiting the client — shown as "To be added" rather than guessed.
     quickFacts: [
-      { label: "Languages", value: "English, Bengali, Hindi" },
-      // ⚠ SAMPLE registration number — replace with the real WBMC number.
-      { label: "Registration", value: "WBMC Reg. SAMPLE-68421" },
-      { label: "Availability", value: "Mon – Sat, by appointment" },
+      { label: "Registration", value: "To be added" },
+      { label: "Languages", value: "To be added" },
+      { label: "Availability", value: "To be added" },
     ],
 
     // ==== HEADLINE STATS ====
-    // Rendered large, so each one reads as a claim. Keep them consistent with
-    // the dates below: MBBS 2012 → 14 years; MD 2016 → 10 as a physiatrist.
+    // All three are derived from facts in the source content: MBBS 2012,
+    // five published papers, and the two Rehabana centres in the site footer.
     stats: [
-      { value: "14+", label: "Years in clinical practice" },
+      { value: "14+", label: "Years since qualifying (MBBS, 2012)" },
+      { value: "5", label: "Peer-reviewed publications" },
       { value: "2", label: "Rehabana centres — Saltlake & Kalighat" },
-      { value: "8", label: "Neuro & pain conditions treated" },
     ],
 
     // ==== CONDITIONS TREATED ====
-    // `serviceUid` points at an existing Prismic `service_page`. When it
-    // resolves, the tile shows that page's featured image and links to it —
-    // real photography plus an internal link. Without one it renders plain.
+    // His stated special interests, mapped to the matching Prismic
+    // `service_page` so each tile shows real photography and links through.
+    // "Rheumatological rehabilitation" has no service page yet, so it renders
+    // as a plain tile.
     specialities: [
       {
         label: "Stroke Rehabilitation",
@@ -91,90 +76,63 @@ export const doctors = [
         serviceUid: "spinal-cord-rehabilitation-in-kolkata",
       },
       {
-        label: "Traumatic Brain Injury",
-        serviceUid: "treatment-of-traumatic-brain-injury-in-kolkata",
-      },
-      {
-        label: "Parkinson's Disease & Movement Disorders",
-        serviceUid: "parkinsons-treatment-in-kolkata",
-      },
-      { label: "Pain & Spasticity Management", serviceUid: "pain-spasticity" },
-      {
-        label: "Musculoskeletal Rehabilitation",
+        label: "Musculoskeletal Medicine",
         serviceUid: "physiotherapy-in-kolkata",
       },
       {
-        label: "Post-operative Rehabilitation",
-        serviceUid: "post-surgery-rehabilitation-centre",
+        label: "Interventional Pain Management",
+        serviceUid: "pain-spasticity",
       },
-      {
-        label: "Peripheral Neuropathy",
-        serviceUid: "peripheral-neuropathy-treatment-in-kolkata",
-      },
+      { label: "Rheumatological Rehabilitation", serviceUid: "" },
     ],
 
     // ==== ABOUT ====
-    lead: "Dr Kaustav Basu Thakur is a specialist in Physical Medicine and Rehabilitation (PMR) based in Kolkata, focusing on patient recovery, rehabilitation planning, and long-term functional improvement.",
+    lead: "Dr Basu Thakur — known to many as Dr KBT — is a physiatrist at Rehabana, Kolkata, working across neurorehabilitation, spasticity and interventional pain management.",
     about: [
-      "As a rehabilitation physician, Dr Basu Thakur works at the point where medical treatment ends and real recovery begins. His practice centres on patients living with the after-effects of stroke, spinal cord injury, traumatic brain injury and progressive neurological conditions — people for whom progress is measured not in test reports but in standing up, walking again, speaking, and returning to the life they had.",
-      "At Rehabana he leads the multidisciplinary review process: every patient's program is designed with physiotherapists, occupational therapists, speech-language pathologists, psychologists and rehab nurses, then reassessed at fixed intervals so families always know what is improving, what is not, and why. He believes rehabilitation goals must be written in the patient's own words, not in clinical shorthand.",
-      "Alongside clinical work he is involved in training junior physiatrists and therapists, and in raising awareness of PMR as a specialty in Eastern India — a region where dedicated, doctor-led neuro rehabilitation is still uncommon.",
+      "He qualified MBBS from Bankura Sammilani Medical College in 2012, and completed his postgraduate degree in Physical Medicine & Rehabilitation at the Regional Institute of Medical Sciences (RIMS), Imphal, Manipur. During that tenure he attended multiple hands-on workshops on ultrasound-guided specialised injections, spasticity and pain management.",
+      "After his MD he served as Senior Resident at the All India Institute of Medical Sciences (AIIMS), Bhubaneswar, where he gained experience in fluoroscopy-guided and ultrasound-guided pain interventions, robotic neurorehabilitation and surgical rehabilitation.",
+      "He has two papers in a national journal as first author and several more as co-author in national and international journals. As a consultant at Rehabana he aims to provide high-quality, advanced neurorehabilitation to every patient.",
     ],
 
     // ==== PROCEDURES / INTERVENTIONS ====
+    // Drawn from the experience described in his bio — nothing added.
     // `icon` is a key, not a component, so this stays plain serialisable data
-    // and maps cleanly onto a Prismic select field later. Valid keys are in
-    // PROCEDURE_ICONS in components/doctor/index.jsx; an unknown key falls
-    // back to a neutral medical icon.
-    // An optional `note` renders a second line, but it is deliberately unused
-    // here: six three-line cards made this the heaviest block on the page for
-    // what is really just a capability list. The explanations belong on the
-    // service pages, which have room for them.
+    // and maps onto a Prismic select field later. Keys live in PROCEDURE_ICONS
+    // in components/doctor/index.jsx; an unknown key falls back to a neutral
+    // medical icon.
     procedures: [
       {
-        label: "Botulinum toxin injection for focal spasticity",
+        label: "Ultrasound-guided specialised injections",
         icon: "injection",
       },
       {
-        label: "Ultrasound and fluoroscopy-guided nerve blocks",
+        label: "Fluoroscopy-guided pain interventions",
         icon: "imaging",
       },
-      { label: "Intra-articular and soft tissue injections", icon: "joint" },
-      {
-        label: "Electrodiagnostic evaluation (EMG / NCV)",
-        icon: "diagnostics",
-      },
-      { label: "Prosthetic and orthotic prescription", icon: "orthotics" },
-      { label: "Gait and functional mobility assessment", icon: "gait" },
+      { label: "Spasticity management", icon: "joint" },
+      { label: "Interventional pain management", icon: "diagnostics" },
+      { label: "Robotic neurorehabilitation", icon: "robotics" },
+      { label: "Surgical rehabilitation", icon: "orthotics" },
     ],
 
     // ==== EDUCATION ====
-    // Optional per entry, LinkedIn-style:
-    //   credentialId  — registration / roll number shown under the date
-    //   credentialUrl — external verification page ("Show credential")
-    //   certificate   — scan of the degree. { url, alt }. An image opens in a
-    //                   lightbox; a .pdf opens in a new tab.
-    // Leave them out and the entry renders exactly as it does today.
-    // ⚠ SAMPLE — colleges, years and the registration number are invented for
-    // the demo. Replace every one of them.
+    // Optional per entry: `credentialId`, `credentialUrl`, and `certificate`
+    // ({ url, alt }) for a scan — an image opens in a lightbox, a .pdf opens in
+    // a new tab. All three are empty until the client sends documents.
     education: [
       {
         degree: "MD — Physical Medicine & Rehabilitation",
         institution:
-          "Institute of Post Graduate Medical Education & Research (IPGMER) & SSKM Hospital, Kolkata",
-        period: "2013 – 2016",
-        credentialId: "WBMC Reg. SAMPLE-68421",
-        credentialUrl:
-          "https://www.nmc.org.in/information-desk/indian-medical-register/",
-        certificate: {
-          url: DEMO_CERTIFICATE,
-          alt: "Demo image — replace with the actual MD degree scan",
-        },
+          "Regional Institute of Medical Sciences (RIMS), Imphal, Manipur",
+        period: "Year to be added",
+        credentialId: "",
+        credentialUrl: "",
+        certificate: null,
       },
       {
         degree: "MBBS",
-        institution: "Calcutta National Medical College, Kolkata",
-        period: "2006 – 2012",
+        institution: "Bankura Sammilani Medical College",
+        period: "2012",
         credentialId: "",
         credentialUrl: "",
         certificate: null,
@@ -182,59 +140,29 @@ export const doctors = [
     ],
 
     // ==== EXPERIENCE ====
-    // ⚠ SAMPLE — hospitals and dates invented for the demo. Replace.
     experience: [
       {
-        role: "Consultant Physiatrist & Clinical Lead",
+        role: "Consultant Physiatrist",
         organisation: "Rehabana Neuro Rehab Centre, Kolkata",
-        period: "2022 – Present",
+        period: "Present",
         description:
-          "Leads the doctor-led rehabilitation program across the Saltlake and Kalighat centres, heading multidisciplinary case reviews and inpatient neuro rehab pathways.",
+          "Provides advanced neurorehabilitation, spasticity management and interventional pain care across the Saltlake and Kalighat centres.",
       },
       {
-        role: "Consultant, Physical Medicine & Rehabilitation",
-        organisation: "AMRI Hospitals, Dhakuria, Kolkata",
-        period: "2019 – 2022",
+        role: "Senior Resident, Physical Medicine & Rehabilitation",
+        organisation:
+          "All India Institute of Medical Sciences (AIIMS), Bhubaneswar",
+        period: "Years to be added",
         description:
-          "Ran the outpatient physiatry clinic and the inpatient rehabilitation consult service, with a focus on post-stroke spasticity and interventional pain procedures.",
-      },
-      {
-        role: "Senior Resident, Department of PMR",
-        organisation: "IPGMER & SSKM Hospital, Kolkata",
-        period: "2016 – 2019",
-        description:
-          "Managed the neuro-rehabilitation ward and electrodiagnostic lab, and taught postgraduate trainees in gait analysis and orthotic prescription.",
+          "Gained experience in fluoroscopy-guided and ultrasound-guided pain interventions, robotic neurorehabilitation and surgical rehabilitation.",
       },
     ],
 
     // ==== CERTIFICATIONS & TRAINING ====
-    // Same optional credentialId / credentialUrl / certificate fields as
-    // `education` above.
-    // ⚠ SAMPLE — issuing bodies and years invented for the demo. Replace.
     certifications: [
       {
-        title:
-          "Certified Course in Spasticity Management & Botulinum Toxin Therapy",
-        issuer: "Indian Association of Physical Medicine & Rehabilitation",
-        period: "2018",
-        credentialId: "SAMPLE-1042",
-        credentialUrl: "",
-        certificate: {
-          url: DEMO_CERTIFICATE,
-          alt: "Demo image — replace with the actual certificate scan",
-        },
-      },
-      {
-        title: "Advanced Course in Neurological Rehabilitation",
-        issuer: "Indian Federation of Neurorehabilitation",
-        period: "2020",
-        credentialId: "SAMPLE-3317",
-        credentialUrl: "",
-        certificate: null,
-      },
-      {
-        title: "Musculoskeletal & Interventional Ultrasound",
-        issuer: "Indian Society of Musculoskeletal Ultrasound",
+        title: "Fellowship in Pain Management",
+        issuer: "Aesculap Academy, Germany — at Daradia Pain Clinic",
         period: "2021",
         credentialId: "",
         credentialUrl: "",
@@ -243,98 +171,113 @@ export const doctors = [
     ],
 
     // ==== PUBLICATIONS & RESEARCH ====
-    // Per entry: `doi` renders as "DOI 10.xxxx/…" under the year, and `url`
-    // becomes a "Read publication ↗" button. For a real paper, set `url` to
-    // https://doi.org/<doi> — that is the permanent, citable link.
-    //
-    // ⚠ SAMPLE — THESE PAPERS DO NOT EXIST. Titles, journals and volumes are
-    // invented, and `doi` is left empty because a plausible-looking DOI either
-    // dead-ends or lands on a real paper by someone else.
-    //
-    // NO EXTERNAL LINKS HERE, ON PURPOSE — an earlier version pointed at
-    // ijpmr.com, which had lapsed and now 302s to a gambling site
-    // (srg33.online). Journal domains go stale; a rehab clinic linking to a
-    // casino is a reputational and SEO hit. So the demo links go to Rehabana's
-    // own articles on the same topic, with the label saying exactly that.
-    //
-    // For a real paper: set `doi`, set `url` to https://doi.org/<doi> (the
-    // permanent resolver, which never rots), and drop `linkLabel`.
+    // Verbatim from the citations published on the PMR service page.
+    // `doi` and `url` are intentionally empty: a guessed DOI either dead-ends
+    // or resolves to somebody else's paper. Add the real ones and set
+    // `url` to https://doi.org/<doi>.
     publications: [
       {
         title:
-          "Functional Outcomes of Early Inpatient Rehabilitation Following Ischaemic Stroke: A Prospective Cohort from Eastern India",
-        source: "Indian Journal of Physical Medicine & Rehabilitation · 33(2)",
+          "Autologous platelet-rich plasma injections in the treatment of shoulder pain: a meta-analysis of randomised controlled trials",
+        source: "Clinics in Shoulder and Elbow · 25(1):73–89",
         period: "2022",
         doi: "",
-        url: "/stroke-rehab-in-kolkata-first-90-days-recovery-guide",
-        linkLabel: "Read related article",
+        url: "",
       },
       {
         title:
-          "Botulinum Toxin Type A in Post-Stroke Upper Limb Spasticity: Dose Response and Functional Gain",
-        source: "Journal of Neurosciences in Rural Practice · 12(4)",
-        period: "2021",
+          "Efficacy of intradiscal ozone nucleolysis in improving pain and function in patients with lumbar prolapsed intervertebral disc",
+        source: "Global Journal for Research Analysis · 8(5):1–4",
+        period: "2019",
         doi: "",
-        url: "/brain-stroke-recovery",
-        linkLabel: "Read related article",
+        url: "",
       },
       {
         title:
-          "Barriers to Continued Rehabilitation After Discharge: A Survey of Caregivers in Urban West Bengal",
-        source: "Disability and Rehabilitation (India Supplement) · 8(1)",
-        period: "2020",
+          "Correlation of radio-anatomic site of stroke with motor recovery and functional outcome in ischaemic stroke patients: a hospital-based prospective cohort study",
+        source:
+          "Indian Journal of Physical Medicine & Rehabilitation · 28(4):115–121",
+        period: "2017",
         doi: "",
-        url: "/coming-back-to-kolkata-after-hospital-treatment",
-        linkLabel: "Read related article",
+        url: "",
+      },
+      {
+        title:
+          "Efficacy of single-dose intra-articular injection of high-molecular-weight hyaluronic acid in patients suffering from primary osteoarthritis of the knee",
+        source:
+          "Indian Journal of Physical Medicine & Rehabilitation · 28(3):89–94",
+        period: "2017",
+        doi: "",
+        url: "",
+      },
+      {
+        title:
+          "Prevalence of disability in low back pain: a hospital-based study",
+        source: "Global Journal for Research Analysis · 6(9):13–15",
+        period: "2017",
+        doi: "",
+        url: "",
       },
     ],
 
     // ==== MEMBERSHIPS ====
-    // ⚠ SAMPLE — real organisations, but membership is unverified. Confirm.
     memberships: [
-      "Indian Association of Physical Medicine & Rehabilitation (IAPMR)",
-      "Indian Federation of Neurorehabilitation (IFNR)",
-      "Association of Spinal Cord Injury Rehabilitation, India",
-      "West Bengal Medical Council",
+      "Life Member, Indian Association of Physical Medicine & Rehabilitation (IAPMR)",
+      "Life Member, Indian Society for the Study of Pain (ISSP)",
+      "Life Member, Indian Federation of Neurorehabilitation (IFNR)",
+      "Life Member, International Society for Musculoskeletal Ultrasound in Pain Medicine (ISPM)",
+      "Life Member, St. John Ambulance Association & Indian Red Cross Society (2015)",
     ],
 
     // ==== AWARDS & RECOGNITION ====
-    // `image` is optional: { url } for a photo of the award, trophy or
-    // certificate. Without it the card shows a trophy icon, so entries look
-    // consistent whether or not a photo exists.
-    // ⚠ SAMPLE — invented for the demo. Replace.
-    awards: [
-      {
-        title: "Best Paper Award, Neuro-Rehabilitation Session",
-        issuer: "IAPMRCON National Conference",
-        period: "2022",
-        image: null,
-      },
-      {
-        title: "Young Physiatrist Award, Eastern Zone",
-        issuer: "Indian Association of Physical Medicine & Rehabilitation",
-        period: "2019",
-        image: null,
-      },
-    ],
+    // TO BE ADDED — no awards appear anywhere in the existing content, so this
+    // stays empty. The section hides itself rather than showing a bare heading.
+    awards: [],
 
-    // ==== TALKS, CONFERENCES & MEDIA ====
-    // ⚠ SAMPLE — invented for the demo. Replace.
-    talks: [
+    // ==== WORKSHOPS & TRAINING ====
+    // His "Professional Development" list, verbatim. Deliberately not labelled
+    // "Talks" — these are workshops he attended, not sessions he delivered.
+    workshops: [
       {
-        title: "Building a Doctor-Led Neuro Rehab Pathway in Eastern India",
-        issuer: "IAPMRCON, Hyderabad",
+        title: "Cadaveric needling and volunteer scanning",
+        issuer: "ICMU 2023 — Musculoskeletal Ultrasound in Pain, Bengaluru",
         period: "2023",
       },
       {
-        title: "Spasticity Management Beyond the Injection",
-        issuer: "NeuroRehab Summit, Kolkata",
+        title: "Botulinum toxin injections in upper and lower limb spasticity",
+        issuer: "IFNRCON 2023, Mumbai",
+        period: "2023",
+      },
+      {
+        title: "Intensive musculoskeletal ultrasonography",
+        issuer: "IRACON 2022, Indore",
         period: "2022",
       },
       {
-        title: "Panel: Life After Stroke — What Families Should Expect",
-        issuer: "World Stroke Day Public Forum, Kolkata",
-        period: "2021",
+        title: "Lifestyle disease rehabilitation and prolotherapy",
+        issuer: "IAPMRCON 2020, Kozhikode",
+        period: "2020",
+      },
+      {
+        title: "Radiofrequency ablation in interventional pain management",
+        issuer: "RIMS, Imphal",
+        period: "2018",
+      },
+      {
+        title:
+          "Ultrasound-guided interventions in spasticity and regional pain",
+        issuer: "IAPMRCON 2017, Kolkata",
+        period: "2017",
+      },
+      {
+        title: "Fluoroscopy-guided interventional pain management",
+        issuer: "IAPMRCON 2017, Kolkata",
+        period: "2017",
+      },
+      {
+        title: "Percutaneous vertebroplasty",
+        issuer: "IAPMRCON 2016, Imphal",
+        period: "2016",
       },
     ],
 
@@ -348,7 +291,7 @@ export const doctors = [
       title:
         "Dr Kaustav Basu Thakur — PMR & Rehabilitation Physician in Kolkata | Rehabana",
       description:
-        "Dr Kaustav Basu Thakur, MBBS, MD – PMR, is a consultant physiatrist at Rehabana Kolkata specialising in stroke, spinal cord injury and neuro-pain rehabilitation.",
+        "Dr Kaustav Basu Thakur, MBBS, MD – PMR, is a consultant physiatrist at Rehabana Kolkata specialising in stroke and spinal cord injury rehabilitation, spasticity and interventional pain management.",
     },
   },
 ];

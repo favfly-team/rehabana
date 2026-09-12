@@ -13,6 +13,7 @@ import {
   FaHandHoldingMedical,
   FaPersonWalking,
   FaNotesMedical,
+  FaRobot,
 } from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
 import CredentialList from "./credential-list";
@@ -46,7 +47,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
     publications = [],
     memberships = [],
     awards = [],
-    talks = [],
+    workshops = [],
     social = {},
   } = doctor;
 
@@ -149,12 +150,12 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       // Three short lists share one heading rather than three sparse sections.
       id: "recognition",
       title: "Affiliations & Recognition",
-      show: memberships.length > 0 || awards.length > 0 || talks.length > 0,
+      show: memberships.length > 0 || awards.length > 0 || workshops.length > 0,
       content: (
         <RecognitionColumns
           memberships={memberships}
           awards={awards}
-          talks={talks}
+          workshops={workshops}
         />
       ),
     },
@@ -378,6 +379,7 @@ const PROCEDURE_ICONS = {
   diagnostics: FaHeartPulse,
   orthotics: FaHandHoldingMedical,
   gait: FaPersonWalking,
+  robotics: FaRobot,
 };
 
 const ProcedureList = ({ procedures = [] }) => (
@@ -405,14 +407,18 @@ const ProcedureList = ({ procedures = [] }) => (
 );
 
 /**
- * Memberships / Awards / Talks, laid out across however many of them exist.
+ * Memberships / Awards / Workshops, laid out across however many exist.
  *
  * The blocks are collected first and empty ones dropped, then the surviving
  * count drives the grid through `data-cols`. Without that the grid keeps three
  * fixed tracks, so a doctor with no awards would get two blocks squeezed into
  * the left two thirds and an empty column on the right.
  */
-const RecognitionColumns = ({ memberships = [], awards = [], talks = [] }) => {
+const RecognitionColumns = ({
+  memberships = [],
+  awards = [],
+  workshops = [],
+}) => {
   const blocks = [
     memberships.length > 0 && {
       key: "memberships",
@@ -424,10 +430,10 @@ const RecognitionColumns = ({ memberships = [], awards = [], talks = [] }) => {
       title: "Awards",
       body: <AwardList awards={awards} />,
     },
-    talks.length > 0 && {
-      key: "talks",
-      title: "Talks & Conferences",
-      body: <MetaList items={talks} />,
+    workshops.length > 0 && {
+      key: "workshops",
+      title: "Workshops & Training",
+      body: <MetaList items={workshops} />,
     },
   ].filter(Boolean);
 
