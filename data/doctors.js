@@ -171,18 +171,28 @@ export const doctors = [
     ],
 
     // ==== PUBLICATIONS & RESEARCH ====
-    // Verbatim from the citations published on the PMR service page.
-    // `doi` and `url` are intentionally empty: a guessed DOI either dead-ends
-    // or resolves to somebody else's paper. Add the real ones and set
-    // `url` to https://doi.org/<doi>.
+    // Citations as published on the PMR service page.
+    //
+    // `url` should always be https://doi.org/<doi> — the DOI resolver is
+    // permanent, unlike a journal's own domain. (The Indian Journal of PMR's
+    // old domain, ijpmr.com, has lapsed and now redirects to a gambling site,
+    // so never link a journal homepage.)
+    //
+    // Only entries with a verified DOI carry a link; the rest render without a
+    // button rather than with a guessed one that dead-ends or, worse, resolves
+    // to somebody else's paper.
     publications: [
       {
+        // Verified: DOI resolves to this article at cisejournal.org, and
+        // Kaustav Basu Thakur is listed as an author (AIIMS Bhubaneswar).
+        // Title corrected to the one actually published — the service-page
+        // citation had an earlier working title.
         title:
-          "Autologous platelet-rich plasma injections in the treatment of shoulder pain: a meta-analysis of randomised controlled trials",
+          "Can platelet-rich plasma injections provide better pain relief and functional outcomes in persons with common shoulder diseases: a meta-analysis of randomized controlled trials",
         source: "Clinics in Shoulder and Elbow · 25(1):73–89",
         period: "2022",
-        doi: "",
-        url: "",
+        doi: "10.5397/cise.2021.00353",
+        url: "https://doi.org/10.5397/cise.2021.00353",
       },
       {
         title:
