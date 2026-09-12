@@ -1415,3 +1415,1026 @@
     display: none;
   }
 }
+
+/*--------------------------------------------------------------
+  Team grid — minimal member card
+--------------------------------------------------------------*/
+.cs_member_grid {
+  align-items: stretch;
+}
+
+.cs_member_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--white-color);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.cs_member_card_linked {
+  cursor: pointer;
+}
+
+/* The name link stretches over the whole card, so photo, role and the
+   "View Profile" label all act as one target. Social buttons sit above it. */
+.cs_member_stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cs_member_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(23, 31, 42, 0.1);
+}
+
+.cs_member_media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--gray2-color);
+}
+
+.cs_member_media_link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cs_member_media_link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cs_member_card:hover .cs_member_media_link img {
+  transform: scale(1.03);
+}
+
+.cs_member_placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--gray2-color);
+}
+
+/* Socials stay out of the way until the card is hovered. */
+.cs_member_socials {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.cs_member_card:hover .cs_member_socials {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cs_member_social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--heading-color);
+  font-size: 13px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.cs_member_social:hover {
+  background: var(--accent-color);
+  color: var(--white-color);
+}
+
+/* Tinted body with the accent bar on the left, matching the theme's card.
+   The role is clamped to a fixed height so every card in a row lines up
+   regardless of how long the specialty text is. */
+.cs_member_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  padding: 18px 18px 20px;
+  border-left: 6px solid var(--accent-color);
+  background: var(--gray2-color);
+  text-align: center;
+}
+
+.cs_member_name {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cs_member_name a,
+.cs_member_name span {
+  color: var(--heading-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cs_member_card_linked:hover .cs_member_name a {
+  color: var(--accent-color);
+}
+
+.cs_member_role {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 63px;
+  margin: 0;
+  color: var(--body-color);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.cs_member_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 14px;
+  color: var(--accent-color);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.cs_member_link::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.cs_member_card:hover .cs_member_link::after {
+  width: 26px;
+}
+
+/* "View More" is a real button, so reset the UA chrome the anchor never had. */
+.cs_team_more_btn {
+  border: 0;
+  cursor: pointer;
+  appearance: none;
+}
+
+@media (max-width: 575px) {
+  .cs_member_body {
+    padding: 18px;
+  }
+
+  .cs_member_role {
+    min-height: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+  Individual doctor profile page
+--------------------------------------------------------------*/
+.cs_doctor_page {
+  --doctor-border: rgba(17, 24, 39, 0.09);
+  --doctor-tint: rgba(178, 85, 147, 0.07);
+  background: var(--white-color);
+}
+
+/* ==== Hero ====
+   The site header is position:absolute over the page, so the first section has
+   to clear it on its own — hence the large padding-top. */
+.cs_doctor_hero {
+  padding: 132px 0 56px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(230, 241, 247, 0.55) 0%,
+      rgba(255, 255, 255, 1) 88%
+    ),
+    var(--white-color);
+}
+
+.cs_doctor_breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+  color: var(--body-color);
+  font-size: 13px;
+}
+
+.cs_doctor_breadcrumb a {
+  color: var(--body-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cs_doctor_breadcrumb a:hover {
+  color: var(--accent-color);
+}
+
+.cs_doctor_breadcrumb svg {
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+}
+
+.cs_doctor_breadcrumb span {
+  color: var(--heading-color);
+  font-weight: 500;
+}
+
+.cs_doctor_hero_grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.cs_doctor_hero_media {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--gray2-color);
+  box-shadow: 0 24px 60px rgba(23, 31, 42, 0.14);
+}
+
+.cs_doctor_hero_media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.cs_doctor_hero_media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.cs_doctor_hero_content {
+  min-width: 0;
+  padding-top: 6px;
+}
+
+.cs_doctor_eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent-color);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.cs_doctor_name {
+  margin: 0;
+  color: var(--heading-color);
+  font-family: var(--font-poppins);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.cs_doctor_credentials {
+  margin: 10px 0 0;
+  color: var(--heading-color);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.cs_doctor_designation {
+  margin: 4px 0 0;
+  color: var(--body-color);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cs_doctor_headline {
+  max-width: 640px;
+  margin: 18px 0 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent-color);
+  color: var(--heading-color);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.cs_doctor_hero_actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.cs_doctor_hero_actions .cs_btn_text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs_doctor_ghost_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border: 1px solid var(--doctor-border);
+  border-radius: 100px;
+  background: var(--white-color);
+  color: var(--heading-color);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cs_doctor_ghost_btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.cs_doctor_ghost_btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.cs_doctor_icon_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--doctor-border);
+  border-radius: 50%;
+  background: var(--white-color);
+  color: var(--heading-color);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cs_doctor_icon_btn:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+  color: var(--white-color);
+}
+
+/* ==== Stats band ==== */
+.cs_doctor_stats {
+  padding: 0 0 4px;
+}
+
+.cs_doctor_stats_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--doctor-border);
+}
+
+.cs_doctor_stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 26px 28px;
+  background: var(--heading-color);
+}
+
+.cs_doctor_stat_value {
+  color: var(--white-color);
+  font-family: var(--font-poppins);
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cs_doctor_stat_label {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* ==== Condition tiles ==== */
+.cs_doctor_tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs_doctor_tile {
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 148px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--heading-color);
+  text-decoration: none;
+}
+
+.cs_doctor_tile_media {
+  position: absolute;
+  inset: 0;
+}
+
+.cs_doctor_tile_media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.62;
+  transition:
+    transform 0.5s ease,
+    opacity 0.3s ease;
+}
+
+.cs_doctor_tile_placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--heading-color);
+}
+
+/* Scrim keeps the label readable over any photograph. */
+.cs_doctor_tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 27, 0.1) 0%,
+    rgba(0, 0, 27, 0.78) 100%
+  );
+}
+
+.cs_doctor_tile_label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  min-height: 148px;
+  padding: 16px;
+  color: var(--white-color);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+a.cs_doctor_tile:hover img {
+  transform: scale(1.06);
+  opacity: 0.75;
+}
+
+/* ==== Numbered procedure cards ==== */
+.cs_doctor_cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs_doctor_card_item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--doctor-border);
+  border-radius: 10px;
+  background: var(--white-color);
+  transition: border-color 0.25s ease;
+}
+
+.cs_doctor_card_item:hover {
+  border-color: rgba(178, 85, 147, 0.4);
+}
+
+.cs_doctor_card_num {
+  flex: none;
+  color: var(--accent-color);
+  font-family: var(--font-poppins);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.cs_doctor_card_label {
+  color: var(--heading-color);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+/* ==== Body layout: sticky facts rail + readable content column ==== */
+.cs_doctor_layout {
+  display: grid;
+  grid-template-columns: 288px minmax(0, 1fr);
+  gap: 64px;
+  padding: 56px 0 8px;
+}
+
+.cs_doctor_rail_inner {
+  position: sticky;
+  top: 100px;
+}
+
+.cs_doctor_main {
+  min-width: 0;
+  /* Cap the measure so long paragraphs stay scannable. */
+  max-width: 720px;
+}
+
+/* At a glance */
+.cs_doctor_glance {
+  padding: 22px 24px;
+  border: 1px solid var(--doctor-border);
+  border-radius: 12px;
+  background: var(--white-color);
+}
+
+.cs_doctor_glance_title {
+  margin: 0 0 16px;
+  color: var(--heading-color);
+  font-family: var(--font-poppins);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cs_doctor_glance_list {
+  margin: 0;
+}
+
+.cs_doctor_glance_row + .cs_doctor_glance_row {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.cs_doctor_glance_row dt {
+  margin-bottom: 3px;
+  color: var(--body-color);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cs_doctor_glance_row dd {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.cs_doctor_glance_btn {
+  width: 100%;
+  margin-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.cs_doctor_glance_btn .cs_btn_text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.cs_doctor_glance_phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: var(--heading-color);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cs_doctor_glance_phone:hover {
+  color: var(--accent-color);
+}
+
+.cs_doctor_glance_phone svg {
+  width: 13px;
+  height: 13px;
+  color: var(--accent-color);
+}
+
+/* ==== Body sections ==== */
+.cs_doctor_section {
+  scroll-margin-top: 110px;
+}
+
+.cs_doctor_section + .cs_doctor_section {
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid var(--doctor-border);
+}
+
+.cs_doctor_subheading {
+  margin: 0 0 10px;
+  color: var(--heading-color);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.cs_doctor_columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+}
+
+.cs_doctor_section_title {
+  position: relative;
+  margin: 0 0 22px;
+  padding-left: 16px;
+  color: var(--heading-color);
+  font-family: var(--font-poppins);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cs_doctor_section_title::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--accent-color);
+}
+
+.cs_doctor_lead {
+  margin: 0 0 20px;
+  padding: 20px 22px;
+  border-radius: 10px;
+  background: var(--gray2-color);
+  color: var(--heading-color);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.cs_doctor_paragraph {
+  margin: 0 0 16px;
+  color: var(--body-color);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.cs_doctor_paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.cs_doctor_bullets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs_doctor_bullets li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--body-color);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.cs_doctor_bullets_single {
+  grid-template-columns: 1fr;
+}
+
+.cs_doctor_bullets li::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  opacity: 0.55;
+}
+
+/* ==== Timeline ==== */
+.cs_doctor_timeline {
+  margin: 0;
+  padding: 0 0 0 22px;
+  border-left: 1px solid var(--doctor-border);
+  list-style: none;
+}
+
+.cs_doctor_timeline_item {
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.cs_doctor_timeline_item:last-child {
+  padding-bottom: 0;
+}
+
+.cs_doctor_timeline_item::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -27px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+  background: var(--white-color);
+}
+
+.cs_doctor_timeline_heading {
+  margin: 0 0 4px;
+  color: var(--heading-color);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.cs_doctor_timeline_heading a {
+  color: var(--heading-color);
+  text-decoration: none;
+}
+
+.cs_doctor_timeline_heading a:hover {
+  color: var(--accent-color);
+}
+
+.cs_doctor_timeline_sub {
+  margin: 0;
+  color: var(--body-color);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.cs_doctor_timeline_period {
+  margin: 6px 0 0;
+  color: var(--accent-color);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.cs_doctor_timeline_desc {
+  margin: 10px 0 0;
+  color: var(--body-color);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ==== Articles by this doctor ==== */
+.cs_doctor_blogs {
+  padding: 72px 0;
+  margin-top: 64px;
+  background: var(--gray2-color);
+}
+
+.cs_doctor_blogs_head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.cs_doctor_blogs .cs_post_thumbnail {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.cs_doctor_blog_card {
+  height: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--white-color);
+  box-shadow: 0 14px 40px rgba(23, 31, 42, 0.07);
+}
+
+.cs_doctor_blog_card .cs_post_info {
+  padding: 16px 6px 6px;
+}
+
+.cs_doctor_blog_card .cs_post_meta {
+  margin-bottom: 8px;
+  color: var(--body-color);
+  font-size: 13px;
+}
+
+.cs_doctor_blog_card .cs_post_title a {
+  color: var(--heading-color);
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+.cs_doctor_blog_card .cs_post_title a:hover {
+  color: var(--accent-color);
+}
+
+/* ==== Closing CTA ==== */
+.cs_doctor_cta {
+  padding: 72px 0 96px;
+}
+
+.cs_doctor_cta_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 40px;
+  border: 1px solid var(--doctor-border);
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--doctor-tint) 0%,
+    rgba(255, 255, 255, 1) 60%
+  );
+}
+
+.cs_doctor_cta_title {
+  margin: 0 0 8px;
+  color: var(--heading-color);
+  font-family: var(--font-poppins);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cs_doctor_cta_text {
+  max-width: 520px;
+  margin: 0;
+  color: var(--body-color);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.cs_doctor_cta_actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 1199px) {
+  .cs_doctor_hero_grid {
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 36px;
+  }
+
+  .cs_doctor_name {
+    font-size: 34px;
+  }
+
+  .cs_doctor_layout {
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 44px;
+  }
+
+  .cs_doctor_stat_value {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 991px) {
+  .cs_doctor_hero {
+    padding-top: 116px;
+  }
+
+  .cs_doctor_hero_grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .cs_doctor_hero_media {
+    max-width: 300px;
+  }
+
+  /* Rail drops above the content and stops sticking. */
+  .cs_doctor_layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 40px;
+  }
+
+  .cs_doctor_rail_inner {
+    position: static;
+  }
+
+  .cs_doctor_main {
+    max-width: none;
+  }
+
+  .cs_doctor_tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs_doctor_blogs,
+  .cs_doctor_cta {
+    padding: 56px 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .cs_doctor_hero {
+    padding: 104px 0 40px;
+  }
+
+  .cs_doctor_name {
+    font-size: 27px;
+  }
+
+  .cs_doctor_headline {
+    font-size: 15px;
+  }
+
+  .cs_doctor_section_title {
+    font-size: 21px;
+  }
+
+  .cs_doctor_lead {
+    padding: 18px;
+    font-size: 15px;
+  }
+
+  .cs_doctor_paragraph,
+  .cs_doctor_timeline_desc {
+    font-size: 15px;
+  }
+
+  .cs_doctor_bullets,
+  .cs_doctor_columns,
+  .cs_doctor_cards,
+  .cs_doctor_tiles,
+  .cs_doctor_stats_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs_doctor_stat {
+    padding: 20px 22px;
+  }
+
+  .cs_doctor_stat_value {
+    font-size: 30px;
+  }
+
+  .cs_doctor_cta_inner {
+    padding: 26px 20px;
+  }
+
+  .cs_doctor_cta_title {
+    font-size: 21px;
+  }
+
+  .cs_doctor_hero_actions,
+  .cs_doctor_cta_actions {
+    width: 100%;
+  }
+}

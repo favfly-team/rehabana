@@ -12,7 +12,10 @@ import { PrismicNextLink } from "@prismicio/next";
 const ViewAllButton = ({ href, label = "View All", prismic = false }) => {
   const pathname = usePathname();
 
-  if (pathname === href) return null;
+  // `href` is a Prismic link field in prismic mode, so read the resolved url
+  // off it before comparing — otherwise the button never hides on its own page.
+  const targetPath = prismic ? href?.url : href;
+  if (pathname === targetPath) return null;
 
   if (prismic) {
     return (
