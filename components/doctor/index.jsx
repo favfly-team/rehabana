@@ -6,6 +6,13 @@ import {
   FaPhone,
   FaCalendarCheck,
   FaTrophy,
+  FaSyringe,
+  FaWaveSquare,
+  FaBone,
+  FaHeartPulse,
+  FaHandHoldingMedical,
+  FaPersonWalking,
+  FaNotesMedical,
 } from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
 import CredentialList from "./credential-list";
@@ -69,18 +76,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       id: "procedures",
       title: "Procedures & Interventions",
       show: procedures.length > 0,
-      content: (
-        <ul className="cs_doctor_cards">
-          {procedures.map((item, index) => (
-            <li key={index} className="cs_doctor_card_item">
-              <span className="cs_doctor_card_num">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className="cs_doctor_card_label">{item}</span>
-            </li>
-          ))}
-        </ul>
-      ),
+      content: <ProcedureList procedures={procedures} />,
     },
     {
       id: "experience",
@@ -363,6 +359,50 @@ const BookingCard = ({ facts = [], name }) => (
 );
 
 /* ==== BUILDING BLOCKS ==== */
+
+/**
+ * Procedures & Interventions.
+ *
+ * These replaced a numbered list: 01–06 read as a sequence, but there is no
+ * order to them — an icon says what kind of procedure it is at a glance, which
+ * a number never did. Each card carries a plain-language line, because the
+ * procedure names alone mean nothing to the patients reading this page.
+ *
+ * Accepts a plain string too, so a procedure list that is only labels still
+ * renders correctly.
+ */
+const PROCEDURE_ICONS = {
+  injection: FaSyringe,
+  imaging: FaWaveSquare,
+  joint: FaBone,
+  diagnostics: FaHeartPulse,
+  orthotics: FaHandHoldingMedical,
+  gait: FaPersonWalking,
+};
+
+const ProcedureList = ({ procedures = [] }) => (
+  <ul className="cs_doctor_procedures">
+    {procedures.map((procedure, index) => {
+      const item =
+        typeof procedure === "string" ? { label: procedure } : procedure;
+      const Icon = PROCEDURE_ICONS[item.icon] ?? FaNotesMedical;
+
+      return (
+        <li key={index} className="cs_doctor_procedure">
+          <span className="cs_doctor_procedure_icon">
+            <Icon aria-hidden="true" />
+          </span>
+          <span className="cs_doctor_procedure_text">
+            <span className="cs_doctor_procedure_label">{item.label}</span>
+            {item.note && (
+              <span className="cs_doctor_procedure_note">{item.note}</span>
+            )}
+          </span>
+        </li>
+      );
+    })}
+  </ul>
+);
 
 /**
  * Memberships / Awards / Talks, laid out across however many of them exist.

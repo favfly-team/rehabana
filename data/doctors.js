@@ -122,13 +122,30 @@ export const doctors = [
     ],
 
     // ==== PROCEDURES / INTERVENTIONS ====
+    // `icon` is a key, not a component, so this stays plain serialisable data
+    // and maps cleanly onto a Prismic select field later. Valid keys are in
+    // PROCEDURE_ICONS in components/doctor/index.jsx; an unknown key falls
+    // back to a neutral medical icon.
+    // An optional `note` renders a second line, but it is deliberately unused
+    // here: six three-line cards made this the heaviest block on the page for
+    // what is really just a capability list. The explanations belong on the
+    // service pages, which have room for them.
     procedures: [
-      "Botulinum toxin injection for focal spasticity",
-      "Ultrasound and fluoroscopy-guided nerve blocks",
-      "Intra-articular and soft tissue injections",
-      "Electrodiagnostic evaluation (EMG / NCV)",
-      "Prosthetic and orthotic prescription",
-      "Gait and functional mobility assessment",
+      {
+        label: "Botulinum toxin injection for focal spasticity",
+        icon: "injection",
+      },
+      {
+        label: "Ultrasound and fluoroscopy-guided nerve blocks",
+        icon: "imaging",
+      },
+      { label: "Intra-articular and soft tissue injections", icon: "joint" },
+      {
+        label: "Electrodiagnostic evaluation (EMG / NCV)",
+        icon: "diagnostics",
+      },
+      { label: "Prosthetic and orthotic prescription", icon: "orthotics" },
+      { label: "Gait and functional mobility assessment", icon: "gait" },
     ],
 
     // ==== EDUCATION ====
