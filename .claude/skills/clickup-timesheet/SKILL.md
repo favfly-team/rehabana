@@ -108,6 +108,9 @@ Present a table per day: project, task, time, and whether it is already logged. 
 - Which existing tasks can take the time, and which need creating
 - Any day with zero evidence — flag it, never fill it in
 
+Break each day into its phases of work, not one line per day. Those rows are what
+you will upload as individual time entries in B3, so get them agreed here.
+
 **Then stop.** Ask for approval. Do not write to ClickUp yet.
 
 ---
@@ -161,9 +164,28 @@ clickup_add_time_entry(task_id, start="YYYY-MM-DD HH:MM", duration="30m",
 
 Date each entry to **when the work actually happened**, not today. Keep entries within a day non-overlapping.
 
+**One entry per phase, not one lump per task.** A single 3h entry saying "built the
+page" is unreadable a month later and impossible to challenge line by line. Split
+the session the same way the Phase A breakdown does — a row per distinct phase of
+work — and give each entry a start time, a duration and its own description. The
+entries should run back to back and sum to the approved total:
+
+| Start | Duration | Description |
+| --- | --- | --- |
+| 11:15 | 54m | Requirements, route design, data model, first build |
+| 12:09 | 25m | Layout, responsive grid, credential list |
+| 12:34 | 28m | Booking modal, awards and recognition, procedure icons |
+
+Aim for entries of roughly 15–60 minutes. Do not slice below ~10 minutes — that is
+noise, not detail. Where a phase genuinely ran longer than an hour without a
+natural seam, leave it as one entry rather than inventing a split.
+
 ### B4. Verify and report
 
-Re-read the entries back from the API. Report a table of task, estimate, tracked, and the month total. Say plainly what was skipped as a duplicate and what was left out as non-billable.
+Re-read the entries back from the API. Report a table of **every entry** — start,
+duration, description — plus the task, estimate, tracked total and month total.
+Check the entry count and the sum against what was approved. Say plainly what was
+skipped as a duplicate and what was left out as non-billable.
 
 ---
 
@@ -189,3 +211,5 @@ Or search by a known task name. Once you have the list ID, record it so the look
 4. **Never backfill an empty day.** Report it as empty and let the user decide.
 5. **Prefer updating over creating.** A duplicate task is worse than a long one.
 6. **Date to reality.** Entries carry the date the work happened.
+7. **Log phase by phase.** One entry per phase of work, never a single lump for the
+   whole session.
