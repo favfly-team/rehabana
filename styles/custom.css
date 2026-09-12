@@ -2073,10 +2073,139 @@ a.cs_doctor_tile:hover img {
   text-transform: uppercase;
 }
 
+/* Three tracks so Memberships | Awards | Talks sit side by side and Awards
+   lands in the middle. Two columns left Talks orphaned under Memberships with
+   a gap beside it. Awards is widest because its rows carry a mark. */
 .cs_doctor_columns {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 32px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
+  /* No column gap — the padding on each side of the rule makes the channel,
+     so the divider sits centred between the columns. */
+  gap: 28px 0;
+  align-items: start;
+}
+
+.cs_doctor_columns > * {
+  padding-right: 26px;
+}
+
+.cs_doctor_columns > *:last-child {
+  padding-right: 0;
+}
+
+.cs_doctor_columns > * + * {
+  padding-left: 26px;
+  border-left: 1px solid var(--doctor-border);
+}
+
+/* ==== Talks: title / venue / year on separate lines ==== */
+.cs_doctor_meta_list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs_doctor_meta_item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(178, 85, 147, 0.28);
+}
+
+.cs_doctor_meta_title {
+  color: var(--heading-color);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.cs_doctor_meta_sub {
+  color: var(--body-color);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.cs_doctor_meta_year {
+  color: var(--accent-color);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+/* ==== Awards ==== */
+.cs_doctor_awards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs_doctor_award {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--doctor-border);
+  border-radius: 10px;
+  background: var(--white-color);
+  transition: border-color 0.25s ease;
+}
+
+.cs_doctor_award:hover {
+  border-color: rgba(178, 85, 147, 0.4);
+}
+
+.cs_doctor_award_mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--gray2-color);
+  color: var(--accent-color);
+  font-size: 17px;
+}
+
+.cs_doctor_award_mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs_doctor_award_text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cs_doctor_award_title {
+  color: var(--heading-color);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cs_doctor_award_issuer {
+  color: var(--body-color);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.cs_doctor_award_year {
+  color: var(--accent-color);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .cs_doctor_section_title {
@@ -2421,6 +2550,27 @@ a.cs_doctor_tile:hover img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Three columns is too tight below the desktop layout. The third block wraps
+     onto a new row, so the rule that separates it has to become horizontal —
+     otherwise it would draw a stray vertical line at the left edge. */
+  .cs_doctor_columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs_doctor_columns > *:nth-child(2n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .cs_doctor_columns > *:nth-child(2n) {
+    padding-right: 0;
+  }
+
+  .cs_doctor_columns > *:nth-child(n + 3) {
+    padding-top: 26px;
+    border-top: 1px solid var(--doctor-border);
+  }
+
   .cs_doctor_blogs,
   .cs_doctor_cta {
     padding: 56px 0;
@@ -2460,6 +2610,18 @@ a.cs_doctor_tile:hover img {
   .cs_doctor_tiles,
   .cs_doctor_stats_grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Single column: every rule is horizontal. */
+  .cs_doctor_columns > * {
+    padding-right: 0;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .cs_doctor_columns > * + * {
+    padding-top: 26px;
+    border-top: 1px solid var(--doctor-border);
   }
 
   .cs_doctor_stat {

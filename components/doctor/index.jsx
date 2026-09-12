@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
-import { FaLinkedinIn, FaPhone, FaCalendarCheck } from "react-icons/fa6";
+import {
+  FaLinkedinIn,
+  FaPhone,
+  FaCalendarCheck,
+  FaTrophy,
+} from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
 import CredentialList from "./credential-list";
 import BookConsultationButton from "./book-button";
@@ -160,23 +165,13 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
           {awards.length > 0 && (
             <div>
               <h3 className="cs_doctor_subheading">Awards</h3>
-              <BulletList
-                items={awards.map((item) =>
-                  [item.title, item.period].filter(Boolean).join(" · "),
-                )}
-                single
-              />
+              <AwardList awards={awards} />
             </div>
           )}
           {talks.length > 0 && (
             <div>
               <h3 className="cs_doctor_subheading">Talks & Conferences</h3>
-              <BulletList
-                items={talks.map((item) =>
-                  [item.title, item.period].filter(Boolean).join(" · "),
-                )}
-                single
-              />
+              <MetaList items={talks} />
             </div>
           )}
         </div>
@@ -383,6 +378,64 @@ const BookingCard = ({ facts = [], name }) => (
 );
 
 /* ==== BUILDING BLOCKS ==== */
+
+/**
+ * Awards read as achievements rather than list items, so each gets its own
+ * card with a mark. `image` takes a real award photo or certificate when the
+ * client supplies one; without it the card falls back to a trophy icon.
+ */
+const AwardList = ({ awards = [] }) => (
+  <ul className="cs_doctor_awards">
+    {awards.map((award, index) => (
+      <li key={index} className="cs_doctor_award">
+        <span className="cs_doctor_award_mark">
+          {award.image?.url ? (
+            <Image
+              src={award.image.url}
+              alt=""
+              width={96}
+              height={96}
+              sizes="52px"
+            />
+          ) : (
+            <FaTrophy aria-hidden="true" />
+          )}
+        </span>
+        <span className="cs_doctor_award_text">
+          <span className="cs_doctor_award_title">{award.title}</span>
+          {award.issuer && (
+            <span className="cs_doctor_award_issuer">{award.issuer}</span>
+          )}
+          {award.period && (
+            <span className="cs_doctor_award_year">{award.period}</span>
+          )}
+        </span>
+      </li>
+    ))}
+  </ul>
+);
+
+/**
+ * Title, venue and year each on their own line.
+ *
+ * These used to be joined as "title · year", which dropped the venue and let
+ * the year wrap onto a line by itself once the column got narrow.
+ */
+const MetaList = ({ items = [] }) => (
+  <ul className="cs_doctor_meta_list">
+    {items.map((item, index) => (
+      <li key={index} className="cs_doctor_meta_item">
+        <span className="cs_doctor_meta_title">{item.title}</span>
+        {item.issuer && (
+          <span className="cs_doctor_meta_sub">{item.issuer}</span>
+        )}
+        {item.period && (
+          <span className="cs_doctor_meta_year">{item.period}</span>
+        )}
+      </li>
+    ))}
+  </ul>
+);
 
 const BulletList = ({ items = [], single = false }) => (
   <ul

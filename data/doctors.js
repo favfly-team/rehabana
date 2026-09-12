@@ -282,17 +282,22 @@ export const doctors = [
     ],
 
     // ==== AWARDS & RECOGNITION ====
+    // `image` is optional: { url } for a photo of the award, trophy or
+    // certificate. Without it the card shows a trophy icon, so entries look
+    // consistent whether or not a photo exists.
     // ⚠ SAMPLE — invented for the demo. Replace.
     awards: [
       {
         title: "Best Paper Award, Neuro-Rehabilitation Session",
         issuer: "IAPMRCON National Conference",
         period: "2022",
+        image: null,
       },
       {
         title: "Young Physiatrist Award, Eastern Zone",
         issuer: "Indian Association of Physical Medicine & Rehabilitation",
         period: "2019",
+        image: null,
       },
     ],
 
