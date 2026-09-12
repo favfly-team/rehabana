@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
 import { FaLinkedinIn, FaPhone, FaCalendarCheck } from "react-icons/fa6";
 import RelatedBlogs from "./related-blogs";
+import CredentialList from "./credential-list";
 
 /**
  * Doctor profile page body.
@@ -95,11 +96,14 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       title: "Education",
       show: education.length > 0,
       content: (
-        <TimelineList
+        <CredentialList
           items={education.map((item) => ({
             heading: item.degree,
             subheading: item.institution,
             period: item.period,
+            credentialId: item.credentialId,
+            credentialUrl: item.credentialUrl,
+            certificate: item.certificate,
           }))}
         />
       ),
@@ -109,11 +113,14 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       title: "Certifications & Training",
       show: certifications.length > 0,
       content: (
-        <TimelineList
+        <CredentialList
           items={certifications.map((item) => ({
             heading: item.title,
             subheading: item.issuer,
             period: item.period,
+            credentialId: item.credentialId,
+            credentialUrl: item.credentialUrl,
+            certificate: item.certificate,
           }))}
         />
       ),

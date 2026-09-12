@@ -109,17 +109,29 @@ export const doctors = [
     ],
 
     // ==== EDUCATION ====
+    // Optional per entry, LinkedIn-style:
+    //   credentialId  — registration / roll number shown under the date
+    //   credentialUrl — external verification page ("Show credential")
+    //   certificate   — scan of the degree. { url, alt }. An image opens in a
+    //                   lightbox; a .pdf opens in a new tab.
+    // Leave them out and the entry renders exactly as it does today.
     education: [
       {
         degree: "MD — Physical Medicine & Rehabilitation",
         institution:
           "Institute of Post Graduate Medical Education & Research (IPGMER), Kolkata",
         period: "Placeholder — year to be confirmed",
+        credentialId: "",
+        credentialUrl: "",
+        certificate: null,
       },
       {
         degree: "MBBS",
         institution: "Placeholder — medical college to be confirmed",
         period: "Placeholder — year to be confirmed",
+        credentialId: "",
+        credentialUrl: "",
+        certificate: null,
       },
     ],
 
@@ -149,22 +161,33 @@ export const doctors = [
     ],
 
     // ==== CERTIFICATIONS & TRAINING ====
+    // Same optional credentialId / credentialUrl / certificate fields as
+    // `education` above.
     certifications: [
       {
         title:
           "Certified Course in Spasticity Management & Botulinum Toxin Therapy",
         issuer: "Placeholder — issuing body",
         period: "Placeholder",
+        credentialId: "",
+        credentialUrl: "",
+        certificate: null,
       },
       {
         title: "Advanced Training in Neurological Rehabilitation",
         issuer: "Placeholder — issuing body",
         period: "Placeholder",
+        credentialId: "",
+        credentialUrl: "",
+        certificate: null,
       },
       {
         title: "Musculoskeletal Ultrasound for Interventional Pain Management",
         issuer: "Placeholder — issuing body",
         period: "Placeholder",
+        credentialId: "",
+        credentialUrl: "",
+        certificate: null,
       },
     ],
 
