@@ -1780,51 +1780,44 @@
   color: var(--white-color);
 }
 
-/* ==== Social & academic profiles ==== */
+/* ==== Social & academic profiles ====
+   Bare glyphs, no label, no rule, no button chrome. Six outlined circles and
+   a "FOLLOW" caption gave the least important element in the hero the most
+   visual weight. */
 .cs_doctor_socials {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid var(--doctor-border);
-}
-
-.cs_doctor_socials_label {
-  color: var(--body-color);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.cs_doctor_socials_list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin: 0;
+  gap: 24px;
+  margin: 26px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.cs_doctor_socials .cs_doctor_icon_btn {
-  width: 40px;
-  height: 40px;
-  font-size: 15px;
+/* Invisible tile at rest — just the mark. On hover it lifts and a soft tinted
+   square fades in behind it. 44px keeps the tap target legal on a phone while
+   the glyph itself stays 21px. */
+.cs_doctor_social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: -11px;
+  border-radius: 12px;
+  color: var(--heading-color);
+  font-size: 21px;
+  line-height: 1;
+  transition:
+    color 0.22s ease,
+    background 0.22s ease,
+    transform 0.22s ease;
 }
 
-@media (max-width: 575px) {
-  .cs_doctor_socials {
-    margin-top: 22px;
-    padding-top: 18px;
-  }
-
-  .cs_doctor_socials .cs_doctor_icon_btn {
-    width: 38px;
-    height: 38px;
-  }
+.cs_doctor_social:hover {
+  transform: translateY(-2px);
+  background: rgba(178, 85, 147, 0.09);
+  color: var(--accent-color);
 }
 
 /* ==== Stats band ==== */

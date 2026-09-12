@@ -306,8 +306,14 @@ export const doctors = [
       facebook: "#",
       x: "#",
       instagram: "#",
-      researchgate: "#",
-      scholar: "#",
+      // Also supported, left empty so no icon renders. ResearchGate and Google
+      // Scholar are worth turning on if he has them — one Scholar link covers
+      // all five publications, which four of them still lack.
+      youtube: "",
+      researchgate: "",
+      scholar: "",
+      orcid: "",
+      website: "",
     },
 
     // ==== SEO ====

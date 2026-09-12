@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
 import {
-  FaLinkedinIn,
   FaPhone,
   FaCalendarCheck,
   FaTrophy,
@@ -14,15 +13,18 @@ import {
   FaPersonWalking,
   FaNotesMedical,
   FaRobot,
-  FaFacebookF,
-  FaXTwitter,
-  FaInstagram,
-  FaYoutube,
-  FaResearchgate,
-  FaGoogleScholar,
-  FaOrcid,
-  FaGlobe,
 } from "react-icons/fa6";
+import {
+  SiLinkedin,
+  SiFacebook,
+  SiX,
+  SiInstagram,
+  SiYoutube,
+  SiResearchgate,
+  SiGooglescholar,
+  SiOrcid,
+} from "react-icons/si";
+import { LuGlobe } from "react-icons/lu";
 import RelatedBlogs from "./related-blogs";
 import CredentialList from "./credential-list";
 import BookConsultationButton from "./book-button";
@@ -280,16 +282,22 @@ const DoctorHero = ({
  * profiles sit alongside the social ones because for a physician with
  * publications they are the more credible link.
  */
+/**
+ * Simple Icons rather than Font Awesome's brand set — these are the official
+ * marks, so they match what people recognise from the platforms themselves,
+ * and the academic ones (Google Scholar, ResearchGate, ORCID) are proper
+ * glyphs instead of the vague shapes fa6 renders.
+ */
 const SOCIAL_NETWORKS = [
-  { key: "linkedin", label: "LinkedIn", Icon: FaLinkedinIn },
-  { key: "facebook", label: "Facebook", Icon: FaFacebookF },
-  { key: "x", label: "X", Icon: FaXTwitter },
-  { key: "instagram", label: "Instagram", Icon: FaInstagram },
-  { key: "youtube", label: "YouTube", Icon: FaYoutube },
-  { key: "researchgate", label: "ResearchGate", Icon: FaResearchgate },
-  { key: "scholar", label: "Google Scholar", Icon: FaGoogleScholar },
-  { key: "orcid", label: "ORCID", Icon: FaOrcid },
-  { key: "website", label: "Website", Icon: FaGlobe },
+  { key: "linkedin", label: "LinkedIn", Icon: SiLinkedin },
+  { key: "facebook", label: "Facebook", Icon: SiFacebook },
+  { key: "x", label: "X", Icon: SiX },
+  { key: "instagram", label: "Instagram", Icon: SiInstagram },
+  { key: "youtube", label: "YouTube", Icon: SiYoutube },
+  { key: "researchgate", label: "ResearchGate", Icon: SiResearchgate },
+  { key: "scholar", label: "Google Scholar", Icon: SiGooglescholar },
+  { key: "orcid", label: "ORCID", Icon: SiOrcid },
+  { key: "website", label: "Website", Icon: LuGlobe },
 ];
 
 const SocialLinks = ({ social = {}, name }) => {
@@ -297,25 +305,22 @@ const SocialLinks = ({ social = {}, name }) => {
   if (links.length === 0) return null;
 
   return (
-    <div className="cs_doctor_socials">
-      <span className="cs_doctor_socials_label">Follow</span>
-      <ul className="cs_doctor_socials_list">
-        {links.map(({ key, label, Icon }) => (
-          <li key={key}>
-            <a
-              href={social[key]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cs_doctor_icon_btn"
-              aria-label={`${name} on ${label}`}
-              title={label}
-            >
-              <Icon aria-hidden="true" />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="cs_doctor_socials">
+      {links.map(({ key, label, Icon }) => (
+        <li key={key}>
+          <a
+            href={social[key]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cs_doctor_social"
+            aria-label={`${name} on ${label}`}
+            title={label}
+          >
+            <Icon aria-hidden="true" />
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 };
 
