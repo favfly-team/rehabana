@@ -133,6 +133,9 @@ const PdfCard = ({ pdf }) => {
 
 const blogRichTextComponents = {
   paragraph: ({ children }) => <p>{children}</p>,
+  // The page already renders the article title as the only <h1>, so a heading 1
+  // authored in Prismic renders as <h2> to keep a single h1 per page.
+  heading1: ({ children }) => <h2>{children}</h2>,
   heading2: ({ children }) => <h2>{children}</h2>,
   heading3: ({ children }) => <h3>{children}</h3>,
   heading4: ({ children }) => <h4>{children}</h4>,
