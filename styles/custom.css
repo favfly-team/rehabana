@@ -1791,15 +1791,20 @@
   border-radius: 14px;
   overflow: hidden;
   /* Shows through the 1px gaps as the divider between cells. */
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.14);
 }
 
+/* Deliberately NOT --accent-color. The magenta is spent on "Book a
+   Consultation" and the footer; making this band magenta too would out-weigh
+   the CTA by roughly six times its area and leave the page with two large flat
+   accent fields. Dark navy anchors the light page and keeps magenta meaning
+   "click me". */
 .cs_doctor_stat {
   display: flex;
   flex-direction: column;
   gap: 6px;
   padding: 26px 28px;
-  background: var(--accent-color);
+  background: var(--heading-color);
 }
 
 .cs_doctor_stat_value {
@@ -1810,11 +1815,10 @@
   line-height: 1;
 }
 
-/* White on the brand magenta is 4.5:1 — right at the AA threshold, so the
-   label keeps full opacity and separates from the figure by size and weight
-   instead of by being faded out. */
+/* 9.9:1 on the navy — plenty of headroom, so the label can sit back from the
+   figure tonally as well as by size. */
 .cs_doctor_stat_label {
-  color: var(--white-color);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 13.5px;
   font-weight: 400;
   line-height: 1.5;
