@@ -64,8 +64,8 @@
               "doctor_profile": {
                 "type": "Link",
                 "config": {
-                  "label": "Doctor profile page (optional - makes the whole card clickable)",
-                  "placeholder": "Pick a Doctor Profile document",
+                  "label": "Individual team member page (optional - makes the whole card clickable)",
+                  "placeholder": "Pick an Individual Team Member Page",
                   "select": "document",
                   "customtypes": ["doctor"],
                   "allowTargetBlank": false,
