@@ -591,6 +591,47 @@
         }
       }
     },
+    "Call to Action": {
+      "cta_heading": {
+        "type": "Text",
+        "config": {
+          "label": "Heading (write {name} where the doctor's name should appear)",
+          "placeholder": "Want {name} to review your case?"
+        }
+      },
+      "cta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Supporting line",
+          "placeholder": "Share your reports and we will schedule an assessment at Rehabana Saltlake or Kalighat."
+        }
+      },
+      "cta_button_label": {
+        "type": "Text",
+        "config": {
+          "label": "Booking button text (opens the enquiry form)",
+          "placeholder": "Book a Consultation"
+        }
+      },
+      "cta_secondary_button_label": {
+        "type": "Text",
+        "config": {
+          "label": "Second button text",
+          "placeholder": "Back to Team"
+        }
+      },
+      "cta_secondary_button_link": {
+        "type": "Link",
+        "config": {
+          "label": "Second button link",
+          "placeholder": "Pick a page, or paste a URL",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      }
+    },
     "SEO & Metadata": {
       "meta_title": {
         "type": "Text",

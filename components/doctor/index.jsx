@@ -59,6 +59,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
     awards = [],
     workshops = [],
     social = {},
+    cta = {},
   } = doctor;
 
   const sections = [
@@ -210,7 +211,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
 
       <RelatedBlogs blogs={blogs} doctorName={name} />
 
-      <ConsultCta name={name} />
+      <ConsultCta name={name} cta={cta} />
     </article>
   );
 };
@@ -601,30 +602,69 @@ const TimelineList = ({ items = [] }) => (
 
 /* ==== CLOSING CTA ==== */
 
-const ConsultCta = ({ name }) => (
-  <section className="cs_doctor_cta">
-    <div className="container">
-      <div className="cs_doctor_cta_inner">
-        <div>
-          <h2 className="cs_doctor_cta_title">
-            Want {name} to review your case?
-          </h2>
-          <p className="cs_doctor_cta_text">
-            Share your reports and we will schedule an assessment at Rehabana
-            Saltlake or Kalighat.
-          </p>
-        </div>
-        <div className="cs_doctor_cta_actions">
-          <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100">
-            <span className="cs_btn_text">Book a Consultation</span>
-          </BookConsultationButton>
-          <Link href="/team" className="cs_doctor_ghost_btn">
-            Back to Team
-          </Link>
+/**
+ * Closing call to action.
+ *
+ * Every string is editable in Prismic ("Call to Action" tab) and falls back to
+ * the wording the page shipped with, so a profile whose editor skipped that
+ * tab still closes properly. {name} in the heading is replaced with the
+ * doctor's name, which keeps one heading reusable across every profile.
+ */
+const CTA_DEFAULTS = {
+  heading: "Want {name} to review your case?",
+  description:
+    "Share your reports and we will schedule an assessment at Rehabana Saltlake or Kalighat.",
+  buttonLabel: "Book a Consultation",
+  secondaryLabel: "Back to Team",
+  secondaryUrl: "/team",
+};
+
+const ConsultCta = ({ name, cta = {} }) => {
+  const heading = (cta.heading || CTA_DEFAULTS.heading).replace(
+    /{name}/g,
+    name ?? "",
+  );
+  const description = cta.description || CTA_DEFAULTS.description;
+  const buttonLabel = cta.buttonLabel || CTA_DEFAULTS.buttonLabel;
+  const secondaryLabel = cta.secondaryLabel || CTA_DEFAULTS.secondaryLabel;
+  const secondaryUrl = cta.secondaryUrl || CTA_DEFAULTS.secondaryUrl;
+
+  // An editor can point the second button anywhere, including off-site — those
+  // open in a new tab so the visitor keeps the profile.
+  const isExternal = /^https?:\/\//i.test(secondaryUrl);
+
+  return (
+    <section className="cs_doctor_cta">
+      <div className="container">
+        <div className="cs_doctor_cta_inner">
+          <div>
+            <h2 className="cs_doctor_cta_title">{heading}</h2>
+            {description && <p className="cs_doctor_cta_text">{description}</p>}
+          </div>
+          <div className="cs_doctor_cta_actions">
+            <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100">
+              <span className="cs_btn_text">{buttonLabel}</span>
+            </BookConsultationButton>
+
+            {isExternal ? (
+              <a
+                href={secondaryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cs_doctor_ghost_btn"
+              >
+                {secondaryLabel}
+              </a>
+            ) : (
+              <Link href={secondaryUrl} className="cs_doctor_ghost_btn">
+                {secondaryLabel}
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default DoctorProfile;
