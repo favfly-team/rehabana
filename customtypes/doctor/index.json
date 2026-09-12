@@ -609,21 +609,21 @@
       "cta_button_label": {
         "type": "Text",
         "config": {
-          "label": "Booking button text (opens the enquiry form)",
+          "label": "Booking button text - opens the enquiry form (empty = no button)",
           "placeholder": "Book a Consultation"
         }
       },
       "cta_secondary_button_label": {
         "type": "Text",
         "config": {
-          "label": "Second button text",
+          "label": "Second button text (needs the link below to show)",
           "placeholder": "Back to Team"
         }
       },
       "cta_secondary_button_link": {
         "type": "Link",
         "config": {
-          "label": "Second button link",
+          "label": "Second button link (needs the text above to show)",
           "placeholder": "Pick a page, or paste a URL",
           "select": null,
           "allowTargetBlank": true,

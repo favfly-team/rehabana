@@ -603,64 +603,64 @@ const TimelineList = ({ items = [] }) => (
 /* ==== CLOSING CTA ==== */
 
 /**
- * Closing call to action.
+ * Closing call to action — entirely content-driven, like every other section
+ * on this page.
  *
- * Every string is editable in Prismic ("Call to Action" tab) and falls back to
- * the wording the page shipped with, so a profile whose editor skipped that
- * tab still closes properly. {name} in the heading is replaced with the
- * doctor's name, which keeps one heading reusable across every profile.
+ * Nothing here has a hardcoded fallback: an empty "Call to Action" tab means
+ * no section, an empty button label means no button. The page would otherwise
+ * claim things about a doctor that nobody wrote for them.
+ *
+ * {name} in the heading is replaced with the doctor's name, so one heading is
+ * reusable across every profile.
  */
-const CTA_DEFAULTS = {
-  heading: "Want {name} to review your case?",
-  description:
-    "Share your reports and we will schedule an assessment at Rehabana Saltlake or Kalighat.",
-  buttonLabel: "Book a Consultation",
-  secondaryLabel: "Back to Team",
-  secondaryUrl: "/team",
-};
-
 const ConsultCta = ({ name, cta = {} }) => {
-  const heading = (cta.heading || CTA_DEFAULTS.heading).replace(
-    /{name}/g,
-    name ?? "",
-  );
-  const description = cta.description || CTA_DEFAULTS.description;
-  const buttonLabel = cta.buttonLabel || CTA_DEFAULTS.buttonLabel;
-  const secondaryLabel = cta.secondaryLabel || CTA_DEFAULTS.secondaryLabel;
-  const secondaryUrl = cta.secondaryUrl || CTA_DEFAULTS.secondaryUrl;
+  const heading = (cta.heading ?? "").replace(/{name}/g, name ?? "").trim();
+  const { description, buttonLabel, secondaryLabel, secondaryUrl } = cta;
+
+  const showSecondary = Boolean(secondaryLabel && secondaryUrl);
+  const hasActions = Boolean(buttonLabel) || showSecondary;
+
+  // Nothing to say and nothing to click.
+  if (!heading && !description && !hasActions) return null;
 
   // An editor can point the second button anywhere, including off-site — those
   // open in a new tab so the visitor keeps the profile.
-  const isExternal = /^https?:\/\//i.test(secondaryUrl);
+  const isExternal = /^https?:\/\//i.test(secondaryUrl ?? "");
 
   return (
     <section className="cs_doctor_cta">
       <div className="container">
         <div className="cs_doctor_cta_inner">
           <div>
-            <h2 className="cs_doctor_cta_title">{heading}</h2>
+            {heading && <h2 className="cs_doctor_cta_title">{heading}</h2>}
             {description && <p className="cs_doctor_cta_text">{description}</p>}
           </div>
-          <div className="cs_doctor_cta_actions">
-            <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100">
-              <span className="cs_btn_text">{buttonLabel}</span>
-            </BookConsultationButton>
 
-            {isExternal ? (
-              <a
-                href={secondaryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cs_doctor_ghost_btn"
-              >
-                {secondaryLabel}
-              </a>
-            ) : (
-              <Link href={secondaryUrl} className="cs_doctor_ghost_btn">
-                {secondaryLabel}
-              </Link>
-            )}
-          </div>
+          {hasActions && (
+            <div className="cs_doctor_cta_actions">
+              {buttonLabel && (
+                <BookConsultationButton className="cs_btn cs_style_1 cs_fs_18 cs_accent_bg cs_radius_100">
+                  <span className="cs_btn_text">{buttonLabel}</span>
+                </BookConsultationButton>
+              )}
+
+              {showSecondary &&
+                (isExternal ? (
+                  <a
+                    href={secondaryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cs_doctor_ghost_btn"
+                  >
+                    {secondaryLabel}
+                  </a>
+                ) : (
+                  <Link href={secondaryUrl} className="cs_doctor_ghost_btn">
+                    {secondaryLabel}
+                  </Link>
+                ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
