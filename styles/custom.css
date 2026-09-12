@@ -2110,46 +2110,24 @@ a.cs_doctor_tile:hover img {
   text-transform: uppercase;
 }
 
-/* Memberships | Awards | Talks side by side, with Awards in the middle.
-   The track count comes from `data-cols`, which the component sets from the
-   number of blocks that actually have content — so dropping any one of them
-   re-balances the row instead of leaving an empty column. */
-.cs_doctor_columns {
-  display: grid;
-  /* No column gap — the padding on each side of the rule makes the channel,
-     so the divider sits centred between the columns. */
-  gap: 28px 0;
-  align-items: start;
-  grid-template-columns: minmax(0, 1fr);
+/* Stacked, full width, one after another — see RecognitionGroups for why
+   side-by-side columns did not work with these block lengths. */
+.cs_doctor_groups {
+  display: flex;
+  flex-direction: column;
 }
 
-.cs_doctor_columns[data-cols="2"] {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* Awards is widest of the three, because its rows carry a mark. */
-.cs_doctor_columns[data-cols="3"] {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
-}
-
-.cs_doctor_columns > * {
-  padding-right: 26px;
-}
-
-.cs_doctor_columns > *:last-child {
-  padding-right: 0;
-}
-
-.cs_doctor_columns > * + * {
-  padding-left: 26px;
-  border-left: 1px solid var(--doctor-border);
+.cs_doctor_group + .cs_doctor_group {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid var(--doctor-border);
 }
 
 /* ==== Talks: title / venue / year on separate lines ==== */
 .cs_doctor_meta_list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 30px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -2185,8 +2163,8 @@ a.cs_doctor_tile:hover img {
 
 /* ==== Awards ==== */
 .cs_doctor_awards {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 0;
   padding: 0;
@@ -2597,28 +2575,6 @@ a.cs_doctor_tile:hover img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Three columns is too tight below the desktop layout, so a 3-block row
-     drops to 2. The third block then wraps onto a new row and its separator
-     has to become horizontal — otherwise it draws a stray vertical line down
-     the left edge. A 1- or 2-block row is already fine and is left alone. */
-  .cs_doctor_columns[data-cols="3"] {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .cs_doctor_columns[data-cols="3"] > *:nth-child(2n + 1) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .cs_doctor_columns[data-cols="3"] > *:nth-child(2n) {
-    padding-right: 0;
-  }
-
-  .cs_doctor_columns[data-cols="3"] > *:nth-child(n + 3) {
-    padding-top: 26px;
-    border-top: 1px solid var(--doctor-border);
-  }
-
   .cs_doctor_blogs,
   .cs_doctor_cta {
     padding: 56px 0;
@@ -2655,27 +2611,10 @@ a.cs_doctor_tile:hover img {
   .cs_doctor_bullets,
   .cs_doctor_procedures,
   .cs_doctor_tiles,
-  .cs_doctor_stats_grid {
+  .cs_doctor_stats_grid,
+  .cs_doctor_meta_list,
+  .cs_doctor_awards {
     grid-template-columns: 1fr;
-  }
-
-  /* Must carry [data-cols] to out-specify the track rules above — a plain
-     .cs_doctor_columns selector loses to them and the row would stay
-     multi-column on a phone. */
-  .cs_doctor_columns[data-cols] {
-    grid-template-columns: 1fr;
-  }
-
-  /* Single column: every rule is horizontal. */
-  .cs_doctor_columns > * {
-    padding-right: 0;
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .cs_doctor_columns > * + * {
-    padding-top: 26px;
-    border-top: 1px solid var(--doctor-border);
   }
 
   .cs_doctor_stat {

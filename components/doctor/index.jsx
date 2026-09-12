@@ -152,7 +152,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       title: "Affiliations & Recognition",
       show: memberships.length > 0 || awards.length > 0 || workshops.length > 0,
       content: (
-        <RecognitionColumns
+        <RecognitionGroups
           memberships={memberships}
           awards={awards}
           workshops={workshops}
@@ -407,14 +407,17 @@ const ProcedureList = ({ procedures = [] }) => (
 );
 
 /**
- * Memberships / Awards / Workshops, laid out across however many exist.
+ * Memberships / Awards / Workshops, stacked one after another.
  *
- * The blocks are collected first and empty ones dropped, then the surviving
- * count drives the grid through `data-cols`. Without that the grid keeps three
- * fixed tracks, so a doctor with no awards would get two blocks squeezed into
- * the left two thirds and an empty column on the right.
+ * These were side-by-side columns, which only works if the blocks are a
+ * similar length. They are not: five wrapping membership lines next to eight
+ * three-line workshop entries left one column ending halfway up the other.
+ * Stacking gives each block the full width, and each one lays its own items
+ * out in two tracks so the section stays compact.
+ *
+ * Empty blocks are dropped first, so the stack is correct for any combination.
  */
-const RecognitionColumns = ({
+const RecognitionGroups = ({
   memberships = [],
   awards = [],
   workshops = [],
@@ -423,7 +426,7 @@ const RecognitionColumns = ({
     memberships.length > 0 && {
       key: "memberships",
       title: "Memberships",
-      body: <BulletList items={memberships} single />,
+      body: <BulletList items={memberships} />,
     },
     awards.length > 0 && {
       key: "awards",
@@ -440,9 +443,9 @@ const RecognitionColumns = ({
   if (blocks.length === 0) return null;
 
   return (
-    <div className="cs_doctor_columns" data-cols={blocks.length}>
+    <div className="cs_doctor_groups">
       {blocks.map((block) => (
-        <div key={block.key}>
+        <div key={block.key} className="cs_doctor_group">
           <h3 className="cs_doctor_subheading">{block.title}</h3>
           {block.body}
         </div>
