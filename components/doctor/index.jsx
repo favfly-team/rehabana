@@ -155,26 +155,11 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       title: "Affiliations & Recognition",
       show: memberships.length > 0 || awards.length > 0 || talks.length > 0,
       content: (
-        <div className="cs_doctor_columns">
-          {memberships.length > 0 && (
-            <div>
-              <h3 className="cs_doctor_subheading">Memberships</h3>
-              <BulletList items={memberships} single />
-            </div>
-          )}
-          {awards.length > 0 && (
-            <div>
-              <h3 className="cs_doctor_subheading">Awards</h3>
-              <AwardList awards={awards} />
-            </div>
-          )}
-          {talks.length > 0 && (
-            <div>
-              <h3 className="cs_doctor_subheading">Talks & Conferences</h3>
-              <MetaList items={talks} />
-            </div>
-          )}
-        </div>
+        <RecognitionColumns
+          memberships={memberships}
+          awards={awards}
+          talks={talks}
+        />
       ),
     },
   ].filter((section) => section.show);
@@ -378,6 +363,47 @@ const BookingCard = ({ facts = [], name }) => (
 );
 
 /* ==== BUILDING BLOCKS ==== */
+
+/**
+ * Memberships / Awards / Talks, laid out across however many of them exist.
+ *
+ * The blocks are collected first and empty ones dropped, then the surviving
+ * count drives the grid through `data-cols`. Without that the grid keeps three
+ * fixed tracks, so a doctor with no awards would get two blocks squeezed into
+ * the left two thirds and an empty column on the right.
+ */
+const RecognitionColumns = ({ memberships = [], awards = [], talks = [] }) => {
+  const blocks = [
+    memberships.length > 0 && {
+      key: "memberships",
+      title: "Memberships",
+      body: <BulletList items={memberships} single />,
+    },
+    awards.length > 0 && {
+      key: "awards",
+      title: "Awards",
+      body: <AwardList awards={awards} />,
+    },
+    talks.length > 0 && {
+      key: "talks",
+      title: "Talks & Conferences",
+      body: <MetaList items={talks} />,
+    },
+  ].filter(Boolean);
+
+  if (blocks.length === 0) return null;
+
+  return (
+    <div className="cs_doctor_columns" data-cols={blocks.length}>
+      {blocks.map((block) => (
+        <div key={block.key}>
+          <h3 className="cs_doctor_subheading">{block.title}</h3>
+          {block.body}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 /**
  * Awards read as achievements rather than list items, so each gets its own

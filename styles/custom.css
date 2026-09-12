@@ -2073,16 +2073,26 @@ a.cs_doctor_tile:hover img {
   text-transform: uppercase;
 }
 
-/* Three tracks so Memberships | Awards | Talks sit side by side and Awards
-   lands in the middle. Two columns left Talks orphaned under Memberships with
-   a gap beside it. Awards is widest because its rows carry a mark. */
+/* Memberships | Awards | Talks side by side, with Awards in the middle.
+   The track count comes from `data-cols`, which the component sets from the
+   number of blocks that actually have content — so dropping any one of them
+   re-balances the row instead of leaving an empty column. */
 .cs_doctor_columns {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
   /* No column gap — the padding on each side of the rule makes the channel,
      so the divider sits centred between the columns. */
   gap: 28px 0;
   align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cs_doctor_columns[data-cols="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Awards is widest of the three, because its rows carry a mark. */
+.cs_doctor_columns[data-cols="3"] {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
 }
 
 .cs_doctor_columns > * {
@@ -2550,23 +2560,24 @@ a.cs_doctor_tile:hover img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Three columns is too tight below the desktop layout. The third block wraps
-     onto a new row, so the rule that separates it has to become horizontal —
-     otherwise it would draw a stray vertical line at the left edge. */
-  .cs_doctor_columns {
+  /* Three columns is too tight below the desktop layout, so a 3-block row
+     drops to 2. The third block then wraps onto a new row and its separator
+     has to become horizontal — otherwise it draws a stray vertical line down
+     the left edge. A 1- or 2-block row is already fine and is left alone. */
+  .cs_doctor_columns[data-cols="3"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .cs_doctor_columns > *:nth-child(2n + 1) {
+  .cs_doctor_columns[data-cols="3"] > *:nth-child(2n + 1) {
     padding-left: 0;
     border-left: 0;
   }
 
-  .cs_doctor_columns > *:nth-child(2n) {
+  .cs_doctor_columns[data-cols="3"] > *:nth-child(2n) {
     padding-right: 0;
   }
 
-  .cs_doctor_columns > *:nth-child(n + 3) {
+  .cs_doctor_columns[data-cols="3"] > *:nth-child(n + 3) {
     padding-top: 26px;
     border-top: 1px solid var(--doctor-border);
   }
@@ -2605,10 +2616,16 @@ a.cs_doctor_tile:hover img {
   }
 
   .cs_doctor_bullets,
-  .cs_doctor_columns,
   .cs_doctor_cards,
   .cs_doctor_tiles,
   .cs_doctor_stats_grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Must carry [data-cols] to out-specify the track rules above — a plain
+     .cs_doctor_columns selector loses to them and the row would stay
+     multi-column on a phone. */
+  .cs_doctor_columns[data-cols] {
     grid-template-columns: 1fr;
   }
 
