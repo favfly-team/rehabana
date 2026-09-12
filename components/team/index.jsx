@@ -6,7 +6,6 @@ import { FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa6";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SectionHeading, ViewAllButton } from "@/components/ui";
 import { asText } from "@prismicio/client";
-import { getDoctorPathByName } from "@/data/doctors";
 
 /** Members shown before the visitor asks for more, and per "View More" click. */
 const PAGE_SIZE = 6;
@@ -61,10 +60,13 @@ const TeamSection = ({ slice }) => {
 };
 
 const TeamItem = ({ item }) => {
-  const { image, title, subtitle, social_links } = item || {};
+  const { image, title, subtitle, social_links, doctor_profile } = item || {};
 
   const titleText = asText(title);
-  const profilePath = getDoctorPathByName(titleText);
+
+  // Set on the card in Prismic. The route resolver turns the linked doctor
+  // document into /team/<uid>, so nothing here has to know the URL shape.
+  const profilePath = doctor_profile?.url ?? null;
 
   return (
     <div className="col-xl-3 col-lg-4 col-sm-6">

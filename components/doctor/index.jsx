@@ -32,7 +32,7 @@ import BookConsultationButton from "./book-button";
 /**
  * Doctor profile page body.
  *
- * Driven entirely by a plain object from `data/doctors.js`. Sections are built
+ * Driven entirely by a plain object from `lib/doctors.js`. Sections are built
  * from the data first and empty ones dropped, so the jump nav and the page
  * always agree and partially filled profiles still read as finished.
  */

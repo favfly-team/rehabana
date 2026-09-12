@@ -3,7 +3,7 @@ import { createClient } from "@/prismicio";
 import { notFound } from "next/navigation";
 import DoctorProfile from "@/components/doctor";
 import SchemaMarkup from "@/components/schema-markup";
-import { doctors, getDoctorBySlug, getDoctorUrl } from "@/data/doctors";
+import { getAllDoctors, getDoctorBySlug, getDoctorUrl } from "@/lib/doctors";
 import {
   generateBreadcrumbSchema,
   generatePhysicianSchema,
@@ -12,9 +12,12 @@ import {
 /**
  * Individual doctor profile page — /team/<slug>.
  *
- * Content is static for now (see `data/doctors.js`); only the "Articles by"
- * block is live, pulled from Prismic via the doctor's linked author document.
- * One route serves every doctor, so adding a profile is a data change only.
+ * Everything on it comes from the Prismic `doctor` document (see
+ * `lib/doctors.js`), including the conditions, which arrive with their service
+ * page already attached. The only extra query is the "Articles by" block,
+ * which has to be looked up from the other direction.
+ *
+ * One route serves every doctor, so adding a profile is a content change only.
  */
 
 const AUTHOR_FETCH_LINKS = [
@@ -33,12 +36,10 @@ const uniqueById = (docs = []) => {
 };
 
 /** Posts written by this doctor, newest first. Never throws. */
-const getDoctorBlogs = async (authorUid) => {
-  if (!authorUid) return [];
+const getDoctorBlogs = async (authorId) => {
+  if (!authorId) return [];
 
   const client = createClient();
-  const author = await client.getByUID("author", authorUid).catch(() => null);
-  if (!author) return [];
 
   const orderings = {
     field: "my.blog_post.published_date",
@@ -50,7 +51,7 @@ const getDoctorBlogs = async (authorUid) => {
   const [legacy, grouped] = await Promise.all([
     client
       .getAllByType("blog_post", {
-        filters: [prismic.filter.at("my.blog_post.author", author.id)],
+        filters: [prismic.filter.at("my.blog_post.author", authorId)],
         orderings,
         fetchLinks: AUTHOR_FETCH_LINKS,
       })
@@ -58,7 +59,7 @@ const getDoctorBlogs = async (authorUid) => {
     client
       .getAllByType("blog_post", {
         filters: [
-          prismic.filter.any("my.blog_post.authors.author", [author.id]),
+          prismic.filter.any("my.blog_post.authors.author", [authorId]),
         ],
         orderings,
         fetchLinks: AUTHOR_FETCH_LINKS,
@@ -77,38 +78,11 @@ const getDoctorBlogs = async (authorUid) => {
   });
 };
 
-/**
- * Pair each condition with its Prismic service page, so the tiles can show the
- * real photography and link through. Conditions without a matching page (or if
- * the fetch fails) simply come back without an image or link.
- */
-const getConditions = async (specialities = []) => {
-  const uids = specialities.map((item) => item.serviceUid).filter(Boolean);
-  if (uids.length === 0) return specialities;
-
-  const client = createClient();
-  const pages = await client.getAllByUIDs("service_page", uids).catch(() => []);
-
-  const byUid = new Map(pages.map((page) => [page.uid, page]));
-
-  return specialities.map((item) => {
-    const page = byUid.get(item.serviceUid);
-    return {
-      label: item.label,
-      url: page?.url ?? null,
-      image: page?.data?.featured_image ?? null,
-    };
-  });
-};
-
 const DoctorPage = async ({ params }) => {
-  const doctor = getDoctorBySlug(params?.slug);
+  const doctor = await getDoctorBySlug(params?.slug);
   if (!doctor) notFound();
 
-  const [blogs, conditions] = await Promise.all([
-    getDoctorBlogs(doctor.authorUid),
-    getConditions(doctor.specialities),
-  ]);
+  const blogs = await getDoctorBlogs(doctor.authorId);
 
   const breadcrumb = generateBreadcrumbSchema([
     { name: "Home", url: "https://rehabana.com" },
@@ -119,22 +93,28 @@ const DoctorPage = async ({ params }) => {
   return (
     <>
       <SchemaMarkup data={[breadcrumb, generatePhysicianSchema(doctor)]} />
-      <DoctorProfile doctor={doctor} blogs={blogs} conditions={conditions} />
+      <DoctorProfile
+        doctor={doctor}
+        blogs={blogs}
+        conditions={doctor.conditions}
+      />
     </>
   );
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const doctors = await getAllDoctors();
   return doctors.map((doctor) => ({ slug: doctor.slug }));
 }
 
 export async function generateMetadata({ params }) {
-  const doctor = getDoctorBySlug(params?.slug);
+  const doctor = await getDoctorBySlug(params?.slug);
   if (!doctor) return {};
 
-  const title = doctor.seo?.title ?? `${doctor.name} | Rehabana`;
-  const description = doctor.seo?.description ?? doctor.lead ?? "";
+  const title = doctor.seo?.title || `${doctor.name} | Rehabana`;
+  const description = doctor.seo?.description || doctor.lead || "";
   const url = getDoctorUrl(doctor);
+  const image = doctor.seo?.image || doctor.image?.url;
 
   return {
     title,
@@ -145,7 +125,7 @@ export async function generateMetadata({ params }) {
       description,
       url,
       type: "profile",
-      images: doctor.image?.url ? [{ url: doctor.image.url }] : undefined,
+      images: image ? [{ url: image }] : undefined,
     },
   };
 }
