@@ -111,6 +111,105 @@
             }
           }
         }
+      },
+      "linkedin_url": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn profile",
+          "placeholder": "https://www.linkedin.com/in/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "facebook_url": {
+        "type": "Link",
+        "config": {
+          "label": "Facebook profile",
+          "placeholder": "https://www.facebook.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "x_twitter_url": {
+        "type": "Link",
+        "config": {
+          "label": "X (Twitter) profile",
+          "placeholder": "https://x.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "instagram_url": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram profile",
+          "placeholder": "https://www.instagram.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "youtube_url": {
+        "type": "Link",
+        "config": {
+          "label": "YouTube channel",
+          "placeholder": "https://www.youtube.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "researchgate_url": {
+        "type": "Link",
+        "config": {
+          "label": "ResearchGate profile",
+          "placeholder": "https://www.researchgate.net/profile/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "google_scholar_url": {
+        "type": "Link",
+        "config": {
+          "label": "Google Scholar profile",
+          "placeholder": "https://scholar.google.com/citations",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "orcid_url": {
+        "type": "Link",
+        "config": {
+          "label": "ORCID profile",
+          "placeholder": "https://orcid.org/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "personal_website_url": {
+        "type": "Link",
+        "config": {
+          "label": "Personal website",
+          "placeholder": "https://",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
       }
     },
     "Practice": {
@@ -403,7 +502,7 @@
         }
       }
     },
-    "Recognition & Links": {
+    "Recognition": {
       "memberships": {
         "type": "Group",
         "config": {
@@ -490,105 +589,6 @@
             }
           }
         }
-      },
-      "linkedin_url": {
-        "type": "Link",
-        "config": {
-          "label": "LinkedIn profile",
-          "placeholder": "https://www.linkedin.com/in/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "facebook_url": {
-        "type": "Link",
-        "config": {
-          "label": "Facebook profile",
-          "placeholder": "https://www.facebook.com/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "x_twitter_url": {
-        "type": "Link",
-        "config": {
-          "label": "X (Twitter) profile",
-          "placeholder": "https://x.com/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "instagram_url": {
-        "type": "Link",
-        "config": {
-          "label": "Instagram profile",
-          "placeholder": "https://www.instagram.com/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "youtube_url": {
-        "type": "Link",
-        "config": {
-          "label": "YouTube channel",
-          "placeholder": "https://www.youtube.com/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "researchgate_url": {
-        "type": "Link",
-        "config": {
-          "label": "ResearchGate profile",
-          "placeholder": "https://www.researchgate.net/profile/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "google_scholar_url": {
-        "type": "Link",
-        "config": {
-          "label": "Google Scholar profile",
-          "placeholder": "https://scholar.google.com/citations",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "orcid_url": {
-        "type": "Link",
-        "config": {
-          "label": "ORCID profile",
-          "placeholder": "https://orcid.org/",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
-      },
-      "personal_website_url": {
-        "type": "Link",
-        "config": {
-          "label": "Personal website",
-          "placeholder": "https://",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": false,
-          "repeat": false
-        }
       }
     },
     "SEO & Metadata": {
@@ -615,9 +615,21 @@
             "height": 600
           },
           "thumbnails": [
-            { "name": "large", "width": 1024, "height": 524 },
-            { "name": "medium", "width": 300, "height": 150 },
-            { "name": "thumbnail", "width": 150, "height": 150 }
+            {
+              "name": "large",
+              "width": 1024,
+              "height": 524
+            },
+            {
+              "name": "medium",
+              "width": 300,
+              "height": 150
+            },
+            {
+              "name": "thumbnail",
+              "width": 150,
+              "height": 150
+            }
           ]
         }
       }
