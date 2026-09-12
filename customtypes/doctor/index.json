@@ -1,0 +1,626 @@
+{
+  "format": "page",
+  "id": "doctor",
+  "label": "Doctor Profile",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Profile": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "URL slug",
+          "placeholder": "e.g. dr-kaustav-basu-thakur"
+        }
+      },
+      "full_name": {
+        "type": "Text",
+        "config": {
+          "label": "Full name",
+          "placeholder": "e.g. Dr Kaustav Basu Thakur"
+        }
+      },
+      "qualifications": {
+        "type": "Text",
+        "config": {
+          "label": "Qualifications (shown under the name)",
+          "placeholder": "e.g. MBBS, MD - PMR"
+        }
+      },
+      "role_label": {
+        "type": "Text",
+        "config": {
+          "label": "Small label above the name",
+          "placeholder": "e.g. Consultant Physiatrist"
+        }
+      },
+      "job_title": {
+        "type": "Text",
+        "config": {
+          "label": "Job title",
+          "placeholder": "e.g. Physical Medicine & Rehabilitation (PMR) Specialist, Kolkata"
+        }
+      },
+      "specialisation_summary": {
+        "type": "Text",
+        "config": {
+          "label": "One-line specialisation summary",
+          "placeholder": "e.g. Special interests in stroke rehabilitation, spasticity and pain management."
+        }
+      },
+      "profile_photo": {
+        "type": "Image",
+        "config": {
+          "label": "Profile photo (portrait)",
+          "constraint": {
+            "width": 800,
+            "height": 1000
+          },
+          "thumbnails": []
+        }
+      },
+      "blog_author_profile": {
+        "type": "Link",
+        "config": {
+          "label": "Linked blog author (pulls their articles to the bottom of the page)",
+          "placeholder": "Pick the matching Author document",
+          "select": "document",
+          "customtypes": ["author"],
+          "allowTargetBlank": false,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "short_introduction": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Short introduction (first, highlighted paragraph)",
+          "placeholder": "One or two sentences introducing the doctor",
+          "allowTargetBlank": true,
+          "single": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "full_biography": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Full biography",
+          "placeholder": "Training, experience and approach - one paragraph per idea",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      },
+      "key_numbers": {
+        "type": "Group",
+        "config": {
+          "label": "Key numbers (the highlight strip)",
+          "repeat": true,
+          "fields": {
+            "number": {
+              "type": "Text",
+              "config": {
+                "label": "Number",
+                "placeholder": "e.g. 14+"
+              }
+            },
+            "what_it_means": {
+              "type": "Text",
+              "config": {
+                "label": "What this number means",
+                "placeholder": "e.g. Years since qualifying (MBBS, 2012)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Practice": {
+      "conditions_treated": {
+        "type": "Group",
+        "config": {
+          "label": "Conditions treated",
+          "repeat": true,
+          "fields": {
+            "condition_name": {
+              "type": "Text",
+              "config": {
+                "label": "Condition name",
+                "placeholder": "e.g. Stroke Rehabilitation"
+              }
+            },
+            "service_page": {
+              "type": "Link",
+              "config": {
+                "label": "Matching service page (optional - adds a photo and a link)",
+                "placeholder": "Pick a Service Page",
+                "select": "document",
+                "customtypes": ["service_page"],
+                "allowTargetBlank": false,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "procedures": {
+        "type": "Group",
+        "config": {
+          "label": "Procedures & interventions performed",
+          "repeat": true,
+          "fields": {
+            "procedure_name": {
+              "type": "Text",
+              "config": {
+                "label": "Procedure name",
+                "placeholder": "e.g. Ultrasound-guided specialised injections"
+              }
+            },
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon to show beside it",
+                "placeholder": "Choose an icon",
+                "options": [
+                  "Injection",
+                  "Scan / imaging",
+                  "Bone / joint",
+                  "Diagnostics",
+                  "Supportive care / orthotics",
+                  "Walking / gait",
+                  "Robotics",
+                  "General medical"
+                ],
+                "default_value": "General medical"
+              }
+            }
+          }
+        }
+      },
+      "registration_number": {
+        "type": "Text",
+        "config": {
+          "label": "Medical council registration number",
+          "placeholder": "e.g. WBMC 12345"
+        }
+      },
+      "languages_spoken": {
+        "type": "Text",
+        "config": {
+          "label": "Languages spoken",
+          "placeholder": "e.g. English, Bengali, Hindi"
+        }
+      },
+      "consulting_hours": {
+        "type": "Text",
+        "config": {
+          "label": "Consulting days & hours",
+          "placeholder": "e.g. Mon to Sat, 10am - 6pm"
+        }
+      }
+    },
+    "Credentials": {
+      "education": {
+        "type": "Group",
+        "config": {
+          "label": "Education",
+          "repeat": true,
+          "fields": {
+            "degree": {
+              "type": "Text",
+              "config": {
+                "label": "Degree",
+                "placeholder": "e.g. MD - Physical Medicine & Rehabilitation"
+              }
+            },
+            "college_or_institute": {
+              "type": "Text",
+              "config": {
+                "label": "College or institute",
+                "placeholder": "e.g. Bankura Sammilani Medical College"
+              }
+            },
+            "year": {
+              "type": "Text",
+              "config": {
+                "label": "Year (or year range)",
+                "placeholder": "e.g. 2012, or 2015 - 2018"
+              }
+            },
+            "certificate_number": {
+              "type": "Text",
+              "config": {
+                "label": "Certificate or registration number (optional)",
+                "placeholder": "Leave empty if there is none"
+              }
+            },
+            "verification_link": {
+              "type": "Link",
+              "config": {
+                "label": "Verification link (optional - opens in a new tab)",
+                "placeholder": "https://",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            },
+            "certificate_file": {
+              "type": "Link",
+              "config": {
+                "label": "Certificate file - image or PDF (optional)",
+                "placeholder": "Upload to the media library",
+                "select": "media",
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "work_experience": {
+        "type": "Group",
+        "config": {
+          "label": "Work experience",
+          "repeat": true,
+          "fields": {
+            "role_title": {
+              "type": "Text",
+              "config": {
+                "label": "Role / designation",
+                "placeholder": "e.g. Senior Resident, Physical Medicine & Rehabilitation"
+              }
+            },
+            "hospital_or_organisation": {
+              "type": "Text",
+              "config": {
+                "label": "Hospital or organisation",
+                "placeholder": "e.g. AIIMS, Bhubaneswar"
+              }
+            },
+            "period": {
+              "type": "Text",
+              "config": {
+                "label": "Period",
+                "placeholder": "e.g. 2018 - 2021, or Present"
+              }
+            },
+            "description": {
+              "type": "Text",
+              "config": {
+                "label": "What they did there",
+                "placeholder": "One or two sentences"
+              }
+            }
+          }
+        }
+      },
+      "certifications": {
+        "type": "Group",
+        "config": {
+          "label": "Certifications & training",
+          "repeat": true,
+          "fields": {
+            "certification_title": {
+              "type": "Text",
+              "config": {
+                "label": "Certification title",
+                "placeholder": "e.g. Fellowship in Pain Management"
+              }
+            },
+            "issued_by": {
+              "type": "Text",
+              "config": {
+                "label": "Issued by",
+                "placeholder": "e.g. Aesculap Academy, Germany"
+              }
+            },
+            "year": {
+              "type": "Text",
+              "config": {
+                "label": "Year",
+                "placeholder": "e.g. 2021"
+              }
+            },
+            "certificate_number": {
+              "type": "Text",
+              "config": {
+                "label": "Certificate number (optional)",
+                "placeholder": "Leave empty if there is none"
+              }
+            },
+            "verification_link": {
+              "type": "Link",
+              "config": {
+                "label": "Verification link (optional - opens in a new tab)",
+                "placeholder": "https://",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            },
+            "certificate_file": {
+              "type": "Link",
+              "config": {
+                "label": "Certificate file - image or PDF (optional)",
+                "placeholder": "Upload to the media library",
+                "select": "media",
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "publications": {
+        "type": "Group",
+        "config": {
+          "label": "Publications & research",
+          "repeat": true,
+          "fields": {
+            "paper_title": {
+              "type": "Text",
+              "config": {
+                "label": "Paper title",
+                "placeholder": "Full title as published"
+              }
+            },
+            "journal_and_issue": {
+              "type": "Text",
+              "config": {
+                "label": "Journal, volume and pages",
+                "placeholder": "e.g. Clinics in Shoulder and Elbow - 25(1):73-89"
+              }
+            },
+            "year": {
+              "type": "Text",
+              "config": {
+                "label": "Year",
+                "placeholder": "e.g. 2022"
+              }
+            },
+            "doi": {
+              "type": "Text",
+              "config": {
+                "label": "DOI number (optional)",
+                "placeholder": "e.g. 10.5397/cise.2021.00353"
+              }
+            },
+            "article_link": {
+              "type": "Link",
+              "config": {
+                "label": "Link to read the paper (optional - always use https://doi.org/...)",
+                "placeholder": "https://doi.org/",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "Recognition & Links": {
+      "memberships": {
+        "type": "Group",
+        "config": {
+          "label": "Professional memberships",
+          "repeat": true,
+          "fields": {
+            "membership": {
+              "type": "Text",
+              "config": {
+                "label": "Membership",
+                "placeholder": "e.g. Life Member, Indian Association of PMR (IAPMR)"
+              }
+            }
+          }
+        }
+      },
+      "awards": {
+        "type": "Group",
+        "config": {
+          "label": "Awards & recognition",
+          "repeat": true,
+          "fields": {
+            "award_title": {
+              "type": "Text",
+              "config": {
+                "label": "Award title",
+                "placeholder": "e.g. Best Paper Award"
+              }
+            },
+            "awarded_by": {
+              "type": "Text",
+              "config": {
+                "label": "Awarded by",
+                "placeholder": "e.g. IAPMRCON 2020"
+              }
+            },
+            "year": {
+              "type": "Text",
+              "config": {
+                "label": "Year",
+                "placeholder": "e.g. 2020"
+              }
+            },
+            "photo": {
+              "type": "Image",
+              "config": {
+                "label": "Award photo or certificate (optional)",
+                "constraint": {
+                  "width": 600,
+                  "height": 400
+                },
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "workshops": {
+        "type": "Group",
+        "config": {
+          "label": "Workshops & training attended",
+          "repeat": true,
+          "fields": {
+            "workshop_title": {
+              "type": "Text",
+              "config": {
+                "label": "Workshop title",
+                "placeholder": "e.g. Cadaveric needling and volunteer scanning"
+              }
+            },
+            "conference_or_venue": {
+              "type": "Text",
+              "config": {
+                "label": "Conference or venue",
+                "placeholder": "e.g. ICMU 2023, Bengaluru"
+              }
+            },
+            "year": {
+              "type": "Text",
+              "config": {
+                "label": "Year",
+                "placeholder": "e.g. 2023"
+              }
+            }
+          }
+        }
+      },
+      "linkedin_url": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn profile",
+          "placeholder": "https://www.linkedin.com/in/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "facebook_url": {
+        "type": "Link",
+        "config": {
+          "label": "Facebook profile",
+          "placeholder": "https://www.facebook.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "x_twitter_url": {
+        "type": "Link",
+        "config": {
+          "label": "X (Twitter) profile",
+          "placeholder": "https://x.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "instagram_url": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram profile",
+          "placeholder": "https://www.instagram.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "youtube_url": {
+        "type": "Link",
+        "config": {
+          "label": "YouTube channel",
+          "placeholder": "https://www.youtube.com/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "researchgate_url": {
+        "type": "Link",
+        "config": {
+          "label": "ResearchGate profile",
+          "placeholder": "https://www.researchgate.net/profile/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "google_scholar_url": {
+        "type": "Link",
+        "config": {
+          "label": "Google Scholar profile",
+          "placeholder": "https://scholar.google.com/citations",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "orcid_url": {
+        "type": "Link",
+        "config": {
+          "label": "ORCID profile",
+          "placeholder": "https://orcid.org/",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "personal_website_url": {
+        "type": "Link",
+        "config": {
+          "label": "Personal website",
+          "placeholder": "https://",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "Meta Title [40-65 chars]"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "Page Description [70-155 chars]"
+        }
+      },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Image",
+          "constraint": {
+            "width": 1200,
+            "height": 600
+          },
+          "thumbnails": [
+            { "name": "large", "width": 1024, "height": 524 },
+            { "name": "medium", "width": 300, "height": 150 },
+            { "name": "thumbnail", "width": 150, "height": 150 }
+          ]
+        }
+      }
+    }
+  }
+}

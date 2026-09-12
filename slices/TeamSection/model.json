@@ -61,6 +61,18 @@
                   "placeholder": "e.g. Therapist Expert"
                 }
               },
+              "doctor_profile": {
+                "type": "Link",
+                "config": {
+                  "label": "Doctor profile page (optional - makes the whole card clickable)",
+                  "placeholder": "Pick a Doctor Profile document",
+                  "select": "document",
+                  "customtypes": ["doctor"],
+                  "allowTargetBlank": false,
+                  "allowText": false,
+                  "repeat": false
+                }
+              },
               "social_links": {
                 "type": "Link",
                 "config": {
