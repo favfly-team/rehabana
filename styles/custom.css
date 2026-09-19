@@ -2469,6 +2469,27 @@ a.cs_doctor_tile:hover img {
   margin-bottom: 0;
 }
 
+/* Links an editor adds to the intro or biography in Prismic.
+   A deeper shade of the brand plum rather than --accent-color itself: the
+   accent is 3.96:1 on the intro box's grey (fails AA), this is 5.87:1 there
+   and 6.75:1 on white. The underline carries the brand colour instead. */
+.cs_doctor_richlink {
+  color: #8e3f74;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(178, 85, 147, 0.45);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.cs_doctor_richlink:hover {
+  color: var(--heading-color);
+  text-decoration-color: var(--accent-color);
+}
+
 .cs_doctor_bullets {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

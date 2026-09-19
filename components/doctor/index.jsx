@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 import {
   FaPhone,
   FaCalendarCheck,
@@ -50,6 +51,8 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
     stats = [],
     lead,
     about = [],
+    leadField = [],
+    aboutField = [],
     procedures = [],
     education = [],
     experience = [],
@@ -72,12 +75,14 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
       show: Boolean(lead) || about.length > 0,
       content: (
         <>
-          {lead && <p className="cs_doctor_lead">{lead}</p>}
-          {about.map((paragraph, index) => (
-            <p key={index} className="cs_doctor_paragraph">
-              {paragraph}
-            </p>
-          ))}
+          <PrismicRichText
+            field={leadField}
+            components={richTextAs("cs_doctor_lead")}
+          />
+          <PrismicRichText
+            field={aboutField}
+            components={richTextAs("cs_doctor_paragraph")}
+          />
         </>
       ),
     },
@@ -219,6 +224,29 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
     </article>
   );
 };
+
+/* ==== RICH TEXT ==== */
+
+/**
+ * Renderers for the About section's rich text: each paragraph gets the given
+ * class, and hyperlinks the editor adds in Prismic become real links.
+ *
+ * Every link opens in a new tab, the same rule as the credential links — a
+ * visitor who follows "RIMS, Imphal" should not lose the profile to do it.
+ */
+const richTextAs = (paragraphClass) => ({
+  paragraph: ({ children }) => <p className={paragraphClass}>{children}</p>,
+  hyperlink: ({ children, node }) => (
+    <a
+      href={node.data?.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="cs_doctor_richlink"
+    >
+      {children}
+    </a>
+  ),
+});
 
 /* ==== PHONE ==== */
 
