@@ -60,7 +60,10 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
     workshops = [],
     social = {},
     cta = {},
+    phone,
   } = doctor;
+
+  const contact = toPhoneLink(phone);
 
   const sections = [
     {
@@ -182,6 +185,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
         headline={headline}
         image={image}
         social={social}
+        contact={contact}
       />
 
       {stats.length > 0 && <StatsBand stats={stats} />}
@@ -190,7 +194,7 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
         <div className="cs_doctor_layout">
           <aside className="cs_doctor_rail">
             <div className="cs_doctor_rail_inner">
-              <BookingCard facts={quickFacts} name={name} />
+              <BookingCard facts={quickFacts} name={name} contact={contact} />
             </div>
           </aside>
 
@@ -216,6 +220,57 @@ const DoctorProfile = ({ doctor, blogs = [], conditions = [] }) => {
   );
 };
 
+/* ==== PHONE ==== */
+
+/**
+ * Rehabana runs two centres with different phone lines, and a doctor is
+ * reached on the line for the centre they consult at — set per profile in
+ * Prismic ("Phone number" on the Practice tab).
+ *
+ * An empty field falls back to the Saltlake main line, which is what every
+ * profile showed before the field existed, so no page loses its call button.
+ */
+const MAIN_LINE = "+91 98367 48665";
+
+/**
+ * Turn whatever the editor typed — "9073746565", "+91 90737 46565",
+ * "090737 46565" — into a dialable tel: href and a consistently spaced label.
+ * A number that is not a recognisable Indian mobile is shown as typed and
+ * dialled with its digits intact, rather than guessed at.
+ */
+const toPhoneLink = (raw) => {
+  const typed = (raw || MAIN_LINE).trim();
+  const digits = typed.replace(/\D/g, "");
+
+  // Last 10 digits of an Indian number, with or without 0 / 91 in front.
+  const national =
+    digits.length === 10
+      ? digits
+      : digits.length === 11 && digits.startsWith("0")
+        ? digits.slice(1)
+        : digits.length === 12 && digits.startsWith("91")
+          ? digits.slice(2)
+          : null;
+
+  if (!national) {
+    return {
+      href: `tel:${typed.startsWith("+") ? "+" : ""}${digits}`,
+      label: typed,
+    };
+  }
+
+  // Mobiles start 6–9 and read as 5 + 5. A landline's grouping depends on its
+  // STD code (033 4001 2345), so its label stays exactly as the editor wrote it.
+  const isMobile = /^[6-9]/.test(national);
+
+  return {
+    href: `tel:+91${national}`,
+    label: isMobile
+      ? `+91 ${national.slice(0, 5)} ${national.slice(5)}`
+      : typed,
+  };
+};
+
 /* ==== HERO ==== */
 
 const DoctorHero = ({
@@ -226,6 +281,7 @@ const DoctorHero = ({
   headline,
   image,
   social,
+  contact,
 }) => (
   <header className="cs_doctor_hero">
     <div className="container">
@@ -263,8 +319,8 @@ const DoctorHero = ({
               </span>
             </BookConsultationButton>
 
-            <a href="tel:+919836748665" className="cs_doctor_ghost_btn">
-              <FaPhone aria-hidden="true" /> +91 98367 48665
+            <a href={contact.href} className="cs_doctor_ghost_btn">
+              <FaPhone aria-hidden="true" /> {contact.label}
             </a>
           </div>
 
@@ -379,7 +435,7 @@ const ConditionTiles = ({ conditions }) => (
  * The rail's job is booking, not summarising. It carries only facts that
  * appear nowhere else on the page, then the action.
  */
-const BookingCard = ({ facts = [], name }) => (
+const BookingCard = ({ facts = [], name, contact }) => (
   <div className="cs_doctor_glance">
     <h2 className="cs_doctor_glance_title">Consult {name}</h2>
 
@@ -401,11 +457,11 @@ const BookingCard = ({ facts = [], name }) => (
     </BookConsultationButton>
 
     <a
-      href="tel:+919836748665"
+      href={contact.href}
       className="cs_doctor_glance_phone"
-      aria-label="Call Rehabana on +91 98367 48665"
+      aria-label={`Call ${name} on ${contact.label}`}
     >
-      <FaPhone aria-hidden="true" /> +91 98367 48665
+      <FaPhone aria-hidden="true" /> {contact.label}
     </a>
   </div>
 );

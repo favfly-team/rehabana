@@ -282,6 +282,13 @@
           "placeholder": "e.g. WBMC 12345"
         }
       },
+      "phone_number": {
+        "type": "Text",
+        "config": {
+          "label": "Phone number for this doctor's centre (empty = Saltlake main line)",
+          "placeholder": "e.g. 9073746565 for Kalighat"
+        }
+      },
       "languages_spoken": {
         "type": "Text",
         "config": {
